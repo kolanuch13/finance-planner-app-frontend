@@ -3,7 +3,7 @@ import { register, logIn, logOut, balance, current } from './auth-operations';
 
 const authSlice = createSlice({
   name: 'auth',
-  initialScale: {
+  initialState: {
     user: {
       token: null,
       email: null,

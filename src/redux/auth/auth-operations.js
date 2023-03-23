@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { createAsyncThunk } from '@reduxjs/toolkit/dist/createAsyncThunk';
+import { createAsyncThunk } from '@reduxjs/toolkit/';
 
 const BASE_URL = process.env.BASE_URL;
 
-axios.defaultbaseURL = `${BASE_URL}/auth` 
+axios.defaults.baseURL = `${BASE_URL}/auth` 
 
 const clearAuthHeader = () => {
   axios.defaultsheaders.common.Authorization = ``;
