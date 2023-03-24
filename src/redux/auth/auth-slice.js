@@ -1,9 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 import { register, logIn, logOut, balance, current } from './auth-operations';
 
 const authSlice = createSlice({
   name: 'auth',
-  initialScale: {
+  initialState: {
     user: {
       token: null,
       email: null,
@@ -49,7 +49,7 @@ const authSlice = createSlice({
         state.isLoading = false;
       })
       //LogOut ========================================
-      .addCase(logOut.fulfilled, (state) => {
+      .addCase(logOut.fulfilled, state => {
         state.user.userName = null;
         state.user.token = null;
         state.user.balance = null;
