@@ -1,7 +1,9 @@
 import css from './DynamicPage.module.css';
-import { Chart, Info, StatisticPerMonth } from '../../components/DynamicsPage';
+import Chart from '../../components/DynamicsPage';
+import Info from '../../components/DynamicsPage';
+import StatisticPerMonth from '../../components/DynamicsPage';
 
-const DynamicPage = () => {
+const DynamicsPage = () => {
   return (
     <div className={css.section}>
       <h1>Dynamics of expenses and savings</h1>
@@ -12,4 +14,4 @@ const DynamicPage = () => {
   );
 };
 
-export default DynamicPage;
+export default DynamicsPage;
