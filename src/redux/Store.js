@@ -14,14 +14,6 @@ import {
 
 import storage from 'redux-persist/lib/storage';
 
-const middleware = getDefaultMiddleware => {
-   getDefaultMiddleware({
-     serializableCheck: {
-       ignoreActions: [FLUSH, REHYDRATE, PERSIST, PURGE, REGISTER]
-     }
-  });
-}
-
 const authPersistConfig = {
   key: 'auth',
   storage,
@@ -32,7 +24,12 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
   },
-  middleware,
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
   devTools: process.env.NODE_ENV === 'development',
 });
 
