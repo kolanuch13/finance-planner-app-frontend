@@ -16,15 +16,21 @@ export const App = () => {
     <>
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path="/" element={'Layout'}></Route>
+          <Route path="/" element={'SharedLayout'}></Route>
           <Route index element={<Home />} />
           <Route path="/" element={<PublicRoute />}>
-            <Route path="/login" element={'Login page'} />
-            <Route path="/register" element={'Registration page'} />
+            <Route path="login" element={<div>Login page</div>} />
+            <Route path="register" element={<div>Registration page</div>} />
           </Route>
           <Route path="/" element={<PrivateRoute />}>
-            <Route path="/diary" element={<DairyPage />} />
-            <Route path="/calculator" element={<Calculator />} />
+            <Route path="plan" element={<div>OwnPlanPage</div>} />
+            <Route path="cash-flow" element={<div>ExpensesPage</div>} />
+            <Route path="dynamics" element={<div>OwnPlanPage</div>} />
+            <Route
+              path="expenses"
+              element={<div>Expenses and Categories</div>}
+            />
+            <Route path="*" element={<div>Not Found Page</div>} />
           </Route>
         </Routes>
       </Suspense>
