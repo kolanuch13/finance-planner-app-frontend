@@ -1,0 +1,47 @@
+.userNav {
+  display: flex;
+}
+
+.login {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.17;
+  text-align: center;
+  padding: 8px 18px;
+  margin-right: 10px;
+  color: #242424;
+  border: none;
+  border-radius: 60px;
+  background-color: #f3f3f3;
+}
+
+.register {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.17;
+  text-align: center;
+  padding: 8px 18px;
+  color: #f3f3f3;
+  border: none;
+  border-radius: 60px;
+  background-color: #3a6af5;
+}
+
+@media screen and (min-width: 768px) {
+  .login {
+    font-size: 14px;
+    line-height: 1.43;
+    padding: 10px 24px;
+    margin-right: 12px;
+  }
+
+  .register {
+    font-size: 14px;
+    line-height: 1.43;
+    padding: 10px 28px;
+  }
+}
