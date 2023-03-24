@@ -15,20 +15,21 @@ export const App = () => {
     <Header></Header>
       <Suspense fallback={<Loader />}>
         <Routes>
+          <Route path="/" element={'SharedLayout'}></Route>
+          <Route index element={<Home />} />
           <Route path="/" element={<PublicRoute />}>
-            <Route index element={<Home />} />
-            <Route path="/login" element={<p>'Login page'</p>} />
-            <Route path="/register" element={<p>'Registration page'</p>} />
+            <Route path="login" element={<div>Login page</div>} />
+            <Route path="register" element={<div>Registration page</div>} />
           </Route>
           <Route path="/" element={<PrivateRoute />}>
-            {/* <Route path="/personal-plan" element={<OwnPlanPage />} /> */}
-            {/* <Route path="/cashflow" element={<CashflowPage />} /> */}
-            {/* <Route path="/dynamics" element={<DynamicsPage />} /> */}
-            {/* <Route path="/statistic" element={<StatisticPage />}>
-              <Route path="/expenses" element={<Expenses />} />
-              <Route path="/expenses" element={<Categories />} />
-            </Route> */}
-            <Route path='*' element={<p>Not found:(</p>}/>
+            <Route path="plan" element={<div>OwnPlanPage</div>} />
+            <Route path="cash-flow" element={<div>ExpensesPage</div>} />
+            <Route path="dynamics" element={<div>OwnPlanPage</div>} />
+            <Route
+              path="expenses"
+              element={<div>Expenses and Categories</div>}
+            />
+            <Route path="*" element={<div>Not Found Page</div>} />
           </Route>
         </Routes>
       </Suspense>
