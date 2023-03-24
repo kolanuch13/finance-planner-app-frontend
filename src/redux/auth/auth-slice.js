@@ -1,42 +1,44 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, logIn, logOut, balance, current } from './auth-operations';
+import authOperations from './auth-operations';
+
+const initialState = {
+  user: {
+    token: null,
+    email: null,
+    userName: null,
+    balance: null,
+  },
+  isLoggedIn: false,
+  isLoading: false,
+  error: null,
+};
 
 const authSlice = createSlice({
   name: 'auth',
-  initialState: {
-    user: {
-      token: null,
-      email: null,
-      userName: null,
-      balance: null,
-    },
-    isLoggedIn: false,
-    isLoading: false,
-    error: null,
-  },
+  initialState,
   extraReducers: builder => {
     builder
       // Register=====================================
-      .addCase(register.pending, state => {
+      .addCase(authOperations.register.pending, (state, _) => {
         state.isLoading = true;
       })
-      .addCase(register.fulfilled, (state, action) => {
-        // state.userName = action.payload.name;
-        // state.token = action.payload.token;
-        // state.balance = action.payload.balance;
-        // state.email = action.payload.email;
-        // state.isLoggedIn = true;
+      .addCase(authOperations.register.fulfilled, (state, action) => {
+        state.userName = action.payload.name;
+        state.email = action.payload.email;
+        state.token = action.payload.token;
+        state.balance = action.payload.balance;
+        state.isLoggedIn = true;
         state.isLoading = false;
       })
-      .addCase(register.rejected, (state, action) => {
+      .addCase(authOperations.register.rejected, (state, action) => {
         state.error = action.payload;
         state.isLoading = false;
       })
       // LogIn=========================================
-      .addCase(logIn.pending, state => {
+      .addCase(authOperations.login.pending, state => {
         state.isLoading = true;
       })
-      .addCase(logIn.fulfilled, (state, action) => {
+      .addCase(authOperations.login.fulfilled, (state, action) => {
         state.user.userName = action.payload.name;
         state.user.token = action.payload.token;
         state.user.balance = action.payload.balance;
@@ -44,12 +46,12 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isLoading = false;
       })
-      .addCase(logIn.rejected, (state, action) => {
+      .addCase(authOperations.login.rejected, (state, action) => {
         state.error = action.payload;
         state.isLoading = false;
       })
       //LogOut ========================================
-      .addCase(logOut.fulfilled, state => {
+      .addCase(authOperations.logout.fulfilled, state => {
         state.user.userName = null;
         state.user.token = null;
         state.user.balance = null;
@@ -57,26 +59,26 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
       })
       // Balance======================================
-      .addCase(balance.pending, state => {
+      .addCase(authOperations.balance.pending, state => {
         state.isLoading = true;
       })
-      .addCase(balance.fulfilled, (state, action) => {
+      .addCase(authOperations.balance.fulfilled, (state, action) => {
         state.balance = action.payload.balance;
         state.isLoading = false;
       })
-      .addCase(balance.rejected, (state, action) => {
+      .addCase(authOperations.balance.rejected, (state, action) => {
         state.error = action.payload;
         state.isLoading = false;
       })
       // Current======================================
-      .addCase(current.pending, state => {
+      .addCase(authOperations.current.pending, state => {
         state.isLoading = true;
       })
-      .addCase(current.fulfilled, (state, action) => {
+      .addCase(authOperations.current.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.isLoading = false;
       })
-      .addCase(current.rejected, (state, action) => {
+      .addCase(authOperations.current.rejected, (state, action) => {
         state.error = action.payload;
         state.isLoading = false;
       });

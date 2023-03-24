@@ -6,6 +6,7 @@ import {
   persistReducer,
   FLUSH,
   REHYDRATE,
+  PAUSE,
   PERSIST,
   PURGE,
   REGISTER,
