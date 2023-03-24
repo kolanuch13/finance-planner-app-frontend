@@ -2,29 +2,33 @@ import { Route, Routes } from 'react-router-dom';
 // import { lazy } from 'react';
 import { Suspense } from 'react';
 
-// const Home = lazy(() => import('pages/HomePage/HomePage'));
-// const Loader = lazy(() => import('components/Loader/Loader'));
-// import PrivateRoute from './PrivateRoute/PrivateRoute';
-// import PublicRoute from './PublicRoute/PublicRoute';
 import { Home } from 'pages/HomePage/HomePage';
+// import DynamicsPage from '../pages/DynamicsPage/DynamicsPage'
 import Loader from './Loader/Loader';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
+import Header from './Header/header/Header'
 
 export const App = () => {
   return (
     <>
+    <Header></Header>
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path="/" element={'Layout'}></Route>
-          <Route index element={<Home />} />
           <Route path="/" element={<PublicRoute />}>
-            <Route path="/login" element={'Login page'} />
-            <Route path="/register" element={'Registration page'} />
+            <Route index element={<Home />} />
+            <Route path="/login" element={<p>'Login page'</p>} />
+            <Route path="/register" element={<p>'Registration page'</p>} />
           </Route>
           <Route path="/" element={<PrivateRoute />}>
-            <Route path="/diary" element={<DairyPage />} />
-            <Route path="/calculator" element={<Calculator />} />
+            {/* <Route path="/personal-plan" element={<OwnPlanPage />} /> */}
+            {/* <Route path="/cashflow" element={<CashflowPage />} /> */}
+            {/* <Route path="/dynamics" element={<DynamicsPage />} /> */}
+            {/* <Route path="/statistic" element={<StatisticPage />}>
+              <Route path="/expenses" element={<Expenses />} />
+              <Route path="/expenses" element={<Categories />} />
+            </Route> */}
+            <Route path='*' element={<p>Not found:(</p>}/>
           </Route>
         </Routes>
       </Suspense>
