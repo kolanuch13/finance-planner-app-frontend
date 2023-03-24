@@ -1,10 +1,12 @@
-import { Home } from "pages/HomePage/HomePage";
+// import { Home } from 'pages/HomePage/HomePage';
+import PlanInput from './OwnPlan/PlanInput/PlanInput';
 
 export const App = () => {
   return (
     <div>
-     
-      <Home/>
+      console.log(hello World)
+      {/* <Home /> */}
+      <PlanInput />
     </div>
   );
 };
