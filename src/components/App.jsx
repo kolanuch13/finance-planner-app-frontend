@@ -1,18 +1,22 @@
 import { Route, Routes } from 'react-router-dom';
 // import { lazy } from 'react';
 import { Suspense } from 'react';
+// ===========================================
+import ToggleLanguages from './ToggleLanguages';
+import ExampleForToggleLanguages from './ExampleForToggleLanguages';
+// ===========================================
 
 import { Home } from 'pages/HomePage/HomePage';
 // import DynamicsPage from '../pages/DynamicsPage/DynamicsPage'
 import Loader from './Loader/Loader';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
-import Header from './Header/header/Header'
+import Header from './Header/header/Header';
 
 export const App = () => {
   return (
     <>
-    <Header></Header>
+      <Header></Header>
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={'SharedLayout'}></Route>
@@ -33,6 +37,8 @@ export const App = () => {
           </Route>
         </Routes>
       </Suspense>
+      <ToggleLanguages />
+      <ExampleForToggleLanguages />
     </>
   );
 };
