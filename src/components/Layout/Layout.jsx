@@ -3,7 +3,7 @@ import Header from '../Header/header/Header';
 import Loader from '../Loader/Loader';
 import { Outlet } from 'react-router-dom';
 
-export const Layout = sa => {
+export const Layout = () => {
   return (
     <div>
       <Header />
