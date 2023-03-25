@@ -15,6 +15,7 @@
   border: none;
   border-radius: 60px;
   background-color: #f3f3f3;
+  cursor: pointer;
 }
 
 .register {
@@ -29,6 +30,7 @@
   border: none;
   border-radius: 60px;
   background-color: #3a6af5;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {
