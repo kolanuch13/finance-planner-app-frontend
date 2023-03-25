@@ -9,40 +9,48 @@ import css from './UserNav.module.css';
 
 function Navigation(props) {
   //   const token = useSelector(state => state.auth?.token);
-  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [whichModal, setWhichModal] = useState(null);
+  const [isOpenModalLogin, setIsOpenModalLogin] = useState(false);
+  const [isOpenModalRegister, setIsOpenModalRegister] = useState(false);
 
-  const handleToggleModal = () => {
-    setIsOpenModal(isOpenModal => !isOpenModal);
+  const handleToggleModalLogin = modal => {
+    setWhichModal(modal);
+    setIsOpenModalLogin(isOpenModal => !isOpenModal);
+  };
+  const handleToggleModalRegister = modal => {
+    setWhichModal(modal);
+    setIsOpenModalRegister(isOpenModal => !isOpenModal);
   };
 
   return (
     <div>
       <nav>
         <div className={css.userNav}>
-          <NavLink to="/login">
-            <button
-              type="button"
-              className={css.login}
-              onClick={handleToggleModal}
-            >
-              Log in
-            </button>
-          </NavLink>
+          {/* <NavLink to="/login"> */}
+          <button
+            type="button"
+            className={css.login}
+            onClick={() => handleToggleModalLogin('login')}
+          >
+            Log in
+          </button>
+          {/* </NavLink> */}
 
-          <NavLink to="/register">
-            <button
-              type="button"
-              className={css.register}
-              onClick={handleToggleModal}
-            >
-              Registration
-            </button>
-          </NavLink>
+          {/* <NavLink to="/register"> */}
+          <button
+            type="button"
+            className={css.register}
+            onClick={() => handleToggleModalRegister('register')}
+          >
+            Registration
+          </button>
+          {/* </NavLink> */}
         </div>
       </nav>
-      {isOpenModal && (
+      {whichModal && (
         <Modal onToggleModal={handleToggleModal}>
-          <ModalLogin />
+          {(whichModal === 'login' && <ModalLogin />) ||
+            (whichModal === 'register' && <ModalRegister />)}
         </Modal>
       )}
     </div>

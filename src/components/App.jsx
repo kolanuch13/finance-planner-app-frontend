@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Home } from 'pages/HomePage/HomePage';
 import { Layout } from './Layout/Layout';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
-import PublicRoute from './PublicRoute/PublicRoute';
+// import PublicRoute from './PublicRoute/PublicRoute';
 // import DynamicsPage from '../pages/DynamicsPage/DynamicsPage'
 
 // import { lazy } from 'react';
@@ -12,10 +12,6 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-      </Route>
-      <Route path="/" element={<PublicRoute />}>
-        <Route path="login" element={<div>Login page</div>} />
-        <Route path="register" element={<div>Registration page</div>} />
       </Route>
       <Route path="/" element={<PrivateRoute />}>
         <Route path="plan" element={<div>OwnPlanPage</div>} />
