@@ -10,18 +10,23 @@ import css from './UserNav.module.css';
 function Navigation(props) {
   //   const token = useSelector(state => state.auth?.token);
   const [whichModal, setWhichModal] = useState(null);
-  const [isOpenModalLogin, setIsOpenModalLogin] = useState(false);
-  const [isOpenModalRegister, setIsOpenModalRegister] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
-  const handleToggleModalLogin = modal => {
-    setWhichModal(modal);
-    setIsOpenModalLogin(isOpenModal => !isOpenModal);
-  };
-  const handleToggleModalRegister = modal => {
-    setWhichModal(modal);
-    setIsOpenModalRegister(isOpenModal => !isOpenModal);
-  };
+  const handleToggleModal = modal => {
+    switch (modal) {
+      case 'login':
+        setWhichModal('login');
+        setIsOpenModal(true);
+        break;
+      case 'register':
+        setWhichModal('register');
+        setIsOpenModal(true);
+        break;
 
+      default:
+        break;
+    }
+  };
   return (
     <div>
       <nav>
@@ -30,7 +35,7 @@ function Navigation(props) {
           <button
             type="button"
             className={css.login}
-            onClick={() => handleToggleModalLogin('login')}
+            onClick={() => handleToggleModal('login')}
           >
             Log in
           </button>
@@ -40,15 +45,15 @@ function Navigation(props) {
           <button
             type="button"
             className={css.register}
-            onClick={() => handleToggleModalRegister('register')}
+            onClick={() => handleToggleModal('register')}
           >
             Registration
           </button>
           {/* </NavLink> */}
         </div>
       </nav>
-      {whichModal && (
-        <Modal onToggleModal={handleToggleModal}>
+      {isOpenModal && (
+        <Modal whichModal={whichModal} onToggleModal={setIsOpenModal}>
           {(whichModal === 'login' && <ModalLogin />) ||
             (whichModal === 'register' && <ModalRegister />)}
         </Modal>
