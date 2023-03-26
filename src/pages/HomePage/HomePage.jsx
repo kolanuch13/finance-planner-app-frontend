@@ -1,7 +1,8 @@
 import svgGoogle from '../../images/GoogleIcon.svg';
 import css from '../HomePage/HomePage.module.css';
 
-const Home = () => {
+export const Home = () => {
+
   return (
     <main className={css.main}>
       <h1 className={css.title}>
@@ -11,10 +12,11 @@ const Home = () => {
 
       <div className={css.signGoogle}>
         <img src={svgGoogle} alt="" />
-        <p className={css.signText}>Sig in with Google</p>
+
+        <p className={css.signText}>Sign in with Google</p>
+
       </div>
     </main>
   );
 };
 
-export default Home;

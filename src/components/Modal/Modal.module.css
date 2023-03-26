@@ -1,0 +1,24 @@
+.Overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width:767px) {
+  .Overlay {
+    align-items: end;
+    padding-top: 170px;
+    background: #191D28;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; 
+    height: 100vh; 
+    background: rgba(0, 0, 0, 0.8);
+  }
+}
