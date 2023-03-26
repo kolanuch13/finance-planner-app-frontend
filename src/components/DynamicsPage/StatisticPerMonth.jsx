@@ -1,35 +1,51 @@
+import * as React from 'react';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import dayjs from 'dayjs';
+
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { MONTH } from '../../utils/constants';
+
+import css from './StatisticPerMonth.module.css';
+
 const StatisticPerMonth = () => {
-  const currentMonth = new Date().getMonth() + 1;
-  const getCurrentMonth = MONTH.getKeyByValue(currentMonth);
+  const now = dayjs();
 
   return (
-    <>
-      <DatePicker label={getCurrentMonth} views={['month', 'year']} />
-      <div>
-        <div>
-          <p>Income, &#8372;</p>
-          <p>60 000</p>
+    <div className={css.statisticPerMonth}>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <DemoContainer components={['DatePicker']}>
+          <DatePicker
+            label={'Month'}
+            views={['month', 'year']}
+            defaultValue={now}
+          />
+        </DemoContainer>
+      </LocalizationProvider>
+
+      <div className={css.statisticBox}>
+        <div className={css.statisticWrapper}>
+          <p className={css.statTitle}>Income, &#8372;</p>
+          <p className={css.statSum}>60 000</p>
         </div>
-        <div>
-          <p>Expenses, &#8372;</p>
-          <p>60 000</p>
+        <div className={css.statisticWrapper}>
+          <p className={css.statTitle}>Expenses, &#8372;</p>
+          <p className={css.statSum}>60 000</p>
         </div>
-        <div>
-          <p>Accumulated, &#8372;</p>
-          <p>60 000</p>
+        <div className={css.statisticWrapper}>
+          <p className={css.statTitle}>Accumulated, &#8372;</p>
+          <p className={css.statSum}>60 000</p>
         </div>
-        <div>
-          <p>Plan &#8372;</p>
-          <p>60 000</p>
+        <div className={css.statisticWrapper}>
+          <p className={css.statTitle}>Plan &#8372;</p>
+          <p className={css.statSum}>60 000</p>
         </div>
-        <div>
-          <p>Plan &#37;</p>
-          <p>60 000</p>
+        <div className={css.statisticWrapper}>
+          <p className={css.statTitle}>Plan &#37;</p>
+          <p className={css.statSum}>60 000</p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -1,8 +1,9 @@
 .header {
   position: relative;
   display: flex;
-  min-width: 375px;
-  height: 70px;
+  width: 100%;
+  /* min-width: 375px; */
+  /* height: 70px; */
   z-index: 3;
   background-color: #191d28;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -20,6 +21,7 @@
     width: 768px;
     height: 72px;
   }
+
   .navigationBox {
     margin-top: 16px;
     margin-bottom: 16px;

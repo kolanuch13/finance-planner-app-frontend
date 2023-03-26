@@ -1,0 +1,123 @@
+.statistic {
+    margin-bottom: 50px;
+}
+
+.timeIsLeft {
+    display: block;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1;
+
+    margin-bottom: 32px;
+    margin-top: 0;
+}
+
+.statistisBox {
+
+    padding-right: 0px;
+    margin-bottom: 28px;
+}
+
+.statisticWrapper {
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 14px;
+    line-height: 1.2;
+
+
+}
+
+.statisticWrapper:not(:last-child) {
+    margin-bottom: 7px;
+}
+
+.statTitle {
+    margin: 0;
+    font-weight: 400;
+
+    color: #F3F3F366;
+    letter-spacing: 0.02em;
+}
+
+.statSum {
+    margin: 0;
+    font-weight: 700;
+
+    letter-spacing: 0.02em;
+
+}
+
+.progressBarBox {
+    margin-bottom: 50px;
+}
+
+.progressBarTitle {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.19;
+    letter-spacing: -0.125714px;
+}
+
+.flatImage {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.imageLabel {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 105px 146px;
+    background-color: #1F2534;
+    border-radius: 16px;
+    margin-bottom: 64px;
+
+}
+
+.uploadImageIcon {
+    fill: #fff;
+    width: 50px;
+    height: 50px;
+}
+
+
+
+
+
+@media screen and (max-width: 767px) {
+    .statistisBox {
+        padding-right: 74px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .timeIsLeft {
+        margin-bottom: 50px;
+    }
+
+    .uploadImageIcon {
+        width: 64px;
+        height: 64px;
+    }
+
+    .imageLabel {
+        padding: 51px 80px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .infoBlock {
+        display: flex;
+        gap: 46px;
+    }
+
+    .imageLabel {
+        padding: 72px 95px;
+    }
+}
