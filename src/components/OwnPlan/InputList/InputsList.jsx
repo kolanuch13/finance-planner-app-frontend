@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './InputsList.module.css';
+import css from './InputsList.module.css';
 
 const onChangePlaceholder = () => {};
 
@@ -18,12 +18,12 @@ const InputsListItem = ({
   children,
 }) => {
   return (
-    <li className={style.item}>
+    <li className={css.item}>
       {children ? (
         children
       ) : (
         <input
-          className={style.input}
+          className={css.input}
           type={type}
           name={name}
           value={value}
@@ -34,15 +34,15 @@ const InputsListItem = ({
         />
       )}
 
-      <label className={style.label}>
-        <h3 className={style.title}>
-          {num && <span className={style.titleFirst}>{num}.</span>}
-          <span className={style.titleSecond}>{title}</span>
+      <label className={css.label}>
+        <h3 className={css.title}>
+          {num && <span className={css.titleFirst}>{num}.</span>}
+          <span className={css.titleSecond}>{title}</span>
         </h3>
       </label>
 
-      {Component && <Component className={style.select} />}
-      {descr && <p className={style.descr}>{descr}</p>}
+      {Component && <Component className={css.select} />}
+      {descr && <p className={css.descr}>{descr}</p>}
     </li>
   );
 };
