@@ -50,8 +50,8 @@ export const App = () => {
           <Route path="*" element={<div>Not Found Page</div>} />
         </Route>
       </Routes>
-      <ToggleLanguages />
-      <ExampleForToggleLanguages />
+      {/* <ToggleLanguages />
+      <ExampleForToggleLanguages /> */}
     </>
   );
 };
