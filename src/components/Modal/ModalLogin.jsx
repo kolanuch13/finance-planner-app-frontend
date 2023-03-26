@@ -16,7 +16,7 @@ export const ModalLogin = () => {
     <div className={css.box}>
       <p className={css.title}>Log In</p>
       <form className={css.form}>
-        <label>
+        <label className={css.labelWrapper}>
           <span className={css.label}>Email:</span>
           <input
             className={css.input}
@@ -35,7 +35,9 @@ export const ModalLogin = () => {
             {isLookPwd ? <BsEye /> : <BsEyeSlashFill />}
           </span>
         </label>
-        <button className={css.btn}>Log In</button>
+        <button type="submit" className={css.btn}>
+          Log In
+        </button>
       </form>
     </div>
   );
