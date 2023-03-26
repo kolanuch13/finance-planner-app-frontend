@@ -1,7 +1,10 @@
 .header {
   position: relative;
   display: flex;
+
   height: 70px;
+
+
   background-color: #191d28;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -18,6 +21,7 @@
     width: 100%;
     height: 72px;
   }
+
   .navigationBox {
     margin-top: 16px;
     margin-bottom: 16px;
