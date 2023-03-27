@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-=======
 import authOperations from './auth-operations';
 
 const initialState = {

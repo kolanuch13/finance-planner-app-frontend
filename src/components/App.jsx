@@ -50,13 +50,14 @@ export const App = () => {
         <Route path="/" element={<PrivateRoute />}>
           <Route path="plan" element={<div>OwnPlanPage</div>} />
           <Route path="cash-flow" element={<div>ExpensesPage</div>} />
-          <Route path="dynamics" element={<div>OwnPlanPage</div>} />
           <Route path="expenses" element={<div>Expenses and Categories</div>} />
+          <Route path="dynamics" element={<div>OwnPlanPage</div>} />
           <Route path="*" element={<div>Not Found Page</div>} />
         </Route>
       </Routes>
-      {/* <ToggleLanguages />
-      <ExampleForToggleLanguages /> */}
+      {/* <ToggleLanguages /> */}
+      {/* ==== */}
+      {/* <ExampleForToggleLanguages /> */}
 
     </>
   );
