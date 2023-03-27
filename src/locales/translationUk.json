@@ -1,0 +1,116 @@
+{
+  "home": {
+    "highlightedTitle": "Планувальник ",
+    "title": "для спільного накопичення на квартиру",
+    "googleSignIn": "Ввійдіть за допомогою Google",
+    "subtitlePayment": "Платежі, які працюють ",
+    "highlightedSubtitlePayment": "на Вас",
+    "highlightedІubtitleApartments": "Квартири ",
+    "іubtitleApartments": "Ваших мрій"
+  },
+  "registration": {
+    "title": "Реєстрація",
+    "name": "Ім'я",
+    "placeholderName": "Введіть своє ім'я",
+    "email": "Пошта",
+    "placeholderEmail": "Введіть свою пошту",
+    "password": "Пароль",
+    "placeholderPassword": "Введіть свій пароль",
+    "buttonSignUp": "Зареєструватись"
+  },
+  "login": {
+    "title": "Вхід",
+    "email": "Пошта",
+    "placeholderEmail": "Введіть вашу пошту",
+    "password": "Пароль",
+    "placeholderPassword": "Введіть пароль",
+    "buttonSignIn": "Вхід",
+    "errorEmail": "Невірна пошта!",
+    "passwordError": "Невірний пароль!"
+  },
+  "logOut": {
+    "logOutButton": "Вийти"
+  },
+  "header": {
+    "personalPlan": "Персональний план",
+    "cashFlow": "Грошовий потік",
+    "dynamics": "Динаміка"
+  },
+  "personalPlane": {
+    "firstInput": "1. ЗП подружжя загальне, &#x20B4;",
+    "placeholderFirstInput": "Введіть суму",
+    "secondInput": "2. Пасивні доходи, міс., &#x20B4;",
+    "placeholderSecondInput": "Введіть текст",
+    "thirdInput": "3. Заощадження, &#x20B4;",
+    "placeholderThirdInput": "Введіть текст",
+    "fourthInput": "4. Вкажіть вартість вашої майбутньої квартири, &#x20B4;",
+    "placeholderFourthInput": "Введіть суму",
+    "fifthInput": "5. Вкажіть кількість кв. м. вашої майбутньої квартири",
+    "placeholderFifthInput": "Введіть текст",
+    "sixthInput": "6. Накопичення, %",
+    "placeholderSixthInput": "Введіть текст",
+    "additionalInfoSixthInput": "Вкажіть відсоток, який би хотіли накопичувати за місяць від загальної суми доходів і ви побачите, коли досягнете мети",
+    "informTitle": "У вас буде квартира через:",
+    "informYear": "Кількість років",
+    "placeholderInformYear": "років",
+    "informMonth": "Кількість місяців",
+    "placeholderInformMonth": "місяців",
+    "addBalance": "Додати баланс",
+    "buttonFits": "Підходить",
+    "placeholderInputModal": "Введіть баланс",
+    "buttonAdd": "Додати",
+    "buttonCancel": "Скасувати"
+  },
+  "cashFlow": {
+    "from": "З рахунку",
+    "accountBalance": "Рахунок балансу",
+    "category": "На категорію",
+    "comment": "Витратили на",
+    "placeholderComment": "Що ви купили?",
+    "sum": "Сума",
+    "dayLimit": "Ліміт на день",
+    "monthlyLimit": "Ліміт на місяць",
+    "buttonReady": "Готово",
+    "addIncome": "Додати дохід",
+    "placeholderInputModal": "Введіть дохід",
+    "buttonAdd": "Додати",
+    "buttonCancel": "Скасувати"
+  },
+  "dynamics": {
+    "title": "Динаміка витрат та накопичень",
+    "accumulated": "Накопичено",
+    "expenses": "Витрати",
+    "income": "Доходи",
+    "month": "Місяць",
+    "incomeItem": "Доходи, &#x20B4;",
+    "expensesItem": "Витрати, &#x20B4;",
+    "accumulatedItem": "Накопичено, &#x20B4;",
+    "planItem": "План, &#x20B4;",
+    "plan": "План, %",
+    "after": "Через",
+    "years": "років",
+    "monthResultCountPrimary": "місяць",
+    "monthResultCountMany": "місяців",
+    "monthResultCountSecondary": "місяця",
+
+    "andThis": "А це:",
+    "outOf": "із",
+    "sqMetersAccumulated": "кв.м накопичено",
+    "missingInfoFirst": "Щоб додати ще",
+    "sqM": "1 кв.м",
+    "missingInfoSecond": "на планування, залишилося накопичити",
+    "finishTitle": "Ура! Вітаємо!",
+    "finishText": "Ви зробили це! Ми дуже пишаємося Вами та бажаємо Вам усього найкращого, коли Ви починаєте цей захоплюючий новий етап свого життя."
+  },
+  "expenses": {
+    "expensesTitle": "Витрати",
+    "categoriesTitle": "Категорії",
+    "petCategory": "На категорію",
+    "expenseComment": "Коментар до витрат",
+    "sum": "Сума",
+    "buttonEdit": "Редагувати"
+  },
+  "example": {
+    "test": "Все просто!"
+  }
+}
