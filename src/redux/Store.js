@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { authReducer } from './auth/auth-slice';
-
 import {
   persistStore,
   persistReducer,
@@ -19,7 +18,6 @@ const authPersistConfig = {
   storage,
   whitelist: ['accessToken'],
 };
-
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
