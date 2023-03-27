@@ -1,4 +1,4 @@
-import AuthMenu from '../authNav/AuthNav';
+import { UserBar } from '../userBar/UserBar';
 import UserNavigation from '../userNav/UserNav';
 import { useSelector } from 'react-redux';
 import css from './Navigation.module.css';
@@ -15,7 +15,7 @@ function Navigation() {
       )}
       {token && (
         <div className={css.userNav}>
-          <AuthMenu />
+          <UserBar />
         </div>
       )}
     </div>

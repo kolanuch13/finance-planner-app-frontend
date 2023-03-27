@@ -2,7 +2,7 @@
   cursor: pointer;
   background-color: transparent;
   border: none;
-  margin: 23px 10px;
+  margin: 22px 10px;
 }
 .RxHamburgerMenu {
   width: 24px;
@@ -11,19 +11,26 @@
 }
 
 .GrClose {
-  width: 24px;
-  height: 24px;
+  width: 25px;
+  height: 25px;
+  color: #f3f3f3;
 }
 
 @media screen and (min-width: 768px) {
   .burgerMenuBtn {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-right: 32px;
+    margin-top: 19px;
+    margin-bottom: 19px;
+    margin-right: 26px;
+    margin-left: 18px;
   }
   .RxHamburgerMenu {
     width: 32px;
     height: 32px;
+    color: #f3f3f3;
+  }
+  .GrClose {
+    width: 30px;
+    height: 30px;
     color: #f3f3f3;
   }
 }

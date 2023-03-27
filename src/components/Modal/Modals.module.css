@@ -78,6 +78,7 @@
     width: inherit;
     margin-left: -38px;
   }
+
   .box {
     position: relative;
     width: 100%;
@@ -93,6 +94,7 @@
   .label {
     color: rgba(243, 243, 243, 0.8);
   }
+
   .input {
     border: 1px solid rgba(243, 243, 243, 0.4);
     color: #f3f3f3;
@@ -104,4 +106,8 @@
     font-weight: 700;
     line-height: 1.43;
   }
+}
+
+.wasSendTitle {
+  color: #f3f3f3;
 }

@@ -10,7 +10,8 @@ export const Home = () => {
       </h1>
       <div className={css.signGoogle}>
         <img src={svgGoogle} alt="" />
-        <p className={css.signText}>Sig in with Google</p>
+
+        <p className={css.signText}>Sign in with Google</p>
       </div>
     </main>
   );

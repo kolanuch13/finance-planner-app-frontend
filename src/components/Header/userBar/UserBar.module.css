@@ -4,8 +4,6 @@
 }
 
 .nickName {
-  margin-top: 16px;
-  margin-bottom: 16px;
   width: 34px;
   height: 34px;
   background: #f3f3f3;
@@ -14,8 +12,6 @@
 }
 
 .statistic {
-  margin-top: 16px;
-  margin-bottom: 16px;
   width: 38px;
   height: 38px;
   background: #3a6af5;

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://localhost:4000/api';
+axios.defaults.baseURL = 'http://localhost:4000/api';
 
 const register = async user => {
   return await axios.post('/auth/register', user);
@@ -8,6 +8,10 @@ const register = async user => {
 
 const login = async user => {
   return await axios.post('/auth/login', user);
+};
+
+const verify = async data => {
+  return await axios.get(`/auth/verify/${data.verificationToken}`, data);
 };
 
 const logout = async () => {
@@ -27,6 +31,7 @@ const updateBalance = async () => {
 const authAPI = {
   register,
   login,
+  verify,
   logout,
   currentUser,
   updateBalance,
