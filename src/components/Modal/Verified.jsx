@@ -35,7 +35,7 @@ export const Verified = props => {
     return () => {
       clearInterval(intervalId);
     };
-  }, [navigate, sec, verificationToken]);
+  }, [dispatch, navigate, sec, user.email, user.password, verificationToken]);
   return (
     <div className={css.verifiedBox}>
       <div className={css.wrapper}>
