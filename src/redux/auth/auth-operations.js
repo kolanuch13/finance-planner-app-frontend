@@ -36,6 +36,18 @@ export const login = createAsyncThunk(
   }
 );
 
+export const verify = createAsyncThunk(
+  'auth/login',
+  async (varificationToken, thunkAPI) => {
+    try {
+      const { data } = await authAPI.verify(varificationToken);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     const { data } = await authAPI.logout();
@@ -84,6 +96,7 @@ export const current = createAsyncThunk(
 const authOperations = {
   register,
   login,
+  verify,
   logout,
   balance,
   current,

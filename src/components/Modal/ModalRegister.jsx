@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { RotatingLines } from 'react-loader-spinner';
 import css from './Modals.module.css';
 import { BsEyeSlashFill } from 'react-icons/bs';
 import { BsEye } from 'react-icons/bs';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import authOperations from 'redux/auth/auth-operations';
 import { saveCredentials } from 'redux/auth/auth-slice';
+import { selectIsLoading } from 'redux/auth/auth-selectors';
 
 export const ModalRegister = () => {
   const [name, setName] = useState('');
@@ -14,6 +16,7 @@ export const ModalRegister = () => {
   const [typeInput, setTypeInput] = useState(true);
   const [isLookPwd, setIsLookPwd] = useState(false);
   const [isSendEmail, setIsSendEmail] = useState(false);
+  const isLoading = useSelector(selectIsLoading);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -63,6 +66,7 @@ export const ModalRegister = () => {
             name="name"
             onChange={handleChange}
             value={name}
+            disabled={isLoading}
           />
         </label>
         <label>
@@ -74,6 +78,7 @@ export const ModalRegister = () => {
             name="email"
             onChange={handleChange}
             value={email}
+            disabled={isLoading}
           />
         </label>
         <label className={css.labelWrapper}>
@@ -85,13 +90,24 @@ export const ModalRegister = () => {
             name="password"
             onChange={handleChange}
             value={password}
+            disabled={isLoading}
           />
           <span className={css.eye} onClick={handleToggleEye}>
             {isLookPwd ? <BsEye /> : <BsEyeSlashFill />}
           </span>
         </label>
-        <button className={css.btn} type="submit">
-          Sign Up
+        <button disabled={isLoading} className={css.btn} type="submit">
+          {isLoading ? (
+            <RotatingLines
+              strokeColor="#f3f3f3"
+              strokeWidth="5"
+              animationDuration="0.75"
+              width="20"
+              visible={true}
+            />
+          ) : (
+            'Sign Up'
+          )}
         </button>
       </form>
     </div>
@@ -100,7 +116,7 @@ export const ModalRegister = () => {
       <p className={css.wasSendTitle}>
         Verification link was send to email {email}
       </p>
-      <p className={css.wasSendTitle}>Check in to continue registration...</p>
+      <p className={css.wasSendTitle}>Check it to continue registration...</p>
     </div>
   );
 };

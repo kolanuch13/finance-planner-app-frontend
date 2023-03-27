@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
@@ -9,33 +10,37 @@ import css from './Verified.module.css';
 export const Verified = props => {
   const location = useLocation();
   const verificationToken = location.pathname.split('/')[2];
-  const [sec, setSec] = useState(5);
+  const [sec, setSec] = useState(10);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector(getUser);
-  console.log('--->', user);
 
   useEffect(() => {
-    let intervalId;
+    let intervalId = setInterval(() => {
+      setSec(prev => prev - 1);
+    }, 1000);
     if (sec === 0) {
-      clearInterval(intervalId);
       const credentials = {
         email: user.email,
         password: user.password,
       };
-      dispatch(authOperations.login(credentials))
-        .then(_ => navigate('/personal-plan'))
-        .catch(err => console.log(err));
+      setSec(0);
+      dispatch(authOperations.verify({ verificationToken }))
+        .then(_ => {
+          dispatch(authOperations.login(credentials))
+            .then(_ => {
+              clearInterval(intervalId);
+              navigate('/personal-plan');
+            })
+            .catch(err => console.log(err));
+        })
+        .catch(err => console.log(err.message));
     }
-
-    intervalId = setInterval(() => {
-      setSec(prev => prev - 1);
-    }, 1000);
 
     return () => {
       clearInterval(intervalId);
     };
-  }, [dispatch, navigate, sec, user.email, user.password, verificationToken]);
+  }, [sec]);
   return (
     <div className={css.verifiedBox}>
       <div className={css.wrapper}>

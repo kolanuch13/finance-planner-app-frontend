@@ -11,7 +11,6 @@ const initialState = {
     userName: null,
     balance: null,
   },
-
   isLoggedIn: false,
   isLoading: false,
   error: null,

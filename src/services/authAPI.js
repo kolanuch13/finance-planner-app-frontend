@@ -10,6 +10,10 @@ const login = async user => {
   return await axios.post('/auth/login', user);
 };
 
+const verify = async data => {
+  return await axios.get(`/auth/verify/${data.verificationToken}`, data);
+};
+
 const logout = async () => {
   return await axios.post('/auth/logout');
 };
@@ -27,6 +31,7 @@ const updateBalance = async () => {
 const authAPI = {
   register,
   login,
+  verify,
   logout,
   currentUser,
   updateBalance,
