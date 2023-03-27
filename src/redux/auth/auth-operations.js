@@ -81,6 +81,5 @@ export const current = createAsyncThunk(
     }
   }
 );
-
 const authOperations = { register, login, logout, balance, current };
 export default authOperations;
