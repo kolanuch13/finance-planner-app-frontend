@@ -15,6 +15,12 @@
   margin-left: auto;
 }
 
+.userMenuDiv {
+  display: flex;
+  margin-left: auto;
+  justify-content: flex-end;
+}
+
 @media screen and (min-width: 768px) {
   .header {
     width: 768px;

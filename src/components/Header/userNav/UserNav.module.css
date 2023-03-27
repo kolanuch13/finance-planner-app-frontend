@@ -15,6 +15,12 @@
   border: none;
   border-radius: 60px;
   background-color: #f3f3f3;
+  cursor: pointer;
+}
+
+.login:hover {
+  background-color: #3a6af5;
+  color: #f3f3f3;
 }
 
 .register {
@@ -29,6 +35,12 @@
   border: none;
   border-radius: 60px;
   background-color: #3a6af5;
+  cursor: pointer;
+}
+
+.register:hover {
+  background-color: #f3f3f3;
+  color: #242424;
 }
 
 @media screen and (min-width: 768px) {
@@ -39,9 +51,19 @@
     margin-right: 12px;
   }
 
+  .login:hover {
+    background-color: #3a6af5;
+    color: #f3f3f3;
+  }
+
   .register {
     font-size: 14px;
     line-height: 1.43;
     padding: 10px 28px;
+  }
+
+  .register:hover {
+    background-color: #f3f3f3;
+    color: #242424;
   }
 }
