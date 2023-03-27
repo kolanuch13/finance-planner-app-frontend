@@ -5,8 +5,8 @@ import { Home } from 'pages/HomePage/HomePage';
 import { Layout } from './Layout/Layout';
 
 import PrivateRoute from './PrivateRoute/PrivateRoute';
-import ToggleLanguages from './ToggleLanguages';
-import ExampleForToggleLanguages from './ExampleForToggleLanguages';
+// import ToggleLanguages from './ToggleLanguages';
+// import ExampleForToggleLanguages from './ExampleForToggleLanguages';
 import PublicRoute from './PublicRoute/PublicRoute';
 
 // import DynamicsPage from '../pages/DynamicsPage/DynamicsPage'
@@ -16,14 +16,22 @@ import { Modal } from './Modal/Modal';
 import { ModalLogin } from './Modal/ModalLogin';
 import { ModalRegister } from './Modal/ModalRegister';
 
-
 export const App = () => {
   return (
     <>
-
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="/" element={<PrivateRoute />}>
+            <Route path="personal-plan" element={<div>OwnPlanPage</div>} />
+            <Route path="cash-flow" element={<div>ExpensesPage</div>} />
+            <Route path="dynamics" element={<div>OwnPlanPage</div>} />
+            <Route
+              path="expenses"
+              element={<div>Expenses and Categories</div>}
+            />
+            <Route path="*" element={<div>Not Found Page</div>} />
+          </Route>
         </Route>
         <Route path="/" element={<PublicRoute />}>
           <Route
@@ -47,18 +55,9 @@ export const App = () => {
             }
           />
         </Route>
-        <Route path="/" element={<PrivateRoute />}>
-          <Route path="plan" element={<div>OwnPlanPage</div>} />
-          <Route path="cash-flow" element={<div>ExpensesPage</div>} />
-          <Route path="expenses" element={<div>Expenses and Categories</div>} />
-          <Route path="dynamics" element={<div>OwnPlanPage</div>} />
-          <Route path="*" element={<div>Not Found Page</div>} />
-        </Route>
       </Routes>
-      {/* <ToggleLanguages /> */}
-      {/* ==== */}
-      {/* <ExampleForToggleLanguages /> */}
-
+      {/* <ToggleLanguages />
+      <ExampleForToggleLanguages /> */}
     </>
   );
 };
