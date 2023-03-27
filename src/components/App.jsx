@@ -15,12 +15,14 @@ import { ModalView } from './Modal/ModalView';
 import { Modal } from './Modal/Modal';
 import { ModalLogin } from './Modal/ModalLogin';
 import { ModalRegister } from './Modal/ModalRegister';
+import { Verified } from './Modal/Verified';
 
 export const App = () => {
   return (
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
+          <Route path="verify/:verificationToken" element={<Verified />} />
           <Route index element={<Home />} />
           <Route path="/" element={<PrivateRoute />}>
             <Route path="personal-plan" element={<div>OwnPlanPage</div>} />
