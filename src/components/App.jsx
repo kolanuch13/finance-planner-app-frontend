@@ -10,12 +10,12 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
 
 import DynamicsPage from '../pages/DynamicsPage/DynamicsPage';
-
 import { ModalView } from './Modal/ModalView';
 import { Modal } from './Modal/Modal';
 import { ModalLogin } from './Modal/ModalLogin';
 import { ModalRegister } from './Modal/ModalRegister';
 import { Verified } from './Modal/Verified';
+import ModalPopUp from './Modal/ModalPopUp';
 
 export const App = () => {
   return (
@@ -26,7 +26,7 @@ export const App = () => {
 
           <Route path="verify/:verificationToken" element={<Verified />} />
           <Route path="/" element={<PrivateRoute />}>
-            <Route path="personal-plan" element={<div>OwnPlanPage</div>} />
+            <Route path="personal-plan" element={<div>Personal</div>} />
             <Route path="cash-flow" element={<div>ExpensesPage</div>} />
             <Route path="dynamics" element={<div>OwnPlanPage</div>} />
             <Route
@@ -35,7 +35,6 @@ export const App = () => {
             />
             <Route path="*" element={<div>Not Found Page</div>} />
           </Route>
-
         </Route>
         {/* </Route> */}
         <Route path="/" element={<PublicRoute />}>
@@ -44,11 +43,13 @@ export const App = () => {
             element={
               <ModalView>
                 <Modal>
+                  {/* <ModalPopUp /> розкоментувати для перевірки*/}
                   <ModalLogin />
                 </Modal>
               </ModalView>
             }
           />
+
           <Route
             path="register"
             element={
@@ -61,6 +62,7 @@ export const App = () => {
           />
         </Route>
       </Routes>
+
       {/* <ToggleLanguages />
       <ExampleForToggleLanguages /> */}
     </>
