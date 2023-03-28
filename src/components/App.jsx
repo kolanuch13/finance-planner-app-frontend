@@ -24,7 +24,6 @@ export const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="verify/:verificationToken" element={<Verified />} />
-          <Route index element={<Home />} />
           <Route path="/" element={<PrivateRoute />}>
             <Route path="personal-plan" element={<div>OwnPlanPage</div>} />
             <Route path="cash-flow" element={<div>ExpensesPage</div>} />
