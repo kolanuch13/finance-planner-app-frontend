@@ -3,7 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import css from './UserNav.module.css';
 
-function Navigation(props) {
+function UserNavigation(props) {
   //   const token = useSelector(state => state.auth?.token);
 
   return (
@@ -27,4 +27,4 @@ function Navigation(props) {
   );
 }
 
-export default Navigation;
+export default UserNavigation;

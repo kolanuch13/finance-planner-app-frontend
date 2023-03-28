@@ -1,10 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import authOperations from './auth-operations';
+import persistReducer from 'redux-persist/es/persistReducer';
+import storage from 'redux-persist/lib/storage';
 
 const initialState = {
   user: {
     token: null,
     email: null,
+    password: null,
     userName: null,
     balance: null,
   },
@@ -16,6 +19,12 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    saveCredentials(state, action) {
+      state.user.email = action.payload.email;
+      state.user.password = action.payload.password;
+    },
+  },
   extraReducers: builder => {
     builder
       // Register=====================================
@@ -24,9 +33,9 @@ const authSlice = createSlice({
       })
       .addCase(authOperations.register.fulfilled, (state, action) => {
         state.userName = action.payload.name;
-        state.email = action.payload.email;
-        state.token = action.payload.token;
-        state.balance = action.payload.balance;
+        state.user.email = action.payload.email;
+        state.user.token = action.payload.token;
+        state.user.balance = action.payload.balance;
         state.isLoggedIn = true;
         state.isLoading = false;
       })
@@ -85,4 +94,11 @@ const authSlice = createSlice({
   },
 });
 
-export const authReducer = authSlice.reducer;
+const persistConfigAuth = {
+  key: 'auth',
+  storage,
+  whitelist: ['user'],
+};
+
+export const authReducer = persistReducer(persistConfigAuth, authSlice.reducer);
+export const { saveCredentials } = authSlice.actions;

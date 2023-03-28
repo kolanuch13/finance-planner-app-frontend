@@ -19,8 +19,6 @@ import '../../i18n';
 
 export const Home = () => {
   const { t } = useTranslation();
-
-
   return (
     <main className={css.main}>
       <h1 className={css.title}>
@@ -49,9 +47,7 @@ export const Home = () => {
         <img src={svgGoogle} alt="" />
 
         <p className={css.signText}>{t('home.googleSignIn')}</p>
-
       </div>
     </main>
   );
 };
-

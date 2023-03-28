@@ -1,4 +1,60 @@
-@import-normalize; /* bring in normalize.css styles */
+@import-normalize;
+
+/* bring in normalize.css styles */
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+img {
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: 'Circe-Regular', sans-serif;
+}
+
+section {
+  min-width: 320px;
+}
+
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
 
 body {
   margin: 0;
@@ -14,6 +70,11 @@ code {
     monospace;
 }
 
+p {
+  padding: 0;
+  margin: 0;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
@@ -26,7 +87,7 @@ code {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #3A6AF5;
+  background: #3a6af5;
 }
 
 /* Handle on hover */

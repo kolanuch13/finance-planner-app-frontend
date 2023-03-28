@@ -1,10 +1,7 @@
 .header {
   position: relative;
   display: flex;
-
   height: 70px;
-
-
   background-color: #191d28;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -12,8 +9,12 @@
 .navigationBox {
   margin-top: 20px;
   margin-bottom: 20px;
-  margin-right: 16px;
   margin-left: auto;
+}
+
+.userMenuDiv {
+  display: flex;
+  justify-content: flex-end;
 }
 
 @media screen and (min-width: 768px) {
@@ -25,16 +26,11 @@
   .navigationBox {
     margin-top: 16px;
     margin-bottom: 16px;
-    margin-right: 32px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .header {
     width: 100%;
-  }
-
-  .navigationBox {
-    margin-right: 55px;
   }
 }
