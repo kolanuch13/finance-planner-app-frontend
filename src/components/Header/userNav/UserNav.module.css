@@ -18,6 +18,11 @@
   cursor: pointer;
 }
 
+.login:hover {
+  background-color: #3a6af5;
+  color: #f3f3f3;
+}
+
 .register {
   font-family: 'Lato';
   font-style: normal;
@@ -25,12 +30,18 @@
   font-size: 12px;
   line-height: 1.17;
   text-align: center;
+  margin-right: 16px;
   padding: 8px 18px;
   color: #f3f3f3;
   border: none;
   border-radius: 60px;
   background-color: #3a6af5;
   cursor: pointer;
+}
+
+.register:hover {
+  background-color: #f3f3f3;
+  color: #242424;
 }
 
 @media screen and (min-width: 768px) {
@@ -41,9 +52,26 @@
     margin-right: 12px;
   }
 
+  .login:hover {
+    background-color: #3a6af5;
+    color: #f3f3f3;
+  }
+
   .register {
     font-size: 14px;
     line-height: 1.43;
     padding: 10px 28px;
+    margin-right: 32px;
+  }
+
+  .register:hover {
+    background-color: #f3f3f3;
+    color: #242424;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .register {
+    margin-right: 55px;
   }
 }

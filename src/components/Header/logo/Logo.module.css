@@ -4,7 +4,6 @@
 }
 .logoMobile {
   margin-left: 16px;
-  margin-right: 70px;
   margin-top: 24px;
   margin-bottom: 24px;
 }
@@ -17,7 +16,6 @@
   .logoTablet {
     display: block;
     margin-top: 22px;
-    margin-right: 336px;
     margin-bottom: 22px;
     margin-left: 32px;
   }
@@ -31,7 +29,6 @@
   .logoDesktop {
     display: block;
     margin-top: 22px;
-    margin-right: 817px;
     margin-bottom: 22px;
     margin-left: 40px;
   }

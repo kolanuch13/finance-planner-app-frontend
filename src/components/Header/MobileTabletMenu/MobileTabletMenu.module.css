@@ -1,0 +1,58 @@
+.menu {
+  position: fixed;
+  background-color: #191d28;
+  padding-top: 200px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+  align-items: center;
+  top: 75px;
+  min-width: 375px;
+  height: 100vh;
+  z-index: 2;
+}
+
+.NavLink {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.11;
+  text-align: center;
+  text-decoration: none;
+  color: #f3f3f3;
+}
+
+.NavLinkActive {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.11;
+  text-align: center;
+  text-decoration: none;
+  color: #3a6af5;
+}
+
+@media screen and (min-width: 768px) {
+  .menu {
+    min-width: 768px;
+    padding-top: 255px;
+  }
+}
+
+.NavLink {
+  font-size: 24px;
+  line-height: 1.17;
+}
+
+.NavLinkActive {
+  font-size: 24px;
+  line-height: 1.17;
+}
+
+@media screen and (min-width: 1280px) {
+  .menu {
+    display: none;
+  }
+}

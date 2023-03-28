@@ -14,11 +14,10 @@ code {
     monospace;
 }
 
-p{
+p {
   padding: 0;
   margin: 0;
 }
-
 
 /* width */
 ::-webkit-scrollbar {
@@ -32,7 +31,7 @@ p{
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #3A6AF5;
+  background: #3a6af5;
 }
 
 /* Handle on hover */

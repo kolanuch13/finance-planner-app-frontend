@@ -1,13 +1,26 @@
-// import { useState, useEffect } from 'react';
-// import { useSelector } from 'react-redux';
-// import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { Link, useLocation } from 'react-router-dom';
 import { Logo } from '../logo/Logo';
-import Navigation from '../userNav/UserNav';
+import { BurgerBtn } from '../burgerBtn/BurgerBtn';
+import Navigation from '../navigation/Navigation';
+import MobileTabletMenu from '../MobileTabletMenu/MobileTabletMenu';
 
 import css from './Header.module.css';
 
 function Header() {
-  // const token = useSelector(state => state.auth?.token);
+  const token = useSelector(state => state.auth?.token);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+
+  const handleOpenMenu = () => {
+    setIsMenuOpen(prev => !prev);
+  };
+
+  useEffect(() => {
+    if (!location?.pathname) return;
+    setIsMenuOpen(false);
+  }, [location?.pathname]);
 
   return (
     <>
@@ -16,7 +29,14 @@ function Header() {
         <div className={css.navigationBox}>
           <Navigation />
         </div>
+
+        {token && (
+          <div className={css.userMenuDiv}>
+            <BurgerBtn onClick={handleOpenMenu} isMenuOpen={isMenuOpen} />
+          </div>
+        )}
       </header>
+      {isMenuOpen && <MobileTabletMenu closeMenu={handleOpenMenu} />}
     </>
   );
 }
