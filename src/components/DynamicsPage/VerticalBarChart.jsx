@@ -33,7 +33,6 @@ const styles = {
 
 const VerticalBarChart = () => {
   const chartData = useSelector(dynamicSelectors.getChartData);
-  console.log(chartData.lastYearInfo);
 
   return (
     <BarChart
