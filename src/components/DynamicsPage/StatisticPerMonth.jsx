@@ -1,27 +1,12 @@
 import * as React from 'react';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import dayjs from 'dayjs';
-
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { Calendar } from '../Calendar/Calendar';
 
 import css from './StatisticPerMonth.module.css';
 
 const StatisticPerMonth = () => {
-  const now = dayjs();
-
   return (
     <div className={css.statisticPerMonth}>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DemoContainer components={['DatePicker']}>
-          <DatePicker
-            label={'Month'}
-            views={['month', 'year']}
-            defaultValue={now}
-          />
-        </DemoContainer>
-      </LocalizationProvider>
+      <Calendar className={css.statCalender} />
 
       <div className={css.statisticBox}>
         <div className={css.statisticWrapper}>

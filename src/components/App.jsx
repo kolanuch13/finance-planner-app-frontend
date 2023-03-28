@@ -9,7 +9,7 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
 // import ExampleForToggleLanguages from './ExampleForToggleLanguages';
 import PublicRoute from './PublicRoute/PublicRoute';
 
-// import DynamicsPage from '../pages/DynamicsPage/DynamicsPage'
+import DynamicsPage from '../pages/DynamicsPage/DynamicsPage';
 
 import { ModalView } from './Modal/ModalView';
 import { Modal } from './Modal/Modal';
@@ -23,6 +23,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+
           <Route path="verify/:verificationToken" element={<Verified />} />
           <Route path="/" element={<PrivateRoute />}>
             <Route path="personal-plan" element={<div>OwnPlanPage</div>} />
@@ -34,7 +35,9 @@ export const App = () => {
             />
             <Route path="*" element={<div>Not Found Page</div>} />
           </Route>
+
         </Route>
+        {/* </Route> */}
         <Route path="/" element={<PublicRoute />}>
           <Route
             path="login"

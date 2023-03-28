@@ -114,10 +114,14 @@
 @media screen and (min-width: 1280px) {
     .infoBlock {
         display: flex;
-        gap: 46px;
+        justify-content: space-between;
     }
 
     .imageLabel {
         padding: 72px 95px;
+    }
+
+    .statistisBox {
+        width: 225px;
     }
 }

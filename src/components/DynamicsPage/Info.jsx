@@ -2,8 +2,16 @@ import css from './Info.module.css';
 import LinearProgress from '@mui/joy/LinearProgress';
 
 import { sprite } from '../../images/DynamicPage';
+import { useMediaQuery } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { dynamicSelectors } from '../../redux/dynamics';
 
 const Info = () => {
+  const mobile = useMediaQuery('(max-width: 767px)');
+  const tablet = useMediaQuery('(max-width:1279px) and (min-width: 768px) ');
+  const desktop = useMediaQuery('(min-width: 1280px)');
+  const info = useSelector(dynamicSelectors.getChartData);
+  console.log(info);
   return (
     <>
       <div className={css.infoBlock}>
@@ -27,7 +35,30 @@ const Info = () => {
             <p className={css.progressBarTitle}>
               22 out of 60 sq.m accumulated
             </p>
-            <LinearProgress determinate size="md" value={28} />
+            {mobile && (
+              <LinearProgress
+                determinate
+                size="md"
+                value={28}
+                style={{ width: '343px' }}
+              />
+            )}
+            {tablet && (
+              <LinearProgress
+                determinate
+                size="md"
+                value={28}
+                style={{ width: '224px' }}
+              />
+            )}
+            {desktop && (
+              <LinearProgress
+                determinate
+                size="md"
+                value={28}
+                style={{ width: '270px' }}
+              />
+            )}
           </div>
         </div>
         <div>

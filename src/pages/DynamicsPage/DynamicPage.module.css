@@ -24,6 +24,9 @@
 @media screen and (max-width: 767px) {
     .container {
         padding: 50px 16px;
+        min-width: 375px;
+        width: 100%;
+        max-width: 480px
     }
 }
 
@@ -35,6 +38,7 @@
 
     .container {
         padding: 66px 32px;
+        width: 786px;
     }
 
     .title {
@@ -45,6 +49,7 @@
 @media screen and (min-width: 1280px) {
     .container {
         padding: 66px 55px;
+        width: 1280px;
     }
 
     .statisticBlock {
