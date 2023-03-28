@@ -51,7 +51,7 @@ const statisticsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(
-        statisticsOperations.categoryTypeStatistic.fulfilled,
+        statisticsOperations.expenseStatistic.fulfilled,
         (state, action) => {
           state.transaction.sum = action.payload.sum;
           state.transaction.category = action.payload.category;
