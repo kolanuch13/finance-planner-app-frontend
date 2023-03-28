@@ -17,35 +17,39 @@ const token = {
 };
 
 export const addTransaction = createAsyncThunk(
-  'cashflow/add/transaction',
-  async (transaction, { rejectWithValue }) => {
+  'addTransaction',
+  async (transaction, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistToken = state.auth.user.token;
+    if (persistToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
+    token.set(persistToken);
     try {
       const data = await addTransactionApi(transaction);
-      token.set(data.token);
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
 
 export const getCashflowLimits = createAsyncThunk(
   'cashflow/get/limits',
-  async (_, { rejectWithValue }) => {
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistToken = state.auth.user.token;
+    if (persistToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
+    token.set(persistToken);
     try {
       const data = await getCashflowLimitsApi();
-      token.set(data.token);
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   },
-  // {
-  //   condition(_, { getState }) {
-  //     const { token } = getState().auth;
-  //     return Boolean(token);
-  //   },
-  // }
 );
 
 export const getCategories = createAsyncThunk(
@@ -53,18 +57,11 @@ export const getCategories = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const categories = await getCategoriesApi();
-      token.set(data.token);
       return categories;
     } catch (error) {
       return rejectWithValue(error.message);
     }
   },
-  // {
-  //   condition(_, { getState }) {
-  //     const { auth, categories } = getState();
-  //     return Boolean(auth.token) && categories.length === 0;
-  //   },
-  // }
 );
 
 const cashflowOperations = {
