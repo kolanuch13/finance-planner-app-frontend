@@ -1,0 +1,13 @@
+.label {
+    display: block;
+    /* padding-top: 14px;
+    padding-left: 18px; */
+    font-family: 'Lato';
+    font-size: 12px;
+    line-height: 1.17;
+    color: rgba(243, 243, 243, 0.4);
+}
+
+.input {
+    
+}
