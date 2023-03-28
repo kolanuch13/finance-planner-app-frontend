@@ -1,9 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { authReducer } from './auth/auth-slice';
+import cashflowReducer from './cashflowPage/cashflowPage-slice';
+import { dynamicReducer } from './dynamics/dynamics-slice';
+
+import statisticsReducer from './statistics/statistics-slice';
 
 import {
   persistStore,
-  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -12,17 +15,14 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-import storage from 'redux-persist/lib/storage';
-
-const authPersistConfig = {
-  key: 'auth',
-  storage,
-  whitelist: ['accessToken'],
-};
-
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(authPersistConfig, authReducer),
+    auth: authReducer,
+    cashflowPage: cashflowReducer,
+    dynamic: dynamicReducer,
+
+    statistics: statisticsReducer,
+
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
@@ -30,7 +30,6 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-  devTools: process.env.NODE_ENV === 'development',
 });
 
 export const persistor = persistStore(store);

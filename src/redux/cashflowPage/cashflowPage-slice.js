@@ -1,11 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import cashflowOperations from './statistics-operations';
+import cashflowOperations from './cashflowPage-operations';
 
 const initialState = {
   newTransaction: {
     date: null,
     comment: null,
-    token: null,
     sum: null,
     category: null,
     categoryType: null,
@@ -21,9 +20,8 @@ const initialState = {
 };
 
 const cashflowSlice = createSlice({
-  name: 'cashflow',
+  name: 'cashflowPage',
   initialState,
-
   extraReducers: builder => {
     builder
       // Transactions/addTransaction=====================================
@@ -36,18 +34,11 @@ const cashflowSlice = createSlice({
       .addCase(
         cashflowOperations.addTransaction.fulfilled,
         (state, action) => {
-          if (state.newTransaction.categoryType === 'income') {
-            state.newTransaction.date = action.payload.date;
-            state.newTransaction.sum = action.payload.sum;
-            state.newTransaction.categoryType = action.payload.categoryType;
-          } else {
-            state.newTransaction.date = action.payload.date;
-            state.newTransaction.comment = action.payload.comment;
-            state.newTransaction.sum = action.payload.sum;
-            state.newTransaction.category = action.payload.category;
-            state.newTransaction.categoryType = action.payload.categoryType;
-          }
-          state.newTransaction.token = action.payload.token;
+          state.newTransaction.date = action.payload.date;
+          state.newTransaction.comment = action.payload.comment;
+          state.newTransaction.sum = action.payload.sum;
+          state.newTransaction.category = action.payload.category;
+          state.newTransaction.categoryType = action.payload.categoryType;
           state.isLoggedIn = true;
           state.isLoading = false;
         }
@@ -79,7 +70,7 @@ const cashflowSlice = createSlice({
           state.isLoading = false;
         }
       )
-      // Transactions/getCashflowLimits=========================================
+      // Transactions/getCategories=========================================
       .addCase(cashflowOperations.getCategories.pending, state => {
         state.isLoading = true;
       })

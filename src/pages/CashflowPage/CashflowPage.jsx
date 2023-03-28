@@ -1,9 +1,12 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { ExpensesLimits } from '../../components/CashflowPage/ExpensesLimits/ExpensesLimits';
 import { TransactionDataList } from '../../components/CashflowPage/TransactionDataList/TransactionDataList';
 // import {ModalAddIncome} from '../../components/CashflowPage/ModalAddIncome';
 import {Container} from '../../components/Container/Container';
 import css from './CashflowPage.module.css';
+// =============
+import cashflowOperations from 'redux/cashflowPage/cashflowPage-operations';
 
 export const CashflowPage = () => {
   const [formData, setFormData] = useState({
@@ -23,15 +26,61 @@ export const CashflowPage = () => {
       sum: '',
     });
   };
+  // ===============================================================
+  const dispatch = useDispatch();
+
+  const handleSubmitAdd = e => {
+    e.preventDefault()
+    console.log("click1");
+    const credentials = {
+      comment: "coffee",
+      sum: 500,
+      categoryType: "expense",
+      category: "other"
+    }
+    dispatch(cashflowOperations.addTransaction(credentials))
+      .unwrap()
+      .then(response => {
+        console.log(response);
+      })
+    .catch(error => console.error(error));
+  }
+
+  const handleSubmitGet = e => {
+    e.preventDefault()
+    console.log("click2");
+    dispatch(cashflowOperations.getCashflowLimits())
+      .unwrap()
+      .then(response => {
+        console.log(response);
+      })
+    .catch(error => console.error(error));
+  }
+
+  const handleSubmitCategories = e => {
+    e.preventDefault()
+    console.log("click3");
+    dispatch(cashflowOperations.getCategories())
+      .unwrap()
+      .then(response => {
+        console.log(response);
+      })
+    .catch(error => console.error(error));
+  }
+  // ===============================================================
 
   return (
     <main className={css.main}>
       <Container>
-        <form onSubmit={handleSubmit} className={css.form}>
+        <button type="submit" onClick={handleSubmitAdd} style={{width: "200px", height:"200px"}}></button>
+        <button type="submit" onClick={handleSubmitGet} style={{width: "200px", height:"200px", backgroundColor:"red"}}></button>
+        <button type="submit" onClick={handleSubmitCategories} style={{width: "200px", height:"200px", backgroundColor:"green"}}></button>
+
+        {/* <form onSubmit={handleSubmit} className={css.form}>
           <TransactionDataList setFormData={setFormData} formData={formData} />
-          {/* <ExpensesLimits /> */}
-          {/* <ModalAddIncome /> */}
-        </form>
+          <ExpensesLimits />
+          <ModalAddIncome />
+        </form> */}
       </Container>
     </main>
   );
