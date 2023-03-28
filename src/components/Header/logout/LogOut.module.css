@@ -1,3 +1,9 @@
+.logoutBtn {
+  position: absolute;
+  top: 670px;
+  left: 16px;
+}
+
 .logOut {
   display: flex;
   width: 119px;
@@ -28,4 +34,11 @@
   padding-top: 13px;
   padding-bottom: 13px;
   margin-right: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .logoutBtn {
+    top: 860px;
+    left: 32px;
+  }
 }
