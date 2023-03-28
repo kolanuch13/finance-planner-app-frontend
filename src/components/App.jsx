@@ -16,7 +16,6 @@ import { Modal } from './Modal/Modal';
 import { ModalLogin } from './Modal/ModalLogin';
 import { ModalRegister } from './Modal/ModalRegister';
 import { Verified } from './Modal/Verified';
-// import ExpensesList from './ExpensesList/ExpensesList';
 import StatisticPage from 'pages/StatisticPage/StatisticPage';
 
 export const App = () => {
