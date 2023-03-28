@@ -4,22 +4,31 @@ import VerticalBarChart from '../../components/DynamicsPage/VerticalBarChart';
 import Info from '../../components/DynamicsPage/Info';
 import AddMore from '../../components/DynamicsPage/AddMore';
 import StatisticPerMonth from '../../components/DynamicsPage/StatisticPerMonth';
+import { useDispatch } from 'react-redux';
+import { dynamicOperation } from '../../redux/dynamics';
+import { useEffect } from 'react';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const DynamicsPage = () => {
-  console.log(window.innerWidth);
+  const dispatch = useDispatch();
+
+  const date = new Date().toISOString();
+  const tablet = useMediaQuery('(min-width:768px)');
+  const desktop = useMediaQuery('(min-width: 1280px)');
+
+  useEffect(() => {
+    dispatch(dynamicOperation.yearInfoThunk());
+    dispatch(dynamicOperation.staticInfoThunk());
+  });
   return (
     <div className={css.section}>
       <div className={css.container}>
-        {window.innerWidth < 1280 ? (
+        {!desktop ? (
           <>
             <div className={css.statisticBlock}>
               <div>
                 <h1 className={css.title}>Dynamics of expenses and savings</h1>
-                {window.innerWidth > 767 ? (
-                  <VerticalBarChart />
-                ) : (
-                  <HorizontalBarChart />
-                )}
+                {tablet ? <VerticalBarChart /> : <HorizontalBarChart />}
                 <StatisticPerMonth />
               </div>
               <Info />
@@ -30,11 +39,7 @@ const DynamicsPage = () => {
           <div className={css.dynamic}>
             <div className={css.statisticBlock}>
               <h1 className={css.title}>Dynamics of expenses and savings</h1>
-              {window.innerWidth > 767 ? (
-                <VerticalBarChart />
-              ) : (
-                <HorizontalBarChart />
-              )}
+              {tablet ? <VerticalBarChart /> : <HorizontalBarChart />}
               <StatisticPerMonth />
             </div>
             <div>

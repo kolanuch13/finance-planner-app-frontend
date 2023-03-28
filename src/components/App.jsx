@@ -9,7 +9,7 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
 // import ExampleForToggleLanguages from './ExampleForToggleLanguages';
 import PublicRoute from './PublicRoute/PublicRoute';
 
-// import DynamicsPage from '../pages/DynamicsPage/DynamicsPage'
+import DynamicsPage from '../pages/DynamicsPage/DynamicsPage';
 
 import { ModalView } from './Modal/ModalView';
 import { Modal } from './Modal/Modal';
@@ -24,17 +24,14 @@ export const App = () => {
         <Route path="/" element={<Layout />}>
           <Route path="verify/:verificationToken" element={<Verified />} />
           <Route index element={<Home />} />
-          <Route path="/" element={<PrivateRoute />}>
-            <Route path="personal-plan" element={<div>OwnPlanPage</div>} />
-            <Route path="cash-flow" element={<div>ExpensesPage</div>} />
-            <Route path="dynamics" element={<div>OwnPlanPage</div>} />
-            <Route
-              path="expenses"
-              element={<div>Expenses and Categories</div>}
-            />
-            <Route path="*" element={<div>Not Found Page</div>} />
-          </Route>
+          {/* <Route path="/" element={<PrivateRoute />}> */}
+          <Route path="personal-plan" element={<div>OwnPlanPage</div>} />
+          <Route path="cash-flow" element={<div>ExpensesPage</div>} />
+          <Route path="dynamics" element={<DynamicsPage />} />
+          <Route path="expenses" element={<div>Expenses and Categories</div>} />
+          <Route path="*" element={<div>Not Found Page</div>} />
         </Route>
+        {/* </Route> */}
         <Route path="/" element={<PublicRoute />}>
           <Route
             path="login"
