@@ -22,14 +22,20 @@ export const App = () => {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="verify/:verificationToken" element={<Verified />} />
           <Route index element={<Home />} />
-          {/* <Route path="/" element={<PrivateRoute />}> */}
-          <Route path="personal-plan" element={<div>OwnPlanPage</div>} />
-          <Route path="cash-flow" element={<div>ExpensesPage</div>} />
-          <Route path="dynamics" element={<DynamicsPage />} />
-          <Route path="expenses" element={<div>Expenses and Categories</div>} />
-          <Route path="*" element={<div>Not Found Page</div>} />
+
+          <Route path="verify/:verificationToken" element={<Verified />} />
+          <Route path="/" element={<PrivateRoute />}>
+            <Route path="personal-plan" element={<div>OwnPlanPage</div>} />
+            <Route path="cash-flow" element={<div>ExpensesPage</div>} />
+            <Route path="dynamics" element={<div>OwnPlanPage</div>} />
+            <Route
+              path="expenses"
+              element={<div>Expenses and Categories</div>}
+            />
+            <Route path="*" element={<div>Not Found Page</div>} />
+          </Route>
+
         </Route>
         {/* </Route> */}
         <Route path="/" element={<PublicRoute />}>

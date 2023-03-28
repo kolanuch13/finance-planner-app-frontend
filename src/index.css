@@ -75,7 +75,6 @@ p {
   margin: 0;
 }
 
-
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
@@ -88,7 +87,7 @@ p {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #3A6AF5;
+  background: #3a6af5;
 }
 
 /* Handle on hover */
