@@ -20,7 +20,7 @@ const Info = () => {
     timeIsLeft,
   } = useSelector(dynamicSelectors.getChartData);
 
-  const { imageURL } = useSelector(dynamicSelectors.getChartData);
+  const { imageURL } = useSelector(dynamicSelectors.getImageURl);
 
   const dispatch = useDispatch();
 
