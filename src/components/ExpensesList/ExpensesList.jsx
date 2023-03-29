@@ -13,7 +13,9 @@ const ExpensesList = () => {
   const [category, setCategory] = useState('Other');
   const [sum, setSum] = useState(0);
   const [comment, setComment] = useState('');
+  const [categoryType, setCategoryType] = useState();
   const [allCategory, setAllCategory] = useState([]);
+  const [idTransaction, setIdTransaction] = useState('');
 
   useEffect(() => {
     getAllCategory().then(setAllCategory);
@@ -42,14 +44,17 @@ const ExpensesList = () => {
     setOpen(prev => !prev);
 
     const item = transaction.find(item => id === item._id);
-    setSum(() => item.sum);
+    setSum(() => Number(item.sum));
     setCategory(() => item.category);
     setComment(() => item.comment);
+    setIdTransaction(() => item._id);
+    setCategoryType(() => item.categoryType);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    const data = { category, sum, comment };
+    const data = { category, sum, comment, categoryType };
+    dispatch(statisticsOperations.updateTransaction({ idTransaction, data }));
     console.log(data);
     setCategory('');
     setSum('');
@@ -63,7 +68,6 @@ const ExpensesList = () => {
 
   const removeTransaction = id => {
     dispatch(statisticsOperations.removeExpense(id));
-    console.log('delete');
   };
 
   if (transaction?.length === 0) return;

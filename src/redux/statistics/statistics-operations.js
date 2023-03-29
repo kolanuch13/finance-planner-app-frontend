@@ -58,34 +58,27 @@ export const expenseStatistic = createAsyncThunk(
 
 export const updateTransaction = createAsyncThunk(
   '/statistic/update',
-  async (transactionId, thunkAPI) => {
+  async (credention, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistToken = state.auth.user.token;
     if (persistToken === null) {
       return thunkAPI.rejectWithValue();
     }
     token.set(persistToken);
+
     try {
-      await sіtatisticsAPI.updateTransaction(transactionId);
+      const response = await sіtatisticsAPI.updateTransaction(
+        credention.idTransaction,
+        credention.data
+      );
       thunkAPI.dispatch(expenseStatistic());
-      // return data;
+      return response.data;
     } catch (error) {
+      console.log(error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
-
-// export const changeContact = createAsyncThunk(
-//   'contacts/changeContact',
-//   async (contactId, thunkAPI) => {
-//     try {
-//       const response = await axios.patch(`/contacts/${contactId}`);
-//       return response.data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
 
 export const removeExpense = createAsyncThunk(
   '/statistic/delete',
