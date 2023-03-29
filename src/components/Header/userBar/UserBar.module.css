@@ -4,8 +4,17 @@
 }
 
 .nickName {
-  width: 34px;
-  height: 34px;
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  text-align: center;
+  color: #242424;
+  width: 38px;
+  height: 38px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   background: #f3f3f3;
   border: 2px solid #3a6af5;
   border-radius: 19px;
