@@ -10,6 +10,10 @@ const expenseStatistic = async () => {
   return await axios.get('/statistic/by-expense?year=2023&month=03');
 };
 
+const categoriesStatistic = async () => {
+  return await axios.get('/statistic/by-category?year=2023&month=03');
+};
+
 const removeExpense = async transactionId => {
   return await axios.delete(`/transaction/${transactionId}`);
 };
@@ -18,10 +22,11 @@ const updateTransaction = async (idTransaction, data) => {
   return await axios.patch(`/transaction/${idTransaction}`, data);
 };
 
-const statiaticsAPI = {
+const statisticsAPI = {
   categoryTypeStatistic,
   expenseStatistic,
+  categoriesStatistic,
   removeExpense,
   updateTransaction,
 };
-export default statiaticsAPI;
+export default statisticsAPI;
