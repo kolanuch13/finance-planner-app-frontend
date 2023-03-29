@@ -16,6 +16,7 @@ import { Modal } from './Modal/Modal';
 import { ModalLogin } from './Modal/ModalLogin';
 import { ModalRegister } from './Modal/ModalRegister';
 import { Verified } from './Modal/Verified';
+import StatisticPage from 'pages/StatisticPage/StatisticPage';
 
 export const App = () => {
   return (
@@ -29,10 +30,7 @@ export const App = () => {
             <Route path="personal-plan" element={<div>OwnPlanPage</div>} />
             <Route path="cash-flow" element={<div>ExpensesPage</div>} />
             <Route path="dynamics" element={<div>OwnPlanPage</div>} />
-            <Route
-              path="expenses"
-              element={<div>Expenses and Categories</div>}
-            />
+            <Route path="expenses" element={<StatisticPage />} />
             <Route path="*" element={<div>Not Found Page</div>} />
           </Route>
 
