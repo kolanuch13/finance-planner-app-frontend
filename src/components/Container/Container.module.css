@@ -1,5 +1,4 @@
 .BoxContainer {
-    /* width: 100%; */
     padding: 0 16px 0 16px;
     margin-left: auto;
     margin-right: auto;
@@ -12,7 +11,6 @@
     }
 }
 
-
 @media screen and (min-width: 768px) {
 .BoxContainer {
     width: 768px;
@@ -22,6 +20,6 @@
 @media screen and (min-width: 1280px) {
 .BoxContainer {
     width: 1280px;
-    padding: 0 55px 0 55px;
-    }
-}
+    padding: 0 55px 0 55px;   
+}}
+

@@ -11,5 +11,5 @@ export const getCashflowLimitsApi = async () => {
 };
 
 export const getCategoriesApi = async () => {
-    return = await axios.get("/category");
+    return await axios.get("/category");
 };

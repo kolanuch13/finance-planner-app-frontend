@@ -1,35 +1,53 @@
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { MONTH } from '../../utils/constants';
+import * as React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Calendar } from '../Calendar/Calendar';
+import { dynamicSelectors, dynamicOperation } from 'redux/dynamics';
+
+import css from './StatisticPerMonth.module.css';
+
 const StatisticPerMonth = () => {
-  const currentMonth = new Date().getMonth() + 1;
-  const getCurrentMonth = MONTH.getKeyByValue(currentMonth);
+  const {
+    incomeSumPerSelectedMonth,
+    expenseSumPerSelectedMonth,
+    acumulatedSumPerSelectedMonth,
+    planMoneyPerMonth,
+    percentagePlanPerMonth,
+  } = useSelector(dynamicSelectors.getStatisticData);
+  const dispatch = useDispatch();
+
+  const handleGetInfoPerMonth = date => {
+    const month = new Date(date).getMonth() + 1;
+    const year = new Date(date).getFullYear();
+
+    dispatch(dynamicOperation.staticInfoThunk({ month, year }));
+  };
 
   return (
-    <>
-      <DatePicker label={getCurrentMonth} views={['month', 'year']} />
-      <div>
-        <div>
-          <p>Income, &#8372;</p>
-          <p>60 000</p>
+    <div className={css.statisticPerMonth}>
+      <Calendar onChange={handleGetInfoPerMonth} />
+      <div className={css.statisticBox}>
+        <div className={css.statisticWrapper}>
+          <p className={css.statTitle}>Income, &#8372;</p>
+          <p className={css.statSum}>{incomeSumPerSelectedMonth}</p>
         </div>
-        <div>
-          <p>Expenses, &#8372;</p>
-          <p>60 000</p>
+        <div className={css.statisticWrapper}>
+          <p className={css.statTitle}>Expenses, &#8372;</p>
+          <p className={css.statSum}>{expenseSumPerSelectedMonth}</p>
         </div>
-        <div>
-          <p>Accumulated, &#8372;</p>
-          <p>60 000</p>
+        <div className={css.statisticWrapper}>
+          <p className={css.statTitle}>Accumulated, &#8372;</p>
+          <p className={css.statSum}>{acumulatedSumPerSelectedMonth}</p>
         </div>
-        <div>
-          <p>Plan &#8372;</p>
-          <p>60 000</p>
+        <div className={css.statisticWrapper}>
+          <p className={css.statTitle}>Plan &#8372;</p>
+          <p className={css.statSum}>{planMoneyPerMonth}</p>
         </div>
-        <div>
-          <p>Plan &#37;</p>
-          <p>60 000</p>
+        <div className={css.statisticWrapper}>
+          <p className={css.statTitle}>Plan &#37;</p>
+          <p className={css.statSum}>{percentagePlanPerMonth}0</p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

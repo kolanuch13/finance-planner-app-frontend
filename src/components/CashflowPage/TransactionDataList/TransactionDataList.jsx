@@ -1,19 +1,14 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { userBalance } from '../../../redux/auth/auth-selectors';
+import { balance } from 'redux/auth/auth-selectors';
+import cashflowOperations from 'redux/cashflowPage/cashflowPage-operations';
 import css from './TransactionDataList.module.css';
 
+
 export const TransactionDataList = ({ setFormData, formData }) => {
-  // const userBalance = useSelector(balance);
-  // const isLoggedIn = useSelector(isLoggedIn);
-
-  const category = ['Other', 'Products', 'Clothing and footwear'];
-
-const options = [
-  {value: "other", label: "Other"},
-  {value: "products", label: "Products"},
-  {value: "clothing-and-footwear", label: "Clothing and footwear"},
-]
+  const userBalance = useSelector(balance);
+  const dispatch = useDispatch();
+  const [category, setCategory] = useState([]);
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -22,6 +17,16 @@ const options = [
       [name]: value,
     }));
   };
+
+  useEffect(() => {dispatch(cashflowOperations.getCategories())
+    .unwrap()
+    .then(response => {
+      setCategory(response.data);
+      console.log(category);
+
+    })
+  .catch(error => console.error(error))}, [dispatch])
+    
 
   return (
     <>
@@ -33,12 +38,11 @@ const options = [
         className={css.input}
           id="balance"
           type="text"
-          // value={userBalance}
+          value={userBalance}
           name="balance"
           readOnly
         />
       </div>
-      <p>Per category</p>
       <div className={css.inputWrapper}>
         <label htmlFor="category" className={css.label}>
           Per category

@@ -1,6 +1,67 @@
 .section {
     min-height: 100vh;
-    background-color: getColor('clr-white');
+    background-color: #191d28;
+    color: #F3F3F3;
+}
+
+.container {
+    margin: 0 auto;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1;
+    color: #F3F3F3;
+    margin-bottom: 32px;
+}
 
 
+
+
+
+
+@media screen and (max-width: 767px) {
+    .container {
+        padding: 50px 16px;
+        min-width: 375px;
+        width: 100%;
+        max-width: 480px
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .statisticBlock {
+        display: flex;
+        gap: 58px;
+    }
+
+    .container {
+        padding: 66px 32px;
+        width: 786px;
+    }
+
+    .title {
+        margin-bottom: 50px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .container {
+        padding: 66px 55px;
+        width: 1280px;
+    }
+
+    .statisticBlock {
+        display: block;
+    }
+
+    .title {
+        margin-bottom: 54px;
+    }
+
+    .dynamic {
+        display: flex;
+        gap: 139px;
+    }
 }

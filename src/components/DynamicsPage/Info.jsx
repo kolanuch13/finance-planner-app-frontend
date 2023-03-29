@@ -1,36 +1,122 @@
-import ProgressBar from '../ProgressBar/ProgressBar';
+import css from './Info.module.css';
+import LinearProgress from '@mui/joy/LinearProgress';
+
+import { sprite } from '../../images/DynamicPage';
+import { useMediaQuery } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { dynamicSelectors } from '../../redux/dynamics';
+
+import { dynamicOperation } from '../../redux/dynamics';
+
 const Info = () => {
+  const mobile = useMediaQuery('(max-width: 767px)');
+  const tablet = useMediaQuery('(max-width:1279px) and (min-width: 768px) ');
+  const desktop = useMediaQuery('(min-width: 1280px)');
+
+  const {
+    acumulatedAsPercentage,
+    acumulatedMoney,
+    acumulatedSqMeters,
+    timeIsLeft,
+  } = useSelector(dynamicSelectors.getChartData);
+
+  const { imageURL } = useSelector(dynamicSelectors.getChartData);
+
+  const dispatch = useDispatch();
+
+  const handleSubmitImage = e => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append('flatImage', file);
+    dispatch(dynamicOperation.updateImageThunk(formData));
+  };
+
   return (
     <>
-      <div>
-        <div>
-          <p>After 4 years 1 month</p>
-          <div>
-            <div>
-              <p>Accumulated, &#37;:</p>
-              <p>28&#37;</p>
+      <div className={css.infoBlock}>
+        <div className={css.statistis}>
+          <p className={css.timeIsLeft}>
+            After {timeIsLeft?.years} years
+            {timeIsLeft?.months} month
+          </p>
+          <div className={css.statistisBox}>
+            <div className={css.statisticWrapper}>
+              <p className={css.statTitle}>Accumulated, &#37;:</p>
+              <p className={css.statSum}>{acumulatedAsPercentage}&#37;</p>
             </div>
-            <div>
-              <p>Accumulated, UAH:</p>
-              <p>60 000 &#8372;</p>
+            <div className={css.statisticWrapper}>
+              <p className={css.statTitle}>Accumulated, UAH:</p>
+              <p className={css.statSum}>{acumulatedMoney} &#8372;</p>
             </div>
-            <div>
-              <p>And this:</p>
-              <p>22 кв. м</p>
+            <div className={css.statisticWrapper}>
+              <p className={css.statTitle}>And this:</p>
+              <p className={css.statSum}>{acumulatedSqMeters} кв. м</p>
             </div>
           </div>
-          <ProgressBar />
+          <div className={css.progressBarBox}>
+            <p className={css.progressBarTitle}>
+              {acumulatedSqMeters} out of 60 sq.m accumulated
+            </p>
+            {mobile && (
+              <LinearProgress
+                determinate
+                size="md"
+                value={acumulatedAsPercentage}
+                style={{ width: '343px' }}
+              />
+            )}
+            {tablet && (
+              <LinearProgress
+                determinate
+                size="md"
+                value={acumulatedAsPercentage}
+                style={{ width: '224px' }}
+              />
+            )}
+            {desktop && (
+              <LinearProgress
+                determinate
+                size="md"
+                value={acumulatedAsPercentage}
+                style={{ width: '270px' }}
+              />
+            )}
+          </div>
         </div>
-        <div>
-          <input type="file" />
-        </div>
-      </div>
-      <div>
-        <p>
-          To add more 1 sq.m for planning, it remains to accumulate
-          <span>14 000 &#8372;</span>
-        </p>
-        <img src="" alt="" />
+        {imageURL ? (
+          <div className={css.imgBlock}>
+            <img
+              src={`${imageURL}?${Math.random()}`}
+              alt="customers flat"
+              className={css.image}
+            />
+            <label htmlFor="changeFlatImage" className={css.changeImageLabel}>
+              Change image
+            </label>
+            <input
+              onChange={handleSubmitImage}
+              type="file"
+              name="changeFlatImage"
+              className={css.flatImage}
+              id="changeFlatImage"
+            />
+          </div>
+        ) : (
+          <>
+            <label htmlFor="flatImage" className={css.imageLabel}>
+              <svg className={css.uploadImageIcon}>
+                <use href={`${sprite}#icon-upload_image`}></use>
+              </svg>
+            </label>
+            <input
+              onChange={handleSubmitImage}
+              type="file"
+              name="flatImage"
+              className={css.flatImage}
+              id="flatImage"
+            />
+          </>
+        )}
       </div>
     </>
   );

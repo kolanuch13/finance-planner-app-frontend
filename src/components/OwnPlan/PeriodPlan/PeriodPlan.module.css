@@ -1,0 +1,113 @@
+.boxForm {
+  width: 343px;
+  background: #4770E4;
+  border-radius: 16px;
+  padding: 40px 48px;
+}
+
+.text {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  color: #F3F3F3;
+  margin-bottom: 18px;
+}
+
+.form {
+  display: block;
+}
+
+.LabelForm {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  margin-bottom: 18px;
+  color: rgba(243, 243, 243, 0.4);
+}
+
+.LabelFormMonths {
+  display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    margin-bottom: 28px;
+    color: rgba(243, 243, 243, 0.4);
+}
+
+.textLabebel {
+  margin-bottom: 6px;
+}
+
+.input {
+  width: 247px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 14px 0px 14px 24px;
+  gap: 10px;
+  border: 1px solid rgba(243, 243, 243, 0.4);
+  border-radius: 28px;
+  color: #F3F3F3;
+  background: #4770E4;
+}
+
+.button {
+    width: 273px;
+    height: 46px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #4770E4;
+    background: #F3F3F3;
+    border: none;
+    border-radius: 60px;
+}
+
+
+@media screen and (min-width: 768px) {
+
+  .boxForm {
+      width: 672px;
+      border-radius: 16px;
+      padding: 44px 32px;
+    }
+
+  .text {
+    margin-bottom: 14px;
+  }
+
+  .form {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 28px;
+    }
+  
+    .LabelForm {
+      margin-right: 18px;
+    }
+  
+    .LabelFormMonths {
+      margin-right: 24px;
+    }
+  
+    .input {
+      width: 183px;      
+    }
+
+    .button {
+    width: 200px;
+    margin-top: 22px;
+  }
+  
+}
+
+@media screen and (min-width: 1280px) {
+  
+  .LabelFormMonths {
+      margin-right: 54px;
+  }
+}
+

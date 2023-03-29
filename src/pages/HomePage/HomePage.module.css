@@ -1,13 +1,151 @@
 .main {
   background-color: #191d28;
   height: 812px;
-  background-image: url(../../images/HomePageMobile.png);
+  /* background-image: url(../../images/HomePageMobile.png);
   background-repeat: no-repeat;
-  background-position: bottom;
+  background-position: bottom; */
   padding-left: 16px;
 }
+
+.BigInsideMob {
+  position: absolute;
+  /* left: 0%;
+    top: 80%; */
+  left: 0px;
+  top: 574px;
+}
+
+.BigMob {
+  position: absolute;
+  /* left: 0%;
+      top: 73%; */
+  left: 0px;
+  top: 525px;
+}
+.manMob {
+  position: absolute;
+  left: 0%;
+  top: 63%;
+  left: 0px;
+  top: 450px;
+  z-index: 10;
+}
+
+.manDesc {
+  display: none;
+}
+
+.BigTablet {
+  display: none;
+}
+.BigInsideTablet {
+  display: none;
+}
+
+.manDesc {
+  display: none;
+}
+
+.EllipseSmallMob {
+  position: absolute;
+  /* left: 65%;
+  top: 58%; */
+  left: 250px;
+  top: 430px;
+}
+
+.EllipseBigMob {
+  position: absolute;
+  /* left: 80%;
+    top: 66%; */
+  left: 295px;
+  top: 480px;
+}
+
+.manDesctop {
+  display: none;
+}
+
+.BigDesc {
+  display: none;
+}
+
+.BigInsideDesc {
+  display: none;
+}
+
+.EllipseBigTablet {
+  display: none;
+}
+.EllipseSmallTablet {
+  display: none;
+}
+
+.sloganContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 197px;
+  height: 34px;
+  /* left: 7%;
+  top: 94%; */
+  left: 10px;
+  top: 660px;
+  background-color: rgba(243, 243, 243, 0.053);
+  opacity: 1.5;
+  backdrop-filter: blur(21.47px);
+  z-index: 12;
+  border-radius: 31px;
+  filter: drop-shadow(0px 11px 15px rgba(0, 0, 0, 0.2));
+}
+
+.sloganText {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.sloganPartText {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: -0.02em;
+  color: #3a6af5;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.sloganContainerSecond {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 197px;
+  height: 34px;
+  /* left: 35%;
+  top: 110%; */
+  left: 130px;
+  top: 785px;
+  background-color: rgba(243, 243, 243, 0.053);
+  opacity: 1.5;
+  backdrop-filter: blur(21.47px);
+  z-index: 12;
+  border-radius: 31px;
+  filter: drop-shadow(0px 11px 15px rgba(0, 0, 0, 0.2));
+}
+
 .title {
   font-family: 'Unbounded';
+  text-transform: uppercase;
   color: #f3f3f3;
   font-weight: 500;
   font-size: 24px;
@@ -22,6 +160,7 @@
 .mainLogo {
   padding: 10px 20px;
   font-family: 'Unbounded';
+  text-transform: uppercase;
   font-feature-settings: 'liga' off;
   display: flex;
   justify-content: center;
@@ -58,7 +197,7 @@
   font-size: 10px;
   line-height: 150%;
   letter-spacing: 0.15px;
-
+  cursor: pointer;
   color: #ffffff;
 }
 
@@ -66,11 +205,93 @@
   .main {
     height: 1024px;
     padding-left: 32px;
-    background-image: url(../../images/HomePageTablet.png);
-    background-repeat: no-repeat;
-    background-position: bottom;
-    
   }
+
+  .BigInsideMob {
+    display: none;
+  }
+
+  .BigMob {
+    display: none;
+  }
+
+  .manMob {
+    display: none;
+  }
+
+  .BigTablet {
+    display: block;
+    position: absolute;
+    left: 70px;
+    top: 628px; 
+    /* bottom: 0px; */
+    /* right: 15%; */
+    /* left: 3%; */
+  }
+  .BigInsideTablet {
+    display: block;
+    position: absolute;
+    left: 130px;
+    top: 665px; 
+    /* bottom: 0px; */
+    /* right: 24%; */
+    /* left: 11%; */
+  }
+
+  .manDesc {
+    display: block;
+    position: absolute;
+    left: 160px;
+    top: 525px; 
+    /* right: 30%; */
+    /* left: 13%; */
+    /* bottom: 0px; */
+    z-index: 12;
+  }
+  .manDesctop {
+    display: none;
+  }
+
+  .EllipseSmallMob {
+    display: none;
+  }
+
+  .EllipseBigMob {
+    display: none;
+  }
+
+  .EllipseBigTablet {
+    display: block;
+    position: absolute;
+    right: 25%;
+    bottom: 45%;
+    right: 130px;
+    bottom: 400px;
+  }
+  .EllipseSmallTablet {
+    display: block;
+    position: absolute;
+    right: 40%;
+    bottom: 58%;
+    right: 260px;
+    bottom: 540px;
+  }
+
+  .sloganContainer {
+    left: 165px;
+  top: 815px;
+ 
+    /* left: 15%;
+    top: 73%; */
+  }
+
+  .sloganContainerSecond {
+    left: 353px;
+  top: 935px;
+    /* left: 45%;
+    top: 87%; */
+  }
+
   .title {
     width: 646px;
     font-weight: 500;
@@ -100,12 +321,87 @@
 
 @media screen and (min-width: 1280px) {
   .main {
-    height: 720px;
-    background-image: url(../../images/HomePageDesktop.png);
-    background-repeat: no-repeat;
-    background-position: right 100%;
     padding-left: 55px;
+    height: 89vh;
+  
   }
+  .manMob {
+    display: none;
+  }
+
+  .BigDesc {
+    display: block;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    /* top: 220px; */
+  }
+
+  .BigTablet {
+    display: none;
+  }
+  .BigInsideTablet {
+    display: none;
+  }
+
+  .BigInsideDesc {
+    display: block;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+  }
+
+  .manDesc {
+   
+    display: none;
+  }
+
+  .manDesctop {
+    display: block;
+    z-index: 12;
+    bottom: 0px;
+    position: absolute;
+    right: 2.5%;
+  }
+
+  .BigInsideTablet {
+    display: none;
+  }
+
+  .EllipseBigTablet {
+    display: block;
+    position: absolute;
+    /* right: 2%;
+    bottom: 65%; */
+    right: 20px;
+    bottom: 460px;
+  }
+  .EllipseSmallTablet {
+    display: block;
+    position: absolute;
+    /* right: 10%;
+    bottom: 80%; */
+    right: 135px;
+    bottom: 555px;
+  }
+
+  .sloganContainer {
+   
+    /* left: 935px;
+    top: 470px; */
+    left: 62%;
+    top: 60%;
+    /* left: 800px;
+    top: 580px; */
+  }
+
+  .sloganContainerSecond {
+    /* left: 1150px;
+    top: 575px; */
+    left: 82%;
+    top: 80%;
+  }
+
   .title {
     width: 646px;
     font-weight: 500;
