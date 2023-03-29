@@ -13,12 +13,13 @@ const StatisticPerMonth = () => {
     planMoneyPerMonth,
     percentagePlanPerMonth,
   } = useSelector(dynamicSelectors.getStatisticData);
+
   const dispatch = useDispatch();
 
   const handleGetInfoPerMonth = date => {
     const month = new Date(date).getMonth() + 1;
     const year = new Date(date).getFullYear();
-
+    console.log(month, year);
     dispatch(dynamicOperation.staticInfoThunk({ month, year }));
   };
 
@@ -28,15 +29,21 @@ const StatisticPerMonth = () => {
       <div className={css.statisticBox}>
         <div className={css.statisticWrapper}>
           <p className={css.statTitle}>Income, &#8372;</p>
-          <p className={css.statSum}>{incomeSumPerSelectedMonth}</p>
+          <p className={css.statSum}>
+            {incomeSumPerSelectedMonth ? incomeSumPerSelectedMonth : 0}
+          </p>
         </div>
         <div className={css.statisticWrapper}>
           <p className={css.statTitle}>Expenses, &#8372;</p>
-          <p className={css.statSum}>{expenseSumPerSelectedMonth}</p>
+          <p className={css.statSum}>
+            {expenseSumPerSelectedMonth ? expenseSumPerSelectedMonth : 0}
+          </p>
         </div>
         <div className={css.statisticWrapper}>
           <p className={css.statTitle}>Accumulated, &#8372;</p>
-          <p className={css.statSum}>{acumulatedSumPerSelectedMonth}</p>
+          <p className={css.statSum}>
+            {acumulatedSumPerSelectedMonth ? acumulatedSumPerSelectedMonth : 0}
+          </p>
         </div>
         <div className={css.statisticWrapper}>
           <p className={css.statTitle}>Plan &#8372;</p>
