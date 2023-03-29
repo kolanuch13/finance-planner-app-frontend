@@ -10,7 +10,7 @@ import AuthMenu from '../authNav/AuthNav';
 import css from './Header.module.css';
 
 function Header() {
-  const token = useSelector(state => state.auth?.token);
+  const token = useSelector(state => state.auth?.user.token);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 

@@ -8,7 +8,7 @@ import css from './MobileTabletMenu.module.css';
 const modalRoot = document.querySelector('#modal-root');
 
 function MobileTabletMenu({ closeMenu }) {
-  const token = useSelector(state => state.auth?.token);
+  const token = useSelector(state => state.auth?.user.token);
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);

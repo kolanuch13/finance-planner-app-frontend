@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import css from './Navigation.module.css';
 
 function Navigation() {
-  const token = useSelector(state => state.auth?.token);
+  const token = useSelector(state => state.auth?.user.token);
 
   return (
     <div className={css.navigate}>
