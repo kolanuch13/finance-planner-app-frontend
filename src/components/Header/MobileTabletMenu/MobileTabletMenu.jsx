@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import LogOut from '../logout/LogOut';
 import css from './MobileTabletMenu.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
@@ -50,6 +51,7 @@ function MobileTabletMenu({ closeMenu }) {
           >
             Dynamics
           </NavLink>
+          <LogOut />
         </div>
       )}
     </>,
