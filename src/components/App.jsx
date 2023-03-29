@@ -29,13 +29,16 @@ export const App = () => {
           <Route path="/" element={<PrivateRoute />}>
             <Route path="personal-plan" element={<div>OwnPlanPage</div>} />
             <Route path="cash-flow" element={<div>ExpensesPage</div>} />
-            <Route path="dynamics" element={<div>OwnPlanPage</div>} />
+
+            <Route path="dynamics" element={<DynamicsPage />} />
+      
+
             <Route path="expenses" element={<StatisticPage />} />
+
             <Route path="*" element={<div>Not Found Page</div>} />
           </Route>
-
         </Route>
-        {/* </Route> */}
+
         <Route path="/" element={<PublicRoute />}>
           <Route
             path="login"

@@ -57,6 +57,7 @@
     font-size: 16px;
     line-height: 1.19;
     letter-spacing: -0.125714px;
+    margin-bottom: 8px;
 }
 
 .flatImage {
@@ -80,11 +81,34 @@
 
 }
 
+.image {
+    display: block;
+    width: 343px;
+    height: 260px;
+    margin-bottom: 8px;
+}
+
 .uploadImageIcon {
     fill: #fff;
     width: 50px;
     height: 50px;
 }
+
+.changeImageLabel {
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.43;
+}
+
+.imgBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+}
+
 
 
 
@@ -94,6 +118,12 @@
     .statistisBox {
         padding-right: 74px;
     }
+
+    .infoBlock {
+        margin-bottom: 36px;
+    }
+
+
 }
 
 @media screen and (min-width: 768px) {
@@ -109,12 +139,20 @@
     .imageLabel {
         padding: 51px 80px;
     }
+
+    .image {
+
+        width: 224px;
+        height: 166px;
+    }
 }
 
 @media screen and (min-width: 1280px) {
     .infoBlock {
         display: flex;
-        justify-content: space-between;
+
+        gap: 45px;
+        margin-bottom: 22px;
     }
 
     .imageLabel {
@@ -124,4 +162,15 @@
     .statistisBox {
         width: 225px;
     }
+
+    .image {
+        width: 254px;
+        height: 209px;
+    }
+
+    .progressBarBox {
+        margin: 0;
+    }
+
+
 }
