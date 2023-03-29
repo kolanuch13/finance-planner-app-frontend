@@ -11,22 +11,23 @@
 
 @media screen and (min-width: 375px) {
     .BoxContainer {
-        min-width: 375px;
+        width: 375px;
         padding: 0 16px;
-        margin: 0;
+        /* margin: 0; */
     }
 }
 
 @media screen and (min-width: 768px) {
     .BoxContainer {
         width: 768px;
+
         padding: 0 32px;
-        margin: 0;
+        padding-top: 66px;
         background-image: url("../../components/OwnPlan/img/bg.png");
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-        position: relative;
+        /* position: relative; */
     }
 }
 

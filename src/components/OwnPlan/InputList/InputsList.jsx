@@ -18,7 +18,7 @@ const InputsListItem = ({
   children,
 }) => {
   return (
-    <li className={css.item}>
+    <li className={css.item} id={num}>
       {children ? (
         children
       ) : (
