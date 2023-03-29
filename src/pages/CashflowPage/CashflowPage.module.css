@@ -1,14 +1,10 @@
+* {
+    box-sizing: border-box;
+}
 .main {
-    
     color: #F3F3F3;
-    padding: 50px 16px 66px 16px;
+    padding: 50px 0 66px 0;
     background: url("../../images/CashflowPage/Vector-desktop.png"), #191D28;
     background-repeat: no-repeat;
     background-position: bottom;
 }
-
-/* .form {
-    margin-left: 16;
-    margin-right: 16px;
-    mt50
-} */
