@@ -42,3 +42,13 @@
     left: 32px;
   }
 }
+
+@media screen and (min-width: 1280px) {
+  .logoutBtn {
+    position: static;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    margin-left: 24px;
+    margin-right: 55px;
+  }
+}
