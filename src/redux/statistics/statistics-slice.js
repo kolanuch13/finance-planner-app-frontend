@@ -40,9 +40,9 @@ const statisticsSlice = createSlice({
       .addCase(
         statisticsOperations.removeExpense.fulfilled,
         (state, action) => {
-          state.transactions = state.transactions.filter(
-            ({ id }) => id !== action.payload
-          );
+          // state.transactions = state.transactions.filter(
+          //   ({ id }) => id !== action.payload
+          // );
 
           state.isLoggedIn = true;
           state.isLoading = false;
@@ -59,11 +59,6 @@ const statisticsSlice = createSlice({
       .addCase(
         statisticsOperations.updateTransaction.fulfilled,
         (state, action) => {
-          // state.transactions = state.updateTransaction.map(
-          //   ({ id }) => id !== action.payload
-          // );
-          console.log(action.payload);
-
           state.isLoggedIn = true;
           state.isLoading = false;
         }
@@ -75,7 +70,9 @@ const statisticsSlice = createSlice({
           state.isLoading = false;
         }
       )
+
       // Statistic/category=========================================
+
       .addCase(statisticsOperations.categoryTypeStatistic.pending, state => {
         state.isLoading = true;
       })

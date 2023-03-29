@@ -14,8 +14,8 @@ const removeExpense = async transactionId => {
   return await axios.delete(`/transaction/${transactionId}`);
 };
 
-const updateTransaction = async transactionId => {
-  return await axios.patch(`/transaction/${transactionId}`);
+const updateTransaction = async (idTransaction, data) => {
+  return await axios.patch(`/transaction/${idTransaction}`, data);
 };
 
 const statiaticsAPI = {
