@@ -16,6 +16,7 @@ import { Modal } from './Modal/Modal';
 import { ModalLogin } from './Modal/ModalLogin';
 import { ModalRegister } from './Modal/ModalRegister';
 import { Verified } from './Modal/Verified';
+import OwnPlanPage from 'pages/OwnPlanPage/OwnPlanPage';
 
 export const App = () => {
   return (
@@ -26,7 +27,7 @@ export const App = () => {
 
           <Route path="verify/:verificationToken" element={<Verified />} />
           <Route path="/" element={<PrivateRoute />}>
-            <Route path="personal-plan" element={<div>OwnPlanPage</div>} />
+            <Route path="personal-plan" element={<OwnPlanPage/>} />
             <Route path="cash-flow" element={<div>ExpensesPage</div>} />
             <Route path="dynamics" element={<div>OwnPlanPage</div>} />
             <Route
