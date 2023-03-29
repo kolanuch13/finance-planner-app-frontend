@@ -1,15 +1,27 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import dynamicAPI from '../../services/dynamicAPI';
 
-// const BASE_URL = process.env.BASE_URL;
-
-axios.defaults.baseURL = 'http://localhost:4000/api';
+export const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = '';
+  },
+};
 
 export const yearInfoThunk = createAsyncThunk(
   '/dynamic/chart',
   async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistToken = state.auth.user.token;
+    if (persistToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
+    token.set(persistToken);
     try {
-      const { data } = await axios.get('/dynamic/chart');
+      const { data } = await dynamicAPI.yearInfo();
       console.log(data);
       return data;
     } catch (error) {
@@ -21,9 +33,16 @@ export const yearInfoThunk = createAsyncThunk(
 export const staticInfoThunk = createAsyncThunk(
   '/dynamic/statistic',
   async (date, thunkAPI) => {
-    console.log(date);
+    const state = thunkAPI.getState();
+    const persistToken = state.auth.user.token;
+    if (persistToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
+    token.set(persistToken);
+
     try {
-      const { data } = await axios.get('/dynamic/statistic', date);
+      const { data } = await dynamicAPI.statisticInfo(date);
+      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -33,9 +52,16 @@ export const staticInfoThunk = createAsyncThunk(
 
 export const updateImageThunk = createAsyncThunk(
   '/dynamic/flatImage',
-  async (_, thunkAPI) => {
+  async (file, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistToken = state.auth.user.token;
+    if (persistToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
+    token.set(persistToken);
+
     try {
-      const { data } = await axios.patch('/dynamic/flatImage', _);
+      const { data } = await dynamicAPI.updateImage(file);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

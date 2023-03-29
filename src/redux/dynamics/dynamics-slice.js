@@ -23,6 +23,7 @@ const dynamicSlice = createSlice({
     [yearInfoThunk.fulfilled](state, { payload }) {
       state.isLoading = false;
       state.chartData = payload;
+      state.flatImageURL = payload.imageURL;
     },
     [yearInfoThunk.rejected](state, { payload }) {
       state.isLoading = false;
