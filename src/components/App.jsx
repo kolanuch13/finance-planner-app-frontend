@@ -5,8 +5,8 @@ import { Home } from 'pages/HomePage/HomePage';
 import { Layout } from './Layout/Layout';
 
 import PrivateRoute from './PrivateRoute/PrivateRoute';
-import ToggleLanguages from './ToggleLanguages';
-import ExampleForToggleLanguages from './ExampleForToggleLanguages';
+// import ToggleLanguages from './ToggleLanguages';
+// import ExampleForToggleLanguages from './ExampleForToggleLanguages';
 import PublicRoute from './PublicRoute/PublicRoute';
 
 import DynamicsPage from '../pages/DynamicsPage/DynamicsPage';
@@ -64,8 +64,8 @@ export const App = () => {
         </Route>
       </Routes>
 
-      <ToggleLanguages />
-      <ExampleForToggleLanguages />
+      {/* <ToggleLanguages />
+      <ExampleForToggleLanguages /> */}
     </>
   );
 };

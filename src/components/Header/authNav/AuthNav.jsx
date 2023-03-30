@@ -1,8 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import css from './AuthNav.module.css';
+import { useTranslation } from 'react-i18next';
+import '../../../i18n';
 
 function AuthMenu() {
-  // const token = useSelector(state => state.auth?.token);
+  const { t } = useTranslation();
 
   return (
     <nav>
@@ -13,7 +15,7 @@ function AuthMenu() {
           }
           to="/plan"
         >
-          Personal plan
+          {t('header.personalPlan')}
         </NavLink>
         <NavLink
           className={({ isActive }) =>
@@ -21,7 +23,7 @@ function AuthMenu() {
           }
           to="/cash-flow"
         >
-          Cashflow
+          {t('header.cashFlow')}
         </NavLink>
         <NavLink
           className={({ isActive }) =>
@@ -29,7 +31,7 @@ function AuthMenu() {
           }
           to="/dynamics"
         >
-          Dynamics
+          {t('header.dynamics')}
         </NavLink>
       </div>
     </nav>

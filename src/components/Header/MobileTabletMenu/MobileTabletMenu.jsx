@@ -4,11 +4,14 @@ import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import LogOut from '../logout/LogOut';
 import css from './MobileTabletMenu.module.css';
+import { useTranslation } from 'react-i18next';
+import '../../../i18n';
 
 const modalRoot = document.querySelector('#modal-root');
 
 function MobileTabletMenu({ closeMenu }) {
   const token = useSelector(state => state.auth?.user.token);
+  const { t } = useTranslation();
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
@@ -33,7 +36,7 @@ function MobileTabletMenu({ closeMenu }) {
             }
             to="/plan"
           >
-            Personal plan
+            {t('header.personalPlan')}
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -41,7 +44,7 @@ function MobileTabletMenu({ closeMenu }) {
             }
             to="/cash-flow"
           >
-            Cashflow
+            {t('header.cashFlow')}
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -49,7 +52,7 @@ function MobileTabletMenu({ closeMenu }) {
             }
             to="/dynamics"
           >
-            Dynamics
+            {t('header.dynamics')}
           </NavLink>
           <LogOut />
         </div>

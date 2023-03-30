@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { MdLanguage } from 'react-icons/md';
 import '../../i18n';
+import css from './ToggleLanguages.module.css';
 
 const ToggleLanguages = () => {
   // eslint-disable-next-line
@@ -13,9 +14,13 @@ const ToggleLanguages = () => {
 
   return (
     <>
-      <button onClick={() => switchLang('en')}>En</button>
-      <MdLanguage />
-      <button onClick={() => switchLang('ua')}>Ua</button>
+      <button className={css.en} onClick={() => switchLang('en')}>
+        En
+      </button>
+      <MdLanguage className={css.icon} />
+      <button className={css.ua} onClick={() => switchLang('ua')}>
+        Ua
+      </button>
     </>
   );
 };
