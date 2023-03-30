@@ -24,4 +24,5 @@ const planAPI = {
   addPersonalPlanPreAPI,
   currentPersonalPlanAPI,
 };
+
  export default planAPI;

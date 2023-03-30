@@ -2,8 +2,10 @@ import { configureStore } from '@reduxjs/toolkit';
 import { authReducer } from './auth/auth-slice';
 
 import { dynamicReducer } from './dynamics/dynamics-slice';
-
+import {planSliceReducer} from './plan/plan-slice'
 import statisticsReducer from './statistics/statistics-slice';
+
+
 
 import {
   persistStore,
@@ -18,11 +20,9 @@ import {
 export const store = configureStore({
   reducer: {
     auth: authReducer,
-
     dynamic: dynamicReducer,
-
     statistics: statisticsReducer,
-
+    plan: planSliceReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

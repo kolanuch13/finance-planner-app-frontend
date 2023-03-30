@@ -1,13 +1,32 @@
-const { createAsyncThunk } = require("@reduxjs/toolkit");
-const planAPI = require("../../services/planAPI");
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import planAPI from "../../services/planAPI";
+import axios from "axios";
+
+export const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = '';
+  },
+};
 
 export const getPersonalPlan = createAsyncThunk(
   "plan/getPersonalPlan",
   async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistToken = state.auth.user.token;
+    if (persistToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
+    token.set(persistToken);
+    console.log(2);
     try {
+      console.log(11);
       const { data } = await planAPI.getPersonalPlanAPI();
       return data;
     } catch (error) {
+      console.log(3);
       return thunkAPI.rejectWithValue(error.message);
     }
   },

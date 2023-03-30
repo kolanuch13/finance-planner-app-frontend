@@ -1,7 +1,7 @@
-import React from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { addPersonalPlanPreAPI } from 'redux/plan/plan-operations';
-// import { selectorPlanData } from 'redux/plan/plan-selectors';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addPersonalPlanPreAPI } from 'redux/plan/plan-operations';
+import { selectorPlanData } from 'redux/plan/plan-selectors';
 import InputsList from '../InputList/InputsList';
 import styles from './PlanInput.module.css';
 
@@ -41,42 +41,42 @@ const PlanInput = () => {
     },
   ];
 
-  // const initialPlanDataState = {
-  //   salary: '',
-  //   passiveIncome: '',
-  //   savings: '',
-  //   cost: '',
-  //   footage: '',
-  //   procent: '',
-  // };
+  const initialPlanDataState = {
+    salary: '',
+    passiveIncome: '',
+    savings: '',
+    cost: '',
+    footage: '',
+    procent: '',
+  };
 
-  // const dispatch = useDispatch();
-  // const curPlanData = useSelector(selectorPlanData);
-  // const [newPlanData, setNewPlanData] = useState(initialPlanDataState);
+  const dispatch = useDispatch();
+  const curPlanData = useSelector(selectorPlanData);
+  const [newPlanData, setNewPlanData] = useState(initialPlanDataState);
   // const [newPlanData, setNewPlanData] = useState(
   //   curPlanData ? curPlanData : initialPlanDataState
   // );
 
-  // const onChange = event => {
-  //   const { name, value } = event.target;
-  //   setNewPlanData(prev => ({
-  //     ...prev,
-  //     [name]: value === '' ? value : Number(value),
-  //   }));
-  // };
+  const onChange = event => {
+    const { name, value } = event.target;
+    setNewPlanData(prev => ({
+      ...prev,
+      [name]: value === '' ? value : Number(value),
+    }));
+  };
 
-  // const onBlur = () => {
-  //   if (Object.values(newPlanData).filter(element => element === '').length)
-  //     return;
-  //   if (JSON.stringify(curPlanData) === JSON.stringify(newPlanData)) return;
-  //   dispatch(addPersonalPlanPreAPI(newPlanData));
-  // };
+  const onBlur = () => {
+    if (Object.values(newPlanData).filter(element => element === '').length)
+      return;
+    if (JSON.stringify(curPlanData) === JSON.stringify(newPlanData)) return;
+    dispatch(addPersonalPlanPreAPI(newPlanData));
+  };
 
-  // useEffect(() => {
-  //   if (curPlanData) {
-  //     setNewPlanData(curPlanData);
-  //   }
-  // }, [curPlanData]);
+  useEffect(() => {
+    if (curPlanData) {
+      setNewPlanData(curPlanData);
+    }
+  }, [curPlanData]);
 
   return (
     <div className={styles.container}>
@@ -87,10 +87,10 @@ const PlanInput = () => {
               key={index}
               num={index + 1}
               {...element}
-              // value={newPlanData[element.name]}
-              // onChange={onChange}
-              // disabled={element.name === 'savings' && curPlanData?.id}
-              // onBlur={onBlur}
+              value={newPlanData[element.name]}
+              onChange={onChange}
+              disabled={element.name === 'savings' && curPlanData?.id}
+              onBlur={onBlur}
             />
           ))}
         </ul>

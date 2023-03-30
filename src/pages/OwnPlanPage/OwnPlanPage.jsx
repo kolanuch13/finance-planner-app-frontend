@@ -38,7 +38,9 @@ export const OwnPlanPage = () => {
 
       <div className={styles.container}>
         <form className={styles.form}
-        onSubmit={handleSubmit}>
+        onSubmit={handleSubmit}
+        >
+
           <PlanInput />
           <PeriodPlan
           openModalAddBalance={toggleModal}
@@ -50,5 +52,3 @@ export const OwnPlanPage = () => {
 
   );
 };
-
-// export default OwnPlanPage;
