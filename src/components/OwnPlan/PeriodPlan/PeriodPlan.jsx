@@ -14,7 +14,7 @@ const PeriodPlan = () => {
     <Container>
       <div className={css.boxForm}>
         <p className={css.text}>You will have an apartment in:</p>
-        <form className={css.form}>
+        <div className={css.form}>
           <label className={css.LabelForm}>
             <span className={css.textLabebel}>Number of years</span>
             <input className={css.input} type="text" placeholder="0 years" />
@@ -43,7 +43,7 @@ const PeriodPlan = () => {
               Fits
             </button>
           </div>
-        </form>
+        </div>
       </div>
     </Container>
   );

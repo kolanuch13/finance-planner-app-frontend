@@ -25,12 +25,13 @@ export const App = () => {
     <>
      
       <Routes>
+      <Route path="personal-plan" element={<OwnPlanPage/>} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
 
           <Route path="verify/:verificationToken" element={<Verified />} />
           <Route path="/" element={<PrivateRoute />}>
-            <Route path="personal-plan" element={<OwnPlanPage/>} />
+            {/* <Route path="personal-plan" element={<OwnPlanPage/>} /> */}
             <Route path="cashflow" element={<div>ExpensesPage</div>} />
 
             <Route path="dynamics" element={<DynamicsPage />} />
@@ -52,7 +53,7 @@ export const App = () => {
                 </Modal>
               </ModalView>
             }
-          />
+          /> 
 
           <Route
             path="register"

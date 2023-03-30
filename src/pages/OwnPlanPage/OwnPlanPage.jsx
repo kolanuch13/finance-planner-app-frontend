@@ -20,7 +20,7 @@ export const OwnPlanPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    !newPlanData.id
+    !newPlanData
       ? dispatch(addPersonalPlanAPI(newPlanData))
       : dispatch(currentPersonalPlanAPI(newPlanData));
   };
@@ -45,7 +45,6 @@ export const OwnPlanPage = () => {
           <PeriodPlan
           openModalAddBalance={toggleModal}
           />
-          <PeriodPlan />
         </form>
          {isModalOpen && <ModalAddBalance closeModal={toggleModal} />}
       </div>

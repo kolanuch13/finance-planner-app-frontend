@@ -20,13 +20,10 @@ export const getPersonalPlan = createAsyncThunk(
       return thunkAPI.rejectWithValue();
     }
     token.set(persistToken);
-    console.log(2);
     try {
-      console.log(11);
       const { data } = await planAPI.getPersonalPlanAPI();
       return data;
     } catch (error) {
-      console.log(3);
       return thunkAPI.rejectWithValue(error.message);
     }
   },
