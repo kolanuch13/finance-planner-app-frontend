@@ -66,8 +66,8 @@ export const App = () => {
         </Route>
       </Routes>
 
-      {/* <ToggleLanguages />
-      <ExampleForToggleLanguages /> */}
+     {/* <ToggleLanguages />
+      <ExampleForToggleLanguages />  */}
     </>
   );
 };
