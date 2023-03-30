@@ -13,10 +13,15 @@ const updateImage = async file => {
   return await axios.patch('/dynamic/flatImage', file);
 };
 
+const getImage = async () => {
+  return await axios.get('/dynamic/flatImage');
+};
+
 const dynamicAPI = {
   yearInfo,
   statisticInfo,
   updateImage,
+  getImage,
 };
 
 export default dynamicAPI;
