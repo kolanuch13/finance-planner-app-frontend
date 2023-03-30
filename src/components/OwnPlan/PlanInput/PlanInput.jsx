@@ -1,4 +1,4 @@
-import React, {  useState } from 'react';
+import React from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { addPersonalPlanPreAPI } from 'redux/plan/plan-operations';
 // import { selectorPlanData } from 'redux/plan/plan-selectors';
@@ -41,14 +41,14 @@ const PlanInput = () => {
     },
   ];
 
-  const initialPlanDataState = {
-    salary: '',
-    passiveIncome: '',
-    savings: '',
-    cost: '',
-    footage: '',
-    procent: '',
-  };
+  // const initialPlanDataState = {
+  //   salary: '',
+  //   passiveIncome: '',
+  //   savings: '',
+  //   cost: '',
+  //   footage: '',
+  //   procent: '',
+  // };
 
   // const dispatch = useDispatch();
   // const curPlanData = useSelector(selectorPlanData);

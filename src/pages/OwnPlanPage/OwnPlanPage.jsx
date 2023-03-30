@@ -41,8 +41,10 @@ const OwnPlanPage = () => {
         {/* // onSubmit={handleSubmit} */}
         {/* > */}
           <PlanInput />
-          {/* <PeriodPlan openModalAddBalance={toggleModal} /> */}
-          <PeriodPlan />
+          <PeriodPlan
+          // openModalAddBalance={toggleModal}
+          />
+          {/* <PeriodPlan /> */}
         {/* </form> */}
         {/* {isModalOpen && <ModalAddBalance closeModal={toggleModal} />} */}
       </div>

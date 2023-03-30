@@ -10,13 +10,12 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
 
 import DynamicsPage from '../pages/DynamicsPage/DynamicsPage';
-
-import { ModalView } from './Modal/ModalView';
-import { Modal } from './Modal/Modal';
-import { ModalLogin } from './Modal/ModalLogin';
-import { ModalRegister } from './Modal/ModalRegister';
 import { Verified } from './Modal/Verified';
 import OwnPlanPage from 'pages/OwnPlanPage/OwnPlanPage';
+import Modal from './OwnPlan/ModalAddBalance/Modal/Modal';
+import { ModalView } from './Modal/ModalView';
+import ModalLogin from './HomePage/ModalLogin';
+import ModalRegister from './HomePage/ModalRegister';
 
 export const App = () => {
   return (
