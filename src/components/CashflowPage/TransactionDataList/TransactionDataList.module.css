@@ -1,3 +1,9 @@
+:root {
+    --select-border: #777;
+    --select-focus: #00f;
+    --select-arrow: var(--select-border);
+  }
+
 .inputWrapper {
    max-width: 343px;
     margin-top: 18px;
@@ -22,8 +28,39 @@
     font-family: 'Lato';
     font-size: 16px;
     line-height: 1.19;
+    outline: none;
 }
 
 .input::placeholder {
     color: #F3F3F3;
+}
+
+.select {
+    border-radius: 16px;
+    display: block;
+    border: none;
+    background: none;
+    color: #F3F3F3;
+    font-family: 'Lato';
+    font-size: 16px;
+    line-height: 1.19;
+}
+
+.select::selection {
+    border-radius: 16px;
+    background-color: red;
+}
+
+.option {
+    color: black;
+    background-color: #00f;
+    border-radius: 16px;
+    outline: none;
+    border: none;
+    border-radius: 16px;
+}
+
+.option:first-child {
+    border: 2px solid black;
+    border-radius: 16px 0 0 16px;
 }
