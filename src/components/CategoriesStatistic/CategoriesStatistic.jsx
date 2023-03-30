@@ -16,13 +16,6 @@ const CategoriesStatistic = () => {
 
   return (
     <>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-
       <ul>
         {categories?.map(({ _id: id, totalSum, percent }) => (
           <li key={id}>
