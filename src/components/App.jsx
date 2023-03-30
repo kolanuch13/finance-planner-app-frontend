@@ -18,7 +18,6 @@ import { Verified } from './Modal/Verified';
 import ModalPopUp from './Modal/ModalPopUp';
 import StatisticPage from 'pages/StatisticPage/StatisticPage';
 
-
 export const App = () => {
   return (
     <>
@@ -32,7 +31,6 @@ export const App = () => {
             <Route path="cashflow" element={<div>ExpensesPage</div>} />
 
             <Route path="dynamics" element={<DynamicsPage />} />
-      
 
             <Route path="statistic" element={<StatisticPage />} />
 
@@ -65,8 +63,8 @@ export const App = () => {
           />
         </Route>
       </Routes>
-
-      {/* <ToggleLanguages />
+      {/* 
+      <ToggleLanguages />
       <ExampleForToggleLanguages /> */}
     </>
   );

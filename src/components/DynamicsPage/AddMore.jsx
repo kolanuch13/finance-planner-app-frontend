@@ -9,16 +9,20 @@ import {
 } from '../../images/DynamicPage';
 import { useSelector } from 'react-redux';
 import { dynamicSelectors } from '../../redux/dynamics';
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
 
 const AddMore = () => {
+  const { t } = useTranslation();
   const { leftAcumulatedMoneyToMeter } = useSelector(
     dynamicSelectors.getChartData
   );
   return (
     <div className={css.addMoreBox}>
       <p className={css.addMoreTitle}>
-        To add more <span className={css.addMoreMeter}>1 sq.m</span> for
-        planning, it remains to accumulate
+        {t('dynamics.missingInfoFirst')}{' '}
+        <span className={css.addMoreMeter}>{t('dynamics.1sqM')}</span>{' '}
+        {t('dynamics.missingInfoSecond')}
         <span className={css.addMoreSum}>
           {leftAcumulatedMoneyToMeter} &#8372;
         </span>
