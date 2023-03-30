@@ -58,7 +58,7 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   }
 });
 
-export const balance = createAsyncThunk(
+export const balanceOperation = createAsyncThunk(
   '/auth/balance',
   async (userData, thunkAPI) => {
     const state = thunkAPI.getState();
@@ -98,7 +98,7 @@ const authOperations = {
   login,
   verify,
   logout,
-  balance,
+  balanceOperation,
   current,
 };
 export default authOperations;

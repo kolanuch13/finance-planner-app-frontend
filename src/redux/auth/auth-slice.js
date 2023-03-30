@@ -68,14 +68,14 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
       })
       // Balance======================================
-      .addCase(authOperations.balance.pending, state => {
+      .addCase(authOperations.updateBalance.pending, state => {
         state.isLoading = true;
       })
-      .addCase(authOperations.balance.fulfilled, (state, action) => {
+      .addCase(authOperations.updateBalance.fulfilled, (state, action) => {
         state.balance = action.payload.balance;
         state.isLoading = false;
       })
-      .addCase(authOperations.balance.rejected, (state, action) => {
+      .addCase(authOperations.updateBalance.rejected, (state, action) => {
         state.error = action.payload;
         state.isLoading = false;
       })

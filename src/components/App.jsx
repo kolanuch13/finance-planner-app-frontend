@@ -11,7 +11,7 @@ import PublicRoute from './PublicRoute/PublicRoute';
 
 import DynamicsPage from '../pages/DynamicsPage/DynamicsPage';
 import { Verified } from './Modal/Verified';
-import OwnPlanPage from 'pages/OwnPlanPage/OwnPlanPage';
+import {OwnPlanPage} from 'pages/OwnPlanPage/OwnPlanPage';
 import Modal from './OwnPlan/ModalAddBalance/Modal/Modal';
 import { ModalView } from './Modal/ModalView';
 import ModalLogin from './HomePage/ModalLogin';
