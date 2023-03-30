@@ -10,12 +10,14 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
 
 import DynamicsPage from '../pages/DynamicsPage/DynamicsPage';
-import { Verified } from './Modal/Verified';
-import {OwnPlanPage} from 'pages/OwnPlanPage/OwnPlanPage';
-import Modal from './OwnPlan/ModalAddBalance/Modal/Modal';
 import { ModalView } from './Modal/ModalView';
-import ModalLogin from './HomePage/ModalLogin';
-import ModalRegister from './HomePage/ModalRegister';
+import { Modal } from './Modal/Modal';
+import { ModalLogin } from './Modal/ModalLogin';
+import { ModalRegister } from './Modal/ModalRegister';
+import { Verified } from './Modal/Verified';
+import ModalPopUp from './Modal/ModalPopUp';
+import StatisticPage from 'pages/StatisticPage/StatisticPage';
+
 
 export const App = () => {
   return (
@@ -26,29 +28,31 @@ export const App = () => {
 
           <Route path="verify/:verificationToken" element={<Verified />} />
           <Route path="/" element={<PrivateRoute />}>
-            <Route path="personal-plan" element={<OwnPlanPage/>} />
-            <Route path="cash-flow" element={<div>ExpensesPage</div>} />
-            <Route path="dynamics" element={<div>OwnPlanPage</div>} />
-            <Route
-              path="expenses"
-              element={<div>Expenses and Categories</div>}
-            />
+            <Route path="personal-plan" element={<div>Personal</div>} />
+            <Route path="cashflow" element={<div>ExpensesPage</div>} />
+
+            <Route path="dynamics" element={<DynamicsPage />} />
+      
+
+            <Route path="statistic" element={<StatisticPage />} />
+
             <Route path="*" element={<div>Not Found Page</div>} />
           </Route>
-
         </Route>
-        {/* </Route> */}
+
         <Route path="/" element={<PublicRoute />}>
           <Route
             path="login"
             element={
               <ModalView>
                 <Modal>
+                  {/* <ModalPopUp /> розкоментувати для перевірки*/}
                   <ModalLogin />
                 </Modal>
               </ModalView>
             }
           />
+
           <Route
             path="register"
             element={
@@ -61,6 +65,7 @@ export const App = () => {
           />
         </Route>
       </Routes>
+
       {/* <ToggleLanguages />
       <ExampleForToggleLanguages /> */}
     </>

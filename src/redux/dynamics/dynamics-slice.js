@@ -3,6 +3,7 @@ import {
   yearInfoThunk,
   staticInfoThunk,
   updateImageThunk,
+  getImageThunk,
 } from './dynamics-operations';
 
 const initialState = {
@@ -23,6 +24,7 @@ const dynamicSlice = createSlice({
     [yearInfoThunk.fulfilled](state, { payload }) {
       state.isLoading = false;
       state.chartData = payload;
+      state.flatImageURL = payload;
     },
     [yearInfoThunk.rejected](state, { payload }) {
       state.isLoading = false;
@@ -47,6 +49,17 @@ const dynamicSlice = createSlice({
       state.flatImageURL = payload;
     },
     [updateImageThunk.rejected](state, { payload }) {
+      state.isLoading = false;
+      state.error = payload;
+    },
+    [getImageThunk.pending](state) {
+      state.isLoading = true;
+    },
+    [getImageThunk.fulfilled](state, { payload }) {
+      state.isLoading = false;
+      state.flatImageURL = payload;
+    },
+    [getImageThunk.rejected](state, { payload }) {
       state.isLoading = false;
       state.error = payload;
     },

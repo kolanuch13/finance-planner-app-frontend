@@ -12,13 +12,12 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 const DynamicsPage = () => {
   const dispatch = useDispatch();
 
-  const date = new Date().toISOString();
   const tablet = useMediaQuery('(min-width:768px)');
   const desktop = useMediaQuery('(min-width: 1280px)');
 
   useEffect(() => {
     dispatch(dynamicOperation.yearInfoThunk());
-    dispatch(dynamicOperation.staticInfoThunk());
+    dispatch(dynamicOperation.getImageThunk());
   });
   return (
     <div className={css.section}>

@@ -1,13 +1,15 @@
 import { useNavigate } from 'react-router-dom';
+
 import { useSelector } from 'react-redux';
 import barSvg from '../../../images/bar-graph.svg';
 import css from './UserBar.module.css';
 
 export const UserBar = () => {
   const userNickName = useSelector(state => state.auth?.user?.username);
+
   const navigate = useNavigate();
   const statisticsClick = () => {
-    navigate('/statistics', { replace: true });
+    navigate('/statistic', { replace: true });
   };
 
   return (
