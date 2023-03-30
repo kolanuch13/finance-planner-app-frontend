@@ -19,7 +19,7 @@ const StatisticPerMonth = () => {
   const handleGetInfoPerMonth = date => {
     const month = new Date(date).getMonth() + 1;
     const year = new Date(date).getFullYear();
-    console.log(month, year);
+
     dispatch(dynamicOperation.staticInfoThunk({ month, year }));
   };
 

@@ -22,7 +22,7 @@ export const yearInfoThunk = createAsyncThunk(
     token.set(persistToken);
     try {
       const { data } = await dynamicAPI.yearInfo();
-      console.log(data);
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -42,7 +42,7 @@ export const staticInfoThunk = createAsyncThunk(
 
     try {
       const { data } = await dynamicAPI.statisticInfo(date);
-      console.log(data);
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -62,6 +62,26 @@ export const updateImageThunk = createAsyncThunk(
 
     try {
       const { data } = await dynamicAPI.updateImage(file);
+      console.log(data);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getImageThunk = createAsyncThunk(
+  '/dynamic/flatImage',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistToken = state.auth.user.token;
+    if (persistToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
+    token.set(persistToken);
+    try {
+      const { data } = await dynamicAPI.getImage();
+      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
