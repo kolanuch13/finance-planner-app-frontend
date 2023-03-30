@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { NavLink, Outlet } from 'react-router-dom';
 import statisticsOperations from 'redux/statistics/statistics-operations';
 import { Calendar } from 'components/Calendar/Calendar';
+import css from './StatisticPage.module.css';
 
 const StatisticPageNav = () => {
   const dispatch = useDispatch();
@@ -23,11 +24,32 @@ const StatisticPageNav = () => {
 
   return (
     <>
-      <NavLink to="transactions" end>
-        Expenses
-      </NavLink>
-      <NavLink to="categories">Categories</NavLink>
-      <Calendar onChange={handleGetInfoPerMonth} />
+      <div className={css.navWrapper}>
+        <nav>
+          <div className={css.navThumb}>
+            <li>
+              <NavLink
+                to="transactions"
+                end
+                className={({ isActive }) => (isActive ? css.active : css.link)}
+              >
+                Expenses
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className={({ isActive }) => (isActive ? css.active : css.link)}
+                to="categories"
+              >
+                Categories
+              </NavLink>
+            </li>
+          </div>
+        </nav>
+        <div className={css.calendarWrapper}>
+          <Calendar onChange={handleGetInfoPerMonth} />
+        </div>
+      </div>
       <Outlet />
     </>
   );

@@ -74,7 +74,6 @@ const ExpensesList = () => {
   };
 
   if (transaction?.length === 0) return;
-  console.log(transaction);
 
   return (
     <>
