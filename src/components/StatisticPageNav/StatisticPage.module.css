@@ -13,25 +13,27 @@
 
 .link {
   display: block;
-  color: rgba(243, 243, 243, 0.4);
+  padding: 18px 19px 18px 20px;
+  font-family: 'Lato', sans-serif;
   font-weight: 600;
   font-size: 16px;
   line-height: 1.19;
-  padding: 18px 19px 18px 20px;
   border-top-right-radius: 16px;
   border-top-left-radius: 16px;
   background-color: rgba(31, 37, 52, 0.4);
+  color: rgba(243, 243, 243, 0.4);
 }
 
 .active {
   display: block;
+  padding: 18px 19px 18px 20px;
+  font-family: 'Lato', sans-serif;
   font-weight: 600;
   font-size: 16px;
   line-height: 1.19;
-  padding: 18px 19px 18px 20px;
   border-top-right-radius: 16px;
   border-top-left-radius: 16px;
-  color: rgba(243, 243, 243, 1);
-  background-color: rgba(37, 44, 65, 1);
   border-top: 1px solid rgb(58, 106, 245);
+  background-color: rgba(37, 44, 65, 1);
+  color: rgba(243, 243, 243, 1);
 }

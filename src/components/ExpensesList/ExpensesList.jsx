@@ -4,6 +4,7 @@ import ExpensesListItem from '../ExpensesListItem/ExpensesListItem';
 import statisticsOperations from '../../redux/statistics/statistics-operations';
 import { selectTransactions } from 'redux/statistics/statistics-selector';
 import getAllCategories from 'helpers/categories';
+import css from './ExpensesList.module.css';
 
 const ExpensesList = () => {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ const ExpensesList = () => {
 
     switch (name) {
       case 'category':
-        setCategory(value);
+        setCategory(value.toLowerCase());
         break;
       case 'sum':
         setSum(value);
@@ -53,10 +54,10 @@ const ExpensesList = () => {
 
     const item = transaction.find(item => id === item._id);
     setSum(() => Number(item.sum));
-    setCategory(() => item.category);
+    setCategory(() => item.category.toLowerCase());
     setComment(() => item.comment);
     setIdTransaction(() => item._id);
-    setCategoryType(() => item.categoryType);
+    setCategoryType(() => item.categoryType.toLowerCase());
   };
 
   const handleSubmit = e => {
@@ -77,7 +78,7 @@ const ExpensesList = () => {
 
   return (
     <>
-      <ul>
+      <ul className={css.transactionList}>
         {transaction &&
           transaction.map(({ _id: id, sum, comment, category, date }) => (
             <ExpensesListItem
