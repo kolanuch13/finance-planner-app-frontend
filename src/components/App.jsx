@@ -21,6 +21,8 @@ import ModalPopUp from './Modal/ModalPopUp';
 import StatisticPage from 'pages/StatisticPage/StatisticPage';
 import authOperations from 'redux/auth/auth-operations';
 import { useEffect } from 'react';
+import ExpensesList from './ExpensesList/ExpensesList';
+import CategoriesStatistic from './CategoriesStatistic/CategoriesStatistic';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -54,7 +56,10 @@ export const App = () => {
 
             <Route path="dynamics" element={<DynamicsPage />} />
 
-            <Route path="statistic" element={<StatisticPage />} />
+            <Route path="statistics" element={<StatisticPage />}>
+              <Route path="transactions" element={<ExpensesList />} />
+              <Route path="categories" element={<CategoriesStatistic />} />
+            </Route>
 
             <Route path="*" element={<div>Not Found Page</div>} />
           </Route>
@@ -87,7 +92,7 @@ export const App = () => {
       </Routes>
 
       {/* <ToggleLanguages />
-      <ExampleForToggleLanguages /> */}
+      <ExampleForToggleLanguages />  */}
     </>
   );
 };
