@@ -9,7 +9,7 @@ export const UserBar = () => {
 
   const navigate = useNavigate();
   const statisticsClick = () => {
-    navigate('/statistics', { replace: true });
+    navigate('/statistic', { replace: true });
   };
 
   return (

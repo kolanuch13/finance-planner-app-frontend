@@ -16,7 +16,6 @@ const ExpensesList = () => {
   const [allCategory, setAllCategory] = useState([]);
   const [idTransaction, setIdTransaction] = useState('');
   const currentLang = localStorage.getItem('i18nextLng');
-
   useEffect(() => {
     currentLang === 'ru-UA'
       ? getAllCategories().then(res =>

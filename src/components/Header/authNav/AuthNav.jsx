@@ -11,7 +11,7 @@ function AuthMenu() {
           className={({ isActive }) =>
             isActive ? css.NavLinkActive : css.NavLink
           }
-          to="/plan"
+          to="/personal-plan"
         >
           Personal plan
         </NavLink>
@@ -19,7 +19,7 @@ function AuthMenu() {
           className={({ isActive }) =>
             isActive ? css.NavLinkActive : css.NavLink
           }
-          to="/cash-flow"
+          to="/cashflow"
         >
           Cashflow
         </NavLink>

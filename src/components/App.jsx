@@ -29,12 +29,12 @@ export const App = () => {
           <Route path="verify/:verificationToken" element={<Verified />} />
           <Route path="/" element={<PrivateRoute />}>
             <Route path="personal-plan" element={<div>Personal</div>} />
-            <Route path="cash-flow" element={<div>ExpensesPage</div>} />
+            <Route path="cashflow" element={<div>ExpensesPage</div>} />
 
             <Route path="dynamics" element={<DynamicsPage />} />
       
 
-            <Route path="expenses" element={<StatisticPage />} />
+            <Route path="statistic" element={<StatisticPage />} />
 
             <Route path="*" element={<div>Not Found Page</div>} />
           </Route>
