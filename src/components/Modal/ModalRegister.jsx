@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { RotatingLines } from 'react-loader-spinner';
 import css from './Modals.module.css';
+import { useTranslation } from 'react-i18next';
 import { BsEyeSlashFill } from 'react-icons/bs';
 import { BsEye } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,6 +14,7 @@ const emailRegexp =
   /^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$/;
 
 export const ModalRegister = () => {
+  const { t } = useTranslation();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,6 +23,7 @@ export const ModalRegister = () => {
   const [isLookPwd, setIsLookPwd] = useState(false);
   const [isSendEmail, setIsSendEmail] = useState(false);
   const isLoading = useSelector(selectIsLoading);
+  const [isInUse, setIsInUse] = useState('');
 
   const {
     register,
@@ -45,10 +48,14 @@ export const ModalRegister = () => {
     dispatch(authOperations.register(data))
       .unwrap()
       .then(res => {
+        console.log(25)
         setIsSendEmail(prev => !prev);
         dispatch(saveCredentials(data));
       })
-      .catch(error => console.log(error));
+      .catch(error => {
+        setIsInUse(t('registration.emailInUse'));
+        console.log(error);
+      });
   };
 
   const handleToggleEye = () => {
@@ -58,24 +65,24 @@ export const ModalRegister = () => {
 
   return !isSendEmail ? (
     <div className={css.box}>
-      <p className={css.title}>Registration</p>
+      <p className={css.title}>{t('registration.title')}</p>
       <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
         <label>
-          <span className={css.label}>Name:</span>
+          <span className={css.label}>{t('registration.name')}</span>
           <input
             {...register('name', {
-              required: 'name is required',
+              required: t('registration.requiredName'),
               minLength: {
                 value: 3,
-                message: 'length must be min 3',
+                message: t('registration.nameStandartMin'),
               },
               maxLength: {
                 value: 30,
-                message: 'length must be max 30',
+                message: t('registration.nameStandartMax'),
               },
             })}
             className={css.input}
-            placeholder="Enter your name"
+            placeholder={t('registration.placeholderName')}
             type="text"
             name="name"
             onChange={handleChange}
@@ -87,17 +94,17 @@ export const ModalRegister = () => {
           </div>
         </label>
         <label>
-          <span className={css.label}>Email:</span>
+          <span className={css.label}>{t('registration.email')}</span>
           <input
             {...register('email', {
-              required: 'email is required',
+              required: t('registration.requiredEmail'),
               pattern: {
                 value: emailRegexp,
-                message: 'invalid email address',
+                message: t('registration.emailStandart'),
               },
             })}
             className={css.input}
-            placeholder="Enter your email"
+            placeholder={t('registration.placeholderEmail')}
             type="text"
             name="email"
             onChange={handleChange}
@@ -107,18 +114,19 @@ export const ModalRegister = () => {
           <div className={css.error}>
             {errors?.email && <p>{errors?.email?.message || 'Error'}</p>}
           </div>
+          <div className={css.error}>{isInUse}</div>
         </label>
         <label className={css.labelWrapper}>
-          <span className={css.label}>Password:</span>
+          <span className={css.label}>{t('registration.password')}</span>
           <input
             {...register('password', {
-              required: 'password is required',
+              required: t('registration.requiredPassword'),
               minLength: {
                 value: 6,
-                message: 'length must be min 6',
+                message: t('registration.passwordStandart'),
               },
             })}
-            placeholder="Create password"
+            placeholder={t('registration.placeholderPassword')}
             className={css.input}
             type={typeInput ? 'password' : 'text'}
             name="password"
@@ -143,7 +151,7 @@ export const ModalRegister = () => {
               visible={true}
             />
           ) : (
-            'Sign Up'
+            t('registration.buttonSignUp')
           )}
         </button>
       </form>
@@ -151,9 +159,12 @@ export const ModalRegister = () => {
   ) : (
     <div className={css.box}>
       <p className={css.wasSendTitle}>
-        Verification link was send to email {email}
+        {t('verificationSend.verificationSendFirst')}{' '}
+        <span className={css.email}>{email}</span>
       </p>
-      <p className={css.wasSendTitle}>Check it to continue registration...</p>
+      <p className={css.wasSendTitle}>
+        {t('verificationSend.verificationSendSecond')}
+      </p>
     </div>
   );
 };

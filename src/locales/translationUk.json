@@ -16,7 +16,18 @@
     "placeholderEmail": "Введіть свою пошту",
     "password": "Пароль",
     "placeholderPassword": "Введіть свій пароль",
-    "buttonSignUp": "Зареєструватись"
+    "buttonSignUp": "Зареєструватись",
+    "errorEmail": "Невірна пошта!",
+    "passwordError": "Невірний пароль!",
+    "requiredName": "Поле імені обов'язкове",
+    "requiredEmail": "Поле пошти обов'язкове",
+    "requiredPassword": "Поле пороля обов'язкове",
+    "nameStandartMin": "Ім'я має бути мінімум 3 символа",
+    "nameStandarMax": "Ім'я має бути максимум 30 символів",
+    "emailStandart": "Невірний формат пошти",
+    "passwordStandart": "Пароль має бути мінімум 6 символів",
+    "invalidPassword": "Неправильний пароль",
+    "emailInUse": "Ця пошта вже використовується"
   },
   "login": {
     "title": "Вхід",
@@ -26,7 +37,20 @@
     "placeholderPassword": "Введіть пароль",
     "buttonSignIn": "Вхід",
     "errorEmail": "Невірна пошта!",
-    "passwordError": "Невірний пароль!"
+    "passwordError": "Невірний пароль!",
+    "requiredEmail": "Поле пошти обов'язкове",
+    "requiredPassword": "Поле пороля обов'язкове",
+    "emailStandart": "Невірний формат пошти",
+    "passwordStandart": "Пароль має бути мінімум 6 символів",
+    "invalidPassword": "Неправильний пароль"
+  },
+  "verificationSend": {
+    "verificationSendFirst": "Лист з підтвердженням був надісланий на ",
+    "verificationSendSecond": "Перевірте пошту для завершення реєстрації..."
+  },
+  "verifiedSuccess": {
+    "verifiedSuccessFirst": "Акаунт був успішно верифікований.",
+    "verifiedSuccessSecond": "Ви будете автоматично перенаправлені через "
   },
   "logOut": {
     "logOutButton": "Вийти"

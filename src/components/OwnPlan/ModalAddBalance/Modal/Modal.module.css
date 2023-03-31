@@ -1,10 +1,26 @@
-.box {
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 500;
+}
+
+.containerModal {
   background-color: #191d28;
   box-shadow: 0px 24px 38px rgba(0, 0, 0, 0.14),
     0px 9px 46px rgba(0, 0, 0, 0.12), 0px 11px 15px rgba(0, 0, 0, 0.2);
   border-radius: 18px;
-  padding: 32px 50px;
   user-select: none;
+  position: relative;
+  padding: 58px 34px 40px 34px;
 }
 
 .form {
@@ -12,14 +28,17 @@
   flex-direction: column;
   row-gap: 24px;
 }
-.title {
-  font-size: 20px;
-  line-height: 1;
-  font-weight: 600;
+
+.btnCloseModal {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
   color: #f3f3f3;
-  font-family: 'Lato', sans-serif;
-  margin-bottom: 44px;
-  text-align: center;
 }
 
 .label {
@@ -43,32 +62,29 @@
   background-color: transparent;
   outline: none;
   width: 100%;
+  margin-bottom: 32px;
 }
-.input[type='password']::-ms-reveal,
-.input[type='password']::-ms-clear {
-  display: none;
+
+.btnContainer {
+  display: flex;
+  justify-content: space-around;
+  column-gap: 14px;
 }
 
 .btn {
+  width: 150px;
   margin-top: 12px;
-  border-color: #3a6af5;
   background-color: #3a6af5;
   border-radius: 60px;
   color: #f3f3f3;
   padding: 12px 10px;
   cursor: pointer;
   max-width: 300px;
+  border: none;
 }
 .labelWrapper {
   position: relative;
   max-width: 300px;
-}
-.eye {
-  color: #f3f3f3;
-  cursor: pointer;
-  position: absolute;
-  top: 36px;
-  right: 12px;
 }
 
 @media screen and (max-width: 767px) {
@@ -100,12 +116,6 @@
     border: 1px solid rgba(243, 243, 243, 0.4);
     color: #f3f3f3;
   }
-  .btn {
-    background-color: #f3f3f3;
-    color: #4770e4;
-    font-weight: 700;
-    line-height: 1.43;
-  }
 }
 
 .wasSendTitle {
@@ -122,9 +132,5 @@ color: #FF2E00;
 
 .error_border {
   margin-top: 0;
-  outline: 1px solid #FF2E00; 
-}
-
-.email {
-  font-weight: 700;
+  outline: 1px solid #FF2E00;
 }

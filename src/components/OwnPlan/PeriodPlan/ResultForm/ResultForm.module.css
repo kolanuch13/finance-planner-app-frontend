@@ -1,0 +1,91 @@
+.wrapper {
+  width: 770px;
+  padding: 24px 66px;
+
+  background-color: var(--bg-dark);
+  border-radius: 16px;
+}
+
+.title {
+  margin-bottom: 14px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  color: var(--color-light);
+}
+
+.form {
+  display: flex;
+  align-items: flex-start;
+}
+
+.label {
+  width: 183px;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 6px;
+}
+
+.label:first-child {
+  margin-right: 18px;
+}
+
+.label:last-child {
+  margin-right: 54px;
+}
+
+.label.under {
+  flex-direction: column-reverse;
+}
+
+.labelTitle {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--secondary-color-light);
+}
+
+.input {
+  padding: 14px 0px 14px 24px;
+
+  width: 100%;
+  height: 46px;
+
+  border: 1px solid var(--secondary-color-light);
+  border-radius: 28px;
+
+  background: none;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--color-light);
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input:disabled {
+  background: none;
+}
+
+.btnWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 14px;
+  margin-left: auto;
+}
+
+.btnWrapper.btnReverse {
+  flex-direction: column-reverse;
+}
+
+.btnSubmit {
+  align-self: flex-end;
+}
+
+.btnWrapper.btnReverse.under {
+  align-self: flex-start;
+}

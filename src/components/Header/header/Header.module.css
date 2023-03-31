@@ -45,6 +45,7 @@
     display: block;
   }
   .authMenu {
+    width: 550px;
     display: block;
   }
 }
