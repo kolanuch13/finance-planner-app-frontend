@@ -3,6 +3,7 @@ import DatePicker from 'react-datepicker';
 import './date.css';
 import { AiOutlineCalendar } from 'react-icons/ai';
 import { IoIosArrowDown } from 'react-icons/io';
+import { useTranslation } from 'react-i18next';
 
 const uk = {
   format: 'MMMM yyyy',
@@ -42,9 +43,11 @@ const uk = {
 };
 
 export const Calendar = ({ onChange }) => {
+  const {
+    i18n: { language },
+  } = useTranslation();
   const [startDate, setStartDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
-  const [lang, setLang] = useState('en');
 
   const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
     <button className="custom-input" onClick={onClick} ref={ref}>
@@ -57,26 +60,10 @@ export const Calendar = ({ onChange }) => {
     </button>
   ));
 
-  const handleStorageChange = event => {
-    if (event.key === 'i18nextLng') {
-      setLang(event.newValue);
-    }
-  };
-
   useEffect(() => {
-    // onChange(startDate);
-    const storeLang = localStorage.getItem('i18nextLng');
-    if (storeLang) {
-      setLang(storeLang);
-    }
-
-    window.addEventListener('storage', handleStorageChange);
-
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-    };
+    onChange(startDate);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [startDate, onChange]);
+  }, [startDate]);
 
   return (
     <DatePicker
@@ -88,7 +75,7 @@ export const Calendar = ({ onChange }) => {
       customInput={<ExampleCustomInput />}
       onCalendarOpen={() => setIsOpen(!isOpen)}
       onCalendarClose={() => setIsOpen(!isOpen)}
-      locale={lang === 'ua' ? uk : 'en'}
+      locale={language === 'ua' ? uk : 'en'}
     />
   );
 };
