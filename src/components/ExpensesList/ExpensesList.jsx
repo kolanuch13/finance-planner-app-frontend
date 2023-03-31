@@ -16,7 +16,9 @@ const ExpensesList = () => {
   const [allCategory, setAllCategory] = useState([]);
   const [idTransaction, setIdTransaction] = useState('');
   const currentLang = localStorage.getItem('i18nextLng');
+
   useEffect(() => {
+    const period = JSON.parse(localStorage.getItem('selectedPeriod'));
     currentLang === 'ru-UA'
       ? getAllCategories().then(res =>
           setAllCategory(res.availableCategoriesEn)
@@ -24,8 +26,7 @@ const ExpensesList = () => {
       : getAllCategories().then(res =>
           setAllCategory(res.availableCategoriesUa)
         );
-
-    dispatch(statisticsOperations.expenseStatistic());
+    dispatch(statisticsOperations.expenseStatistic(period));
   }, [currentLang, dispatch]);
 
   const handleChange = e => {
@@ -73,6 +74,7 @@ const ExpensesList = () => {
   };
 
   if (transaction?.length === 0) return;
+  console.log(transaction);
 
   return (
     <>

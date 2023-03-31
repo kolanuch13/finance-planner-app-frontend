@@ -86,7 +86,9 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  width: 197px;
+  /* width: 197px; */
+  width: max-content;
+  padding: 8px 16px;
   height: 34px;
   /* left: 7%;
   top: 94%; */
@@ -129,8 +131,10 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  width: 197px;
+  /* width: 197px; */
+  width: max-content;
   height: 34px;
+  padding: 8px 16px;
   /* left: 35%;
   top: 110%; */
   left: 130px;
@@ -170,7 +174,8 @@
   font-size: 28px;
   line-height: 28px;
   letter-spacing: -0.02em;
-  width: 205px;
+  /* width: 205px; */
+  width: max-content;
   height: 48px;
   background-color: #3a6af5;
   border-radius: 60px;
@@ -178,7 +183,8 @@
 }
 
 .signGoogle {
-  width: 134px;
+  /* width: 134px; */
+  width: max-content;
   height: 32px;
   padding: 4.5px 14px;
   display: flex;
@@ -263,24 +269,24 @@
   .EllipseBigTablet {
     display: block;
     position: absolute;
-    right: 25%;
+    right: 15%;
     bottom: 45%;
-    right: 130px;
-    bottom: 400px;
+    /* right: 130px;
+    bottom: 400px; */
   }
   .EllipseSmallTablet {
     display: block;
     position: absolute;
-    right: 40%;
+    right: 35%;
     bottom: 58%;
-    right: 260px;
-    bottom: 540px;
+    /* right: 260px;
+    bottom: 540px; */
   }
 
   .sloganContainer {
     left: 165px;
   top: 815px;
- 
+  padding: 16px 24px;
     /* left: 15%;
     top: 73%; */
   }
@@ -288,6 +294,7 @@
   .sloganContainerSecond {
     left: 353px;
   top: 935px;
+  padding: 16px 24px;
     /* left: 45%;
     top: 87%; */
   }
@@ -302,14 +309,14 @@
   }
   .mainLogo {
     display: inline-flex;
-    width: 330px;
+    /* width: 330px; */
     padding: 10px 24px;
     font-weight: 500;
     font-size: 48px;
     margin-right: 10px;
   }
   .signGoogle {
-    width: 167px;
+    /* width: 167px; */
     gap: 8px;
     padding: 11px 18px;
   }
@@ -411,13 +418,13 @@
     padding-top: 142px;
   }
   .mainLogo {
-    width: 330px;
+    /* width: 330px; */
     padding: 10px 24px;
     font-weight: 500;
     font-size: 48px;
   }
   .signGoogle {
-    width: 167px;
+    /* width: 167px; */
     gap: 8px;
     padding: 11px 18px;
   }
