@@ -83,8 +83,9 @@
 
 .image {
     display: block;
-    width: 343px;
-    height: 260px;
+    min-width: 343px;
+    min-height: 260px;
+    width: 100%;
     margin-bottom: 8px;
 }
 
