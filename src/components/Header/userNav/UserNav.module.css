@@ -3,6 +3,8 @@
 }
 
 .login {
+  width: 71px;
+  height: 30px;
   font-family: 'Lato';
   font-style: normal;
   font-weight: 700;
@@ -24,6 +26,8 @@
 }
 
 .register {
+  width: 100px;
+  height: 30px;
   font-family: 'Lato';
   font-style: normal;
   font-weight: 700;
@@ -46,6 +50,8 @@
 
 @media screen and (min-width: 768px) {
   .login {
+    width: 88px;
+    height: 40px;
     font-size: 14px;
     line-height: 1.43;
     padding: 10px 24px;
@@ -58,6 +64,8 @@
   }
 
   .register {
+    width: 132px;
+    height: 40px;
     font-size: 14px;
     line-height: 1.43;
     padding: 10px 28px;
