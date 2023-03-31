@@ -8,7 +8,7 @@ export const UserBar = () => {
 
   const navigate = useNavigate();
   const statisticsClick = () => {
-    navigate('/expenses', { replace: true });
+    navigate('/statistics/transactions', { replace: true });
   };
 
   return (

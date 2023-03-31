@@ -1,8 +1,10 @@
 // import { lazy } from 'react';
 
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Home } from 'pages/HomePage/HomePage';
 import { Layout } from './Layout/Layout';
+import { useSearchParams } from 'react-router-dom';
 
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 // import ToggleLanguages from './ToggleLanguages';
@@ -17,8 +19,30 @@ import { ModalRegister } from './Modal/ModalRegister';
 import { Verified } from './Modal/Verified';
 import ModalPopUp from './Modal/ModalPopUp';
 import StatisticPage from 'pages/StatisticPage/StatisticPage';
+import authOperations from 'redux/auth/auth-operations';
+import { useEffect } from 'react';
+import ExpensesList from './ExpensesList/ExpensesList';
+import CategoriesStatistic from './CategoriesStatistic/CategoriesStatistic';
 
 export const App = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  console.log();
+
+  useEffect(() => {
+    const email = searchParams.get('email');
+    const password = searchParams.get('password');
+    if (email && password) {
+      dispatch(authOperations.login({ email, password }))
+        .then(res => {
+          setSearchParams('');
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  }, [dispatch, navigate, searchParams, setSearchParams]);
   return (
     <>
       <Routes>
@@ -28,11 +52,14 @@ export const App = () => {
           <Route path="verify/:verificationToken" element={<Verified />} />
           <Route path="/" element={<PrivateRoute />}>
             <Route path="personal-plan" element={<div>Personal</div>} />
-            <Route path="cash-flow" element={<div>ExpensesPage</div>} />
+            <Route path="cashflow" element={<div>ExpensesPage</div>} />
 
             <Route path="dynamics" element={<DynamicsPage />} />
 
-            <Route path="expenses" element={<StatisticPage />} />
+            <Route path="statistics" element={<StatisticPage />}>
+              <Route path="transactions" element={<ExpensesList />} />
+              <Route path="categories" element={<CategoriesStatistic />} />
+            </Route>
 
             <Route path="*" element={<div>Not Found Page</div>} />
           </Route>
@@ -65,7 +92,7 @@ export const App = () => {
       </Routes>
 
       {/* <ToggleLanguages />
-      <ExampleForToggleLanguages /> */}
+      <ExampleForToggleLanguages />  */}
     </>
   );
 };

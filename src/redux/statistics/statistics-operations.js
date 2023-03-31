@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import sіtatisticsAPI from '../../services/sіtatisticsAPI';
+import statisticsAPI from 'services/statisticsAPI';
+const period = JSON.parse(localStorage.getItem('selectedPeriod'));
 
 export const token = {
   set(token) {
@@ -9,15 +10,6 @@ export const token = {
   unset() {
     axios.defaults.headers.common.Authorization = '';
   },
-};
-
-export const getAllCategory = async () => {
-  try {
-    const { data } = await axios('/category');
-    return data;
-  } catch (error) {
-    console.log(error.message);
-  }
 };
 
 export const categoryTypeStatistic = createAsyncThunk(
@@ -30,7 +22,7 @@ export const categoryTypeStatistic = createAsyncThunk(
     }
     token.set(persistToken);
     try {
-      const { data } = await sіtatisticsAPI.categoryTypeStatistic();
+      const { data } = await statisticsAPI.categoryTypeStatistic();
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -40,7 +32,7 @@ export const categoryTypeStatistic = createAsyncThunk(
 
 export const expenseStatistic = createAsyncThunk(
   '/statistic/expense',
-  async (_, thunkAPI) => {
+  async (period, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistToken = state.auth.user.token;
     if (persistToken === null) {
@@ -48,8 +40,27 @@ export const expenseStatistic = createAsyncThunk(
     }
     token.set(persistToken);
     try {
-      const { data } = await sіtatisticsAPI.expenseStatistic();
+      const { data } = await statisticsAPI.expenseStatistic(period);
       return data.result;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const categoryStatistic = createAsyncThunk(
+  '/statistic/categories',
+  async (period, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistToken = state.auth.user.token;
+    if (persistToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
+    token.set(persistToken);
+    try {
+      const { data } = await statisticsAPI.categoriesStatistic(period);
+
+      return data.calculatedResult;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -67,11 +78,11 @@ export const updateTransaction = createAsyncThunk(
     token.set(persistToken);
 
     try {
-      const response = await sіtatisticsAPI.updateTransaction(
+      const response = await statisticsAPI.updateTransaction(
         credention.idTransaction,
         credention.data
       );
-      thunkAPI.dispatch(expenseStatistic());
+      thunkAPI.dispatch(expenseStatistic(period));
       return response.data;
     } catch (error) {
       console.log(error.message);
@@ -90,8 +101,8 @@ export const removeExpense = createAsyncThunk(
     }
     token.set(persistToken);
     try {
-      await sіtatisticsAPI.removeExpense(transactionId);
-      thunkAPI.dispatch(expenseStatistic());
+      await statisticsAPI.removeExpense(transactionId);
+      thunkAPI.dispatch(expenseStatistic(period));
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -101,6 +112,7 @@ export const removeExpense = createAsyncThunk(
 const statisticsOperations = {
   categoryTypeStatistic,
   expenseStatistic,
+  categoryStatistic,
   removeExpense,
   updateTransaction,
 };

@@ -34,7 +34,7 @@ function MobileTabletMenu({ closeMenu }) {
             className={({ isActive }) =>
               isActive ? css.NavLinkActive : css.NavLink
             }
-            to="/plan"
+            to="/personal-plan"
           >
             {t('header.personalPlan')}
           </NavLink>
@@ -42,7 +42,7 @@ function MobileTabletMenu({ closeMenu }) {
             className={({ isActive }) =>
               isActive ? css.NavLinkActive : css.NavLink
             }
-            to="/cash-flow"
+            to="/cashflow"
           >
             {t('header.cashFlow')}
           </NavLink>
