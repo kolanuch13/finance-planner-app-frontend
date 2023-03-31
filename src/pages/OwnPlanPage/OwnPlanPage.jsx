@@ -17,9 +17,11 @@ export const OwnPlanPage = () => {
   const toggleModal = useCallback(() => {
     setIsModalOpen((p) => (p === false && isExistBalance ? p : !p));
   }, [isExistBalance]);
-
+console.log(newPlanData)
   const handleSubmit = (e) => {
-    e.preventDefault();
+        e.preventDefault();
+console.log(newPlanData)
+
     !newPlanData
       ? dispatch(addPersonalPlanAPI(newPlanData))
       : dispatch(currentPersonalPlanAPI(newPlanData));
