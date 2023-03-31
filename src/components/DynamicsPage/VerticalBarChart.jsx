@@ -46,7 +46,7 @@ const VerticalBarChart = () => {
       className={css.barStyle}
     >
       <Legend
-        // className={css.legendStyle}
+        className={css.legendStyle}
         margin={{ top: 70, left: 0, right: 10, bottom: 80 }}
         align="left"
         verticalAlign="top"

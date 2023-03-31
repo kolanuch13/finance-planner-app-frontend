@@ -70,7 +70,7 @@ code {
     monospace;
 }
 
-*{
+* {
   padding: 0;
   margin: 0;
 }
@@ -93,3 +93,16 @@ code {
 ::-webkit-scrollbar-thumb:hover {
   background: #2f5ce6;
 }
+
+/* .recharts-surface { */
+/* margin-left: -40px; */
+/* display: flex; */
+/* row-gap: 30px; */
+/* justify-content: space-around; */
+/* } */
+/* ----------------------------------------------- */
+/* .recharts-default-legend {
+  display: flex;
+  margin-left: 100px;
+  column-gap: 30px;
+} */

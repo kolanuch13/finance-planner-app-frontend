@@ -2,8 +2,9 @@
   font-size: 12px;
   line-height: 1.16;
   font-weight: 400;
-  /* text-transform: uppercase; */
   /* margin-top: 100px; */
   /* padding-top: 55px; */
+  text-transform: capitalize;
+  display: inline-block;
   margin-bottom: 50px;
 }
