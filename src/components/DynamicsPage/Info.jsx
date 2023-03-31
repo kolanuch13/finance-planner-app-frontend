@@ -1,14 +1,17 @@
 import css from './Info.module.css';
 import LinearProgress from '@mui/joy/LinearProgress';
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
+import { useGetYearWord, useGetMonthWord } from 'helpers/getCaseWords';
 
 import { sprite } from '../../images/DynamicPage';
 import { useMediaQuery } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { dynamicSelectors } from '../../redux/dynamics';
-
 import { dynamicOperation } from '../../redux/dynamics';
 
 const Info = () => {
+  const { t } = useTranslation();
   const mobile = useMediaQuery('(max-width: 767px)');
   const tablet = useMediaQuery('(max-width:1279px) and (min-width: 768px) ');
   const desktop = useMediaQuery('(min-width: 1280px)');
@@ -37,26 +40,32 @@ const Info = () => {
       <div className={css.infoBlock}>
         <div className={css.statistis}>
           <p className={css.timeIsLeft}>
-            After {timeIsLeft?.years} years
-            {timeIsLeft?.months} month
+            {t('dynamics.after')} {timeIsLeft?.years}{' '}
+            {useGetYearWord(timeIsLeft?.years)} {timeIsLeft?.months}{' '}
+            {useGetMonthWord(timeIsLeft?.months)}
           </p>
           <div className={css.statistisBox}>
             <div className={css.statisticWrapper}>
-              <p className={css.statTitle}>Accumulated, &#37;:</p>
+              <p className={css.statTitle}>
+                {t('dynamics.accumulatedItem')} &#x20B4;
+              </p>
               <p className={css.statSum}>{acumulatedAsPercentage}&#37;</p>
             </div>
             <div className={css.statisticWrapper}>
-              <p className={css.statTitle}>Accumulated, UAH:</p>
+              <p className={css.statTitle}>{t('dynamics.accumulated')}, UAH:</p>
               <p className={css.statSum}>{acumulatedMoney} &#8372;</p>
             </div>
             <div className={css.statisticWrapper}>
-              <p className={css.statTitle}>And this:</p>
-              <p className={css.statSum}>{acumulatedSqMeters} кв. м</p>
+              <p className={css.statTitle}>{t('dynamics.andThis')}</p>
+              <p className={css.statSum}>
+                {acumulatedSqMeters} {t('dynamics.sqM')}
+              </p>
             </div>
           </div>
           <div className={css.progressBarBox}>
             <p className={css.progressBarTitle}>
-              {acumulatedSqMeters} out of {footage} sq.m accumulated
+              {acumulatedSqMeters} {t('dynamics.outOf')} {footage}{' '}
+              {t('dynamics.sqMetersAccumulated')}
             </p>
             {mobile && (
               <LinearProgress
@@ -92,7 +101,7 @@ const Info = () => {
               className={css.image}
             />
             <label htmlFor="changeFlatImage" className={css.changeImageLabel}>
-              Change image
+              {t('dynamics.changeImage')}
             </label>
             <input
               onChange={handleSubmitImage}

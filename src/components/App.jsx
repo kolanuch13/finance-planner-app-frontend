@@ -7,8 +7,8 @@ import { Layout } from './Layout/Layout';
 import { useSearchParams } from 'react-router-dom';
 
 import PrivateRoute from './PrivateRoute/PrivateRoute';
-// import ToggleLanguages from './ToggleLanguages';
-// import ExampleForToggleLanguages from './ExampleForToggleLanguages';
+import ToggleLanguages from './ToggleLanguages';
+import ExampleForToggleLanguages from './ExampleForToggleLanguages';
 import PublicRoute from './PublicRoute/PublicRoute';
 
 import DynamicsPage from '../pages/DynamicsPage/DynamicsPage';
@@ -19,7 +19,9 @@ import { ModalRegister } from './Modal/ModalRegister';
 import { Verified } from './Modal/Verified';
 import ModalPopUp from './Modal/ModalPopUp';
 import StatisticPage from 'pages/StatisticPage/StatisticPage';
+
 import { OwnPlanPage } from 'pages/OwnPlanPage/OwnPlanPage';
+
 import ExpensesList from './ExpensesList/ExpensesList';
 import CategoriesStatistic from './CategoriesStatistic/CategoriesStatistic';
 import authOperations from 'redux/auth/auth-operations';
@@ -91,8 +93,8 @@ export const App = () => {
         </Route>
       </Routes>
 
-      {/* <ToggleLanguages />
-      <ExampleForToggleLanguages />  */}
+      <ToggleLanguages />
+      <ExampleForToggleLanguages />
     </>
   );
 };
