@@ -25,7 +25,6 @@ export const OwnPlanPage = () => {
       : dispatch(currentPersonalPlanAPI(newPlanData));
   };
 
-
   useEffect(() => {
     !isExistBalance && toggleModal();
   }, [isExistBalance, toggleModal]);

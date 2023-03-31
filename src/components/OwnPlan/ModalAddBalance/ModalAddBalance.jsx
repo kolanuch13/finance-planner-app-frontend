@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { balance } from "redux/auth/auth-selectors";
-import {balanceOperation} from "redux/auth/auth-operations";
+import {balance} from "redux/auth/auth-operations";
 import Modal from './Modal/Modal';
 
 const ModalAddBalance = ({ closeModal }) => {
   const dispatch = useDispatch();
   const [updateBalance, setUpdateBalance] = useState(0);
-  const newBalance = useSelector(balance);
+  // const newBalance = useSelector(balance);
   const isLoading = useSelector((state) => state.isLoading);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(balanceOperation(Number(updateBalance)));
+    dispatch(balance(Number(updateBalance)));
   };
 
-  useEffect(() => {
-    newBalance && closeModal();
-  }, [newBalance, closeModal]);
+  // useEffect(() => {
+  //   newBalance && closeModal();
+  // }, [newBalance, closeModal]);
 
   return (
     !isLoading && (

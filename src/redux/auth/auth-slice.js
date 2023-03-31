@@ -27,7 +27,7 @@ const authSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-    // Register=====================================
+      // Register=====================================
       .addCase(authOperations.register.pending, (state, _) => {
         state.isLoading = true;
       })
@@ -68,14 +68,14 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
       })
       // Balance======================================
-      .addCase(authOperations.balanceOperation.pending, state => {
+      .addCase(authOperations.balance.pending, state => {
         state.isLoading = true;
       })
-      .addCase(authOperations.balanceOperation.fulfilled, (state, action) => {
+      .addCase(authOperations.balance.fulfilled, (state, action) => {
         state.balance = action.payload.balance;
         state.isLoading = false;
       })
-      .addCase(authOperations.balanceOperation.rejected, (state, action) => {
+      .addCase(authOperations.balance.rejected, (state, action) => {
         state.error = action.payload;
         state.isLoading = false;
       })
