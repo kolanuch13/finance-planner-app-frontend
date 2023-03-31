@@ -5,9 +5,11 @@ import { useNavigate } from 'react-router';
 import { useLocation } from 'react-router-dom';
 import authOperations from 'redux/auth/auth-operations';
 import { getUser } from 'redux/auth/auth-selectors';
+import { useTranslation } from 'react-i18next';
 import css from './Verified.module.css';
 
 export const Verified = props => {
+  const { t } = useTranslation();
   const location = useLocation();
   const verificationToken = location.pathname.split('/')[2];
   const [sec, setSec] = useState(10);
@@ -44,8 +46,10 @@ export const Verified = props => {
   return (
     <div className={css.verifiedBox}>
       <div className={css.wrapper}>
-        <p> &#9989; Email was verified successfully</p>
-        <p>You will automatically log in and redirect in {sec}...</p>
+        <p> &#9989; {t('verifiedSuccess.verifiedSuccessFirst')}</p>
+        <p>
+          {t('verifiedSuccess.verifiedSuccessSecond')} {sec}...
+        </p>
       </div>
     </div>
   );
