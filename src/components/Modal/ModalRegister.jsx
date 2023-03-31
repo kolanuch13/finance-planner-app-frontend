@@ -48,6 +48,7 @@ export const ModalRegister = () => {
     dispatch(authOperations.register(data))
       .unwrap()
       .then(res => {
+        console.log(25)
         setIsSendEmail(prev => !prev);
         dispatch(saveCredentials(data));
       })
