@@ -1,19 +1,35 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { balance } from 'redux/auth/auth-selectors';
-import cashflowOperations from 'redux/cashflowPage/cashflowPage-operations';
 import css from './TransactionDataList.module.css';
-// import Select from 'react-select'
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
-import * as icon from 'react-icons/md';
+import getAllCategories from '../../../helpers/category'
+import {MdSetMeal,
+  MdCheckroom, 
+  MdRestaurant, 
+  MdMedicalServices,
+  MdSpa,
+  MdCommute,
+  MdHouse,
+  MdMiscellaneousServices
+} from 'react-icons/md';
 
 export const TransactionDataList = ({ setFormData, formData }) => {
   const userBalance = useSelector(balance);
   const dispatch = useDispatch();
   const [category, setCategory] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState();
-
+  const currentLang = localStorage.getItem('i18nextLng')
+  const style = { color: '#3A6AF5', size: '15px' }
+  const icons = [
+    <MdSetMeal style={style}/>, 
+    <MdCheckroom style={style}/>, 
+    <MdRestaurant style={style}/>, 
+    <MdMedicalServices style={style}/>,
+    <MdSpa style={style}/>,
+    <MdCommute style={style}/>,
+    <MdHouse style={style}/>,
+    <MdMiscellaneousServices style={style}/>
+  ]
   const handleChange = e => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -22,22 +38,31 @@ export const TransactionDataList = ({ setFormData, formData }) => {
     }));
   };
 
-  useEffect(() => {dispatch(cashflowOperations.getCategories())
-    .unwrap()
-    .then(response => {
-      response.data.availableCategoriesEn.map(item => {
-        return setCategory((oldArray) => {
-            return [...oldArray, {
-              value: item.label, 
-              label: item.label, 
-              image: item.image,
-            }]
+  const handlerToggler = (e) => {
+    e.currentTarget.classList.toggle(css.dropdownActive)
+  }
+
+  const handlerCategory = (e) => {
+    setSelectedCategory(e.target.textContent)
+  }
+
+  useEffect(() => {
+    currentLang === 'ru-UA'
+    ? category.length || getAllCategories()
+        .then(res => res.availableCategoriesEn)
+        .then(list => {
+          setCategory(list)
+          setSelectedCategory(list[list.length-1])
         })
-    })
-      console.log(category[category.length-1]);
-    })
-  .catch(error => console.error(error))}, [])
-    
+        .catch(error => console.error(error))
+    : category.length || getAllCategories()
+        .then(res => res.availableCategoriesUa)
+        .then(list => {
+          setCategory(list)
+          setSelectedCategory(list[list.length-1])
+        })
+        .catch(error => console.error(error))
+}, [category, currentLang, dispatch])
 
   return (
     <>
@@ -46,7 +71,7 @@ export const TransactionDataList = ({ setFormData, formData }) => {
           From account
         </label>
         <input
-        className={css.input}
+          className={css.input}
           id="balance"
           type="text"
           value={userBalance}
@@ -58,57 +83,27 @@ export const TransactionDataList = ({ setFormData, formData }) => {
         <label htmlFor="category" className={css.label}>
           Per category
         </label>
-        <Select
-          variant="standard"
-          labelId="category"
-          id="category"
-          value={selectedCategory}
-          onChange={e=>setSelectedCategory(e.target.value)}
-          defaultValue={category[category.length-1]}
-          sx={{
-            border: 'none',
-            width: '100%',
-            margin: '0',
-            padding: '0',
-            color: '#F3F3F3',
-            fontFamily: 'Lato',
-            fontSize: '16px',
-            lineHeight: '1.19',
-            backgroundColor: 'none'
-          }}
-        >
-          {category.map((el, i) => (
-            <MenuItem key={i} value={el.value}
-            sx={{
-              borderRadius: '16px'
-            }}
-            >
-              <div 
-                className="Container" 
-                dangerouslySetInnerHTML={{__html: `<Md${el.image}`}}
-              ></div>
-              {el.label}
-            </MenuItem>
-          ))}
-        </Select>
-        {/* <NativeSelect 
-          id="select"
-          sx={{
-            border: 'none',
-            width: '100%',
-            margin: '0',
-            padding: '0',
-            color: '#F3F3F3',
-            fontFamily: 'Lato',
-            fontSize: '16px',
-            lineHeight: '1.19',
-            backgroundColor: 'none'
-          }}
-        >
-        {category.map((el, i) => (
-            <option key={i} value={el.value}>{el.label}</option>
-          ))}
-        </NativeSelect> */}
+        <div className="container">
+          <div 
+            className={css.dropdown} 
+            onClick={handlerToggler}
+          >
+            <input 
+              className={css.textBox} 
+              type="text" 
+              readOnly 
+              value={selectedCategory}
+            />
+            <div className={css.options} >
+              {category.map((el, i) => (
+                <div key={i} onClick={handlerCategory}>
+                  {icons[i]}
+                  {el}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
       <div className={css.inputWrapper}>
         <label htmlFor="expenseComment" className={css.label}>
