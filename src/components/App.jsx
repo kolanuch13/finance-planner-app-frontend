@@ -19,16 +19,16 @@ import { ModalRegister } from './Modal/ModalRegister';
 import { Verified } from './Modal/Verified';
 import ModalPopUp from './Modal/ModalPopUp';
 import StatisticPage from 'pages/StatisticPage/StatisticPage';
-import authOperations from 'redux/auth/auth-operations';
-import { useEffect } from 'react';
+import { OwnPlanPage } from 'pages/OwnPlanPage/OwnPlanPage';
 import ExpensesList from './ExpensesList/ExpensesList';
 import CategoriesStatistic from './CategoriesStatistic/CategoriesStatistic';
+import authOperations from 'redux/auth/auth-operations';
+import { useEffect } from 'react';
 
 export const App = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-  console.log();
 
   useEffect(() => {
     const email = searchParams.get('email');
@@ -45,13 +45,14 @@ export const App = () => {
   }, [dispatch, navigate, searchParams, setSearchParams]);
   return (
     <>
+     
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
 
           <Route path="verify/:verificationToken" element={<Verified />} />
           <Route path="/" element={<PrivateRoute />}>
-            <Route path="personal-plan" element={<div>Personal</div>} />
+            <Route path="personal-plan" element={<OwnPlanPage/>} />
             <Route path="cashflow" element={<div>ExpensesPage</div>} />
 
             <Route path="dynamics" element={<DynamicsPage />} />
@@ -71,12 +72,11 @@ export const App = () => {
             element={
               <ModalView>
                 <Modal>
-                  {/* <ModalPopUp /> розкоментувати для перевірки*/}
                   <ModalLogin />
                 </Modal>
               </ModalView>
             }
-          />
+          /> 
 
           <Route
             path="register"

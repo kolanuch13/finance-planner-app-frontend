@@ -1,15 +1,16 @@
 .boxForm {
-  width: 343px;
-  background: #4770E4;
+  /* width: 343px; */
+  background: #4770e4;
   border-radius: 16px;
   padding: 40px 48px;
+  margin: 0 auto;
 }
 
 .text {
   font-weight: 700;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 24px;
-  color: #F3F3F3;
+  color: #f3f3f3;
   margin-bottom: 18px;
 }
 
@@ -27,10 +28,10 @@
 
 .LabelFormMonths {
   display: flex;
-    flex-direction: column;
-    font-size: 14px;
-    margin-bottom: 28px;
-    color: rgba(243, 243, 243, 0.4);
+  flex-direction: column;
+  font-size: 14px;
+  margin-bottom: 28px;
+  color: rgba(243, 243, 243, 0.4);
 }
 
 .textLabebel {
@@ -49,65 +50,80 @@
   gap: 10px;
   border: 1px solid rgba(243, 243, 243, 0.4);
   border-radius: 28px;
-  color: #F3F3F3;
-  background: #4770E4;
+  color: #f3f3f3;
+  background: #4770e4;
+}
+
+.btnContainer {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .button {
-    width: 273px;
-    height: 46px;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 20px;
-    text-align: center;
-    color: #4770E4;
-    background: #F3F3F3;
-    border: none;
-    border-radius: 60px;
+  height: 46px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #4770e4;
+  background: #f3f3f3;
+  border: none;
+  border-radius: 60px;
+  margin-bottom: 14px;
 }
 
+.buttonAddBalance {
+  text-decoration: none;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  color: #f3f3f3;
+  font-size: 12px;
+  margin: 0 auto;
+  font-weight: 700;
+  border-bottom: 1px solid #f3f3f3;
+}
 
 @media screen and (min-width: 768px) {
-
   .boxForm {
-      width: 672px;
-      border-radius: 16px;
-      padding: 44px 32px;
-    }
+    width: 672px;
+    border-radius: 16px;
+    padding: 44px 32px;
+  }
 
   .text {
     margin-bottom: 14px;
+    font-size: 18px;
   }
 
   .form {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 28px;
-    }
-  
-    .LabelForm {
-      margin-right: 18px;
-    }
-  
-    .LabelFormMonths {
-      margin-right: 24px;
-    }
-  
-    .input {
-      width: 183px;      
-    }
-
-    .button {
-    width: 200px;
-    margin-top: 22px;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 28px;
   }
-  
+
+  .LabelForm {
+    margin-right: 18px;
+  }
+
+  .LabelFormMonths {
+    margin-right: 24px;
+  }
+
+  .input {
+    width: 183px;
+  }
+
+  .btnContainer {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 200px;
+    margin-top: 9px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
-  
-  .LabelFormMonths {
-      margin-right: 54px;
-  }
 }
-
