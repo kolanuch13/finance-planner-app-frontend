@@ -22,8 +22,6 @@ export const TransactionDataList = ({ setFormData, formData }) => {
     .unwrap()
     .then(response => {
       setCategory(response.data);
-      console.log(category);
-
     })
   .catch(error => console.error(error))}, [dispatch])
     

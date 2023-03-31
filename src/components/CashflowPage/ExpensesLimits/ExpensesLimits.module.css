@@ -1,3 +1,62 @@
+.inputsWrapper {
+  background-color: #3a6af5;
+  margin-top: 68px;
+  padding: 40px 64px;
+  border-radius: 16px;
+}
 .label {
+  display: block;
+  margin-top: 6px;
+  margin-bottom: 18px;
+  font-family: 'Lato';
+  font-size: 14px;
+  line-height: 1.29;
+  color: rgba(243, 243, 243, 0.4);
+}
+
+.input {
+  display: block;
+  border: none;
+  background: none;
+  padding: 0;
+  padding: 14px 24px;
+  border: 1px solid rgba(243, 243, 243, 0.4);
+  border-radius: 28px;
+  font-family: 'Lato';
+  font-size: 14px;
+  line-height: 1.29;
+  color: #f3f3f3;
+}
+
+.btnReady {
+  max-width: 215px;
+  display: flex;
+  padding: 14px 80px;
+  margin-bottom: 14px;
+  align-items: center;
+  background: #f3f3f3;
+  border: none;
+  border-radius: 60px;
+  font-family: 'Lato';
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.43;
+  text-align: center;
+  color: #3A6AF5;
+}
+
+.btnAdd {
     display: block;
+    padding: none;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Lato';
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.43;
+    text-align: center;
+    color: #F3F3F3;
+    background-color: #3a6af5;
+    border: none;
+    border-bottom: 1px solid #F3F3F3;
 }
