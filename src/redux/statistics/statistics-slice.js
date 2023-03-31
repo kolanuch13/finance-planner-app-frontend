@@ -58,10 +58,13 @@ const statisticsSlice = createSlice({
       .addCase(statisticsOperations.removeExpense.pending, (state, _) => {
         state.isLoading = true;
       })
-      .addCase(statisticsOperations.removeExpense.fulfilled, state => {
-        state.isLoggedIn = true;
-        state.isLoading = false;
-      })
+      .addCase(
+        statisticsOperations.removeExpense.fulfilled,
+        (state, action) => {
+          state.isLoggedIn = true;
+          state.isLoading = false;
+        }
+      )
       .addCase(statisticsOperations.removeExpense.rejected, (state, action) => {
         state.error = action.payload;
         state.isLoading = false;

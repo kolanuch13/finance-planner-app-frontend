@@ -6,12 +6,17 @@ const categoryTypeStatistic = async () => {
   return await axios.get('/statistic/by-category');
 };
 
-const expenseStatistic = async () => {
-  return await axios.get('/statistic/by-expense?year=2023&month=03');
+const expenseStatistic = async period => {
+  console.log(period);
+  return await axios.get(
+    `/statistic/by-expense?year=${period.year}&month=${period.month}`
+  );
 };
 
-const categoriesStatistic = async () => {
-  return await axios.get('/statistic/by-category?year=2023&month=03');
+const categoriesStatistic = async period => {
+  return await axios.get(
+    `/statistic/by-category?year=${period.year}&month=${period.month}`
+  );
 };
 
 const removeExpense = async transactionId => {
