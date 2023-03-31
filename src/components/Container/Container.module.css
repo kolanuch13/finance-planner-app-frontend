@@ -1,25 +1,27 @@
 .BoxContainer {
-    padding: 0 16px 0 16px;
-    margin-left: auto;
-    margin-right: auto;
+  padding: 0 16px 0 16px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media screen and (min-width: 375px) {
-.BoxContainer {
+  .BoxContainer {
     width: 375px;
+    height: 964px;
     padding: 0 16px 0 16px;
-    }
+  }
 }
-
 @media screen and (min-width: 768px) {
-.BoxContainer {
+  .BoxContainer {
     width: 768px;
+    height: 1024px;
     padding: 0 32px 0 32px;
-    }
+  }
 }
 @media screen and (min-width: 1280px) {
-.BoxContainer {
+  .BoxContainer {
     width: 1280px;
-    padding: 0 55px 0 55px;   
-}}
-
+    height: 720px;
+    padding: 0 55px 0 55px;
+  }
+}

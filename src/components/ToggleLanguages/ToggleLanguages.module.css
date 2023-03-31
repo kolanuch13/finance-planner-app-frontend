@@ -1,0 +1,46 @@
+.en {
+  width: 20px;
+  height: 20px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #3a6af5;
+  color: #f3f3f3;
+  cursor: pointer;
+}
+
+.en:hover {
+  background-color: #f3f3f3;
+  color: #3a6af5;
+}
+
+.ua {
+  width: 20px;
+  height: 20px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  border: none;
+  border-radius: 4px;
+  background-color: #3a6af5;
+  color: #f3f3f3;
+  cursor: pointer;
+}
+
+.ua:hover {
+  background-color: #f3f3f3;
+  color: #3a6af5;
+}
+
+.icon {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  color: aliceblue;
+}
+
+@media screen and (min-width: 768px) {
+  .en {
+    margin-left: 0px;
+  }
+}

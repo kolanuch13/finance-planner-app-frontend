@@ -1,9 +1,9 @@
-import ExpensesList from 'components/ExpensesList/ExpensesList';
+import StatisticPageNav from 'components/StatisticPageNav/StatisticPageNav';
 
 const StatisticPage = () => {
   return (
     <>
-      <ExpensesList />
+      <StatisticPageNav />
     </>
   );
 };

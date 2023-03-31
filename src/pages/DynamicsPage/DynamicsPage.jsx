@@ -17,7 +17,7 @@ const DynamicsPage = () => {
 
   useEffect(() => {
     dispatch(dynamicOperation.yearInfoThunk());
-    dispatch(dynamicOperation.staticInfoThunk());
+    dispatch(dynamicOperation.getImageThunk());
   });
   return (
     <div className={css.section}>

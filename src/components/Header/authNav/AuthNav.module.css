@@ -1,1 +1,30 @@
+.authBox {
+  display: flex;
+  column-gap: 32px;
+  margin-top: 26px;
+  margin-bottom: 26px;
+  margin-left: 55px;
+  margin-right: 210px;
+}
 
+.NavLink {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.43;
+  text-align: center;
+  text-decoration: none;
+  color: #f3f3f3;
+}
+
+.NavLinkActive {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.43;
+  text-align: center;
+  text-decoration: none;
+  color: #3a6af5;
+}

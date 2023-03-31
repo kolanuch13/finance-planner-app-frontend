@@ -18,9 +18,10 @@ const Info = () => {
     acumulatedMoney,
     acumulatedSqMeters,
     timeIsLeft,
+    footage,
   } = useSelector(dynamicSelectors.getChartData);
 
-  const { imageURL } = useSelector(dynamicSelectors.getChartData);
+  const { imageURL } = useSelector(dynamicSelectors.getImageURl);
 
   const dispatch = useDispatch();
 
@@ -55,7 +56,7 @@ const Info = () => {
           </div>
           <div className={css.progressBarBox}>
             <p className={css.progressBarTitle}>
-              {acumulatedSqMeters} out of 60 sq.m accumulated
+              {acumulatedSqMeters} out of {footage} sq.m accumulated
             </p>
             {mobile && (
               <LinearProgress

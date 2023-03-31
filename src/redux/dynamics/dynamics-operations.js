@@ -1,9 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
-// const BASE_URL = process.env.BASE_URL;
-
-axios.defaults.baseURL = 'http://localhost:4000/api';
+import dynamicAPI from '../../services/dynamicAPI';
 
 export const token = {
   set(token) {
@@ -24,7 +21,8 @@ export const yearInfoThunk = createAsyncThunk(
     }
     token.set(persistToken);
     try {
-      const { data } = await axios.get('/dynamic/chart');
+      const { data } = await dynamicAPI.yearInfo();
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -41,9 +39,10 @@ export const staticInfoThunk = createAsyncThunk(
       return thunkAPI.rejectWithValue();
     }
     token.set(persistToken);
+
     try {
-      const { data } = await axios.get('/dynamic/statistic', date);
-      console.log(data);
+      const { data } = await dynamicAPI.statisticInfo(date);
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -62,7 +61,27 @@ export const updateImageThunk = createAsyncThunk(
     token.set(persistToken);
 
     try {
-      const { data } = await axios.patch('/dynamic/flatImage', file);
+      const { data } = await dynamicAPI.updateImage(file);
+      console.log(data);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getImageThunk = createAsyncThunk(
+  '/dynamic/flatImage',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistToken = state.auth.user.token;
+    if (persistToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
+    token.set(persistToken);
+    try {
+      const { data } = await dynamicAPI.getImage();
+      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

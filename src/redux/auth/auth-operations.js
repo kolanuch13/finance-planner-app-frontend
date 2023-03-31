@@ -11,6 +11,17 @@ export const token = {
   },
 };
 
+axios.interceptors.response.use(
+  res => res,
+  error => {
+    if (error.response.status === 401) {
+      localStorage.removeItem('persist:auth');
+      window.location.href = '/finance-planner-app/login';
+      return Promise.reject(error);
+    }
+  }
+);
+
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {

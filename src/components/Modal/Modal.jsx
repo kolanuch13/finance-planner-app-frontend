@@ -26,6 +26,10 @@ export const Modal = ({ children }) => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [navigate]);
 
+  const handleModalClose = () => {
+    setIsOpenModal(false);
+    navigate('/');
+  };
   // here is look overflow whe open modal
   // useEffect(() => {
   //   document.body.style.overflow = 'hidden';
@@ -35,8 +39,11 @@ export const Modal = ({ children }) => {
   return (
     isOpenModal &&
     createPortal(
-      <div className={css.Overlay} onClick={handleBackdropClick}>
-        {children}
+      <div
+        className={css.Overlay}
+        onClick={handleBackdropClick || handleModalClose}
+      >
+        {React.cloneElement(children, { handleModalClose })}
       </div>,
       modalRoot
     )

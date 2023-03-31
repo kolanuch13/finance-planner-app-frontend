@@ -3,6 +3,7 @@ import statisticsOperations from './statistics-operations';
 
 const initialState = {
   transactions: null,
+  categories: null,
   isLoggedIn: false,
   isLoading: false,
   error: null,
@@ -33,6 +34,26 @@ const statisticsSlice = createSlice({
           state.isLoading = false;
         }
       )
+      // ==========get by-category==========
+      .addCase(statisticsOperations.categoryStatistic.pending, (state, _) => {
+        state.isLoading = true;
+      })
+      .addCase(
+        statisticsOperations.categoryStatistic.fulfilled,
+        (state, action) => {
+          state.categories = action.payload.result;
+          state.isLoggedIn = true;
+          state.isLoading = false;
+        }
+      )
+      .addCase(
+        statisticsOperations.categoryStatistic.rejected,
+        (state, action) => {
+          state.error = action.payload;
+          state.isLoading = false;
+        }
+      )
+
       // Statistic/expense/remove=====================================
       .addCase(statisticsOperations.removeExpense.pending, (state, _) => {
         state.isLoading = true;
@@ -40,10 +61,6 @@ const statisticsSlice = createSlice({
       .addCase(
         statisticsOperations.removeExpense.fulfilled,
         (state, action) => {
-          state.transactions = state.transactions.filter(
-            ({ id }) => id !== action.payload
-          );
-
           state.isLoggedIn = true;
           state.isLoading = false;
         }
@@ -59,11 +76,6 @@ const statisticsSlice = createSlice({
       .addCase(
         statisticsOperations.updateTransaction.fulfilled,
         (state, action) => {
-          // state.transactions = state.updateTransaction.map(
-          //   ({ id }) => id !== action.payload
-          // );
-          console.log(action.payload);
-
           state.isLoggedIn = true;
           state.isLoading = false;
         }
@@ -75,19 +87,16 @@ const statisticsSlice = createSlice({
           state.isLoading = false;
         }
       )
+
       // Statistic/category=========================================
+
       .addCase(statisticsOperations.categoryTypeStatistic.pending, state => {
         state.isLoading = true;
       })
-      .addCase(
-        statisticsOperations.categoryTypeStatistic.fulfilled,
-        (state, action) => {
-          // state.transactions.sum = action.payload.sum;
-          // state.transactions.category = action.payload.category;
-          state.isLoggedIn = true;
-          state.isLoading = false;
-        }
-      )
+      .addCase(statisticsOperations.categoryTypeStatistic.fulfilled, state => {
+        state.isLoggedIn = true;
+        state.isLoading = false;
+      })
       .addCase(
         statisticsOperations.categoryTypeStatistic.rejected,
         (state, action) => {

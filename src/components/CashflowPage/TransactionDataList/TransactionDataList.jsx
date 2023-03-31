@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { balance } from 'redux/auth/auth-selectors';
 import css from './TransactionDataList.module.css';
-import getAllCategories from '../../../helpers/category'
-import {MdSetMeal,
+import getAllCategories from '../../../helpers/categories'
+import {
+  MdSetMeal,
   MdCheckroom, 
   MdRestaurant, 
   MdMedicalServices,
@@ -12,14 +13,15 @@ import {MdSetMeal,
   MdHouse,
   MdMiscellaneousServices
 } from 'react-icons/md';
+import { useTranslation } from 'react-i18next';
+import '../../../i18n';
 
 export const TransactionDataList = ({ setFormData, formData }) => {
   const userBalance = useSelector(balance);
-  const dispatch = useDispatch();
   const [category, setCategory] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState();
-  const currentLang = localStorage.getItem('i18nextLng')
-  const style = { color: '#3A6AF5', size: '15px' }
+  const style = { color: '#3A6AF5', size: '15px' };
+  const currentLanguage = localStorage.getItem('i18nextLng');
+  const { t } = useTranslation();
   const icons = [
     <MdSetMeal style={style}/>, 
     <MdCheckroom style={style}/>, 
@@ -30,6 +32,7 @@ export const TransactionDataList = ({ setFormData, formData }) => {
     <MdHouse style={style}/>,
     <MdMiscellaneousServices style={style}/>
   ]
+
   const handleChange = e => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -43,32 +46,33 @@ export const TransactionDataList = ({ setFormData, formData }) => {
   }
 
   const handlerCategory = (e) => {
-    setSelectedCategory(e.target.textContent)
+    formData.category = e.target.textContent;
+    handleChange(e)
   }
-
+  
   useEffect(() => {
-    currentLang === 'ru-UA'
-    ? category.length || getAllCategories()
-        .then(res => res.availableCategoriesEn)
-        .then(list => {
-          setCategory(list)
-          setSelectedCategory(list[list.length-1])
-        })
-        .catch(error => console.error(error))
-    : category.length || getAllCategories()
+    currentLanguage === 'ua'
+    ? getAllCategories()
         .then(res => res.availableCategoriesUa)
         .then(list => {
           setCategory(list)
-          setSelectedCategory(list[list.length-1])
+          formData.category = list[list.length-1]
         })
         .catch(error => console.error(error))
-}, [category, currentLang, dispatch])
+    : getAllCategories()
+        .then(res => res.availableCategoriesEn)
+        .then(list => {
+          setCategory(list)
+          formData.category = list[list.length-1]
+        })
+        .catch(error => console.error(error))
+}, [currentLanguage])
 
   return (
-    <>
+    <div className={css.wrapper}>
       <div className={css.inputWrapper}>
         <label htmlFor="balance" className={css.label}>
-          From account
+          {t('cashFlow.from')}
         </label>
         <input
           className={css.input}
@@ -81,7 +85,7 @@ export const TransactionDataList = ({ setFormData, formData }) => {
       </div>
       <div className={css.inputWrapper}>
         <label htmlFor="category" className={css.label}>
-          Per category
+        {t('cashFlow.category')}
         </label>
         <div className="container">
           <div 
@@ -89,10 +93,13 @@ export const TransactionDataList = ({ setFormData, formData }) => {
             onClick={handlerToggler}
           >
             <input 
+              id="category"
               className={css.textBox} 
               type="text" 
-              readOnly 
-              value={selectedCategory}
+              value={formData.category}
+              name="category"
+              onChange={handleChange}
+              readOnly
             />
             <div className={css.options} >
               {category.map((el, i) => (
@@ -106,27 +113,27 @@ export const TransactionDataList = ({ setFormData, formData }) => {
         </div>
       </div>
       <div className={css.inputWrapper}>
-        <label htmlFor="expenseComment" className={css.label}>
-          Expense comment
+        <label htmlFor="comment" className={css.label}>
+        {t('cashFlow.comment')}
         </label>
         <input
-          id="expenseComment"
+          id="comment"
           className={css.input}
           type="text"
-          value={formData.expenseComment}
-          name="expenseComment"
           onChange={handleChange}
-          placeholder="Enter text"
+          value={formData.comment}
+          name="comment"
+          placeholder={t('cashFlow.placeholderComment')}
         />
       </div>
       <div className={css.inputWrapper}>
         <label htmlFor="sum" className={css.label}>
-          Sum
+          {t('cashFlow.sum')}
         </label>
         <input
           className={css.input}
           id="sum"
-          type="text"
+          type="number"
           onChange={handleChange}
           value={formData.sum}
           name="sum"
@@ -134,6 +141,6 @@ export const TransactionDataList = ({ setFormData, formData }) => {
           placeholder="Enter sum"
         />
       </div>
-    </>
+    </div>
   );
 };
