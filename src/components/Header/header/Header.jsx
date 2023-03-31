@@ -9,6 +9,7 @@ import MobileTabletMenu from '../MobileTabletMenu/MobileTabletMenu';
 import AuthMenu from '../authNav/AuthNav';
 import ToggleLanguages from '../../ToggleLanguages/index';
 import css from './Header.module.css';
+import LanguageSwitcher from 'components/LanguageSwitcher/LanguageSwitcher';
 
 function Header() {
   const token = useSelector(state => state.auth?.user.token);
@@ -33,11 +34,11 @@ function Header() {
           </div>
         )}
         <Logo />
+        {/*<LanguageSwitcher />*/} {/* Розмістити де потрібно */}
         <ToggleLanguages />
         <div className={css.navigationBox}>
           <Navigation />
         </div>
-
         {token && (
           <div className={css.userMenuDiv}>
             <BurgerBtn onClick={handleOpenMenu} isMenuOpen={isMenuOpen} />
