@@ -41,7 +41,7 @@ const uk = {
   },
 };
 
-export const Calendar = props => {
+export const Calendar = ({ onChange }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
   const [lang, setLang] = useState('en');
@@ -57,23 +57,26 @@ export const Calendar = props => {
     </button>
   ));
 
+  const handleStorageChange = event => {
+    if (event.key === 'i18nextLng') {
+      setLang(event.newValue);
+    }
+  };
+
   useEffect(() => {
-    props.onChange(startDate);
+    // onChange(startDate);
     const storeLang = localStorage.getItem('i18nextLng');
     if (storeLang) {
       setLang(storeLang);
     }
-    const handleStorageChange = event => {
-      if (event.key === 'i18nextLng') {
-        setLang(event.newValue);
-      }
-    };
+
     window.addEventListener('storage', handleStorageChange);
 
     return () => {
       window.removeEventListener('storage', handleStorageChange);
     };
-  }, [props, startDate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [startDate, onChange]);
 
   return (
     <DatePicker
