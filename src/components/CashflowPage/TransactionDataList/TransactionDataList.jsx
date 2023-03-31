@@ -1,15 +1,35 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { balance } from 'redux/auth/auth-selectors';
-import cashflowOperations from 'redux/cashflowPage/cashflowPage-operations';
 import css from './TransactionDataList.module.css';
-
+import getAllCategories from '../../../helpers/category'
+import {MdSetMeal,
+  MdCheckroom, 
+  MdRestaurant, 
+  MdMedicalServices,
+  MdSpa,
+  MdCommute,
+  MdHouse,
+  MdMiscellaneousServices
+} from 'react-icons/md';
 
 export const TransactionDataList = ({ setFormData, formData }) => {
   const userBalance = useSelector(balance);
   const dispatch = useDispatch();
   const [category, setCategory] = useState([]);
-
+  const [selectedCategory, setSelectedCategory] = useState();
+  const currentLang = localStorage.getItem('i18nextLng')
+  const style = { color: '#3A6AF5', size: '15px' }
+  const icons = [
+    <MdSetMeal style={style}/>, 
+    <MdCheckroom style={style}/>, 
+    <MdRestaurant style={style}/>, 
+    <MdMedicalServices style={style}/>,
+    <MdSpa style={style}/>,
+    <MdCommute style={style}/>,
+    <MdHouse style={style}/>,
+    <MdMiscellaneousServices style={style}/>
+  ]
   const handleChange = e => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -18,13 +38,31 @@ export const TransactionDataList = ({ setFormData, formData }) => {
     }));
   };
 
-  useEffect(() => {dispatch(cashflowOperations.getCategories())
-    .unwrap()
-    .then(response => {
-      setCategory(response.data);
-    })
-  .catch(error => console.error(error))}, [dispatch])
-    
+  const handlerToggler = (e) => {
+    e.currentTarget.classList.toggle(css.dropdownActive)
+  }
+
+  const handlerCategory = (e) => {
+    setSelectedCategory(e.target.textContent)
+  }
+
+  useEffect(() => {
+    currentLang === 'ru-UA'
+    ? category.length || getAllCategories()
+        .then(res => res.availableCategoriesEn)
+        .then(list => {
+          setCategory(list)
+          setSelectedCategory(list[list.length-1])
+        })
+        .catch(error => console.error(error))
+    : category.length || getAllCategories()
+        .then(res => res.availableCategoriesUa)
+        .then(list => {
+          setCategory(list)
+          setSelectedCategory(list[list.length-1])
+        })
+        .catch(error => console.error(error))
+}, [category, currentLang, dispatch])
 
   return (
     <>
@@ -33,7 +71,7 @@ export const TransactionDataList = ({ setFormData, formData }) => {
           From account
         </label>
         <input
-        className={css.input}
+          className={css.input}
           id="balance"
           type="text"
           value={userBalance}
@@ -45,17 +83,27 @@ export const TransactionDataList = ({ setFormData, formData }) => {
         <label htmlFor="category" className={css.label}>
           Per category
         </label>
-        <select
-          className={css.input}
-          id="category"
-          name="category"
-          onChange={handleChange}
-          value={formData.category}
-        >
-          {category.map((el, i) => (
-            <option key={i}>{el}</option>
-          ))}
-        </select>
+        <div className="container">
+          <div 
+            className={css.dropdown} 
+            onClick={handlerToggler}
+          >
+            <input 
+              className={css.textBox} 
+              type="text" 
+              readOnly 
+              value={selectedCategory}
+            />
+            <div className={css.options} >
+              {category.map((el, i) => (
+                <div key={i} onClick={handlerCategory}>
+                  {icons[i]}
+                  {el}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
       <div className={css.inputWrapper}>
         <label htmlFor="expenseComment" className={css.label}>
