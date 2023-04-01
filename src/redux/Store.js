@@ -5,8 +5,6 @@ import { dynamicReducer } from './dynamics/dynamics-slice';
 import planSliceReducer from './plan/plan-slice'
 import statisticsReducer from './statistics/statistics-slice';
 
-
-
 import {
   persistStore,
   FLUSH,
