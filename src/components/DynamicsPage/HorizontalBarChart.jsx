@@ -1,4 +1,6 @@
 import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { dynamicSelectors } from '../../redux/dynamics';
 import {
   BarChart,
@@ -9,7 +11,7 @@ import {
   Tooltip,
   Legend,
 } from 'recharts';
-
+import { enMonthsName, ukMonthName } from 'utils/constants';
 import css from './HorizontalBarChart.module.css';
 
 const renderCustomizedLabelX = props => {
@@ -31,12 +33,33 @@ const renderCustomizedLabelY = props => {
 };
 
 const HorizontalBarChart = () => {
-  const chartData = useSelector(dynamicSelectors.getChartData);
+  const [chartData, setChartData] = useState('');
+  let { data } = useSelector(dynamicSelectors.getChartData);
+
+  const {
+    i18n: { language },
+  } = useTranslation();
+
+  useEffect(() => {
+    if (data) {
+      const lastYearInfo = data.map(i => ({
+        month:
+          language === 'en'
+            ? enMonthsName[parseInt(i.month) - 1]
+            : ukMonthName[parseInt(i.month) - 1],
+        expense: i.expense,
+        income: i.income,
+        acumulated: i.income - i.expense,
+      }));
+      setChartData(lastYearInfo);
+    }
+  }, [data, language]);
+
   return (
     <BarChart
       width={230}
       height={436}
-      data={chartData.lastYearInfo}
+      data={chartData}
       layout="vertical"
       className={css.barStyle}
     >
@@ -75,6 +98,7 @@ const HorizontalBarChart = () => {
         barSize={5}
         legendType="circle"
         radius={[0, 10, 10, 0]}
+        name={language === 'en' ? 'Acumulated' : 'Накопичено'}
       />
       <Bar
         dataKey="expense"
@@ -82,6 +106,7 @@ const HorizontalBarChart = () => {
         barSize={5}
         legendType="circle"
         radius={[0, 10, 10, 0]}
+        name={language === 'en' ? 'Expense' : 'Витрати'}
       />
       <Bar
         dataKey="income"
@@ -89,6 +114,7 @@ const HorizontalBarChart = () => {
         barSize={5}
         legendType="circle"
         radius={[0, 10, 10, 0]}
+        name={language === 'en' ? 'Income' : 'Доходи'}
       />
     </BarChart>
   );
