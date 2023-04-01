@@ -24,7 +24,7 @@ export const Home = () => {
         <span className={css.mainLogo}>{t('home.highlightedTitle')}</span>
         {t('home.title')}
       </h1>
-      <img className={css.manDesc} src={imgManDesc} alt="" />
+      {/* <img className={css.manDesc} src={imgManDesc} alt="" />
       <img className={css.manDesctop} src={ManDesc} alt="" />
       <img className={css.manMob} src={imgManMob} alt="" />
       <img className={css.EllipseBigMob} src={EllipseBigMob} alt="" />
@@ -36,7 +36,7 @@ export const Home = () => {
       <img className={css.BigTablet} src={BigTablet} alt="" />
       <img className={css.BigInsideTablet} src={BigInsideTablet} alt="" />
       <img className={css.BigInsideDesc} src={BigInsideDesc} alt="" />
-      <img className={css.BigDesc} src={BigDesc} alt="" />
+      <img className={css.BigDesc} src={BigDesc} alt="" /> */}
       <div className={css.sloganContainer}>
         <p className={css.sloganText}>
           {t('home.subtitlePayment')}

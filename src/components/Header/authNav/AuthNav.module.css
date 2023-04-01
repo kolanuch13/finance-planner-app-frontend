@@ -16,6 +16,10 @@
   text-align: center;
   text-decoration: none;
   color: #f3f3f3;
+  transition: all 100ms linear;
+}
+.NavLink:hover {
+  color: #3a6af5;;
 }
 
 .NavLinkActive {

@@ -1,8 +1,10 @@
 .logoTablet,
 .logoDesktop {
+  width: 138px;
   display: none;
 }
 .logoMobile {
+  width: 138px;
   margin-left: 16px;
   margin-top: 24px;
   margin-bottom: 24px;
