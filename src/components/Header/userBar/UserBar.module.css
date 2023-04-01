@@ -32,3 +32,7 @@
   margin-right: 16px;
   cursor: pointer;
 }
+
+.statistic img {
+  width: 20px;
+}
