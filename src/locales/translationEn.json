@@ -105,10 +105,12 @@
   "expenses": {
     "expensesTitle": "Expenses",
     "categoriesTitle": "Categories",
-    "petCategory": "Per category",
+    "perCategory": "Per category",
     "expenseComment": "Expense comment",
     "sum": "Sum",
-    "buttonEdit": "Edit"
+    "buttonEdit": "Edit",
+    "noTransaction": "You don't have any transactions this month 🤷‍♀️",
+    "noStatistic": "You don't have any data by categories in this month 🤷‍♀️"
   },
   "example": {
     "test": "Everything is simple!"

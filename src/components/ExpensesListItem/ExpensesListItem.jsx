@@ -27,22 +27,24 @@ const ExpensesListItem = ({
           <p className={css.transactionSum}>{sum} UAH</p>
         </div>
       </div>
-      <p className={css.transactionCategory}>{modifyCategory(category)}</p>
-      <div className={css.buttonThumb}>
-        <button
-          className={css.buttonItem}
-          type="button"
-          onClick={() => updateTransaction(id)}
-        >
-          {<Pensil />}
-        </button>
-        <button
-          className={css.buttonItem}
-          type="button"
-          onClick={() => removeTransaction(id)}
-        >
-          {<Busket />}
-        </button>
+      <div className={css.thumb}>
+        <p className={css.transactionCategory}>{modifyCategory(category)}</p>
+        <div className={css.buttonThumb}>
+          <button
+            className={css.buttonItem}
+            type="button"
+            onClick={() => updateTransaction(id)}
+          >
+            {<Pensil />}
+          </button>
+          <button
+            className={css.buttonItem}
+            type="button"
+            onClick={() => removeTransaction(id)}
+          >
+            {<Busket />}
+          </button>
+        </div>
       </div>
     </li>
   );

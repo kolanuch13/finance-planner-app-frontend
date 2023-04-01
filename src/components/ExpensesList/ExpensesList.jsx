@@ -1,31 +1,57 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import {
+  MdSetMeal,
+  MdCheckroom,
+  MdRestaurant,
+  MdMedicalServices,
+  MdSpa,
+  MdCommute,
+  MdHouse,
+  MdMiscellaneousServices,
+} from 'react-icons/md';
+import '../../i18n';
 import ExpensesListItem from '../ExpensesListItem/ExpensesListItem';
 import statisticsOperations from '../../redux/statistics/statistics-operations';
 import { selectTransactions } from 'redux/statistics/statistics-selector';
+import ModalNormal from '../Modal/ModalNormal';
 import getAllCategories from 'helpers/categories';
+import { ReactComponent as CloseModal } from '../../images/close-modal.svg';
 import css from './ExpensesList.module.css';
 
 const ExpensesList = () => {
   const dispatch = useDispatch();
   const transaction = useSelector(selectTransactions);
   const [open, setOpen] = useState(false);
-  const [category, setCategory] = useState('Other');
+  const [categoryItem, setCategoryItem] = useState('');
   const [sum, setSum] = useState(0);
   const [comment, setComment] = useState('');
   const [categoryType, setCategoryType] = useState();
   const [allCategory, setAllCategory] = useState([]);
   const [idTransaction, setIdTransaction] = useState('');
   const currentLang = localStorage.getItem('i18nextLng');
+  const { t } = useTranslation();
+  const style = { color: '#3A6AF5', size: '15px', display: 'block' };
+  const icons = [
+    <MdSetMeal style={style} />,
+    <MdCheckroom style={style} />,
+    <MdRestaurant style={style} />,
+    <MdMedicalServices style={style} />,
+    <MdSpa style={style} />,
+    <MdCommute style={style} />,
+    <MdHouse style={style} />,
+    <MdMiscellaneousServices style={style} />,
+  ];
 
   useEffect(() => {
     const period = JSON.parse(localStorage.getItem('selectedPeriod'));
     currentLang === 'ru-UA'
       ? getAllCategories().then(res =>
-          setAllCategory(res.availableCategoriesEn)
+          setAllCategory(res.availableCategoriesUa)
         )
       : getAllCategories().then(res =>
-          setAllCategory(res.availableCategoriesUa)
+          setAllCategory(res.availableCategoriesEn)
         );
     dispatch(statisticsOperations.expenseStatistic(period));
   }, [currentLang, dispatch]);
@@ -35,10 +61,10 @@ const ExpensesList = () => {
 
     switch (name) {
       case 'category':
-        setCategory(value.toLowerCase());
+        setCategoryItem(value.toLowerCase());
         break;
       case 'sum':
-        setSum(value);
+        setSum(Number(value));
         break;
       case 'comment':
         setComment(value);
@@ -54,7 +80,9 @@ const ExpensesList = () => {
 
     const item = transaction.find(item => id === item._id);
     setSum(() => Number(item.sum));
-    setCategory(() => item.category.toLowerCase());
+    setCategoryItem(
+      () => item.category[0].toUpperCase() + item.category.slice(1)
+    );
     setComment(() => item.comment);
     setIdTransaction(() => item._id);
     setCategoryType(() => item.categoryType.toLowerCase());
@@ -62,9 +90,13 @@ const ExpensesList = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const data = { category, sum, comment, categoryType };
+    const data = {
+      category: categoryItem.toLowerCase(),
+      sum,
+      comment,
+      categoryType,
+    };
     dispatch(statisticsOperations.updateTransaction({ idTransaction, data }));
-    setCategory('');
     setSum('');
     setComment('');
     setOpen(prev => !prev);
@@ -74,10 +106,26 @@ const ExpensesList = () => {
     dispatch(statisticsOperations.removeExpense(id));
   };
 
-  if (transaction?.length === 0) return;
+  const closeModal = () => {
+    setOpen(prev => !prev);
+  };
+
+  const handlerToggler = e => {
+    e.currentTarget.classList.toggle(css.dropdownActive);
+  };
+
+  const handlerCategory = e => {
+    setCategoryItem(e.target.textContent);
+  };
 
   return (
     <>
+      {transaction?.length === 0 && (
+        <div className={css.noTransactionWrapper}>
+          <p className={css.noTransactionText}>{t('expenses.noTransaction')}</p>
+        </div>
+      )}
+
       <ul className={css.transactionList}>
         {transaction &&
           transaction.map(({ _id: id, sum, comment, category, date }) => (
@@ -93,38 +141,70 @@ const ExpensesList = () => {
           ))}
       </ul>
       {open && (
-        <form onSubmit={handleSubmit}>
-          <label>
-            Per category
-            <select name="category" value={category} onChange={handleChange}>
-              {allCategory.length > 0 &&
-                allCategory.map((item, id) => (
-                  <option key={id} value={item}>
-                    {item}
-                  </option>
-                ))}
-            </select>
-          </label>
-          <label>
-            Expense comment
-            <input
-              type="text"
-              name="comment"
-              value={comment}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Sum
-            <input
-              type="number"
-              name="sum"
-              value={sum}
-              onChange={handleChange}
-            />
-          </label>
-          <button type="submit">Edit</button>
-        </form>
+        <ModalNormal closeModal={closeModal}>
+          <form className={css.formWrapper} onSubmit={handleSubmit}>
+            <label htmlFor="category" className={css.formLabel}>
+              {t('expenses.perCategory')}
+
+              <div className="container">
+                <div className={css.dropdown} onClick={handlerToggler}>
+                  <input
+                    className={css.formInput}
+                    type="text"
+                    value={categoryItem}
+                    name="category"
+                    onChange={handleChange}
+                    readOnly
+                  />
+
+                  <div className={css.options}>
+                    {allCategory.map((item, idx) => (
+                      <div key={idx} onClick={handlerCategory}>
+                        {icons[idx]}
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </label>
+
+            <label className={css.formLabel}>
+              {t('expenses.expenseComment')}
+              <input
+                className={css.formInput}
+                type="text"
+                name="comment"
+                value={comment}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label className={css.formLabel}>
+              {t('expenses.sum')}
+              <input
+                className={css.formInput}
+                type="text"
+                name="sum"
+                value={sum}
+                onChange={handleChange}
+              />
+            </label>
+
+            <div>
+              <button className={css.buttonEdit} type="submit">
+                {t('expenses.buttonEdit')}
+              </button>
+            </div>
+            <button
+              className={css.buttonCloseModal}
+              type="button"
+              onClick={closeModal}
+            >
+              <CloseModal />
+            </button>
+          </form>
+        </ModalNormal>
       )}
     </>
   );

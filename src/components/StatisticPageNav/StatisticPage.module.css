@@ -6,6 +6,26 @@
   width: 769px;
 }
 
+@media screen and (min-width: 375px) {
+  .navWrapper {
+    flex-direction: column-reverse;
+    width: 343px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .navWrapper {
+    flex-direction: row;
+    width: 704px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .navWrapper {
+    width: 100%;
+  }
+}
+
 .navThumb {
   display: flex;
   flex-direction: row;
@@ -36,4 +56,18 @@
   border-top: 1px solid rgb(58, 106, 245);
   background-color: rgba(37, 44, 65, 1);
   color: rgba(243, 243, 243, 1);
+}
+
+@media screen and (min-width: 375px) {
+  .calendarWrapper {
+    margin-bottom: 18px;
+    width: 217px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .calendarWrapper {
+    margin-bottom: 0;
+    width: 222px;
+  }
 }

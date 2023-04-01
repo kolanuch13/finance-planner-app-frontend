@@ -14,8 +14,6 @@ const CategoriesStatistic = () => {
     dispatch(statisticsOperations.categoryStatistic(period));
   }, [dispatch]);
 
-  if (categories?.length === 0) return;
-
   const sortedCategories = categories => {
     if (categories !== null) {
       const sortedArray = [...categories].sort(
@@ -27,6 +25,13 @@ const CategoriesStatistic = () => {
 
   return (
     <>
+      {categories?.length === 0 && (
+        <div className={css.noCategoriesWrapper}>
+          <p className={css.noCategoriesText}>
+            У Вас в цьому місяці немає даних за категоріями витрат 🤷‍♀️
+          </p>
+        </div>
+      )}
       <ul className={css.categoriesList}>
         {sortedCategories(categories)?.map(({ _id: id, totalSum, percent }) => (
           <li className={css.categoriesItem} key={id}>

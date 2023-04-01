@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink, Outlet } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
 import statisticsOperations from 'redux/statistics/statistics-operations';
 import { Calendar } from 'components/Calendar/Calendar';
 import css from './StatisticPage.module.css';
 
 const StatisticPageNav = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   // eslint-disable-next-line
   const [period, setPeriod] = useState(
     JSON.parse(localStorage.getItem('selectedPeriod')) ?? ''
@@ -33,7 +36,7 @@ const StatisticPageNav = () => {
                 end
                 className={({ isActive }) => (isActive ? css.active : css.link)}
               >
-                Expenses
+                {t('expenses.expensesTitle')}
               </NavLink>
             </li>
             <li>
@@ -41,7 +44,7 @@ const StatisticPageNav = () => {
                 className={({ isActive }) => (isActive ? css.active : css.link)}
                 to="categories"
               >
-                Categories
+                {t('expenses.categoriesTitle')}
               </NavLink>
             </li>
           </div>
