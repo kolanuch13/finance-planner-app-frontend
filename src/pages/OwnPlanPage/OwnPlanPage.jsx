@@ -1,12 +1,16 @@
-import PlanInput from "components/OwnPlan/PlanInput/PlanInput";
-import { useCallback, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectorPlanData } from "redux/plan/plan-selectors";
-import { addPersonalPlanAPI, currentPersonalPlanAPI, getPersonalPlan } from "redux/plan/plan-operations";
-import PeriodPlan from "components/OwnPlan/PeriodPlan/PeriodPlan";
-import ModalAddBalance from "components/OwnPlan/ModalAddBalance/ModalAddBalance";
-import {balance}  from "redux/auth/auth-selectors";
-import styles from "./OwnPlanPage.module.css";
+import PlanInput from 'components/OwnPlan/PlanInput/PlanInput';
+import { useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectorPlanData } from 'redux/plan/plan-selectors';
+import {
+  addPersonalPlanAPI,
+  currentPersonalPlanAPI,
+  getPersonalPlan,
+} from 'redux/plan/plan-operations';
+import PeriodPlan from 'components/OwnPlan/PeriodPlan/PeriodPlan';
+import ModalAddBalance from 'components/OwnPlan/ModalAddBalance/ModalAddBalance';
+import { balance } from 'redux/auth/auth-selectors';
+import styles from './OwnPlanPage.module.css';
 
 export const OwnPlanPage = () => {
   const dispatch = useDispatch();
@@ -15,12 +19,12 @@ export const OwnPlanPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = useCallback(() => {
-    setIsModalOpen((p) => (p === false && isExistBalance ? p : !p));
+    setIsModalOpen(p => (p === false && isExistBalance ? p : !p));
   }, [isExistBalance]);
-console.log(newPlanData)
-  const handleSubmit = (e) => {
-        e.preventDefault();
-console.log(newPlanData)
+  console.log(newPlanData);
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log(newPlanData);
 
     !newPlanData
       ? dispatch(addPersonalPlanAPI(newPlanData))
@@ -36,19 +40,12 @@ console.log(newPlanData)
   }, [dispatch]);
 
   return (
-
-      <div className={styles.container}>
-        <form className={styles.form}
-        onSubmit={handleSubmit}
-        >
-
-          <PlanInput />
-          <PeriodPlan
-          openModalAddBalance={toggleModal}
-          />
-        </form>
-         {isModalOpen && <ModalAddBalance closeModal={toggleModal} />}
-      </div>
-
+    <div className={styles.container}>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <PlanInput />
+        <PeriodPlan openModalAddBalance={toggleModal} />
+      </form>
+      {isModalOpen && <ModalAddBalance closeModal={toggleModal} />}
+    </div>
   );
 };

@@ -4,6 +4,7 @@ import { addPersonalPlanPreAPI } from 'redux/plan/plan-operations';
 import { selectorPlanData } from 'redux/plan/plan-selectors';
 import InputsList from '../InputList/InputsList';
 import styles from './PlanInput.module.css';
+import { Container } from 'components/Container/Container';
 
 const PlanInput = () => {
   const dataInput = [
@@ -11,7 +12,6 @@ const PlanInput = () => {
       name: 'salary',
       title: 'RFP of both spouses',
       placeholder: 'Enter data',
-      
     },
     {
       name: 'passiveIncome',
@@ -66,7 +66,7 @@ const PlanInput = () => {
     }));
   };
 
-  console.log(newPlanData)
+  console.log(newPlanData);
   const onBlur = () => {
     if (Object.values(newPlanData).filter(element => element === '').length)
       return;
@@ -78,12 +78,12 @@ const PlanInput = () => {
     if (curPlanData) {
       setNewPlanData(curPlanData);
     }
-    console.log(curPlanData)
+    console.log(curPlanData);
   }, [curPlanData]);
 
   return (
-    <div className={styles.container}>
 
+      <div className={styles.container}>
         <ul className={styles.list}>
           {dataInput.map((element, index) => (
             <InputsList
@@ -97,9 +97,9 @@ const PlanInput = () => {
             />
           ))}
         </ul>
+        <div className={styles.bg}></div>
+      </div>
 
-      <div className={styles.bg}></div>
-    </div>
   );
 };
 
