@@ -10,8 +10,8 @@ import { selectorPreMonth, selectorPreYear } from 'redux/plan/plan-selectors';
 const PeriodPlan = () => {
   const preYear = useSelector(selectorPreYear)
   const preMonth = useSelector(selectorPreMonth)
-  
-  
+
+
 
   const [isModalShown, setIsModalShown] = useState(false);
 
@@ -20,7 +20,7 @@ const PeriodPlan = () => {
   };
 
   return (
-    <Container>
+
       <div className={css.boxForm}>
         <p className={css.text}>You will have an apartment in:</p>
         <div className={css.form}>
@@ -55,7 +55,7 @@ const PeriodPlan = () => {
           </div>
         </div>
       </div>
-    </Container>
+
   );
 };
 
