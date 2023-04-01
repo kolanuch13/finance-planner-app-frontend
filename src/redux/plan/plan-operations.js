@@ -45,9 +45,12 @@ export const addPersonalPlanPreAPI = createAsyncThunk(
   "plan/addPersonalPlanPre",
   async (prePlanData, thunkAPI) => {
     try {
+      console.log("prePlanData",prePlanData)
       const { data } = await planAPI.addPersonalPlanPreAPI(prePlanData);
+      console.log("data", data)
       return data;
     } catch (error) {
+      console.log(333)
       return thunkAPI.rejectWithValue(error.message);
     }
   }

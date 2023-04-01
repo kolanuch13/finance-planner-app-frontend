@@ -6,6 +6,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   planData: null,
+  preYears: null,
+  preMonth: null,
   accumulationPeriod: {
     month: null,
     year: null,
@@ -58,6 +60,9 @@ const planSlice = createSlice({
       })
       .addCase(addPersonalPlanPreAPI.fulfilled, (state, { payload }) => {
         const { planData, accumulationPeriod } = separatePlanData(payload);
+        state.preYears = payload.years
+        state.preMonth = payload.months
+        
         state.planData = planData;
         state.accumulationPeriod = accumulationPeriod;
       })
@@ -74,5 +79,4 @@ const planSlice = createSlice({
       // .addMatcher(...gl(initialState));
   },
 });
-
-export const planSliceReducer = planSlice.reducer;
+ export default planSlice.reducer

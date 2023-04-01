@@ -8,8 +8,11 @@ import { useDispatch } from 'react-redux';
 import { dynamicOperation } from '../../redux/dynamics';
 import { useEffect } from 'react';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
 
 const DynamicsPage = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const tablet = useMediaQuery('(min-width:768px)');
@@ -26,7 +29,7 @@ const DynamicsPage = () => {
           <>
             <div className={css.statisticBlock}>
               <div>
-                <h1 className={css.title}>Dynamics of expenses and savings</h1>
+                <h1 className={css.title}>{t('dynamics.title')}</h1>
                 {tablet ? <VerticalBarChart /> : <HorizontalBarChart />}
                 <StatisticPerMonth />
               </div>
@@ -37,7 +40,7 @@ const DynamicsPage = () => {
         ) : (
           <div className={css.dynamic}>
             <div className={css.statisticBlock}>
-              <h1 className={css.title}>Dynamics of expenses and savings</h1>
+              <h1 className={css.title}>{t('dynamics.title')}</h1>
               {tablet ? <VerticalBarChart /> : <HorizontalBarChart />}
               <StatisticPerMonth />
             </div>

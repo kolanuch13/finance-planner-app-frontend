@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+
 import barSvg from '../../../images/bar-graph.svg';
 import css from './UserBar.module.css';
 

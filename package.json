@@ -9,6 +9,7 @@
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/joy": "^5.0.0-alpha.72",
+    "@mui/lab": "^5.0.0-alpha.124",
     "@mui/material": "^5.11.15",
     "@mui/x-date-pickers": "^6.0.3",
     "@redux-devtools/extension": "^3.2.5",

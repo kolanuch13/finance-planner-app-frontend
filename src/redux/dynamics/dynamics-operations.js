@@ -62,7 +62,7 @@ export const updateImageThunk = createAsyncThunk(
 
     try {
       const { data } = await dynamicAPI.updateImage(file);
-      console.log(data);
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -81,7 +81,7 @@ export const getImageThunk = createAsyncThunk(
     token.set(persistToken);
     try {
       const { data } = await dynamicAPI.getImage();
-      console.log(data);
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
