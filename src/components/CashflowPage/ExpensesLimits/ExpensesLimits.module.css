@@ -1,0 +1,118 @@
+.expensesLimitsWrapper {
+  background-color: #3a6af5;
+  margin-top: 68px;
+  padding: 40px 64px;
+  border-radius: 16px;
+}
+.label {
+  display: block;
+  margin-top: 6px;
+  margin-bottom: 18px;
+  font-family: 'Lato';
+  font-size: 14px;
+  line-height: 1.29;
+  color: rgba(243, 243, 243, 0.4);
+}
+
+.input {
+  display: block;
+  border: none;
+  background: none;
+  padding: 0;
+  padding: 14px 24px;
+  border: 1px solid rgba(243, 243, 243, 0.4);
+  border-radius: 28px;
+  font-family: 'Lato';
+  font-size: 14px;
+  line-height: 1.29;
+  color: #f3f3f3;
+}
+
+.btnReady {
+  max-width: 215px;
+  display: flex;
+  padding: 14px 80px;
+  margin-bottom: 14px;
+  align-items: center;
+  background: #f3f3f3;
+  border: none;
+  border-radius: 60px;
+  font-family: 'Lato';
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.43;
+  text-align: center;
+  color: #3a6af5;
+}
+
+.btnAdd {
+  display: block;
+  padding: none;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Lato';
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.43;
+  text-align: center;
+  color: #f3f3f3;
+  background-color: #3a6af5;
+  border: none;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+@media screen and (min-width: 768px) {
+  .expensesLimitsWrapper {
+    display: flex;
+    margin-top: 0;
+    width: 672px;
+    height: 196px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 44px 32px 82px 32px;
+  }
+
+  .dailyLimitWrapper {
+    margin-right: 18px;
+  }
+
+  .monthlyLimitWrapper {
+    margin-right: 24px;
+  }
+
+  .label {
+    margin-top: 6px;
+    margin-bottom: 0;
+  }
+
+  .input {
+    width: 183px;
+    height: 46px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .expensesLimitsWrapper {
+    width: 770px;
+    height: 164px;
+    padding: 40px 66px 54px 66px;
+  }
+
+  .dailyLimitWrapper {
+    margin-right: 18px;
+  }
+
+  .monthlyLimitWrapper {
+    margin-right: 54px;
+  }
+
+  .label {
+    margin-top: 6px;
+    margin-bottom: 0;
+  }
+
+  .input {
+    width: 183px;
+    height: 46px;
+  }
+}

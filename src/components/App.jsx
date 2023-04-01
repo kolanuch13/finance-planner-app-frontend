@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Home } from 'pages/HomePage/HomePage';
+import { CashflowPage } from '../pages/CashflowPage/CashflowPage'
 import { Layout } from './Layout/Layout';
 
 import authOperations from 'redux/auth/auth-operations';
