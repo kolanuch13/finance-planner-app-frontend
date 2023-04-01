@@ -54,7 +54,7 @@ export const App = () => {
           <Route path="verify/:verificationToken" element={<Verified />} />
           <Route path="/" element={<PrivateRoute />}>
             <Route path="personal-plan" element={<OwnPlanPage />} />
-            <Route path="cashflow" element={<div>ExpensesPage</div>} />
+            <Route path="cashflow" element={<CashflowPage/>} />
 
             <Route path="dynamics" element={<DynamicsPage />} />
 

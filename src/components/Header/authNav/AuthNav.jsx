@@ -7,7 +7,7 @@ function AuthMenu() {
   const { t } = useTranslation();
 
   return (
-    <nav>
+    <nav className={css.nav}>
       <div className={css.authBox}>
         <NavLink
           className={({ isActive }) =>

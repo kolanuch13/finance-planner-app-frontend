@@ -1,4 +1,4 @@
-import style from './LanguageSwitcher.module.css';
+import css from './LanguageSwitcher.module.css';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import '../../i18n';
@@ -31,17 +31,17 @@ export default function LanguageSwitcher() {
   }, [i18n.language]);
 
   return (
-    <label className={style.languageSwitcher}>
+    <label className={css.languageSwitcher}>
       <input
         type="checkbox"
         checked={isChecked}
         onChange={e => setIsChecked(e.target.checked)}
       />
-      <span className={`${style.Slider} ${style.Round}`}></span>
-      <span onClick={() => switchLang('en')} className={style.selectUa}>
+      <span className={`${css.Slider} ${css.Round}`}></span>
+      <span onClick={() => switchLang('en')} className={css.selectUa}>
         EN
       </span>
-      <span onClick={() => switchLang('ua')} className={style.selectEn}>
+      <span onClick={() => switchLang('ua')} className={css.selectEn}>
         UA
       </span>
     </label>
