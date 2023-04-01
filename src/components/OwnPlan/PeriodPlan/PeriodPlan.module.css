@@ -84,6 +84,29 @@
   border-bottom: 1px solid #f3f3f3;
 }
 
+.active {
+  animation: blink 2s infinite linear;
+}
+
+@keyframes blink {
+  0% {
+    color: #3A6AF5;
+    text-shadow: #3A6AF5 1px 0 10px;
+    border-color: #3A6AF5;
+  }
+
+  50% {
+    color: #f3f3f3;
+    border-color: #f3f3f3;
+  }
+  
+  100% {
+    color: #3A6AF5;
+    text-shadow: #3A6AF5 1px 0 10px;
+    border-color: #3A6AF5;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .boxForm {
     width: 672px;

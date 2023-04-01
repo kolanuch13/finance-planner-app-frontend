@@ -4,17 +4,13 @@ import Modal from '../ModalAddBalance/Modal/Modal';
 import css from './PeriodPlan.module.css';
 import { useSelector } from 'react-redux';
 import { selectorPreMonth, selectorPreYear } from 'redux/plan/plan-selectors';
-
-
+import {balance} from 'redux/auth/auth-selectors'
 
 const PeriodPlan = () => {
-  const preYear = useSelector(selectorPreYear)
-  const preMonth = useSelector(selectorPreMonth)
-
-
-
+  const preYear = useSelector(selectorPreYear);
+  const preMonth = useSelector(selectorPreMonth);
+  const userBalance = useSelector(balance);
   const [isModalShown, setIsModalShown] = useState(false);
-
   const openModalAddBalance = () => {
     setIsModalShown(prevState => !prevState);
   };
@@ -35,7 +31,7 @@ const PeriodPlan = () => {
           </label>
           <div className={css.btnContainer}>
             <button
-              className={css.buttonAddBalance}
+              className={`${css.buttonAddBalance} ${!userBalance && css.active}`}
               type="button"
               onClick={openModalAddBalance}
             >
