@@ -1,18 +1,6 @@
-import svgGoogle from '../../images/GoogleIcon.svg';
 import css from '../HomePage/HomePage.module.css';
-import imgManDesc from '../../images/ManDesc.png';
-import ManDesc from '../../images/ManDesc.png';
-import imgManMob from '../../images/ManMob.png';
-import EllipseBigMob from '../../images/EllipseBigMob.png';
-import EllipseSmallMob from '../../images/EllipseSmallMob.png';
-import EllipseBigTablet from '../../images/EllipseBig.png';
-import EllipseSmallTablet from '../../images/EllipseSmall.png';
-import BigTablet from '../../images/BigTablet.png';
-import BigInsideTablet from '../../images/BigInsideDesc.png';
-import BigInsideDesc from '../../images/BigInsideDesc.png';
-import BigMob from '../../images/BigMob.png';
-import BigDesc from '../../images/BigDesc.png';
-import BigInsideMob from '../../images/BigInsideMob.png';
+
+import {FcGoogle} from 'react-icons/fc'
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
 
@@ -24,19 +12,6 @@ export const Home = () => {
         <span className={css.mainLogo}>{t('home.highlightedTitle')}</span>
         {t('home.title')}
       </h1>
-      {/* <img className={css.manDesc} src={imgManDesc} alt="" />
-      <img className={css.manDesctop} src={ManDesc} alt="" />
-      <img className={css.manMob} src={imgManMob} alt="" />
-      <img className={css.EllipseBigMob} src={EllipseBigMob} alt="" />
-      <img className={css.EllipseSmallTablet} src={EllipseSmallTablet} alt="" />
-      <img className={css.EllipseBigTablet} src={EllipseBigTablet} alt="" />
-      <img className={css.EllipseSmallMob} src={EllipseSmallMob} alt="" />
-      <img className={css.BigMob} src={BigMob} alt="" />
-      <img className={css.BigInsideMob} src={BigInsideMob} alt="" />
-      <img className={css.BigTablet} src={BigTablet} alt="" />
-      <img className={css.BigInsideTablet} src={BigInsideTablet} alt="" />
-      <img className={css.BigInsideDesc} src={BigInsideDesc} alt="" />
-      <img className={css.BigDesc} src={BigDesc} alt="" /> */}
       <div className={css.sloganContainer}>
         <p className={css.sloganText}>
           {t('home.subtitlePayment')}
@@ -55,7 +30,7 @@ export const Home = () => {
         </p>
       </div>
       <div className={css.signGoogle}>
-        <img src={svgGoogle} alt="" />
+        <FcGoogle size={"18px"}/>
 
         <a
           href="http://localhost:4000/api/auth/google"

@@ -9,11 +9,13 @@ import MobileTabletMenu from '../MobileTabletMenu/MobileTabletMenu';
 import AuthMenu from '../authNav/AuthNav';
 import css from './Header.module.css';
 import LanguageSwitcher from 'components/LanguageSwitcher/LanguageSwitcher';
+import { balance } from '../../../redux/auth/auth-selectors'
 
 function Header() {
   const token = useSelector(state => state.auth?.user.token);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const userBalance = useSelector(balance)
 
   const handleOpenMenu = () => {
     setIsMenuOpen(prev => !prev);
@@ -29,13 +31,13 @@ function Header() {
       <header className={css.header}>
         {token && (
           <div className={css.authMenu}>
-            <AuthMenu />
+            <AuthMenu balance={userBalance}/>
           </div>
         )}
         <Logo />
         <LanguageSwitcher />
         <div className={css.navigationBox}>
-          <Navigation />
+          <Navigation balance={userBalance}/>
         </div>
         {token && (
           <div className={css.userMenuDiv}>

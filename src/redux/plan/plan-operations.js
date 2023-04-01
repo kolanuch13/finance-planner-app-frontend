@@ -59,6 +59,11 @@ export const addPersonalPlanPreAPI = createAsyncThunk(
 export const currentPersonalPlanAPI = createAsyncThunk(
   "plan/currentPersonalPlan",
   async (planData, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistToken = state.auth.user.token;
+    if (persistToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
     try {
       const { data } = await planAPI.currentPersonalPlanAPI(planData);
       return data;

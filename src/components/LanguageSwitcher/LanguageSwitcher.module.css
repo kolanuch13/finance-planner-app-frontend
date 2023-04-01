@@ -12,10 +12,6 @@
 transition: all 100ms linear;
 }
 
-.selectEn:hover, .selectUa:hover {
-  color: #3a6af5;
-}
-
 .languageSwitcher input {
   opacity: 0;
   width: 0;
@@ -56,9 +52,8 @@ transition: all 100ms linear;
   width: 24px;
   left: 0;
   bottom: 0;
-  background-color: #f3f3f3;
-  box-shadow: 0 3px 24px rgba(30, 52, 112, 0.16);
   transition: 0.4s;
+  background-color: #fff;
 }
 
 input:checked + .Slider:before {

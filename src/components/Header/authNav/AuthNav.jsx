@@ -3,8 +3,14 @@ import css from './AuthNav.module.css';
 import { useTranslation } from 'react-i18next';
 import '../../../i18n';
 
-function AuthMenu() {
+function AuthMenu({balance}) {
   const { t } = useTranslation();
+
+  const handleClick = e => {
+    if(balance === 0) {
+      e.preventDefault()
+    } 
+  }
 
   return (
     <nav className={css.nav}>
@@ -18,6 +24,7 @@ function AuthMenu() {
           {t('header.personalPlan')}
         </NavLink>
         <NavLink
+          onClick={handleClick}
           className={({ isActive }) =>
             isActive ? css.NavLinkActive : css.NavLink
           }
@@ -26,6 +33,7 @@ function AuthMenu() {
           {t('header.cashFlow')}
         </NavLink>
         <NavLink
+          onClick={handleClick}
           className={({ isActive }) =>
             isActive ? css.NavLinkActive : css.NavLink
           }

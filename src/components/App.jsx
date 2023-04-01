@@ -2,7 +2,7 @@ import { lazy } from 'react';
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Home } from 'pages/HomePage/HomePage';
 import { CashflowPage } from '../pages/CashflowPage/CashflowPage'
 import { Layout } from './Layout/Layout';
@@ -17,12 +17,8 @@ import { Modal } from './Modal/Modal';
 import { ModalLogin } from './Modal/ModalLogin';
 import { ModalRegister } from './Modal/ModalRegister';
 import { Verified } from './Modal/Verified';
-import ModalPopUp from './Modal/ModalPopUp';
+import { balance } from '../redux/auth/auth-selectors'
 import StatisticPage from 'pages/StatisticPage/StatisticPage';
-import ToggleLanguages from './ToggleLanguages';
-import ExampleForToggleLanguages from './ExampleForToggleLanguages';
-
-
 import { OwnPlanPage } from 'pages/OwnPlanPage/OwnPlanPage';
 import ExpensesList from './ExpensesList/ExpensesList';
 import CategoriesStatistic from './CategoriesStatistic/CategoriesStatistic';
@@ -31,6 +27,7 @@ export const App = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
+  const userBalance = useSelector(balance)
 
   useEffect(() => {
     const email = searchParams.get('email');
@@ -54,6 +51,7 @@ export const App = () => {
           <Route path="verify/:verificationToken" element={<Verified />} />
           <Route path="/" element={<PrivateRoute />}>
             <Route path="personal-plan" element={<OwnPlanPage />} />
+            {userBalance && <>
             <Route path="cashflow" element={<CashflowPage/>} />
 
             <Route path="dynamics" element={<DynamicsPage />} />
@@ -62,6 +60,7 @@ export const App = () => {
               <Route path="transactions" element={<ExpensesList />} />
               <Route path="categories" element={<CategoriesStatistic />} />
             </Route>
+            </>}
 
             <Route path="*" element={<div>Not Found Page</div>} />
           </Route>

@@ -4,12 +4,12 @@ import { useSelector } from 'react-redux';
 import barSvg from '../../../images/bar-graph.svg';
 import css from './UserBar.module.css';
 
-export const UserBar = () => {
+export const UserBar = ({balance}) => {
   const userNickName = useSelector(state => state.auth?.user?.userName);
 
   const navigate = useNavigate();
   const statisticsClick = () => {
-    navigate('/statistics/transactions', { replace: true });
+    balance && navigate('/statistics/transactions', { replace: true });
   };
 
   return (
