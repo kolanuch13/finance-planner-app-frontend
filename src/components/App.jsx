@@ -41,7 +41,9 @@ export const App = () => {
           console.log(err);
         });
     }
+    dispatch(authOperations.current())
   }, [dispatch, navigate, searchParams, setSearchParams]);
+
   return (
     <>
       <Routes>
