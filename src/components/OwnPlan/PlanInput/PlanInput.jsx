@@ -1,57 +1,106 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addPersonalPlanPreAPI } from 'redux/plan/plan-operations';
+import { selectorPlanData } from 'redux/plan/plan-selectors';
 import InputsList from '../InputList/InputsList';
-import css from './PlanInput.module.css';
-import { Container } from 'components/Container/Container';
+import styles from './PlanInput.module.css';
 
-const PlanInputList = () => {
+const PlanInput = () => {
   const dataInput = [
     {
       name: 'salary',
-      title: '1. RFP of both spouses',
+      title: 'RFP of both spouses',
       placeholder: 'Enter data',
+      
     },
     {
       name: 'passiveIncome',
-      title: '2. Passive income, months',
+      title: 'Passive income, months',
       placeholder: 'Enter data',
     },
     {
       name: 'savings',
-      title: '3. Savings',
+      title: 'Savings',
       placeholder: 'Enter data',
     },
     {
       name: 'cost',
-      title: '4. Specify the cost of your future apartment',
+      title: 'Specify the cost of your future apartment',
       placeholder: 'Enter data',
     },
-
     {
       name: 'footage',
-      title: '5. Specify the number of sq.m. of your future apartment',
+      title: 'Specify the number of sq.m. of your future apartment',
       placeholder: 'Enter data',
     },
-
     {
       name: 'procent',
-      title: '6. Accumulation',
+      title: 'Accumulation',
       placeholder: 'Enter data',
       descr:
         'Specify the percentage that you would like to accumulate per month from the total amount of income and you will see when you reach the goal',
     },
   ];
 
+  const initialPlanDataState = {
+    salary: '',
+    passiveIncome: '',
+    savings: '',
+    cost: '',
+    footage: '',
+    procent: '',
+  };
+
+  const dispatch = useDispatch();
+  const curPlanData = useSelector(selectorPlanData);
+  const [newPlanData, setNewPlanData] = useState(initialPlanDataState);
+  // const [newPlanData, setNewPlanData] = useState(
+  //   curPlanData ? curPlanData : initialPlanDataState
+  // );
+
+  const onChange = event => {
+    const { name, value } = event.target;
+    setNewPlanData(prev => ({
+      ...prev,
+      [name]: value === '' ? value : Number(value),
+    }));
+  };
+
+  console.log(newPlanData)
+  const onBlur = () => {
+    if (Object.values(newPlanData).filter(element => element === '').length)
+      return;
+    if (JSON.stringify(curPlanData) === JSON.stringify(newPlanData)) return;
+    dispatch(addPersonalPlanPreAPI(newPlanData));
+  };
+
+  useEffect(() => {
+    if (curPlanData) {
+      setNewPlanData(curPlanData);
+    }
+    console.log(curPlanData)
+  }, [curPlanData]);
+
   return (
-    <Container>
-      <div>
-        <ul className={css.list}>
+    <div className={styles.container}>
+
+        <ul className={styles.list}>
           {dataInput.map((element, index) => (
-            <InputsList key={index} {...element} />
+            <InputsList
+              key={index}
+              num={index + 1}
+              {...element}
+              value={newPlanData[element.name]}
+              onChange={onChange}
+              disabled={element.name === 'savings' && curPlanData?.id}
+              onBlur={onBlur}
+            />
           ))}
         </ul>
-      </div>
-    </Container>
+
+      <div className={styles.bg}></div>
+    </div>
   );
 };
 
-export default PlanInputList;
+export default PlanInput;

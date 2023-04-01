@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import css from './Modals.module.css';
+import { useTranslation } from 'react-i18next';
 import { BsEyeSlashFill } from 'react-icons/bs';
 import { BsEye } from 'react-icons/bs';
 import authOperations from 'redux/auth/auth-operations';
@@ -12,6 +13,7 @@ const emailRegexp =
   /^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$/;
 
 export const ModalLogin = () => {
+  const { t } = useTranslation();
   const isLoading = useSelector(selectIsLoading);
   const [invalidError, setInvalidError] = useState('');
   const [email, setEmail] = useState('');
@@ -45,7 +47,7 @@ export const ModalLogin = () => {
         console.log(response);
       })
       .catch(error => {
-        setInvalidError('Invalid password');
+        setInvalidError(t('login.invalidPassword'));
         console.error(error);
       });
   };
@@ -57,21 +59,21 @@ export const ModalLogin = () => {
 
   return (
     <div className={css.box}>
-      <p className={css.title}>Log In</p>
+      <p className={css.title}>{t('login.title')}</p>
       <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
         <label className={css.labelWrapper}>
-          <span className={css.label}>Email:</span>
+          <span className={css.label}>{t('login.email')}</span>
           <input
             {...register('email', {
-              required: 'email is required',
+              required: t('login.requiredEmail'),
               pattern: {
                 value: emailRegexp,
-                message: 'invalid email address',
+                message: t('login.emailStandart'),
               },
             })}
             className={css.input}
             type="text"
-            placeholder="Enter your email"
+            placeholder={t('login.placeholderEmail')}
             name="email"
             onChange={handleChange}
             value={email}
@@ -82,19 +84,19 @@ export const ModalLogin = () => {
           </div>
         </label>
         <label className={css.labelWrapper}>
-          <span className={css.label}>Password:</span>
+          <span className={css.label}>{t('login.password')}</span>
           <input
             {...register('password', {
-              required: 'password is required',
+              required: t('login.requiredPassword'),
               minLength: {
                 value: 6,
-                message: 'length must be min 6',
+                message: t('login.passwordStandart'),
               },
             })}
             className={`${css.input} ${invalidError && css.error} ${
               invalidError && css.error_border
             }`}
-            placeholder="Enter your password"
+            placeholder={t('login.placeholderPassword')}
             type={typeInput ? 'password' : 'text'}
             name="password"
             onChange={handleChange}
@@ -119,7 +121,7 @@ export const ModalLogin = () => {
               visible={true}
             />
           ) : (
-            'Log in'
+            t('login.buttonSignIn')
           )}
         </button>
       </form>

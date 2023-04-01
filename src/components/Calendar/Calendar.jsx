@@ -3,8 +3,49 @@ import DatePicker from 'react-datepicker';
 import './date.css';
 import { AiOutlineCalendar } from 'react-icons/ai';
 import { IoIosArrowDown } from 'react-icons/io';
+import { useTranslation } from 'react-i18next';
 
-export const Calendar = props => {
+const uk = {
+  format: 'MMMM yyyy',
+  months: [
+    'Січень',
+    'Лютий',
+    'Березень',
+    'Квітень',
+    'Травень',
+    'Червень',
+    'Липень',
+    'Серпень',
+    'Вересень',
+    'Жовтень',
+    'Листопад',
+    'Грудень',
+  ],
+  weekdays: [
+    'Неділя',
+    'Понеділок',
+    'Вівторок',
+    'Середа',
+    'Четвер',
+    "П'ятниця",
+    'Субота',
+  ],
+  weekdaysShort: ['Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+  localize: {
+    month: n => uk.months[n],
+    formatLongDate: () => 'd MMMM yyyy',
+    formatLongDateTime: () => 'd MMMM yyyy h:mm:ss a',
+    formatLongTime: () => 'h:mm:ss a',
+  },
+  formatLong: {
+    date: 'd MMMM yyyy',
+  },
+};
+
+export const Calendar = ({ onChange }) => {
+  const {
+    i18n: { language },
+  } = useTranslation();
   const [startDate, setStartDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
 
@@ -20,13 +61,13 @@ export const Calendar = props => {
   ));
 
   useEffect(() => {
-    props.onChange(startDate);
-    // eslint-disable-next-line
+    onChange(startDate);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startDate]);
 
   return (
     <DatePicker
-      dateFormat="MMMM  yyyy"
+      dateFormat="MMMM yyyy"
       showMonthYearPicker
       selected={startDate}
       maxDate={new Date()}
@@ -34,6 +75,7 @@ export const Calendar = props => {
       customInput={<ExampleCustomInput />}
       onCalendarOpen={() => setIsOpen(!isOpen)}
       onCalendarClose={() => setIsOpen(!isOpen)}
+      locale={language === 'ua' ? uk : 'en'}
     />
   );
 };

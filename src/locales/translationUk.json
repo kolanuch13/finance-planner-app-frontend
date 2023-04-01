@@ -16,7 +16,18 @@
     "placeholderEmail": "Введіть свою пошту",
     "password": "Пароль",
     "placeholderPassword": "Введіть свій пароль",
-    "buttonSignUp": "Зареєструватись"
+    "buttonSignUp": "Зареєструватись",
+    "errorEmail": "Невірна пошта!",
+    "passwordError": "Невірний пароль!",
+    "requiredName": "Поле імені обов'язкове",
+    "requiredEmail": "Поле пошти обов'язкове",
+    "requiredPassword": "Поле пороля обов'язкове",
+    "nameStandartMin": "Ім'я має бути мінімум 3 символа",
+    "nameStandarMax": "Ім'я має бути максимум 30 символів",
+    "emailStandart": "Невірний формат пошти",
+    "passwordStandart": "Пароль має бути мінімум 6 символів",
+    "invalidPassword": "Неправильний пароль",
+    "emailInUse": "Ця пошта вже використовується"
   },
   "login": {
     "title": "Вхід",
@@ -26,7 +37,20 @@
     "placeholderPassword": "Введіть пароль",
     "buttonSignIn": "Вхід",
     "errorEmail": "Невірна пошта!",
-    "passwordError": "Невірний пароль!"
+    "passwordError": "Невірний пароль!",
+    "requiredEmail": "Поле пошти обов'язкове",
+    "requiredPassword": "Поле пороля обов'язкове",
+    "emailStandart": "Невірний формат пошти",
+    "passwordStandart": "Пароль має бути мінімум 6 символів",
+    "invalidPassword": "Неправильний пароль"
+  },
+  "verificationSend": {
+    "verificationSendFirst": "Лист з підтвердженням був надісланий на ",
+    "verificationSendSecond": "Перевірте пошту для завершення реєстрації..."
+  },
+  "verifiedSuccess": {
+    "verifiedSuccessFirst": "Акаунт був успішно верифікований.",
+    "verifiedSuccessSecond": "Ви будете автоматично перенаправлені через "
   },
   "logOut": {
     "logOutButton": "Вийти"
@@ -84,20 +108,22 @@
     "month": "Місяць",
     "incomeItem": "Доходи, &#x20B4;",
     "expensesItem": "Витрати, &#x20B4;",
-    "accumulatedItem": "Накопичено, &#x20B4;",
-    "planItem": "План, &#x20B4;",
-    "plan": "План, %",
+    "accumulatedItem": "Накопичено,",
+    "plan": "План, ",
     "after": "Через",
-    "years": "років",
+    "yearResultCountPrimary": "рік",
+    "yearResultCountMany": "років",
+    "yearResultCountSecondary": "роки",
     "monthResultCountPrimary": "місяць",
     "monthResultCountMany": "місяців",
     "monthResultCountSecondary": "місяця",
-
+"changeImage": "Змінити фото",
     "andThis": "А це:",
     "outOf": "із",
     "sqMetersAccumulated": "кв.м накопичено",
     "missingInfoFirst": "Щоб додати ще",
-    "sqM": "1 кв.м",
+    "1sqM": "1 кв.м",
+    "sqM": "кв.м",
     "missingInfoSecond": "на планування, залишилося накопичити",
     "finishTitle": "Ура! Вітаємо!",
     "finishText": "Ви зробили це! Ми дуже пишаємося Вами та бажаємо Вам усього найкращого, коли Ви починаєте цей захоплюючий новий етап свого життя."

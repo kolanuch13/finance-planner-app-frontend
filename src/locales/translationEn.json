@@ -16,7 +16,18 @@
     "placeholderEmail": "Enter your email",
     "password": "Password",
     "placeholderPassword": "Enter your password",
-    "buttonSignUp": "Sign Up"
+    "buttonSignUp": "Sign Up",
+    "errorEmail": "invalid email",
+    "passwordError": "invalid password!",
+    "requiredName": "name is required",
+    "requiredEmail": "email is required",
+    "requiredPassword": "password is required",
+    "nameStandartMin": "name is min 3 symbols",
+    "nameStandarMax": "name is max 30 symbols",
+    "emailStandart": "invalid email format",
+    "passwordStandart": "password in min 6 symbols",
+    "invalidPassword": "invalid password",
+    "emailInUse": "Email in use"
   },
   "login": {
     "title": "Log in",
@@ -25,8 +36,22 @@
     "password": "Password",
     "placeholderPassword": "Enter your password",
     "buttonSignIn": "Log In",
-    "errorEmail": "Invalid email!",
-    "passwordError": "Invalid password!"
+    "errorEmail": "invalid email",
+    "passwordError": "invalid password!",
+    "requiredEmail": "email is required",
+    "requiredPassword": "password is required",
+    "emailStandart": "invalid email format",
+    "passwordStandart": "password in min 6 symbols",
+    "invalidPassword": "invalid password"
+    
+  },
+  "verificationSend": {
+    "verificationSendFirst": "Email with verification link was send to ",
+    "verificationSendSecond": "Chek it to continiue registration..."
+  },
+  "verifiedSuccess": {
+    "verifiedSuccessFirst": "Account was successfully verified",
+    "verifiedSuccessSecond": "You will be automatically sign in and regirect in "
   },
   "logOut": {
     "logOutButton": "Log out"
@@ -84,20 +109,22 @@
     "month": "Month",
     "incomeItem": "Income, &#x20B4;",
     "expensesItem": "Expenses, &#x20B4;",
-    "accumulatedItem": "Accumulated, &#x20B4;",
-    "planItem": "Plan, &#x20B4;",
-    "plan": "Plan, %",
+    "accumulatedItem": "Accumulated,",
+    "plan": "Plan,",
     "after": "After",
-    "years": "years",
+    "yearResultCountPrimary": "year",
+    "yearResultCountMany": "years",
+    "yearResultCountSecondary": "years",
     "monthResultCountPrimary": "month",
-    "monthResultCountMany": "month",
-    "monthResultCountSecondary": "month",
-
+    "monthResultCountMany": "months",
+    "monthResultCountSecondary": "months",
+    "changeImage": "Change image",
     "andThis": "And this:",
     "outOf": "із",
     "sqMetersAccumulated": "кв.м накопичено",
     "missingInfoFirst": "To add more",
-    "sqM": "1 sq.m",
+    "1sqM": "1 sq.m",
+    "sqM": "sq.m",
     "missingInfoSecond": "for planning, it remains to accumulate",
     "finishTitle": "Hooray! Congratulations!",
     "finishText": "You did it! We are so proud of you and wish you all the best as you embark on this exciting new chapter of your life."

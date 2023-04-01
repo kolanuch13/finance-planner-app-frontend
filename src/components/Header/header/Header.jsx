@@ -8,6 +8,7 @@ import Navigation from '../navigation/Navigation';
 import MobileTabletMenu from '../MobileTabletMenu/MobileTabletMenu';
 import AuthMenu from '../authNav/AuthNav';
 import css from './Header.module.css';
+import LanguageSwitcher from 'components/LanguageSwitcher/LanguageSwitcher';
 
 function Header() {
   const token = useSelector(state => state.auth?.user.token);
@@ -32,10 +33,10 @@ function Header() {
           </div>
         )}
         <Logo />
+        <LanguageSwitcher />
         <div className={css.navigationBox}>
           <Navigation />
         </div>
-
         {token && (
           <div className={css.userMenuDiv}>
             <BurgerBtn onClick={handleOpenMenu} isMenuOpen={isMenuOpen} />
