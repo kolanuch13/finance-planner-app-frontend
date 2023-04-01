@@ -94,15 +94,27 @@ code {
   background: #2f5ce6;
 }
 
+/* ----------------------------------------------- */
+
 /* .recharts-surface { */
 /* margin-left: -40px; */
 /* display: flex; */
 /* row-gap: 30px; */
 /* justify-content: space-around; */
 /* } */
-/* ----------------------------------------------- */
-/* .recharts-default-legend {
-  display: flex;
-  margin-left: 100px;
-  column-gap: 30px;
-} */
+
+@media screen and (max-width: 767px) {
+  .recharts-default-legend {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .recharts-default-legend {
+    display: flex;
+    margin-left: 100px;
+    column-gap: 30px;
+  }
+}
