@@ -1,21 +1,29 @@
-export const MONTH = {
-  January: 1,
-  February: 2,
-  March: 3,
-  April: 4,
-  May: 5,
-  June: 6,
-  July: 7,
-  August: 8,
-  September: 9,
-  October: 10,
-  November: 11,
-  December: 12,
-  getKeyByValue: function (value) {
-    for (var prop in this) {
-      if (this.hasOwnProperty(prop)) {
-        if (this[prop] === value) return prop;
-      }
-    }
-  },
-};
+export const enMonthsName = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];
+
+export const ukMonthName = [
+  'Січ',
+  'Лют',
+  'Бер',
+  'Квіт',
+  'Трав',
+  'Черв',
+  'Лип',
+  'Серп',
+  'Вер',
+  'Жовт',
+  'Лист',
+  'Груд',
+];
