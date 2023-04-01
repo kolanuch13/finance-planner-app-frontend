@@ -7,7 +7,6 @@ const categoryTypeStatistic = async () => {
 };
 
 const expenseStatistic = async period => {
-  console.log(period);
   return await axios.get(
     `/statistic/by-expense?year=${period.year}&month=${period.month}`
   );

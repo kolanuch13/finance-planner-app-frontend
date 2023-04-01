@@ -1,6 +1,8 @@
+import moment from 'moment';
 import { ReactComponent as Pensil } from '../../images/pensil.svg';
 import { ReactComponent as Busket } from '../../images/busket.svg';
-import moment from 'moment';
+import modifyCategory from 'helpers/modifyCategory';
+import css from './ExpensesListItem.module.css';
 
 const ExpensesListItem = ({
   id,
@@ -12,21 +14,38 @@ const ExpensesListItem = ({
   removeTransaction,
 }) => {
   return (
-    <li key={id}>
-      <div>
-        <p>{moment(date).format('DD.MM.YYYY')}</p>
+    <li className={css.transactionItem} key={id}>
+      <div className={css.transactionThumb}>
+        <div className={css.commentWrapper}>
+          <p className={css.transactionDate}>
+            {moment(date).format('DD.MM.YYYY')}
+          </p>
+          <p className={css.transactionComment}>{comment}</p>
+        </div>
+
+        <div>
+          <p className={css.transactionSum}>{sum} UAH</p>
+        </div>
       </div>
-      <div>
-        <p>{comment}</p>
-        <p>{sum} UAH</p>
+      <div className={css.thumb}>
+        <p className={css.transactionCategory}>{modifyCategory(category)}</p>
+        <div className={css.buttonThumb}>
+          <button
+            className={css.buttonItem}
+            type="button"
+            onClick={() => updateTransaction(id)}
+          >
+            {<Pensil />}
+          </button>
+          <button
+            className={css.buttonItem}
+            type="button"
+            onClick={() => removeTransaction(id)}
+          >
+            {<Busket />}
+          </button>
+        </div>
       </div>
-      <p>{category}</p>
-      <button type="button" onClick={() => updateTransaction(id)}>
-        {<Pensil />}
-      </button>
-      <button type="button" onClick={() => removeTransaction(id)}>
-        {<Busket />}
-      </button>
     </li>
   );
 };
