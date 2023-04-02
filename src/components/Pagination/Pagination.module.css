@@ -1,0 +1,19 @@
+.paginateWrapper {
+  margin-top: 16px;
+}
+
+.paginateWrapper > ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.paginateWrapper > ul > li:not(:last-child) {
+  margin-right: 8px;
+}
+
+.paginateWrapper > ul > li [aria-current] {
+  color: rgb(58, 106, 245);
+  font-size: 20px;
+}
