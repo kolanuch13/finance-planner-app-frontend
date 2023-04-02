@@ -23,6 +23,7 @@ export const categoryTypeStatistic = createAsyncThunk(
     token.set(persistToken);
     try {
       const { data } = await statisticsAPI.categoryTypeStatistic();
+      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

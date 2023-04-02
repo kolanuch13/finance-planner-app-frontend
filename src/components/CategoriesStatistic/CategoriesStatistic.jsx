@@ -1,13 +1,16 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { selectCategories } from 'redux/statistics/statistics-selector';
 import statisticsOperations from '../../redux/statistics/statistics-operations';
 import modifyCategory from 'helpers/modifyCategory';
+import '../../i18n';
 import css from './CategoriesStatistic.module.css';
 
 const CategoriesStatistic = () => {
   const dispatch = useDispatch();
   const categories = useSelector(selectCategories);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const period = JSON.parse(localStorage.getItem('selectedPeriod'));
@@ -27,9 +30,7 @@ const CategoriesStatistic = () => {
     <>
       {categories?.length === 0 && (
         <div className={css.noCategoriesWrapper}>
-          <p className={css.noCategoriesText}>
-            У Вас в цьому місяці немає даних за категоріями витрат 🤷‍♀️
-          </p>
+          <p className={css.noCategoriesText}>{t('expenses.noStatistic')}</p>
         </div>
       )}
       <ul className={css.categoriesList}>

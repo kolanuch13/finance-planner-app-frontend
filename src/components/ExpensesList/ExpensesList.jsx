@@ -13,8 +13,12 @@ import {
 } from 'react-icons/md';
 import '../../i18n';
 import ExpensesListItem from '../ExpensesListItem/ExpensesListItem';
+import Pagination from 'components/Pagination/Pagination';
 import statisticsOperations from '../../redux/statistics/statistics-operations';
-import { selectTransactions } from 'redux/statistics/statistics-selector';
+import {
+  selectTransactions,
+  selectTotalTransactions,
+} from 'redux/statistics/statistics-selector';
 import ModalNormal from '../Modal/ModalNormal';
 import getAllCategories from 'helpers/categories';
 import { ReactComponent as CloseModal } from '../../images/close-modal.svg';
@@ -23,6 +27,7 @@ import css from './ExpensesList.module.css';
 const ExpensesList = () => {
   const dispatch = useDispatch();
   const transaction = useSelector(selectTransactions);
+  const totalTransactions = useSelector(selectTotalTransactions);
   const [open, setOpen] = useState(false);
   const [categoryItem, setCategoryItem] = useState('');
   const [sum, setSum] = useState(0);
@@ -31,6 +36,9 @@ const ExpensesList = () => {
   const [allCategory, setAllCategory] = useState([]);
   const [idTransaction, setIdTransaction] = useState('');
   const currentLang = localStorage.getItem('i18nextLng');
+  const [page, setPage] = useState(localStorage.getItem('page') ?? 1);
+  const itemsPerPage = 6;
+  const totalPage = Math.ceil(totalTransactions / itemsPerPage);
   const { t } = useTranslation();
   const style = { color: '#3A6AF5', size: '15px', display: 'block' };
   const icons = [
@@ -46,15 +54,21 @@ const ExpensesList = () => {
 
   useEffect(() => {
     const period = JSON.parse(localStorage.getItem('selectedPeriod'));
-    currentLang === 'ru-UA'
+
+    const data = { ...period, page, limit: itemsPerPage };
+    currentLang === 'en'
       ? getAllCategories().then(res =>
-          setAllCategory(res.availableCategoriesUa)
+          setAllCategory(res.availableCategoriesEn)
         )
       : getAllCategories().then(res =>
-          setAllCategory(res.availableCategoriesEn)
+          setAllCategory(res.availableCategoriesUa)
         );
-    dispatch(statisticsOperations.expenseStatistic(period));
-  }, [currentLang, dispatch]);
+    dispatch(statisticsOperations.expenseStatistic(data));
+  }, [currentLang, dispatch, page]);
+
+  const actualPage = selectedPage => {
+    setPage(Number(selectedPage));
+  };
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -140,6 +154,9 @@ const ExpensesList = () => {
             />
           ))}
       </ul>
+
+      <Pagination actualPage={actualPage} totalPage={totalPage} page={page} />
+
       {open && (
         <ModalNormal closeModal={closeModal}>
           <form className={css.formWrapper} onSubmit={handleSubmit}>
