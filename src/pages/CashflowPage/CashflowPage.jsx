@@ -42,7 +42,6 @@ const CashflowPage = () => {
     dispatch(cashflowOperations.addTransaction(newData))
       .unwrap()
       .then(response => {
-        console.log(response);
         return response;
       })
     .catch(error => console.error(error));

@@ -72,12 +72,10 @@ const planSlice = createSlice({
         state.accumulationPeriod = accumulationPeriod;
       })
       .addCase(currentPersonalPlanAPI.fulfilled, (state, { payload }) => {
-        console.log(payload);
         const { planData, accumulationPeriod } = separatePlanData(payload);
         state.planData = planData;
         state.accumulationPeriod = accumulationPeriod;
       })
-      // .addMatcher(...gl(initialState));
   },
 });
  export default planSlice.reducer

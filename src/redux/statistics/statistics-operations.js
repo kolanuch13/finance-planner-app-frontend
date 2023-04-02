@@ -23,7 +23,6 @@ export const categoryTypeStatistic = createAsyncThunk(
     token.set(persistToken);
     try {
       const { data } = await statisticsAPI.categoryTypeStatistic();
-      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -86,7 +85,6 @@ export const updateTransaction = createAsyncThunk(
       thunkAPI.dispatch(expenseStatistic(period));
       return response.data;
     } catch (error) {
-      console.log(error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

@@ -66,7 +66,6 @@ const PlanInput = () => {
     }));
   };
 
-  console.log(newPlanData);
   const onBlur = () => {
     if (Object.values(newPlanData).filter(element => element === '').length)
       return;
@@ -78,7 +77,6 @@ const PlanInput = () => {
     if (curPlanData) {
       setNewPlanData(curPlanData);
     }
-    console.log(curPlanData);
   }, [curPlanData]);
 
   return (

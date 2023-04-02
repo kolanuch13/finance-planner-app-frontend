@@ -40,10 +40,8 @@ export const login = createAsyncThunk(
     try {
       const { data } = await authAPI.login(credentials);
       token.set(data.token);
-      console.log(data);
       return data;
     } catch (error) {
-      console.log(thunkAPI);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -99,7 +97,7 @@ export const current = createAsyncThunk(
     }
     token.set(persistToken);
     try {
-      const { data } = await authAPI.currentUser();
+      const data = await authAPI.currentUser();
       return data;
     } catch (error) {
       thunkAPI.rejectWithValue();

@@ -22,7 +22,6 @@ export const yearInfoThunk = createAsyncThunk(
     token.set(persistToken);
     try {
       const { data } = await dynamicAPI.yearInfo();
-
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
