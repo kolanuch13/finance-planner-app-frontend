@@ -12,7 +12,7 @@ import ModalAddBalance from 'components/OwnPlan/ModalAddBalance/ModalAddBalance'
 import { balance } from 'redux/auth/auth-selectors';
 import styles from './OwnPlanPage.module.css';
 
-export const OwnPlanPage = () => {
+const OwnPlanPage = () => {
   const dispatch = useDispatch();
   const isExistBalance = useSelector(balance);
   const newPlanData = useSelector(selectorPlanData);
@@ -49,3 +49,5 @@ export const OwnPlanPage = () => {
     </div>
   );
 };
+
+export default OwnPlanPage;

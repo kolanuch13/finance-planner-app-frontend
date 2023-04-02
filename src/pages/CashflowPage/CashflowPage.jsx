@@ -9,7 +9,7 @@ import css from './CashflowPage.module.css';
 import cashflowOperations from 'redux/cashflowPage/cashflowPage-operations';
 
 
-export const CashflowPage = () => {
+const CashflowPage = () => {
   const [dailyLimit, setDailyLimit] = useState('');
   const [monthlyLimit, setMonthlyLimit] = useState('');
   const [formData, setFormData] = useState({
@@ -70,3 +70,5 @@ export const CashflowPage = () => {
     </main>
   );
 };
+
+export default CashflowPage;

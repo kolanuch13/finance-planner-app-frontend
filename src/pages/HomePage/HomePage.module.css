@@ -20,7 +20,6 @@
   background-color: rgba(243, 243, 243, 0.053);
   opacity: 1.5;
   backdrop-filter: blur(21.47px);
-  z-index: 12;
   border-radius: 31px;
   filter: drop-shadow(0px 11px 15px rgba(0, 0, 0, 0.2));
 }
@@ -60,7 +59,6 @@
   background-color: rgba(243, 243, 243, 0.053);
   opacity: 1.5;
   backdrop-filter: blur(21.47px);
-  z-index: 12;
   border-radius: 31px;
   filter: drop-shadow(0px 11px 15px rgba(0, 0, 0, 0.2));
 }
@@ -213,7 +211,6 @@
 
   .manDesctop {
     display: block;
-    z-index: 12;
     bottom: 0px;
     position: absolute;
     right: 2.5%;

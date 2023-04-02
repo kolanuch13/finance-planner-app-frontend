@@ -1,27 +1,26 @@
-import { lazy } from 'react';
-import { useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { lazy, useEffect } from 'react';
+import { useSearchParams, Route, Routes, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Home } from 'pages/HomePage/HomePage';
-import { CashflowPage } from '../pages/CashflowPage/CashflowPage'
 import { Layout } from './Layout/Layout';
 
 import authOperations from 'redux/auth/auth-operations';
+import { balance } from 'redux/auth/auth-selectors'
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
 
-import DynamicsPage from '../pages/DynamicsPage/DynamicsPage';
 import { ModalView } from './Modal/ModalView';
 import { Modal } from './Modal/Modal';
 import { ModalLogin } from './Modal/ModalLogin';
 import { ModalRegister } from './Modal/ModalRegister';
 import { Verified } from './Modal/Verified';
-import { balance } from '../redux/auth/auth-selectors'
-import StatisticPage from 'pages/StatisticPage/StatisticPage';
-import { OwnPlanPage } from 'pages/OwnPlanPage/OwnPlanPage';
-import ExpensesList from './ExpensesList/ExpensesList';
-import CategoriesStatistic from './CategoriesStatistic/CategoriesStatistic';
+
+const HomePage = lazy(() => import('pages/HomePage/HomePage'));
+const OwnPlanPage = lazy(() => import('pages/OwnPlanPage/OwnPlanPage'));
+const CashflowPage = lazy(() => import('pages/CashflowPage/CashflowPage'));
+const DynamicsPage = lazy(()=> import('pages/DynamicsPage/DynamicsPage'));
+const StatisticPage = lazy(() => import('pages/StatisticPage/StatisticPage'));
+const ExpensesList = lazy(() => import('./ExpensesList/ExpensesList'));
+const CategoriesStatistic = lazy(() => import('./CategoriesStatistic/CategoriesStatistic'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -48,7 +47,7 @@ export const App = () => {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+          <Route index element={<HomePage />} />
 
           <Route path="verify/:verificationToken" element={<Verified />} />
           <Route path="/" element={<PrivateRoute />}>
@@ -92,9 +91,6 @@ export const App = () => {
           />
         </Route>
       </Routes>
-      {/* 
-      <ToggleLanguages />
-      <ExampleForToggleLanguages /> */}
     </>
   );
 };

@@ -4,7 +4,7 @@ import {FcGoogle} from 'react-icons/fc'
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
 
-export const Home = () => {
+const HomePage = () => {
   const { t } = useTranslation();
   return (
     <main className={css.main}>
@@ -42,3 +42,5 @@ export const Home = () => {
     </main>
   );
 };
+
+export default HomePage;
