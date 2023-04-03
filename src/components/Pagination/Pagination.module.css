@@ -9,11 +9,20 @@
   justify-content: center;
 }
 
+.paginateWrapper > ul > li {
+  cursor: pointer;
+  color: white;
+}
+
 .paginateWrapper > ul > li:not(:last-child) {
   margin-right: 8px;
 }
 
 .paginateWrapper > ul > li [aria-current] {
   color: rgb(58, 106, 245);
-  font-size: 20px;
+}
+
+.paginateWrapper > ul > li [aria-disabled='true'] {
+  cursor: auto;
+  color: grey;
 }

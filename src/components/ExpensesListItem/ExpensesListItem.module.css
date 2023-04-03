@@ -76,6 +76,18 @@
   flex-direction: column;
 }
 
+@media screen and (min-width: 375px) {
+  .commentWrapper {
+    width: 200px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .commentWrapper {
+    width: 230px;
+  }
+}
+
 .transactionDate {
   font-family: 'Lato', sans-serif;
   font-size: 12px;
