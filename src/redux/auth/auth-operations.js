@@ -79,7 +79,7 @@ export const balance = createAsyncThunk(
     }
     token.set(persistToken);
     try {
-      const { data } = await authAPI.balance(userData);
+      const data = await authAPI.balance(userData);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

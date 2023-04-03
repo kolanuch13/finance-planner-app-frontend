@@ -9,7 +9,7 @@ import '../../../i18n';
 
 const modalRoot = document.querySelector('#modal-root');
 
-function MobileTabletMenu({ closeMenu, balance }) {
+function MobileTabletMenu({ closeMenu, personalPlan }) {
   const token = useSelector(state => state.auth?.user.token);
   const { t } = useTranslation();
 
@@ -27,7 +27,7 @@ function MobileTabletMenu({ closeMenu, balance }) {
   };
 
   const handleClick = e => {
-    if (balance === 0) {
+    if (personalPlan === null) {
       e.preventDefault();
     }
   };
@@ -38,7 +38,7 @@ function MobileTabletMenu({ closeMenu, balance }) {
         <div className={css.menu}>
           <NavLink
             className={({ isActive }) =>
-              balance && isActive ? css.NavLinkActive : css.NavLink
+              personalPlan && isActive ? css.NavLinkActive : css.NavLink
             }
             to="/personal-plan"
           >
@@ -47,7 +47,7 @@ function MobileTabletMenu({ closeMenu, balance }) {
           <NavLink
             onClick={handleClick}
             className={({ isActive }) =>
-              balance && isActive ? css.NavLinkActive : css.NavLink
+              personalPlan && isActive ? css.NavLinkActive : css.NavLink
             }
             to="/cashflow"
           >
@@ -56,7 +56,7 @@ function MobileTabletMenu({ closeMenu, balance }) {
           <NavLink
             onClick={handleClick}
             className={({ isActive }) =>
-              balance && isActive ? css.NavLinkActive : css.NavLink
+              personalPlan && isActive ? css.NavLinkActive : css.NavLink
             }
             to="/dynamics"
           >
