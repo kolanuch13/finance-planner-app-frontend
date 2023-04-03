@@ -192,6 +192,7 @@ const ExpensesList = () => {
                 className={css.formInput}
                 type="text"
                 name="comment"
+                maxLength="80"
                 value={comment}
                 onChange={handleChange}
               />
