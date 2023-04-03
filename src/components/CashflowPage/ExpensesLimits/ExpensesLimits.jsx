@@ -2,7 +2,7 @@ import css from './ExpensesLimits.module.css';
 import { useTranslation } from 'react-i18next';
 import '../../../i18n';
 
-export const ExpensesLimits = ({ dailyLimit, monthlyLimit }) => {
+export const ExpensesLimits = ({ dailyLimit, monthlyLimit, openModalAddIncome}) => {
   const { t } = useTranslation();
 
   return (
@@ -37,7 +37,7 @@ export const ExpensesLimits = ({ dailyLimit, monthlyLimit }) => {
         <button type="submit" className={css.btnReady}>
           {t('cashFlow.buttonReady')}
         </button>
-        <button type="button" className={css.btnAdd}>
+        <button type="button" className={css.btnAdd} onClick={openModalAddIncome}>
           {t('cashFlow.addIncome')}
         </button>
       </div>
