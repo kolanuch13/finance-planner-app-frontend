@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import barSvg from '../../../images/bar-graph.svg';
 import css from './UserBar.module.css';
-import { getUser } from '../../../redux/auth/auth-selectors';
+import { getUser } from 'redux/auth/auth-selectors';
 
 export const UserBar = ({ personalPlan }) => {
   const userNickName = useSelector(getUser);

@@ -38,7 +38,9 @@ function MobileTabletMenu({ closeMenu, personalPlan }) {
         <div className={css.menu}>
           <NavLink
             className={({ isActive }) =>
-              personalPlan && isActive ? css.NavLinkActive : css.NavLink
+              personalPlan !== null && isActive
+                ? css.NavLinkActive
+                : css.NavLink
             }
             to="/personal-plan"
           >
@@ -47,7 +49,9 @@ function MobileTabletMenu({ closeMenu, personalPlan }) {
           <NavLink
             onClick={handleClick}
             className={({ isActive }) =>
-              personalPlan && isActive ? css.NavLinkActive : css.NavLink
+              personalPlan !== null && isActive
+                ? css.NavLinkActive
+                : css.NavLink
             }
             to="/cashflow"
           >
@@ -56,7 +60,9 @@ function MobileTabletMenu({ closeMenu, personalPlan }) {
           <NavLink
             onClick={handleClick}
             className={({ isActive }) =>
-              personalPlan && isActive ? css.NavLinkActive : css.NavLink
+              personalPlan !== null && isActive
+                ? css.NavLinkActive
+                : css.NavLink
             }
             to="/dynamics"
           >
