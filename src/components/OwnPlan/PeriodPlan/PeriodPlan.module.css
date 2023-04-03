@@ -3,6 +3,7 @@
   border-radius: 16px;
   padding: 40px 48px;
   margin: 0 auto;
+  margin-bottom: 46px;
 }
 
 .text {
@@ -79,6 +80,7 @@
   border: none;
   border-radius: 60px;
   margin-bottom: 14px;
+  cursor: pointer;
 }
 
 .buttonAddBalance {

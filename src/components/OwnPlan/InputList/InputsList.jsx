@@ -5,6 +5,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 const InputsListItem = ({
   num,
   title,
+  type = 'number',
   name,
   component: Component = null,
   descr,

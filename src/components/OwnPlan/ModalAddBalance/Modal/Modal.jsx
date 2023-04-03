@@ -3,10 +3,12 @@ import { createPortal } from 'react-dom';
 import { useDispatch } from 'react-redux';
 import { balance } from "redux/auth/auth-operations";
 import styles from './Modal.module.css';
+import { useTranslation } from 'react-i18next';
 
 const modalRoot = document.querySelector('#modal-root');
 
 const Modal = ({ children, onClose }) => {
+  const { t } = useTranslation();
   const [updateBalance, setUpdateBalance] = useState(0);
   const dispatch = useDispatch()
   useEffect(() => {
@@ -51,9 +53,11 @@ const Modal = ({ children, onClose }) => {
             />
 
             <div className={styles.btnContainer}>
-              <button type="submit" className={styles.btn}>Add balance</button>
+              <button type="submit" className={styles.btn}>
+                {t('personalPlane.addBalance')}
+              </button>
               <button className={styles.btn} onClick={onClose}>
-                Cancel
+              {t('personalPlane.buttonCancel')}
               </button>
             </div>
           </label>
