@@ -1,51 +1,55 @@
 import PlanInput from 'components/OwnPlan/PlanInput/PlanInput';
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectorPlanData } from 'redux/plan/plan-selectors';
-import {
-  addPersonalPlanAPI,
-  currentPersonalPlanAPI,
-  getPersonalPlan,
-} from 'redux/plan/plan-operations';
+import { addPersonalPlanAPI, currentPersonalPlanAPI } from 'redux/plan/plan-operations';
+import { selectorAccumPeriod } from 'redux/plan/plan-selectors';
 import PeriodPlan from 'components/OwnPlan/PeriodPlan/PeriodPlan';
-import ModalAddBalance from 'components/OwnPlan/ModalAddBalance/ModalAddBalance';
-import { balance } from 'redux/auth/auth-selectors';
 import styles from './OwnPlanPage.module.css';
+import { Container } from 'components/Container/Container';
+const deepEqual = require('deep-equal')
 
-export const OwnPlanPage = () => {
+const OwnPlanPage = () => {
   const dispatch = useDispatch();
-  const isExistBalance = useSelector(balance);
   const newPlanData = useSelector(selectorPlanData);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const toggleModal = useCallback(() => {
-    setIsModalOpen(p => (p === false && isExistBalance ? p : !p));
-  }, [isExistBalance]);
-  console.log(newPlanData);
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log(newPlanData);
-
-    !newPlanData
-      ? dispatch(addPersonalPlanAPI(newPlanData))
-      : dispatch(currentPersonalPlanAPI(newPlanData));
+  const accumPeriod = useSelector(selectorAccumPeriod);
+  const [planData, setPlanData] = useState({
+    salary: newPlanData?.salary || '',
+    passiveIncome: newPlanData?.passiveIncome || '',
+    savings: newPlanData?.savings || '',
+    cost: newPlanData?.cost || '',
+    footage: newPlanData?.footage || '',
+    procent: newPlanData?.procent || '',
+  });
+  const periodPlan = {
+    years: accumPeriod?.years || "",
+    months: accumPeriod?.months || "",
   };
 
-  useEffect(() => {
-    !isExistBalance && toggleModal();
-  }, [isExistBalance, toggleModal]);
-
-  useEffect(() => {
-    dispatch(getPersonalPlan());
-  }, [dispatch]);
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (newPlanData === null) {
+      dispatch(addPersonalPlanAPI({
+        ...planData,
+        ...periodPlan
+      }))
+    } else if (!deepEqual(newPlanData, planData)) {
+      dispatch(currentPersonalPlanAPI({
+        ...planData,
+        ...periodPlan
+      }))
+    }
+  }
+    
 
   return (
-    <div className={styles.container}>
+    <Container>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <PlanInput />
-        <PeriodPlan openModalAddBalance={toggleModal} />
+        <PlanInput data={planData} setData={setPlanData}/>
+        <PeriodPlan data={periodPlan}/>
       </form>
-      {isModalOpen && <ModalAddBalance closeModal={toggleModal} />}
-    </div>
+    </Container>
   );
 };
+
+export default OwnPlanPage;

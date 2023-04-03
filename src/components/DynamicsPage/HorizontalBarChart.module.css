@@ -1,0 +1,10 @@
+.barStyle {
+  font-size: 12px;
+  line-height: 1.16;
+  font-weight: 400;
+  padding-top: 50px;
+  text-transform: capitalize;
+  display: inline-block;
+  margin-bottom: 50px;
+  margin-left: -30px;
+}

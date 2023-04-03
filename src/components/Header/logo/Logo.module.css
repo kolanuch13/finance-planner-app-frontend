@@ -1,12 +1,12 @@
-.logoTablet,
+.logoTablet ,
 .logoDesktop {
+  width: 138px;
   display: none;
 }
 .logoMobile {
-  margin-left: 16px;
+  width: 93px;
   margin-top: 24px;
   margin-bottom: 24px;
-  margin-right: 10px;
 }
 
 @media screen and (min-width: 768px) {
@@ -18,7 +18,6 @@
     display: block;
     margin-top: 22px;
     margin-bottom: 22px;
-    margin-left: 32px;
     margin-right: 0px;
   }
 }

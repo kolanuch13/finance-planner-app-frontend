@@ -3,6 +3,7 @@ import statisticsOperations from './statistics-operations';
 
 const initialState = {
   transactions: null,
+  totalTransactions: null,
   categories: null,
   isLoggedIn: false,
   isLoading: false,
@@ -22,7 +23,8 @@ const statisticsSlice = createSlice({
       .addCase(
         statisticsOperations.expenseStatistic.fulfilled,
         (state, action) => {
-          state.transactions = action.payload;
+          state.transactions = action.payload.transactions;
+          state.totalTransactions = action.payload.totalTransactions;
           state.isLoggedIn = true;
           state.isLoading = false;
         }

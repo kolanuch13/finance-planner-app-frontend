@@ -1,36 +1,35 @@
-// import { lazy } from 'react';
-
-import { Route, Routes, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { Home } from 'pages/HomePage/HomePage';
+import { lazy, useEffect } from 'react';
+import { useSearchParams, Route, Routes, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { Layout } from './Layout/Layout';
-import { useSearchParams } from 'react-router-dom';
 
+import authOperations from 'redux/auth/auth-operations';
+import { getPersonalPlan } from 'redux/plan/plan-operations';
+import { balance } from 'redux/auth/auth-selectors'
+import { selectorPlanData } from 'redux/plan/plan-selectors';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
-import ToggleLanguages from './ToggleLanguages';
-import ExampleForToggleLanguages from './ExampleForToggleLanguages';
 import PublicRoute from './PublicRoute/PublicRoute';
 
-import DynamicsPage from '../pages/DynamicsPage/DynamicsPage';
 import { ModalView } from './Modal/ModalView';
 import { Modal } from './Modal/Modal';
 import { ModalLogin } from './Modal/ModalLogin';
 import { ModalRegister } from './Modal/ModalRegister';
 import { Verified } from './Modal/Verified';
-import ModalPopUp from './Modal/ModalPopUp';
-import StatisticPage from 'pages/StatisticPage/StatisticPage';
 
-import { OwnPlanPage } from 'pages/OwnPlanPage/OwnPlanPage';
-
-import ExpensesList from './ExpensesList/ExpensesList';
-import CategoriesStatistic from './CategoriesStatistic/CategoriesStatistic';
-import authOperations from 'redux/auth/auth-operations';
-import { useEffect } from 'react';
+const HomePage = lazy(() => import('pages/HomePage/HomePage'));
+const OwnPlanPage = lazy(() => import('pages/OwnPlanPage/OwnPlanPage'));
+const CashflowPage = lazy(() => import('pages/CashflowPage/CashflowPage'));
+const DynamicsPage = lazy(()=> import('pages/DynamicsPage/DynamicsPage'));
+const StatisticPage = lazy(() => import('pages/StatisticPage/StatisticPage'));
+const ExpensesList = lazy(() => import('./ExpensesList/ExpensesList'));
+const CategoriesStatistic = lazy(() => import('./CategoriesStatistic/CategoriesStatistic'));
 
 export const App = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
+  const userBalance = useSelector(balance);
+  const newPlanData = useSelector(selectorPlanData);
 
   useEffect(() => {
     const email = searchParams.get('email');
@@ -44,18 +43,23 @@ export const App = () => {
           console.log(err);
         });
     }
-  }, [dispatch, navigate, searchParams, setSearchParams]);
+    dispatch(authOperations.current())
+    if(userBalance !== 0) {
+      dispatch(getPersonalPlan());
+    } 
+  }, [dispatch, navigate, searchParams, setSearchParams, userBalance]);
+
   return (
     <>
-     
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+          <Route index element={<HomePage />} />
 
           <Route path="verify/:verificationToken" element={<Verified />} />
           <Route path="/" element={<PrivateRoute />}>
-            <Route path="personal-plan" element={<OwnPlanPage/>} />
-            <Route path="cashflow" element={<div>ExpensesPage</div>} />
+            <Route path="personal-plan" element={<OwnPlanPage />} />
+            {newPlanData && <>
+            <Route path="cashflow" element={<CashflowPage/>} />
 
             <Route path="dynamics" element={<DynamicsPage />} />
 
@@ -63,6 +67,7 @@ export const App = () => {
               <Route path="transactions" element={<ExpensesList />} />
               <Route path="categories" element={<CategoriesStatistic />} />
             </Route>
+            </>}
 
             <Route path="*" element={<div>Not Found Page</div>} />
           </Route>
@@ -78,7 +83,7 @@ export const App = () => {
                 </Modal>
               </ModalView>
             }
-          /> 
+          />
 
           <Route
             path="register"
@@ -92,9 +97,6 @@ export const App = () => {
           />
         </Route>
       </Routes>
-
-      <ToggleLanguages />
-      <ExampleForToggleLanguages />
     </>
   );
 };

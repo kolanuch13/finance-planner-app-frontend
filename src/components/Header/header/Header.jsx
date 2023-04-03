@@ -9,16 +9,18 @@ import MobileTabletMenu from '../MobileTabletMenu/MobileTabletMenu';
 import AuthMenu from '../authNav/AuthNav';
 import css from './Header.module.css';
 import LanguageSwitcher from 'components/LanguageSwitcher/LanguageSwitcher';
+import { selectorPlanData } from 'redux/plan/plan-selectors';
 
 function Header() {
   const token = useSelector(state => state.auth?.user.token);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const newPlanData = useSelector(selectorPlanData);
   const location = useLocation();
-
+  
   const handleOpenMenu = () => {
     setIsMenuOpen(prev => !prev);
   };
-
+  
   useEffect(() => {
     if (!location?.pathname) return;
     setIsMenuOpen(false);
@@ -29,13 +31,13 @@ function Header() {
       <header className={css.header}>
         {token && (
           <div className={css.authMenu}>
-            <AuthMenu />
+            <AuthMenu personalPlan={newPlanData}/>
           </div>
         )}
         <Logo />
         <LanguageSwitcher />
         <div className={css.navigationBox}>
-          <Navigation />
+          <Navigation personalPlan={newPlanData}/>
         </div>
         {token && (
           <div className={css.userMenuDiv}>

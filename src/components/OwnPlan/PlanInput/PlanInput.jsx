@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPersonalPlanPreAPI } from 'redux/plan/plan-operations';
 import { selectorPlanData } from 'redux/plan/plan-selectors';
 import InputsList from '../InputList/InputsList';
 import styles from './PlanInput.module.css';
 import { useTranslation } from 'react-i18next';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { balance } from 'redux/auth/auth-selectors'
 
-const PlanInput = () => {
-  const {t} = useTranslation();
+const PlanInput = ({data, setData}) => {
+const {t} = useTranslation();
   const dataInput = [
     {
       name: 'salary',
@@ -41,46 +42,26 @@ const PlanInput = () => {
       descr: t('personalPlane.additionalInfoSixthInput'),
     },
   ];
-
-  const initialPlanDataState = {
-    salary: '',
-    passiveIncome: '',
-    savings: '',
-    cost: '',
-    footage: '',
-    procent: '',
-  };
-
+  const userBalance = useSelector(balance)
   const dispatch = useDispatch();
   const curPlanData = useSelector(selectorPlanData);
   const [newPlanData, setNewPlanData] = useState(initialPlanDataState);
 
-  // const [newPlanData, setNewPlanData] = useState(
-  //   curPlanData ? curPlanData : initialPlanDataState
-  // );
-
   const onChange = event => {
     const { name, value } = event.target;
-    setNewPlanData(prev => ({
+    userBalance === 0 ? Notify.warning('At first enter the balance at the bottom of the page⬇') : 
+    setData(prev => ({
       ...prev,
       [name]: value === '' ? value : Number(value),
     }));
   };
 
-  console.log(newPlanData);
   const onBlur = () => {
-    if (Object.values(newPlanData).filter(element => element === '').length)
+    if (Object.values(data).filter(element => element === '').length)
       return;
-    if (JSON.stringify(curPlanData) === JSON.stringify(newPlanData)) return;
-    dispatch(addPersonalPlanPreAPI(newPlanData));
+    if (JSON.stringify(curPlanData) === JSON.stringify(data)) return;
+    dispatch(addPersonalPlanPreAPI(data));
   };
-
-  useEffect(() => {
-    if (curPlanData) {
-      setNewPlanData(curPlanData);
-    }
-    console.log(curPlanData);
-  }, [curPlanData]);
 
   return (
 
@@ -91,10 +72,11 @@ const PlanInput = () => {
               key={index}
               num={index + 1}
               {...element}
-              value={newPlanData[element.name]}
+              value={data[element.name]}
               onChange={onChange}
               disabled={element.name === 'savings' && curPlanData?.id}
               onBlur={onBlur}
+              type="numbers"
             />
           ))}
         </ul>

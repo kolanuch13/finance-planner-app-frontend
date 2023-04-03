@@ -9,7 +9,7 @@ import '../../../i18n';
 
 const modalRoot = document.querySelector('#modal-root');
 
-function MobileTabletMenu({ closeMenu }) {
+function MobileTabletMenu({ closeMenu, personalPlan }) {
   const token = useSelector(state => state.auth?.user.token);
   const { t } = useTranslation();
 
@@ -26,29 +26,43 @@ function MobileTabletMenu({ closeMenu }) {
     }
   };
 
+  const handleClick = e => {
+    if (personalPlan === null) {
+      e.preventDefault();
+    }
+  };
+
   return createPortal(
     <>
       {token && (
         <div className={css.menu}>
           <NavLink
             className={({ isActive }) =>
-              isActive ? css.NavLinkActive : css.NavLink
+              personalPlan !== null && isActive
+                ? css.NavLinkActive
+                : css.NavLink
             }
             to="/personal-plan"
           >
             {t('header.personalPlan')}
           </NavLink>
           <NavLink
+            onClick={handleClick}
             className={({ isActive }) =>
-              isActive ? css.NavLinkActive : css.NavLink
+              personalPlan !== null && isActive
+                ? css.NavLinkActive
+                : css.NavLink
             }
             to="/cashflow"
           >
             {t('header.cashFlow')}
           </NavLink>
           <NavLink
+            onClick={handleClick}
             className={({ isActive }) =>
-              isActive ? css.NavLinkActive : css.NavLink
+              personalPlan !== null && isActive
+                ? css.NavLinkActive
+                : css.NavLink
             }
             to="/dynamics"
           >

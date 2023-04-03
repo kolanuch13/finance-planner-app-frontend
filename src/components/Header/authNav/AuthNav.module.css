@@ -1,14 +1,19 @@
+.nav {
+  height: 100%;
+  display: flex;
+}
+
 .authBox {
   display: flex;
   column-gap: 32px;
-  margin-top: 26px;
-  margin-bottom: 26px;
+  margin-top: auto;
+  margin-bottom: auto;
   margin-left: 55px;
   margin-right: 140px;
+  align-items: center;
 }
 
 .NavLink {
-  font-family: 'Lato';
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
@@ -16,10 +21,13 @@
   text-align: center;
   text-decoration: none;
   color: #f3f3f3;
+  transition: all 100ms linear;
+}
+.NavLink:hover {
+  color: #3a6af5;;
 }
 
 .NavLinkActive {
-  font-family: 'Lato';
   font-style: normal;
   font-weight: 700;
   font-size: 14px;

@@ -4,7 +4,6 @@
 }
 
 .nickName {
-  font-family: 'Lato';
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -31,4 +30,8 @@
   border: none;
   margin-right: 16px;
   cursor: pointer;
+}
+
+.statistic img {
+  width: 20px;
 }

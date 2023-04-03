@@ -58,6 +58,12 @@
   padding: 12px 10px;
   cursor: pointer;
   max-width: 300px;
+  transition: all 100ms linear;
+}
+.btn:hover {
+  border-color: #f3f3f3;
+  background-color: #f3f3f3;
+  color: #3a6af5;;
 }
 .labelWrapper {
   position: relative;

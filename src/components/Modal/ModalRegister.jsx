@@ -34,11 +34,11 @@ export const ModalRegister = () => {
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
       case 'name':
-        return setName(value);
+        return setName(value.trimStart());
       case 'password':
-        return setPassword(value);
+        return setPassword(value.trim());
       case 'email':
-        return setEmail(value);
+        return setEmail(value.trim());
       default:
         return;
     }
@@ -48,7 +48,6 @@ export const ModalRegister = () => {
     dispatch(authOperations.register(data))
       .unwrap()
       .then(res => {
-        console.log(25)
         setIsSendEmail(prev => !prev);
         dispatch(saveCredentials(data));
       })

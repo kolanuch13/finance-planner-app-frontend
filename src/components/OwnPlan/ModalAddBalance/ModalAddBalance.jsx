@@ -10,21 +10,19 @@ const ModalAddBalance = ({ closeModal }) => {
   const newBalance = useSelector(balance);
   const isLoading = useSelector(state => state.isLoading);
   const { t } = useTranslation();
+  const isLoading = useSelector((state) => state.isLoading);
 
-  const handleSubmit = e => {
+  const handleSubmitModal = (e) => {
     e.preventDefault();
     dispatch(balance(Number(updateBalance)));
+    closeModal();
   };
-
-  useEffect(() => {
-    newBalance && closeModal();
-  }, [newBalance, closeModal]);
 
   return (
     !isLoading && (
       <Modal closeModal={closeModal}>
-        <form onSubmit={handleSubmit}>
-          <p style={{ color: '#fff', fontSize: '30px' }}>
+        <form onSubmit={handleSubmitModal}>
+          <p style={{ color: "#fff", fontSize: "30px" }}>
             {t('personalPlane.addBalance')}
           </p>
           <input

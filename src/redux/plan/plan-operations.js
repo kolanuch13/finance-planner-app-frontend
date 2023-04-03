@@ -45,12 +45,9 @@ export const addPersonalPlanPreAPI = createAsyncThunk(
   "plan/addPersonalPlanPre",
   async (prePlanData, thunkAPI) => {
     try {
-      console.log("prePlanData",prePlanData)
       const { data } = await planAPI.addPersonalPlanPreAPI(prePlanData);
-      console.log("data", data)
       return data;
     } catch (error) {
-      console.log(333)
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -59,6 +56,11 @@ export const addPersonalPlanPreAPI = createAsyncThunk(
 export const currentPersonalPlanAPI = createAsyncThunk(
   "plan/currentPersonalPlan",
   async (planData, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistToken = state.auth.user.token;
+    if (persistToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
     try {
       const { data } = await planAPI.currentPersonalPlanAPI(planData);
       return data;
