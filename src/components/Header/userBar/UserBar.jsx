@@ -5,12 +5,12 @@ import barSvg from '../../../images/bar-graph.svg';
 import css from './UserBar.module.css';
 import { getUser } from 'redux/auth/auth-selectors';
 
-export const UserBar = ({ balance }) => {
+export const UserBar = ({personalPlan}) => {
   const userNickName = useSelector(getUser);
 
   const navigate = useNavigate();
   const statisticsClick = () => {
-    balance && navigate('/statistics/transactions', { replace: true });
+    personalPlan && navigate('/statistics/transactions', { replace: true });
   };
 
   return (

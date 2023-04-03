@@ -1,27 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import {balance} from "redux/auth/auth-operations";
+import { balance } from "redux/auth/auth-operations";
 import Modal from './Modal/Modal';
 
 const ModalAddBalance = ({ closeModal }) => {
   const dispatch = useDispatch();
   const [updateBalance, setUpdateBalance] = useState(0);
-  // const newBalance = useSelector(balance);
   const isLoading = useSelector((state) => state.isLoading);
 
-  const handleSubmit = (e) => {
+  const handleSubmitModal = (e) => {
     e.preventDefault();
     dispatch(balance(Number(updateBalance)));
+    closeModal();
   };
-
-  // useEffect(() => {
-  //   newBalance && closeModal();
-  // }, [newBalance, closeModal]);
 
   return (
     !isLoading && (
       <Modal closeModal={closeModal}>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmitModal}>
           <p style={{ color: "#fff", fontSize: "30px" }}>Add balance:</p>
           <input
             type="text"

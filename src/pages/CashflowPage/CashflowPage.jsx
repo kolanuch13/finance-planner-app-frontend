@@ -37,7 +37,7 @@ const CashflowPage = () => {
       category: formData.category.toLowerCase(),
       sum: Number(+formData.sum),
       categoryType: formData.categoryType,
-      comment: formData.expenseComment,
+      comment: formData.comment,
     }
     dispatch(cashflowOperations.addTransaction(newData))
       .unwrap()

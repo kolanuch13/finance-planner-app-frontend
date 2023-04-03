@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { balance } from 'redux/auth/auth-selectors';
 import css from './TransactionDataList.module.css';
 import getAllCategories from '../../../helpers/categories'
@@ -66,6 +66,7 @@ export const TransactionDataList = ({ setFormData, formData }) => {
           formData.category = list[list.length-1]
         })
         .catch(error => console.error(error))
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [currentLanguage])
 
   return (

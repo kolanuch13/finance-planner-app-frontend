@@ -23,8 +23,8 @@ const currentUser = async () => {
   return data;
 };
 
-const updateBalance = async () => {
-  const { data } = await axios.patch('/auth/balance');
+const balance = async (balance) => {
+  const { data } = await axios.patch('/auth/balance', balance);
   return data;
 };
 
@@ -34,6 +34,6 @@ const authAPI = {
   verify,
   logout,
   currentUser,
-  updateBalance,
+  balance,
 };
 export default authAPI;

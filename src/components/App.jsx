@@ -4,7 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Layout } from './Layout/Layout';
 
 import authOperations from 'redux/auth/auth-operations';
+import { getPersonalPlan } from 'redux/plan/plan-operations';
 import { balance } from 'redux/auth/auth-selectors'
+import { selectorPlanData } from 'redux/plan/plan-selectors';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
 
@@ -26,7 +28,8 @@ export const App = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-  const userBalance = useSelector(balance)
+  const userBalance = useSelector(balance);
+  const newPlanData = useSelector(selectorPlanData);
 
   useEffect(() => {
     const email = searchParams.get('email');
@@ -41,7 +44,10 @@ export const App = () => {
         });
     }
     dispatch(authOperations.current())
-  }, [dispatch, navigate, searchParams, setSearchParams]);
+    if(userBalance !== 0) {
+      dispatch(getPersonalPlan());
+    } 
+  }, [dispatch, navigate, searchParams, setSearchParams, userBalance]);
 
   return (
     <>
@@ -52,7 +58,7 @@ export const App = () => {
           <Route path="verify/:verificationToken" element={<Verified />} />
           <Route path="/" element={<PrivateRoute />}>
             <Route path="personal-plan" element={<OwnPlanPage />} />
-            {userBalance && <>
+            {newPlanData && <>
             <Route path="cashflow" element={<CashflowPage/>} />
 
             <Route path="dynamics" element={<DynamicsPage />} />
