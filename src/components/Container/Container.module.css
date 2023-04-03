@@ -1,4 +1,5 @@
 .BoxContainer {
+    min-height: calc(70px - 100vh);
     padding-top: 66px;
     margin-left: auto;
     margin-right: auto;
@@ -7,7 +8,7 @@
 
 @media screen and (min-width: 375px) {
     .BoxContainer {
-        padding: 50px 16px;
+        padding: 120px 16px 50px 16px;
     }
 }
 

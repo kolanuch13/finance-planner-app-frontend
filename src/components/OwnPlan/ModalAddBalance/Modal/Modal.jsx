@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { balance } from "redux/auth/auth-operations";
 import styles from './Modal.module.css';
 import { useTranslation } from 'react-i18next';
+import { MdClose } from 'react-icons/md';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -40,7 +41,7 @@ const Modal = ({ children, onClose }) => {
           className={styles.btnCloseModal}
           onClick={onClose}
         >
-          X
+          <MdClose size={"24px"}/>
         </button>
         <form className={styles.form} action="" onSubmit={handleSubmitModal}>
           <label className={styles.labelWrapper}>

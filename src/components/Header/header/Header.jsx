@@ -8,7 +8,6 @@ import Navigation from '../navigation/Navigation';
 import MobileTabletMenu from '../MobileTabletMenu/MobileTabletMenu';
 import AuthMenu from '../authNav/AuthNav';
 import css from './Header.module.css';
-import LanguageSwitcher from 'components/LanguageSwitcher/LanguageSwitcher';
 import { selectorPlanData } from 'redux/plan/plan-selectors';
 
 function Header() {
@@ -35,7 +34,7 @@ function Header() {
           </div>
         )}
         <Logo />
-        <LanguageSwitcher />
+      
         <div className={css.navigationBox}>
           <Navigation personalPlan={newPlanData}/>
         </div>

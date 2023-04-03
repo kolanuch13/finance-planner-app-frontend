@@ -20,12 +20,7 @@ const CashflowPage = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const toggleModal = useCallback(() => { setIsModalOpen(isModalOpen => !isModalOpen)}, [setIsModalOpen]
-  );
-
-  // useEffect(() => {
-  //   toggleModal();
-  // }, [toggleModal]);
+  const toggleModal = useCallback(() => { setIsModalOpen(isModalOpen => !isModalOpen)}, [setIsModalOpen]);
 
   const dispatch = useDispatch();
 
@@ -53,13 +48,20 @@ const CashflowPage = () => {
         return response;
       })
       .catch(error => console.error(error));
-      if(isModalOpen) toggleModal();
+    if(isModalOpen) toggleModal();
     setFormData({
       category: '',
       categoryType: 'expense',
       comment: '',
       sum: 0,
     });
+    dispatch(cashflowOperations.getCashflowLimits())
+    .unwrap()
+    .then(response => {
+      setDailyLimit(response.data.limitDay);
+      setMonthlyLimit(response.data.limitMonth);
+    })
+    .catch(error => console.error(error));
   };
 
   return (

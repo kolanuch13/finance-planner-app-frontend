@@ -5,14 +5,10 @@
   margin: 22px 10px;
 }
 .RxHamburgerMenu {
-  width: 24px;
-  height: 24px;
   color: #f3f3f3;
 }
 
 .GrClose {
-  width: 25px;
-  height: 25px;
   color: #f3f3f3;
 }
 
@@ -24,13 +20,9 @@
     margin-left: 18px;
   }
   .RxHamburgerMenu {
-    width: 32px;
-    height: 32px;
     color: #f3f3f3;
   }
   .GrClose {
-    width: 30px;
-    height: 30px;
     color: #f3f3f3;
   }
 }

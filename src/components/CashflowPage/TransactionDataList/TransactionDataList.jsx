@@ -63,7 +63,9 @@ export const TransactionDataList = ({ setFormData, formData }) => {
         .then(res => res.availableCategoriesEn)
         .then(list => {
           setCategory(list)
-          formData.category = list[list.length-1]
+          if(formData.category === "") {
+            formData.category = list[list.length-1]
+          }
         })
         .catch(error => console.error(error))
 // eslint-disable-next-line react-hooks/exhaustive-deps

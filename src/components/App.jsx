@@ -15,6 +15,8 @@ import { Modal } from './Modal/Modal';
 import { ModalLogin } from './Modal/ModalLogin';
 import { ModalRegister } from './Modal/ModalRegister';
 import { Verified } from './Modal/Verified';
+import LanguageSwitcher from 'components/LanguageSwitcher/LanguageSwitcher';
+import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const OwnPlanPage = lazy(() => import('pages/OwnPlanPage/OwnPlanPage'));
@@ -69,7 +71,7 @@ export const App = () => {
             </Route>
             </>}
 
-            <Route path="*" element={<div>Not Found Page</div>} />
+            <Route path="*" element={ <NotFoundPage/> } />
           </Route>
         </Route>
 
@@ -97,6 +99,7 @@ export const App = () => {
           />
         </Route>
       </Routes>
+      <LanguageSwitcher />
     </>
   );
 };

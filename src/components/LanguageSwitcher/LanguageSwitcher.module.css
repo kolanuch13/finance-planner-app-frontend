@@ -1,11 +1,10 @@
 .languageSwitcher {
-  position: relative;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
   display: inline-block;
   width: calc(24px * 2);
   height: 24px;
-  margin-top: 15px;
-  transform: translateY(40%);
-  transition: transform 0.17s cubic-bezier(0.26, 0.48, 0.08, 0.9);
 }
 
 .selectEn, .selectUa {
@@ -20,11 +19,17 @@
 
 .languageSwitcher .selectUa,
 .languageSwitcher .selectEn {
+  display: flex;
   cursor: pointer;
   position: absolute;
   font-size: 14px;
   font-weight: 600;
   top: 4px;
+  height: 24px;
+  width: 24px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px;
 }
 
 .languageSwitcher .selectUa {
@@ -53,11 +58,11 @@
   left: 0;
   bottom: 0;
   transition: 0.4s;
-  background-color: #fff;
 }
 
-input:checked + .Slider:before {
-  transform: translateX(24px);
+input:checked + .selectEn:before,
+input:checked + .selectUa:before {
+  transform: scaleX(1);
 }
 
 .Round {

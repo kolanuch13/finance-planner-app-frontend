@@ -12,7 +12,8 @@ export default function LanguageSwitcher() {
   };
 
   const style = currentLang => lang === currentLang 
-    ? {"color": "#3a6af5"} : {"color": "#fff"}
+    ? {"color": "#3a6af5",
+     "backgroundColor": "#fff"} : {"color": "#fff"}
 
   return (
     <label className={css.languageSwitcher}>

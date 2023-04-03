@@ -1,5 +1,5 @@
 import axios from 'axios';
-axios.defaults.baseURL = 'http://localhost:4000/api';
+axios.defaults.baseURL = 'https://finance-planner-app-l78h.onrender.com/api';
 
 const yearInfo = async () => {
   return await axios.get('/dynamic/chart');

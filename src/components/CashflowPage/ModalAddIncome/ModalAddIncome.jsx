@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import css from './ModalAddIncome.module.css';
+import {MdClose} from 'react-icons/md'
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -28,7 +29,7 @@ const ModalAddIncome = ({ closeModal, setFormData, handleSubmitAdd, formData }) 
           className={css.btnCloseModal}
           onClick={closeModal}
         >
-          X
+          <MdClose size={"24px"}/>
         </button>
         <form className={css.form} onSubmit={handleSubmitAdd}>
           <label className={css.labelWrapper}>

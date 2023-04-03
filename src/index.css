@@ -1,5 +1,53 @@
 @import-normalize;
 
+@font-face {
+  font-family: 'Lato';
+  src: url('../src/fonts/lato-thin-webfont.woff2') format('woff2'),
+  url('../src/fonts/lato-thin-webfont.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('../src/fonts/lato-light-webfont.woff2') format('woff2'),
+       url('../src/fonts/lato-light-webfont.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('../src/fonts/lato-regular-webfont.woff2') format('woff2'),
+       url('../src/fonts/lato-regular-webfont.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('../src/fonts/lato-bold-webfont.woff2') format('woff2'),
+       url('../src/fonts/lato-bold-webfont.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('../src/fonts/lato-black-webfont.woff2') format('woff2'),
+       url('../src/fonts/lato-black-webfont.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Unbounded';
+  src: url('../src/fonts/unbounded-variablefont_wght-webfont.woff2') format('woff2'),
+       url('../src/fonts/unbounded-variablefont_wght-webfont.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
 *,
 ::after,
 ::before {

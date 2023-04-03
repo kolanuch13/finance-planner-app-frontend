@@ -8,6 +8,8 @@ const HomePage = () => {
   const { t } = useTranslation();
   return (
     <main className={css.main}>
+      <div className={css.mainContainer}>
+
       <h1 className={css.title}>
         <span className={css.mainLogo}>{t('home.highlightedTitle')}</span>
         {t('home.title')}
@@ -33,11 +35,12 @@ const HomePage = () => {
         <FcGoogle size={"18px"}/>
 
         <a
-          href="http://localhost:4000/api/auth/google"
+          href="https://finance-planner-app-l78h.onrender.com/api/auth/google"
           className={css.signText}
         >
           {t('home.googleSignIn')}
         </a>
+      </div>
       </div>
     </main>
   );

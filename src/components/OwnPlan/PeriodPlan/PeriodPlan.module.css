@@ -94,7 +94,7 @@
   font-weight: 700;
   border-bottom: 1px solid #f3f3f3;
   box-sizing: content-box;
-  width: 72px;
+  width: 80px;
 }
 
 .active {
@@ -163,5 +163,10 @@
 @media screen and (min-width: 1280px) {
   .boxForm {
     padding: 24px 66px;
+  }
+
+  .LabelFormMonths {
+    margin-right: 54px;
+    margin-bottom: 0;
   }
 }

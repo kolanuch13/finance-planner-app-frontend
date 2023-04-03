@@ -35,41 +35,41 @@ function MobileTabletMenu({ closeMenu, personalPlan }) {
   return createPortal(
     <>
       {token && (
-        <div className={css.menu}>
-          <NavLink
-            className={({ isActive }) =>
+          <div className={css.menu}>
+            <NavLink
+              className={({ isActive }) =>
               personalPlan !== null && isActive
-                ? css.NavLinkActive
-                : css.NavLink
-            }
-            to="/personal-plan"
-          >
-            {t('header.personalPlan')}
-          </NavLink>
-          <NavLink
-            onClick={handleClick}
-            className={({ isActive }) =>
-              personalPlan !== null && isActive
-                ? css.NavLinkActive
-                : css.NavLink
-            }
-            to="/cashflow"
-          >
-            {t('header.cashFlow')}
-          </NavLink>
-          <NavLink
-            onClick={handleClick}
-            className={({ isActive }) =>
-              personalPlan !== null && isActive
-                ? css.NavLinkActive
-                : css.NavLink
-            }
-            to="/dynamics"
-          >
-            {t('header.dynamics')}
-          </NavLink>
-          <LogOut />
-        </div>
+                  ? css.NavLinkActive
+                  : css.NavLink
+              }
+              to="/personal-plan"
+            >
+              {t('header.personalPlan')}
+            </NavLink>
+            <NavLink
+              onClick={handleClick}
+              className={({ isActive }) =>
+                personalPlan !== null && isActive
+                  ? css.NavLinkActive
+                  : css.NavLink
+              }
+              to="/cashflow"
+            >
+              {t('header.cashFlow')}
+            </NavLink>
+            <NavLink
+              onClick={handleClick}
+              className={({ isActive }) =>
+                personalPlan !== null && isActive
+                  ? css.NavLinkActive
+                  : css.NavLink
+              }
+              to="/dynamics"
+              >
+              {t('header.dynamics')}
+            </NavLink>
+            <LogOut />
+          </div>
       )}
     </>,
     modalRoot
