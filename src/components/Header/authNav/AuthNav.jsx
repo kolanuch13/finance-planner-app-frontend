@@ -18,7 +18,7 @@ function AuthMenu({personalPlan}) {
       <div className={css.authBox}>
         <NavLink
           className={({ isActive }) =>
-            isActive ? css.NavLinkActive : css.NavLink
+            personalPlan !== null && isActive ? css.NavLinkActive : css.NavLink
           }
           to="/personal-plan"
         >
@@ -27,7 +27,7 @@ function AuthMenu({personalPlan}) {
         <NavLink
           onClick={handleClick}
           className={({ isActive }) =>
-            isActive ? css.NavLinkActive : css.NavLink
+            personalPlan !== null && isActive ? css.NavLinkActive : css.NavLink
           }
           to="/cashflow"
         >
@@ -36,7 +36,7 @@ function AuthMenu({personalPlan}) {
         <NavLink
           onClick={handleClick}
           className={({ isActive }) =>
-            isActive ? css.NavLinkActive : css.NavLink
+            personalPlan !== null && isActive ? css.NavLinkActive : css.NavLink
           }
           to="/dynamics"
         >
