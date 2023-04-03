@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPersonalPlanPreAPI } from 'redux/plan/plan-operations';
 import { selectorPlanData } from 'redux/plan/plan-selectors';
 import InputsList from '../InputList/InputsList';
 import styles from './PlanInput.module.css';
-import { Container } from 'components/Container/Container';
 
 const PlanInput = ({data, setData}) => {
   const dataInput = [
@@ -59,12 +57,6 @@ const PlanInput = ({data, setData}) => {
     if (JSON.stringify(curPlanData) === JSON.stringify(data)) return;
     dispatch(addPersonalPlanPreAPI(data));
   };
-
-  // useEffect(() => {
-  //   if (curPlanData) {
-  //     setData(curPlanData);
-  //   }
-  // }, [curPlanData]);
 
   return (
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { balance } from 'redux/auth/auth-selectors';
 import css from './TransactionDataList.module.css';
-import getAllCategories from '../../../helpers/categories'
+import getAllCategories from 'helpers/categories'
 import {
   MdSetMeal,
   MdCheckroom, 

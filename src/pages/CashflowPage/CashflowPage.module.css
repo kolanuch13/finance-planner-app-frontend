@@ -1,30 +1,6 @@
-* {
-  box-sizing: border-box;
-}
+
 .main {
   color: #f3f3f3;
-  padding: 50px 0 66px 0;
   background-color: #191d28;
 }
 
-@media screen and (min-width: 375px) {
-}
-@media screen and (min-width: 768px) {
-  .main {
-    background: url('../../images/CashflowPage/Vector-tablet.png'), #191d28;
-    background-repeat: no-repeat;
-    background-position: top 550px left;
-    padding-top: 100px;
-    padding-bottom: 220px;
-  }
-
-}
-@media screen and (min-width: 1280px) {
-  .main {
-    background: url('../../images/CashflowPage/Vector-desktop.png'), #191d28;
-    background-repeat: no-repeat;
-    background-position: top 359px left;
-    padding-top: 66px;
-    padding-bottom: 148px;
-  }
-}

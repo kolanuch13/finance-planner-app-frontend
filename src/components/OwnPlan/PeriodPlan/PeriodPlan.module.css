@@ -25,12 +25,20 @@
   color: rgba(243, 243, 243, 0.4);
 }
 
+.input:hover, .input:focus {
+  outline: none;
+}
+
 .LabelFormMonths {
   display: flex;
   flex-direction: column;
   font-size: 14px;
   margin-bottom: 28px;
   color: rgba(243, 243, 243, 0.4);
+}
+
+.input:hover, .input:focus {
+  outline: none;
 }
 
 .textLabebel {
@@ -56,9 +64,11 @@
 .btnContainer {
   display: flex;
   flex-direction: column-reverse;
+  align-items: center;
 }
 
 .button {
+  width: 100%;
   height: 46px;
   font-weight: 700;
   font-size: 14px;
@@ -79,9 +89,10 @@
   cursor: pointer;
   color: #f3f3f3;
   font-size: 12px;
-  margin: 0 auto;
   font-weight: 700;
   border-bottom: 1px solid #f3f3f3;
+  box-sizing: content-box;
+  width: 72px;
 }
 
 .active {
@@ -94,7 +105,7 @@
     text-shadow: #3A6AF5 1px 0 10px;
     border-color: #3A6AF5;
   }
-
+  
   50% {
     color: #f3f3f3;
     border-color: #f3f3f3;
@@ -109,9 +120,7 @@
 
 @media screen and (min-width: 768px) {
   .boxForm {
-    width: 672px;
     border-radius: 16px;
-    padding: 44px 32px;
   }
 
   .text {
@@ -122,30 +131,35 @@
   .form {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 28px;
   }
-
+  
   .LabelForm {
     margin-right: 18px;
+    margin-bottom: 0;
   }
 
   .LabelFormMonths {
     margin-right: 24px;
+    margin-bottom: 0;
   }
 
   .input {
     width: 183px;
   }
-
+  
   .btnContainer {
     flex-direction: column;
   }
-
+  
   .button {
     width: 200px;
     margin-top: 9px;
   }
+
 }
 
 @media screen and (min-width: 1280px) {
+  .boxForm {
+    padding: 24px 66px;
+  }
 }

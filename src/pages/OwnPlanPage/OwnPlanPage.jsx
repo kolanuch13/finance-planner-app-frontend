@@ -6,6 +6,7 @@ import { addPersonalPlanAPI, currentPersonalPlanAPI } from 'redux/plan/plan-oper
 import { selectorAccumPeriod } from 'redux/plan/plan-selectors';
 import PeriodPlan from 'components/OwnPlan/PeriodPlan/PeriodPlan';
 import styles from './OwnPlanPage.module.css';
+import { Container } from 'components/Container/Container';
 const deepEqual = require('deep-equal')
 
 const OwnPlanPage = () => {
@@ -42,12 +43,12 @@ const OwnPlanPage = () => {
     
 
   return (
-    <div className={styles.container}>
+    <Container>
       <form className={styles.form} onSubmit={handleSubmit}>
         <PlanInput data={planData} setData={setPlanData}/>
         <PeriodPlan data={periodPlan}/>
       </form>
-    </div>
+    </Container>
   );
 };
 
