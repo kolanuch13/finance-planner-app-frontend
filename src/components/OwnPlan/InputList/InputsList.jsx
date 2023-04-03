@@ -6,7 +6,7 @@ const onChangePlaceholder = () => {};
 const InputsListItem = ({
   num,
   title,
-  type = 'text',
+  type = 'number',
   name,
   component: Component = null,
   descr,

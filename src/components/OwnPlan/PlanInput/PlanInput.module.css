@@ -1,63 +1,10 @@
-html {
-  box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-body {
-  margin: 0;
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 16.8px;
-  color: #f3f3f3;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-h1,
-h2,
-h3,
-h4,
-p,
-ul,
-li {
-  margin: 0;
-}
-
-ul {
-  padding-left: 0;
-  list-style: none;
-}
-
-img {
-  display: block;
-  width: 100%;
-}
-
-button,
-a {
-  cursor: pointer;
-}
-
-button:active {
-  transform: scale(0.95);
-}
-
 .container {
   width: 380px;
   margin: 0 auto;
 }
 
 .list {
-  padding: 50px 0 64px 0;
+  padding: 50px 0 94px 0;
   margin: 0 auto;
 }
 

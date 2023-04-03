@@ -22,7 +22,7 @@
 
 .title {
   font-weight: 400;
-  font-size: 12px;
+  font-size: 10px;
   line-height: 14px;
   display: flex;
   align-items: center;
@@ -85,8 +85,9 @@
       margin-bottom: 32px;
     }
 
-    .title {
-      font-size: 11px;
-    }
+}
+
+@media screen and (min-width: 1280px) {
+
 
 }
