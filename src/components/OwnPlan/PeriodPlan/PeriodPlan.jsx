@@ -1,17 +1,14 @@
 import { useState } from 'react';
-import { Container } from '../../Container/Container';
 import Modal from '../ModalAddBalance/Modal/Modal';
 import css from './PeriodPlan.module.css';
 import { useSelector } from 'react-redux';
 import { selectorPreMonth, selectorPreYear } from 'redux/plan/plan-selectors';
-
-
+import { useTranslation } from 'react-i18next';
 
 const PeriodPlan = () => {
-  const preYear = useSelector(selectorPreYear)
-  const preMonth = useSelector(selectorPreMonth)
-
-
+  const preYear = useSelector(selectorPreYear);
+  const preMonth = useSelector(selectorPreMonth);
+  const { t } = useTranslation();
 
   const [isModalShown, setIsModalShown] = useState(false);
 
@@ -20,42 +17,53 @@ const PeriodPlan = () => {
   };
 
   return (
+    <div className={css.boxForm}>
+      <p className={css.text}>{t('personalPlane.informTitle')}</p>
+      <div className={css.form}>
+        <label className={css.LabelForm}>
+          <span className={css.textLabebel}>
+            {t('personalPlane.informYear')}
+          </span>
+          <input
+            className={css.input}
+            type="text"
+            placeholder={`0 ` + t('personalPlane.placeholderInformYear')}
+            value={preYear}
+          />
+        </label>
+        <label className={css.LabelFormMonths}>
+          <span className={css.textLabebel}>
+            {t('personalPlane.informMonth')}
+          </span>
+          <input
+            className={css.input}
+            type="text"
+            placeholder={`0 ` + t('personalPlane.placeholderInformMonth')}
+            value={preMonth}
+          />
+        </label>
+        <div className={css.btnContainer}>
+          <button
+            className={css.buttonAddBalance}
+            type="button"
+            onClick={openModalAddBalance}
+          >
+            {t('personalPlane.addBalance')}
+          </button>
 
-      <div className={css.boxForm}>
-        <p className={css.text}>You will have an apartment in:</p>
-        <div className={css.form}>
-          <label className={css.LabelForm}>
-            <span className={css.textLabebel}>Number of years</span>
-            <input className={css.input} type="text" placeholder="0 years" value={preYear} />
-
-          </label>
-          <label className={css.LabelFormMonths}>
-            <span className={css.textLabebel}>Number of months</span>
-            <input className={css.input} type="text" placeholder="0 months" value={preMonth}/>
-          </label>
-          <div className={css.btnContainer}>
-            <button
-              className={css.buttonAddBalance}
-              type="button"
+          {isModalShown && (
+            <Modal
               onClick={openModalAddBalance}
-            >
-              Add balance
-            </button>
+              onClose={openModalAddBalance}
+            />
+          )}
 
-            {isModalShown && (
-              <Modal
-                onClick={openModalAddBalance}
-                onClose={openModalAddBalance}
-              />
-            )}
-
-            <button className={css.button} type="submit">
-              Fits
-            </button>
-          </div>
+          <button className={css.button} type="submit">
+            {t('personalPlane.buttonFits')}
+          </button>
         </div>
       </div>
-
+    </div>
   );
 };
 

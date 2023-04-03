@@ -4,41 +4,41 @@ import { addPersonalPlanPreAPI } from 'redux/plan/plan-operations';
 import { selectorPlanData } from 'redux/plan/plan-selectors';
 import InputsList from '../InputList/InputsList';
 import styles from './PlanInput.module.css';
-import { Container } from 'components/Container/Container';
+import { useTranslation } from 'react-i18next';
 
 const PlanInput = () => {
+  const {t} = useTranslation();
   const dataInput = [
     {
       name: 'salary',
-      title: 'RFP of both spouses',
-      placeholder: 'Enter data',
+      title: t('personalPlane.firstInput'),
+      placeholder: t('personalPlane.placeholderFirstInput'),
     },
     {
       name: 'passiveIncome',
-      title: 'Passive income, months',
-      placeholder: 'Enter data',
+      title: t('personalPlane.secondInput'),
+      placeholder: t('personalPlane.placeholderSecondInput'),
     },
     {
       name: 'savings',
-      title: 'Savings',
-      placeholder: 'Enter data',
+      title: t('personalPlane.thirdInput'),
+      placeholder: t('personalPlane.placeholderThirdInput'),
     },
     {
       name: 'cost',
-      title: 'Specify the cost of your future apartment',
-      placeholder: 'Enter data',
+      title: t('personalPlane.fourthInput'),
+      placeholder: t('personalPlane.placeholderFourthInput'),
     },
     {
       name: 'footage',
-      title: 'Specify the number of sq.m. of your future apartment',
-      placeholder: 'Enter data',
+      title: t('personalPlane.fifthInput'),
+      placeholder: t('personalPlane.placeholderFifthInput'),
     },
     {
       name: 'procent',
-      title: 'Accumulation',
-      placeholder: 'Enter data',
-      descr:
-        'Specify the percentage that you would like to accumulate per month from the total amount of income and you will see when you reach the goal',
+      title: t('personalPlane.sixthInput'),
+      placeholder: t('personalPlane.placeholderSixthInput'),
+      descr: t('personalPlane.additionalInfoSixthInput'),
     },
   ];
 
@@ -54,6 +54,7 @@ const PlanInput = () => {
   const dispatch = useDispatch();
   const curPlanData = useSelector(selectorPlanData);
   const [newPlanData, setNewPlanData] = useState(initialPlanDataState);
+
   // const [newPlanData, setNewPlanData] = useState(
   //   curPlanData ? curPlanData : initialPlanDataState
   // );

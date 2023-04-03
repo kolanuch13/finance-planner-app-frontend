@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import styles from './Modal.module.css';
+import { useTranslation } from 'react-i18next';
 
 const modalRoot = document.querySelector('#modal-root');
 
 const Modal = ({ children, onClose }) => {
+  const { t } = useTranslation();
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.key === 'Escape') onClose();
@@ -35,13 +37,15 @@ const Modal = ({ children, onClose }) => {
             <input
               className={styles.input}
               type="text"
-              placeholder="Add balance"
+              placeholder={t('personalPlane.addBalance')}
             />
 
             <div className={styles.btnContainer}>
-              <button className={styles.btn}>Add balance</button>
+              <button className={styles.btn}>
+                {t('personalPlane.addBalance')}
+              </button>
               <button className={styles.btn} onClick={onClose}>
-                Cancel
+              {t('personalPlane.buttonCancel')}
               </button>
             </div>
           </label>
