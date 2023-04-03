@@ -1,47 +1,31 @@
-import style from './LanguageSwitcher.module.css';
+import css from './LanguageSwitcher.module.css';
 import { useTranslation } from 'react-i18next';
-import { useEffect, useState } from 'react';
 import '../../i18n';
 
 export default function LanguageSwitcher() {
   const { i18n } = useTranslation();
-  const [isChecked, setIsChecked] = useState(
-    localStorage.getItem('isChecked') === 'true' || i18n.language === 'en'
-  );
+  const lang = i18n.language;
 
-  const switchLang = lang => {
-    i18n.changeLanguage(lang);
+  const switchLang = e => {
+    const newLang = e.target.value === "en" ? "ua" : "en"
+    i18n.changeLanguage(newLang);
   };
 
-  useEffect(() => {
-    localStorage.setItem('isChecked', isChecked);
-    if (isChecked) {
-      switchLang('en');
-    } else {
-      switchLang('ua');
-    }
-  }, [isChecked]);
-
-  useEffect(() => {
-    if (i18n.language === 'en') {
-      setIsChecked(true);
-    } else {
-      setIsChecked(false);
-    }
-  }, [i18n.language]);
+  const style = currentLang => lang === currentLang 
+    ? {"color": "#3a6af5"} : {"color": "#fff"}
 
   return (
-    <label className={style.languageSwitcher}>
+    <label className={css.languageSwitcher}>
       <input
         type="checkbox"
-        checked={isChecked}
-        onChange={e => setIsChecked(e.target.checked)}
+        value={lang}
+        onChange={switchLang}
       />
-      <span className={`${style.Slider} ${style.Round}`}></span>
-      <span onClick={() => switchLang('en')} className={style.selectUa}>
+      <span className={`${css.Slider} ${css.Round}`}></span>
+      <span className={css.selectUa} style={style("en")}>
         EN
       </span>
-      <span onClick={() => switchLang('ua')} className={style.selectEn}>
+      <span  className={css.selectEn} style={style("ua")}>
         UA
       </span>
     </label>

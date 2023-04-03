@@ -1,0 +1,73 @@
+.navWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 66px;
+  width: 769px;
+}
+
+@media screen and (min-width: 375px) {
+  .navWrapper {
+    flex-direction: column-reverse;
+    width: 343px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .navWrapper {
+    flex-direction: row;
+    width: 704px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .navWrapper {
+    width: 100%;
+  }
+}
+
+.navThumb {
+  display: flex;
+  flex-direction: row;
+}
+
+.link {
+  display: block;
+  padding: 18px 19px 18px 20px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.19;
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
+  background-color: rgba(31, 37, 52, 0.4);
+  color: rgba(243, 243, 243, 0.4);
+}
+
+.active {
+  display: block;
+  padding: 18px 19px 18px 20px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.19;
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
+  border-top: 1px solid rgb(58, 106, 245);
+  background-color: rgba(37, 44, 65, 1);
+  color: rgba(243, 243, 243, 1);
+}
+
+@media screen and (min-width: 375px) {
+  .calendarWrapper {
+    margin-bottom: 18px;
+    width: 217px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .calendarWrapper {
+    margin-bottom: 0;
+    width: 222px;
+  }
+}

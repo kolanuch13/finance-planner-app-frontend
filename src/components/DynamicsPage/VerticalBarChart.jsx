@@ -37,7 +37,6 @@ const renderCustomizedLabelY = props => {
 const VerticalBarChart = () => {
   const [chartData, setChartData] = useState('');
   let { data } = useSelector(dynamicSelectors.getChartData);
-
   const {
     i18n: { language },
   } = useTranslation();

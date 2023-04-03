@@ -85,7 +85,6 @@ export const updateTransaction = createAsyncThunk(
       thunkAPI.dispatch(expenseStatistic(period));
       return response.data;
     } catch (error) {
-      console.log(error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

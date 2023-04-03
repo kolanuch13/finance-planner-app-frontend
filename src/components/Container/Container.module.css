@@ -1,9 +1,5 @@
 .BoxContainer {
-    width: 1280px;
-    height: 100vh;
     padding-top: 66px;
-    padding-left: 255px;
-    padding-right: 255px;
     margin-left: auto;
     margin-right: auto;
     background-color: #191d28;
@@ -11,34 +7,27 @@
 
 @media screen and (min-width: 375px) {
     .BoxContainer {
-        width: 375px;
-        padding: 0 16px;
-        /* margin: 0; */
+        padding: 50px 16px;
     }
 }
 
 @media screen and (min-width: 768px) {
     .BoxContainer {
-        width: 768px;
-
-        padding: 0 32px;
-        padding-top: 66px;
-        background-image: url("../../components/OwnPlan/img/bg.png");
+        height: calc(100vh - 72px);
+        padding: 100px 32px 0 32px;
+        background-image: url("../../images/waveTab.svg");
         background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        /* position: relative; */
+        background-position: bottom;
+        background-size: contain;
     }
 }
 
 @media screen and (min-width: 1280px) {
     .BoxContainer {
-        width: 1280px;
+        background-image: url("../../images/wave.svg");
         padding-top: 66px;
         padding-left: 255px;
         padding-right: 255px;
-        margin-left: auto;
-        margin-right: auto;
         background-color: #191d28;
     }
 }

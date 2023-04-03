@@ -43,7 +43,7 @@
     "emailStandart": "invalid email format",
     "passwordStandart": "password in min 6 symbols",
     "invalidPassword": "invalid password"
-    
+
   },
   "verificationSend": {
     "verificationSendFirst": "Email with verification link was send to ",
@@ -62,17 +62,17 @@
     "dynamics": "Dynamics"
   },
   "personalPlane": {
-    "firstInput": "1. RFP of both spouses, &#x20B4;",
+    "firstInput": " RFP of both spouses, $;",
     "placeholderFirstInput": "Enter sum",
-    "secondInput": "2. Passive income, months, &#x20B4;",
+    "secondInput": " Passive income, months, $;",
     "placeholderSecondInput": "Enter text",
-    "thirdInput": "3. Savings, &#x20B4;",
+    "thirdInput": " Savings, $;",
     "placeholderThirdInput": "Enter text",
-    "fourthInput": "4. Specify the cost of your future apartment, &#x20B4;",
+    "fourthInput": " Specify the cost of your future apartment, $;",
     "placeholderFourthInput": "Enter sum",
-    "fifthInput": "5. Specify the number of sq.m. of your future apartment",
+    "fifthInput": " Specify the number of sq.m. of your future apartment",
     "placeholderFifthInput": "Enter text",
-    "sixthInput": "6. Accumulation, %",
+    "sixthInput": " Accumulation, %",
     "placeholderSixthInput": "Enter text",
     "additionalInfoSixthInput": "Specify the percentage that you would like to accumulate per month from the total amount of income and you will see when you reach the goal",
     "informTitle": "You will have an apartment in:",
@@ -132,10 +132,12 @@
   "expenses": {
     "expensesTitle": "Expenses",
     "categoriesTitle": "Categories",
-    "petCategory": "Per category",
+    "perCategory": "Per category",
     "expenseComment": "Expense comment",
     "sum": "Sum",
-    "buttonEdit": "Edit"
+    "buttonEdit": "Edit",
+    "noTransaction": "You don't have any transactions this month 🤷‍♀️",
+    "noStatistic": "You don't have any data by categories in this month 🤷‍♀️"
   },
   "example": {
     "test": "Everything is simple!"

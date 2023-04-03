@@ -8,7 +8,7 @@ import css from './CashflowPage.module.css';
 
 import cashflowOperations from 'redux/cashflowPage/cashflowPage-operations';
 
-export const CashflowPage = () => {
+const CashflowPage = () => {
   const [dailyLimit, setDailyLimit] = useState('');
   const [monthlyLimit, setMonthlyLimit] = useState('');
   const [formData, setFormData] = useState({
@@ -45,12 +45,11 @@ export const CashflowPage = () => {
       category: formData.category?.toLowerCase(),
       sum: Number(+formData.sum),
       categoryType: formData.categoryType,
-      comment: formData.expenseComment,
-    };
+      comment: formData.comment,
+    }
     dispatch(cashflowOperations.addTransaction(newData))
       .unwrap()
       .then(response => {
-        console.log(response);
         return response;
       })
       .catch(error => console.error(error));
@@ -80,3 +79,5 @@ export const CashflowPage = () => {
     </main>
   );
 };
+
+export default CashflowPage;

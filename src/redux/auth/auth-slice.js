@@ -72,7 +72,7 @@ const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(authOperations.balance.fulfilled, (state, action) => {
-        state.balance = action.payload.balance;
+        state.user.balance = action.payload.balance;
         state.isLoading = false;
       })
       .addCase(authOperations.balance.rejected, (state, action) => {

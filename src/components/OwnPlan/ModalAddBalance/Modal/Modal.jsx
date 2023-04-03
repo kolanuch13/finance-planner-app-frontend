@@ -1,10 +1,16 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom';
+import { useDispatch } from 'react-redux';
+import { balance } from "redux/auth/auth-operations";
 import styles from './Modal.module.css';
+import { useTranslation } from 'react-i18next';
 
 const modalRoot = document.querySelector('#modal-root');
 
 const Modal = ({ children, onClose }) => {
+  const { t } = useTranslation();
+  const [updateBalance, setUpdateBalance] = useState(0);
+  const dispatch = useDispatch()
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.key === 'Escape') onClose();
@@ -20,6 +26,12 @@ const Modal = ({ children, onClose }) => {
     if (e.target === e.currentTarget) onClose();
   };
 
+  const handleSubmitModal = (e) => {
+    e.preventDefault();
+    dispatch(balance({balance: +updateBalance}));
+    onClose();
+  };
+
   return createPortal(
     <div className={styles.backdrop} onClick={handleBackdrop}>
       <div className={styles.containerModal}>
@@ -30,18 +42,22 @@ const Modal = ({ children, onClose }) => {
         >
           X
         </button>
-        <form className={styles.form} action="">
+        <form className={styles.form} action="" onSubmit={handleSubmitModal}>
           <label className={styles.labelWrapper}>
             <input
               className={styles.input}
-              type="text"
+              value={updateBalance}
+              onChange={e=>setUpdateBalance(e.target.value)}
+              type="number"
               placeholder="Add balance"
             />
 
             <div className={styles.btnContainer}>
-              <button className={styles.btn}>Add balance</button>
+              <button type="submit" className={styles.btn}>
+                {t('personalPlane.addBalance')}
+              </button>
               <button className={styles.btn} onClick={onClose}>
-                Cancel
+              {t('personalPlane.buttonCancel')}
               </button>
             </div>
           </label>

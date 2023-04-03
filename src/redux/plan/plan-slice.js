@@ -6,8 +6,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   planData: null,
-  preYears: null,
-  preMonth: null,
   accumulationPeriod: {
     month: null,
     year: null,
@@ -16,17 +14,16 @@ const initialState = {
 };
 
 const separatePlanData = (data) => {
-  const { month, year, ...rest } = data;
-  const {
+  const { 
+    months, 
+    years,
     salary,
     passiveIncome,
     savings,
     cost,
     footage,
-    procent,
-    _id: id,
-  } = rest;
-  const accumulationPeriod = { month, year };
+    procent, } = data;
+  const accumulationPeriod = { months, years };
   const planData = {
     salary,
     passiveIncome,
@@ -34,7 +31,6 @@ const separatePlanData = (data) => {
     cost,
     footage,
     procent,
-    id,
   };
 
   return { accumulationPeriod, planData };
@@ -49,9 +45,9 @@ const planSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getPersonalPlan.fulfilled, (state, { payload }) => {
-        const { planData, accumulationPeriod } = separatePlanData(payload);
+        const { accumulationPeriod, planData } = separatePlanData(payload);
         state.planData = planData;
-        state.accumulationPeriod = payload.accumulationPeriod;
+        state.accumulationPeriod = accumulationPeriod;
         state.isLoading = false;
       })
       .addCase(getPersonalPlan.rejected, (state, {payload}) => {
@@ -59,24 +55,27 @@ const planSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(addPersonalPlanPreAPI.fulfilled, (state, { payload }) => {
-        const { planData, accumulationPeriod } = separatePlanData(payload);
-        state.preYears = payload.years
-        state.preMonth = payload.months
-        
-        state.planData = planData;
+        const { accumulationPeriod } = separatePlanData(payload);
         state.accumulationPeriod = accumulationPeriod;
       })
       .addCase(addPersonalPlanAPI.fulfilled, (state, { payload }) => {
         const { planData, accumulationPeriod } = separatePlanData(payload);
-        state.planData = { ...planData, id: state.planData.id };
-        state.accumulationPeriod = accumulationPeriod;
-      })
-      .addCase(currentPersonalPlanAPI.fulfilled, (state, { payload }) => {
-        const { planData, accumulationPeriod } = separatePlanData(payload);
         state.planData = planData;
         state.accumulationPeriod = accumulationPeriod;
       })
-      // .addMatcher(...gl(initialState));
+      .addCase(currentPersonalPlanAPI.pending, (state, _) => {
+        state.isLoading = true;
+      })
+      .addCase(currentPersonalPlanAPI.fulfilled, (state, { payload }) => {
+        const { accumulationPeriod, planData } = separatePlanData(payload);
+        state.planData = planData;
+        state.accumulationPeriod = accumulationPeriod;
+        state.isLoading = false;
+      })
+      .addCase(currentPersonalPlanAPI.rejected, (state, {payload}) => {
+        state.error = payload;
+        state.isLoading = false;
+      })
   },
 });
  export default planSlice.reducer
