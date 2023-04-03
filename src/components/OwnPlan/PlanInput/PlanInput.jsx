@@ -3,6 +3,8 @@ import { addPersonalPlanPreAPI } from 'redux/plan/plan-operations';
 import { selectorPlanData } from 'redux/plan/plan-selectors';
 import InputsList from '../InputList/InputsList';
 import styles from './PlanInput.module.css';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { balance } from 'redux/auth/auth-selectors'
 
 const PlanInput = ({data, setData}) => {
   const dataInput = [
@@ -39,12 +41,13 @@ const PlanInput = ({data, setData}) => {
         'Specify the percentage that you would like to accumulate per month from the total amount of income and you will see when you reach the goal',
     },
   ];
-
+  const userBalance = useSelector(balance)
   const dispatch = useDispatch();
   const curPlanData = useSelector(selectorPlanData);
 
   const onChange = event => {
     const { name, value } = event.target;
+    userBalance === 0 ? Notify.warning('At first enter the balance at the bottom of the page⬇') : 
     setData(prev => ({
       ...prev,
       [name]: value === '' ? value : Number(value),

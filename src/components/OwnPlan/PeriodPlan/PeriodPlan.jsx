@@ -9,7 +9,8 @@ const PeriodPlan = ({data}) => {
   const userBalance = useSelector(balance);
   const [isModalShown, setIsModalShown] = useState(false);
   const openModalAddBalance = () => {
-    setIsModalShown(prevState => !prevState);
+    console.log("click");
+    userBalance === 0 && setIsModalShown(prevState => !prevState);
   };
 
   return (

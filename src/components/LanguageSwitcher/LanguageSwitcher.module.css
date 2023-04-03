@@ -9,7 +9,7 @@
 }
 
 .selectEn, .selectUa {
-transition: all 100ms linear;
+  transition: all 100ms linear;
 }
 
 .languageSwitcher input {

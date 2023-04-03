@@ -11,7 +11,8 @@ export default function LanguageSwitcher() {
     i18n.changeLanguage(newLang);
   };
 
-  const style = currentLang => lang === currentLang ? {"color": "#3a6af5"} : {"color": "#fff"}
+  const style = currentLang => lang === currentLang 
+    ? {"color": "#3a6af5"} : {"color": "#fff"}
 
   return (
     <label className={css.languageSwitcher}>

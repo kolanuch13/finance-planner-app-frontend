@@ -22,8 +22,10 @@
   .transactionItem {
     flex-direction: row;
   }
+  .commentWrapper {
+    width: 210px;
+  }
 }
-
 .transactionThumb {
   display: flex;
   flex-direction: row;

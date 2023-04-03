@@ -1,30 +1,31 @@
 import React from 'react';
 import css from './InputsList.module.css';
-
-const onChangePlaceholder = () => {};
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const InputsListItem = ({
   num,
   title,
-  type = 'text',
   name,
   component: Component = null,
   descr,
   placeholder = null,
   value,
   disabled = false,
-  onChange = onChangePlaceholder,
   onBlur = null,
   children,
+  onChange
 }) => {
+  
+
   return (
-    <li className={css.item} id={num}>
+    <li className={css.item} id={num}
+    >
       {children ? (
         children
       ) : (
         <input
           className={css.input}
-          type={type}
+          type='number'
           name={name}
           value={value}
           placeholder={placeholder}
