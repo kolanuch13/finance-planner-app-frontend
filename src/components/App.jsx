@@ -1,15 +1,14 @@
-// import { lazy } from 'react';
-
+import { lazy } from 'react';
+import { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Home } from 'pages/HomePage/HomePage';
 import { CashflowPage } from '../pages/CashflowPage/CashflowPage'
 import { Layout } from './Layout/Layout';
-import { useSearchParams } from 'react-router-dom';
 
+import authOperations from 'redux/auth/auth-operations';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
-// import ToggleLanguages from './ToggleLanguages';
-// import ExampleForToggleLanguages from './ExampleForToggleLanguages';
 import PublicRoute from './PublicRoute/PublicRoute';
 
 import DynamicsPage from '../pages/DynamicsPage/DynamicsPage';
@@ -20,11 +19,13 @@ import { ModalRegister } from './Modal/ModalRegister';
 import { Verified } from './Modal/Verified';
 import ModalPopUp from './Modal/ModalPopUp';
 import StatisticPage from 'pages/StatisticPage/StatisticPage';
+import ToggleLanguages from './ToggleLanguages';
+import ExampleForToggleLanguages from './ExampleForToggleLanguages';
+
+
 import { OwnPlanPage } from 'pages/OwnPlanPage/OwnPlanPage';
 import ExpensesList from './ExpensesList/ExpensesList';
 import CategoriesStatistic from './CategoriesStatistic/CategoriesStatistic';
-import authOperations from 'redux/auth/auth-operations';
-import { useEffect } from 'react';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -46,16 +47,14 @@ export const App = () => {
   }, [dispatch, navigate, searchParams, setSearchParams]);
   return (
     <>
-     
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
 
           <Route path="verify/:verificationToken" element={<Verified />} />
           <Route path="/" element={<PrivateRoute />}>
-
-            <Route path="personal-plan" element={<OwnPlanPage/>} />
-            <Route path="cashflow" element={<CashflowPage/>} />
+            <Route path="personal-plan" element={<OwnPlanPage />} />
+            <Route path="cashflow" element={<div>ExpensesPage</div>} />
 
             <Route path="dynamics" element={<DynamicsPage />} />
 
@@ -78,7 +77,7 @@ export const App = () => {
                 </Modal>
               </ModalView>
             }
-          /> 
+          />
 
           <Route
             path="register"
@@ -92,9 +91,9 @@ export const App = () => {
           />
         </Route>
       </Routes>
-
-      {/* <ToggleLanguages />
-      <ExampleForToggleLanguages />  */}
+      {/* 
+      <ToggleLanguages />
+      <ExampleForToggleLanguages /> */}
     </>
   );
 };

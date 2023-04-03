@@ -1,27 +1,44 @@
 .BoxContainer {
-  padding: 0 16px 0 16px;
-  margin-left: auto;
-  margin-right: auto;
+    width: 1280px;
+    height: 100vh;
+    padding-top: 66px;
+    padding-left: 255px;
+    padding-right: 255px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #191d28;
 }
 
 @media screen and (min-width: 375px) {
-  .BoxContainer {
-    width: 375px;
-    height: 964px;
-    padding: 0 16px 0 16px;
-  }
+    .BoxContainer {
+        width: 375px;
+        padding: 0 16px;
+        /* margin: 0; */
+    }
 }
+
 @media screen and (min-width: 768px) {
-  .BoxContainer {
-    width: 768px;
-    height: 1024px;
-    padding: 0 32px 0 32px;
-  }
+    .BoxContainer {
+        width: 768px;
+
+        padding: 0 32px;
+        padding-top: 66px;
+        background-image: url("../../components/OwnPlan/img/bg.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        /* position: relative; */
+    }
 }
+
 @media screen and (min-width: 1280px) {
-  .BoxContainer {
-    width: 1280px;
-    height: 720px;
-    padding: 0 55px 0 55px;
-  }
+    .BoxContainer {
+        width: 1280px;
+        padding-top: 66px;
+        padding-left: 255px;
+        padding-right: 255px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #191d28;
+    }
 }

@@ -51,12 +51,19 @@
 
 .btn {
   margin-top: 12px;
+  border-color: #3a6af5;
   background-color: #3a6af5;
   border-radius: 60px;
   color: #f3f3f3;
   padding: 12px 10px;
   cursor: pointer;
   max-width: 300px;
+  transition: all 100ms linear;
+}
+.btn:hover {
+  border-color: #f3f3f3;
+  background-color: #f3f3f3;
+  color: #3a6af5;;
 }
 .labelWrapper {
   position: relative;
@@ -122,4 +129,8 @@ color: #FF2E00;
 .error_border {
   margin-top: 0;
   outline: 1px solid #FF2E00; 
+}
+
+.email {
+  font-weight: 700;
 }

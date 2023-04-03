@@ -2,8 +2,17 @@ import { useState } from 'react';
 import { Container } from '../../Container/Container';
 import Modal from '../ModalAddBalance/Modal/Modal';
 import css from './PeriodPlan.module.css';
+import { useSelector } from 'react-redux';
+import { selectorPreMonth, selectorPreYear } from 'redux/plan/plan-selectors';
+
+
 
 const PeriodPlan = () => {
+  const preYear = useSelector(selectorPreYear)
+  const preMonth = useSelector(selectorPreMonth)
+  
+  
+
   const [isModalShown, setIsModalShown] = useState(false);
 
   const openModalAddBalance = () => {
@@ -17,11 +26,12 @@ const PeriodPlan = () => {
         <div className={css.form}>
           <label className={css.LabelForm}>
             <span className={css.textLabebel}>Number of years</span>
-            <input className={css.input} type="text" placeholder="0 years" />
+            <input className={css.input} type="text" placeholder="0 years" value={preYear} />
+
           </label>
           <label className={css.LabelFormMonths}>
             <span className={css.textLabebel}>Number of months</span>
-            <input className={css.input} type="text" placeholder="0 months" />
+            <input className={css.input} type="text" placeholder="0 months" value={preMonth}/>
           </label>
           <div className={css.btnContainer}>
             <button

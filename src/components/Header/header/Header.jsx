@@ -7,7 +7,6 @@ import LogOut from '../logout/LogOut';
 import Navigation from '../navigation/Navigation';
 import MobileTabletMenu from '../MobileTabletMenu/MobileTabletMenu';
 import AuthMenu from '../authNav/AuthNav';
-import ToggleLanguages from '../../ToggleLanguages/index';
 import css from './Header.module.css';
 import LanguageSwitcher from 'components/LanguageSwitcher/LanguageSwitcher';
 
@@ -34,8 +33,7 @@ function Header() {
           </div>
         )}
         <Logo />
-        {/*<LanguageSwitcher />*/} {/* Розмістити де потрібно */}
-        <ToggleLanguages />
+        <LanguageSwitcher />
         <div className={css.navigationBox}>
           <Navigation />
         </div>

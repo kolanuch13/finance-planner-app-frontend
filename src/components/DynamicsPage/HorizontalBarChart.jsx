@@ -1,4 +1,6 @@
 import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { dynamicSelectors } from '../../redux/dynamics';
 import {
   BarChart,
@@ -9,47 +11,111 @@ import {
   Tooltip,
   Legend,
 } from 'recharts';
+import { enMonthsName, ukMonthName } from 'utils/constants';
+import css from './HorizontalBarChart.module.css';
 
-const styles = {
-  tooltip: {
-    backgroundColor: '#191D28',
-    border: '1px solid #ccc',
-    padding: '10px',
-    fontSize: '14px',
-    boxShadow: '2px 2px 3px rgba(0,0,0,0.3)',
-  },
-  tooltipLabel: {
-    fontWeight: 'bold',
-    marginBottom: '5px',
-  },
-  barChart: {
-    fontSize: '12px',
-    lineHeight: '1.16',
-    fontWeight: '400',
-    color: '#F3F3F3',
-    marginBottom: '50px',
-  },
+const renderCustomizedLabelX = props => {
+  const { x, y, payload } = props;
+  return (
+    <text x={x} y={y - 3} dy={0} fill="#F3F3F3" textAnchor="middle">
+      {payload.value}
+    </text>
+  );
+};
+
+const renderCustomizedLabelY = props => {
+  const { x, y, payload } = props;
+  return (
+    <text x={x - 10} y={y} dy={3} fill="#F3F3F3" textAnchor="end">
+      {payload.value}
+    </text>
+  );
 };
 
 const HorizontalBarChart = () => {
-  const chartData = useSelector(dynamicSelectors.getChartData);
+  const [chartData, setChartData] = useState('');
+  let { data } = useSelector(dynamicSelectors.getChartData);
+
+  const {
+    i18n: { language },
+  } = useTranslation();
+
+  useEffect(() => {
+    if (data) {
+      const lastYearInfo = data.map(i => ({
+        month:
+          language === 'en'
+            ? enMonthsName[parseInt(i.month) - 1]
+            : ukMonthName[parseInt(i.month) - 1],
+        expense: i.expense,
+        income: i.income,
+        acumulated: i.income - i.expense,
+      }));
+      setChartData(lastYearInfo);
+    }
+  }, [data, language]);
+
   return (
     <BarChart
-      width={222}
+      width={230}
       height={436}
-      data={chartData.lastYearInfo}
+      data={chartData}
       layout="vertical"
-      style={styles.barChart}
+      className={css.barStyle}
     >
-      <Legend layout="vertical" align="center" verticalAlign="top" />
-      <XAxis type="number" />
-      <YAxis dataKey="month" type="category" />
-      <CartesianGrid strokeDasharray="3 3" />
-      <Tooltip contentStyle={styles.tooltip} labelStyle={styles.tooltipLabel} />
-
-      <Bar dataKey="acumulated" fill="#6359E9" legendType="circle" />
-      <Bar dataKey="expense" fill="#3A6AF5" legendType="circle" />
-      <Bar dataKey="income" fill="#F3F3F3" legendType="circle" />
+      <Legend
+        layout="vertical"
+        align="center"
+        verticalAlign="top"
+        iconSize={11}
+        margin={{ top: 70, left: 0, right: 10, bottom: 80 }}
+      />
+      <XAxis
+        type="number"
+        tick={renderCustomizedLabelX}
+        axisLine={false}
+        tickLine={false}
+        tickSize={3}
+        tickCount={6}
+        orientation="top"
+      />
+      <YAxis
+        dataKey="month"
+        type="category"
+        tick={renderCustomizedLabelY}
+        axisLine={false}
+        tickLine={false}
+      />
+      <CartesianGrid
+        stroke="#454851"
+        strokeDasharray="5 5 5"
+        horizontalCoordinatesGenerator="none"
+      />
+      <Tooltip />
+      <Bar
+        dataKey="acumulated"
+        fill="#6359E9"
+        barSize={5}
+        legendType="circle"
+        radius={[0, 10, 10, 0]}
+        name={language === 'en' ? 'Acumulated' : 'Накопичено'}
+      />
+      <Bar
+        dataKey="expense"
+        fill="#3A6AF5"
+        barSize={5}
+        legendType="circle"
+        radius={[0, 10, 10, 0]}
+        name={language === 'en' ? 'Expense' : 'Витрати'}
+      />
+      <Bar
+        dataKey="income"
+        fill="#F3F3F3"
+        barSize={5}
+        legendType="circle"
+        radius={[0, 10, 10, 0]}
+        name={language === 'en' ? 'Income' : 'Доходи'}
+      />
     </BarChart>
   );
 };
