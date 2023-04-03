@@ -1,6 +1,5 @@
 import React from 'react';
 import css from './InputsList.module.css';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const InputsListItem = ({
   num,

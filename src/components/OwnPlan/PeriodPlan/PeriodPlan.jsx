@@ -6,6 +6,7 @@ import css from './PeriodPlan.module.css';
 import { useTranslation } from 'react-i18next';
 
 const PeriodPlan = ({data}) => {
+  const {t} = useTranslation();
   const userBalance = useSelector(balance);
   const [isModalShown, setIsModalShown] = useState(false);
   const openModalAddBalance = () => {

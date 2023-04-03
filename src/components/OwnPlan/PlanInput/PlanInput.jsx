@@ -45,7 +45,6 @@ const {t} = useTranslation();
   const userBalance = useSelector(balance)
   const dispatch = useDispatch();
   const curPlanData = useSelector(selectorPlanData);
-  const [newPlanData, setNewPlanData] = useState(initialPlanDataState);
 
   const onChange = event => {
     const { name, value } = event.target;

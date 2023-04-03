@@ -8,14 +8,12 @@ import { BsEye } from 'react-icons/bs';
 import authOperations from 'redux/auth/auth-operations';
 import { RotatingLines } from 'react-loader-spinner';
 import { selectIsLoading } from 'redux/auth/auth-selectors';
-import { useNavigate } from 'react-router-dom';
 
 const emailRegexp =
   /^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$/;
 
 export const ModalLogin = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const isLoading = useSelector(selectIsLoading);
   const [invalidError, setInvalidError] = useState('');
   const [email, setEmail] = useState('');
