@@ -3,11 +3,12 @@ import css from './AuthNav.module.css';
 import { useTranslation } from 'react-i18next';
 import '../../../i18n';
 
-function AuthMenu({balance}) {
+function AuthMenu({personalPlan}) {
   const { t } = useTranslation();
 
   const handleClick = e => {
-    if(balance === 0) {
+    console.log(personalPlan);
+    if(personalPlan === null) {
       e.preventDefault()
     } 
   }

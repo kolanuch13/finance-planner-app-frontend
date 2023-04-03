@@ -6,7 +6,7 @@ import InputsList from '../InputList/InputsList';
 import styles from './PlanInput.module.css';
 import { Container } from 'components/Container/Container';
 
-const PlanInput = () => {
+const PlanInput = ({data, setData}) => {
   const dataInput = [
     {
       name: 'salary',
@@ -42,42 +42,29 @@ const PlanInput = () => {
     },
   ];
 
-  const initialPlanDataState = {
-    salary: '',
-    passiveIncome: '',
-    savings: '',
-    cost: '',
-    footage: '',
-    procent: '',
-  };
-
   const dispatch = useDispatch();
   const curPlanData = useSelector(selectorPlanData);
-  const [newPlanData, setNewPlanData] = useState(initialPlanDataState);
-  // const [newPlanData, setNewPlanData] = useState(
-  //   curPlanData ? curPlanData : initialPlanDataState
-  // );
 
   const onChange = event => {
     const { name, value } = event.target;
-    setNewPlanData(prev => ({
+    setData(prev => ({
       ...prev,
       [name]: value === '' ? value : Number(value),
     }));
   };
 
   const onBlur = () => {
-    if (Object.values(newPlanData).filter(element => element === '').length)
+    if (Object.values(data).filter(element => element === '').length)
       return;
-    if (JSON.stringify(curPlanData) === JSON.stringify(newPlanData)) return;
-    dispatch(addPersonalPlanPreAPI(newPlanData));
+    if (JSON.stringify(curPlanData) === JSON.stringify(data)) return;
+    dispatch(addPersonalPlanPreAPI(data));
   };
 
-  useEffect(() => {
-    if (curPlanData) {
-      setNewPlanData(curPlanData);
-    }
-  }, [curPlanData]);
+  // useEffect(() => {
+  //   if (curPlanData) {
+  //     setData(curPlanData);
+  //   }
+  // }, [curPlanData]);
 
   return (
 
@@ -88,10 +75,11 @@ const PlanInput = () => {
               key={index}
               num={index + 1}
               {...element}
-              value={newPlanData[element.name]}
+              value={data[element.name]}
               onChange={onChange}
               disabled={element.name === 'savings' && curPlanData?.id}
               onBlur={onBlur}
+              type="numbers"
             />
           ))}
         </ul>
