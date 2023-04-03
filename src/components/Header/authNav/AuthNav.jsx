@@ -3,15 +3,15 @@ import css from './AuthNav.module.css';
 import { useTranslation } from 'react-i18next';
 import '../../../i18n';
 
-function AuthMenu({personalPlan}) {
+function AuthMenu({ personalPlan }) {
   const { t } = useTranslation();
 
   const handleClick = e => {
     console.log(personalPlan);
-    if(personalPlan === null) {
-      e.preventDefault()
-    } 
-  }
+    if (personalPlan === null) {
+      e.preventDefault();
+    }
+  };
 
   return (
     <nav className={css.nav}>
