@@ -25,7 +25,7 @@ export const addTransaction = createAsyncThunk(
       return thunkAPI.rejectWithValue();
     }
     token.set(persistToken);
-    try {
+    try {      
       const data = await addTransactionApi(transaction);
       return data;
     } catch (error) {
