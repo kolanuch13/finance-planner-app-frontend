@@ -50,7 +50,7 @@ export const TransactionDataList = ({ setFormData, formData }) => {
   }
   
   useEffect(() => {
-    currentLanguage === 'ua'
+    currentLanguage === 'uk'
     ? getAllCategories()
         .then(res => res.availableCategoriesUa)
         .then(list => {

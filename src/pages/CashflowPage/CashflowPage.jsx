@@ -25,14 +25,16 @@ const CashflowPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(cashflowOperations.getCashflowLimits())
-      .unwrap()
-      .then(response => {
-        setDailyLimit(response.data.limitDay);
-        setMonthlyLimit(response.data.limitMonth);
-      })
-      .catch(error => console.error(error));
-  }, [dispatch]);
+    if(dailyLimit==='' || monthlyLimit=== '') {
+      dispatch(cashflowOperations.getCashflowLimits())
+        .unwrap()
+        .then(response => {
+          setDailyLimit(response.data.limitDay);
+          setMonthlyLimit(response.data.limitMonth);
+        })
+        .catch(error => console.error(error));
+    }
+  }, [dailyLimit, dispatch, monthlyLimit]);
 
   const handleSubmitAdd = e => {
     e.preventDefault();

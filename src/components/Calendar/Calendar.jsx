@@ -54,7 +54,7 @@ export const Calendar = ({ onChange }) => {
       customInput={<ExampleCustomInput />}
       onCalendarOpen={() => setIsOpen(!isOpen)}
       onCalendarClose={() => setIsOpen(!isOpen)}
-      locale={language === 'ua' ? uk : 'en'}
+      locale={language === 'uk' ? uk : 'en'}
     />
   );
 };

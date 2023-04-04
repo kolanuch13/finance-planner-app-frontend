@@ -7,7 +7,7 @@
   align-items: center;
   top: 70px;
   width: 100%;
-  height: 750px;
+  height: calc(100vh - 70px);
   padding-top: 200px;
   animation: growDown 500ms ease-in-out both ;
   transform-origin: top center;
