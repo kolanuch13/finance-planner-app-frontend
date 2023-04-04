@@ -42,7 +42,7 @@
   border-radius: 28px;
   background-color: transparent;
   outline: none;
-  width: 100%;
+  min-width: 300px;
 }
 .input[type='password']::-ms-reveal,
 .input[type='password']::-ms-clear {
@@ -51,7 +51,7 @@
 
 .btn {
   margin-top: 12px;
-  border-color: #3a6af5;
+  border:1px solid  #3a6af5;
   background-color: #3a6af5;
   border-radius: 60px;
   color: #f3f3f3;
@@ -61,7 +61,7 @@
   transition: all 100ms linear;
 }
 .btn:hover {
-  border-color: #f3f3f3;
+  border: 1px solid #f3f3f3;
   background-color: #f3f3f3;
   color: #3a6af5;;
 }
@@ -76,6 +76,7 @@
   top: 36px;
   right: 12px;
 }
+
 
 @media screen and (max-width: 767px) {
   .title {
@@ -119,7 +120,27 @@
 }
 
 .error {
+position: absolute;
 margin-top: 4px;
+font-family: 'Lato', sans-serif;
+font-size: 14px;
+line-height: 1.29;
+color: #FF2E00;
+}
+.errorPwd {
+position: relative;
+margin-bottom: 27px;
+top:55px;
+font-family: 'Lato', sans-serif;
+font-size: 14px;
+line-height: 1.29;
+color: #FF2E00;
+}
+
+.errorDefault {
+position: relative;
+margin-top:49px;
+margin-bottom: -55px;
 font-family: 'Lato', sans-serif;
 font-size: 14px;
 line-height: 1.29;
@@ -129,6 +150,10 @@ color: #FF2E00;
 .error_border {
   margin-top: 0;
   outline: 1px solid #FF2E00; 
+  font-family: 'Lato', sans-serif;
+font-size: 14px;
+line-height: 1.29;
+color: #FF2E00;
 }
 
 .email {

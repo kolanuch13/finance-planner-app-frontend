@@ -113,7 +113,7 @@ export const ModalRegister = () => {
           <div className={css.error}>
             {errors?.email && <p>{errors?.email?.message || 'Error'}</p>}
           </div>
-          <div className={css.error}>{isInUse}</div>
+          <div className={css.error}>{!errors?.email?.message && isInUse}</div>
         </label>
         <label className={css.labelWrapper}>
           <span className={css.label}>{t('registration.password')}</span>
@@ -143,10 +143,10 @@ export const ModalRegister = () => {
         <button disabled={isLoading} className={css.btn} type="submit">
           {isLoading ? (
             <RotatingLines
-              strokeColor="#f3f3f3"
+              strokeColor="gray"
               strokeWidth="5"
               animationDuration="0.75"
-              width="20"
+              width="13"
               visible={true}
             />
           ) : (

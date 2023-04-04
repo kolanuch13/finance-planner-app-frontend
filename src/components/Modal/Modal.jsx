@@ -30,7 +30,7 @@ export const Modal = ({ children }) => {
     setIsOpenModal(false);
     navigate('/');
   };
-  // here is look overflow whe open modal
+  // here is lock overflow when open modal
   // useEffect(() => {
   //   document.body.style.overflow = 'hidden';
   //   return () => (document.body.style.overflow = 'unset');
