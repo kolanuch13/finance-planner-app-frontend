@@ -12,7 +12,7 @@ const ToggleLanguages = () => {
       <button className={css.text} onClick={() => switchLang('en')}>
         En
       </button>
-      <button className={css.text} onClick={() => switchLang('ua')}>
+      <button className={css.text} onClick={() => switchLang('uk')}>
         Ua
       </button>
     </>
