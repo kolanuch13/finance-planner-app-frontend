@@ -1,0 +1,34 @@
+.BoxContainer {
+    min-height: calc(70px - 100vh);
+    padding-top: 66px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #191d28;
+}
+
+@media screen and (min-width: 375px) {
+    .BoxContainer {
+        padding: 120px 16px 50px 16px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .BoxContainer {
+        height: calc(100vh - 72px);
+        padding: 100px 32px 0 32px;
+        background-image: url("../../images/waveTab.svg");
+        background-repeat: no-repeat;
+        background-position: bottom;
+        background-size: contain;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .BoxContainer {
+        background-image: url("../../images/wave.svg");
+        padding-top: 66px;
+        padding-left: 255px;
+        padding-right: 255px;
+        background-color: #191d28;
+    }
+}

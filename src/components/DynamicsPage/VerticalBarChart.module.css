@@ -1,0 +1,21 @@
+/* .barStyle::first-letter {
+  text-transform: uppercase;
+} */
+
+.barStyle {
+  font-size: 12px;
+  line-height: 1.16;
+  font-weight: 400;
+  /* text-transform: uppercase; */
+  text-transform: capitalize;
+  display: inline-block;
+  padding-top: 55px;
+  margin-bottom: 100px;
+  display: flex;
+}
+
+/* .legendStyle {
+  display: flex;
+  margin-left: 100px;
+  column-gap: 30px;
+} */

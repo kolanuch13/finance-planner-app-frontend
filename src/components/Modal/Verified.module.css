@@ -1,0 +1,19 @@
+.verifiedBox{
+  padding-top: 40px;
+  height: 100vh;
+  font-weight: 600;
+  font-size: 20px;
+  text-align: center;
+  background-color: #191D28;
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+padding: 30px;
+color: #f3f3f3;
+width: max-content;
+height: max-content;
+border-radius: 20px;
+background-color: #316631;
+}
