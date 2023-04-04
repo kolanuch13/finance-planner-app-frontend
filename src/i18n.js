@@ -9,12 +9,12 @@ i18n
   .use(initReactI18next)
   .init({
     debug: false,
-    fallbackLng: 'ua',
+    fallbackLng: 'uk',
     interpolation: {
       escapeValue: false,
     },
     resources: {
-      ua: {
+      uk: {
         translation: translationUk,
       },
       en: {

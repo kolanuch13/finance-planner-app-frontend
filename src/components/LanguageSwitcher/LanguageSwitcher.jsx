@@ -6,7 +6,7 @@ export default function LanguageSwitcher() {
   const lang = i18n.language;
 
   const switchLang = e => {
-    const newLang = e.target.value === "en" ? "ua" : "en"
+    const newLang = e.target.value === "en" ? "uk" : "en"
     i18n.changeLanguage(newLang);
   };
 
@@ -25,7 +25,7 @@ export default function LanguageSwitcher() {
       <span className={css.selectUa} style={style("en")}>
         EN
       </span>
-      <span  className={css.selectEn} style={style("ua")}>
+      <span  className={css.selectEn} style={style("uk")}>
         UA
       </span>
     </label>

@@ -1,5 +1,5 @@
 .menu {
-  position: fixed;
+  position: absolute;
   background-color: #191d28;
   display: flex;
   flex-direction: column;
@@ -7,14 +7,14 @@
   align-items: center;
   top: 70px;
   width: 100%;
-  height: 750px;
+  height: calc(100vh - 70px);
   padding-top: 200px;
-  animation: growDown 500ms ease-in-out both ;
+  animation: growDown 500ms ease-in-out both;
   transform-origin: top center;
 }
 
 .menu:active {
-  animation: growUp 2000ms ease-in-out both  ;
+  animation: growUp 2000ms ease-in-out both;
 }
 
 @keyframes growDown {
@@ -58,7 +58,7 @@
 @media screen and (min-width: 768px) {
   .menu {
     height: 960px;
-    background-image: url("../../../images/waveTab.svg");
+    background-image: url('../../../images/waveTab.svg');
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: contain;

@@ -57,13 +57,13 @@
   border: 2px solid rgba(0, 0, 0, 0);
   border-top: 2px solid #fff;
   border-right: 2px solid #fff;
-  transform: rotate(-45deg);
+  transform: rotate(-225deg);
   transition: 0.5s;
   pointer-events: none;
 }
 
 .dropdownActive::before {
-  transform: rotate(-225deg);
+  transform: rotate(-45deg);
 }
 
 .dropdown input {

@@ -21,6 +21,8 @@ const ModalAddIncome = ({ closeModal, setFormData, handleSubmitAdd, formData }) 
     if (e.target === e.currentTarget) closeModal();
   };
 
+  const handleChange = e => setFormData({categoryType: "income", sum: e.target.value});
+
   return createPortal(
     <div className={css.backdrop} onClick={handleBackdrop}>
       <div className={css.containerModal}>
@@ -31,13 +33,16 @@ const ModalAddIncome = ({ closeModal, setFormData, handleSubmitAdd, formData }) 
         >
           <MdClose size={"24px"}/>
         </button>
-        <form className={css.form} onSubmit={handleSubmitAdd}>
-          <label className={css.labelWrapper}>
+        <form className={css.form} onSubmit={handleSubmitAdd} id="income">
+          <label htmlFor="sum" className={css.labelWrapper}>
             <input
               className={css.input}
-              type="text"
+              id="sum"
+              type="number"
+              onChange={handleChange}
               value={formData.sum}
-              onChange={e => setFormData({categoryType: "income", sum: e.target.value})}
+              name="sum"
+              required
               placeholder="Enter income"
             />
 
