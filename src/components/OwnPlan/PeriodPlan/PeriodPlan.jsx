@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { balance } from 'redux/auth/auth-selectors';
 import Modal from '../ModalAddBalance/Modal/Modal';
 import css from './PeriodPlan.module.css';
 import { useTranslation } from 'react-i18next';
+import { balance } from 'redux/auth/auth-selectors';
 
 const PeriodPlan = ({ data }) => {
   const { t } = useTranslation();
   const userBalance = useSelector(balance);
   const [isModalShown, setIsModalShown] = useState(false);
   const openModalAddBalance = () => {
-    setIsModalShown(prev => !prev);
     userBalance === 0 && setIsModalShown(prevState => !prevState);
   };
 
@@ -51,23 +50,23 @@ const PeriodPlan = ({ data }) => {
           />
         </label>
         <div className={css.btnContainer}>
-          {!userBalance && (
-            <button
-              className={css.buttonAddBalance}
-              type="button"
-              onClick={openModalAddBalance}
-            >
-              {t('personalPlane.addBalance')}
-            </button>
-          )}
-
+          <button
+            className={
+              css.buttonAddBalance + ' ' + userBalance &&
+              css.buttonAddBalanceDisabled
+            }
+            type="button"
+            onClick={openModalAddBalance}
+          >
+            {t('personalPlane.addBalance')}
+          </button>
           {isModalShown && (
             <Modal
               onClick={openModalAddBalance}
               onClose={openModalAddBalance}
+              userBalance={userBalance}
             />
           )}
-
           <button className={css.button} type="submit">
             {t('personalPlane.buttonFits')}
           </button>

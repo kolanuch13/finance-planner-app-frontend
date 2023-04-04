@@ -6,7 +6,6 @@ import { Layout } from './Layout/Layout';
 import '../i18n';
 
 import authOperations from 'redux/auth/auth-operations';
-import { getPersonalPlan } from 'redux/plan/plan-operations';
 import { balance, selectToken } from 'redux/auth/auth-selectors';
 import { selectorPlanData } from 'redux/plan/plan-selectors';
 import PrivateRoute from './PrivateRoute/PrivateRoute';

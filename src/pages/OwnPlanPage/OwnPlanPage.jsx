@@ -13,6 +13,7 @@ import PeriodPlan from 'components/OwnPlan/PeriodPlan/PeriodPlan';
 import PlanInput from 'components/OwnPlan/PlanInput/PlanInput';
 import styles from './OwnPlanPage.module.css';
 import { useNavigate } from 'react-router-dom';
+import { Notify } from 'notiflix';
 
 const OwnPlanPage = () => {
   const dispatch = useDispatch();
@@ -36,6 +37,16 @@ const OwnPlanPage = () => {
       years: accumPeriod?.years,
       months: accumPeriod?.months,
     };
+    if (
+      !planData.salary ||
+      !planData.passiveIncome ||
+      !planData.savings ||
+      !planData.cost ||
+      !planData.footage ||
+      !planData.procent
+    ) {
+      Notify.warning('All fields is required');
+    }
     console.log(periodPlan);
     if (newPlanData === null) {
       dispatch(
@@ -50,9 +61,10 @@ const OwnPlanPage = () => {
           ...planData,
           ...periodPlan,
         })
-      );
+      ).then(res => {
+        navigate('/cashflow');
+      });
     }
-    navigate('/cashflow');
   };
 
   return (

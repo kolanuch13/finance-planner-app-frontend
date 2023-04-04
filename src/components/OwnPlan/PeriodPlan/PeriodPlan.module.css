@@ -26,7 +26,8 @@
   color: rgba(243, 243, 243, 0.4);
 }
 
-.input:hover, .input:focus {
+.input:hover,
+.input:focus {
   outline: none;
 }
 
@@ -38,7 +39,8 @@
   color: rgba(243, 243, 243, 0.4);
 }
 
-.input:hover, .input:focus {
+.input:hover,
+.input:focus {
   outline: none;
 }
 
@@ -96,6 +98,21 @@
   box-sizing: content-box;
   width: 80px;
 }
+.buttonAddBalanceDisabled {
+  text-decoration: none;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  color: #999999;
+  font-size: 12px;
+  font-weight: 700;
+  border-bottom: 1px solid #999999;
+  box-sizing: content-box;
+  width: 80px;
+  opacity: 0.8;
+  cursor: not-allowed;
+}
 
 .active {
   animation: blink 2s infinite linear;
@@ -103,20 +120,20 @@
 
 @keyframes blink {
   0% {
-    color: #3A6AF5;
-    text-shadow: #3A6AF5 1px 0 10px;
-    border-color: #3A6AF5;
+    color: #3a6af5;
+    text-shadow: #3a6af5 1px 0 10px;
+    border-color: #3a6af5;
   }
-  
+
   50% {
     color: #f3f3f3;
     border-color: #f3f3f3;
   }
-  
+
   100% {
-    color: #3A6AF5;
-    text-shadow: #3A6AF5 1px 0 10px;
-    border-color: #3A6AF5;
+    color: #3a6af5;
+    text-shadow: #3a6af5 1px 0 10px;
+    border-color: #3a6af5;
   }
 }
 
@@ -134,7 +151,7 @@
     display: flex;
     align-items: flex-start;
   }
-  
+
   .LabelForm {
     margin-right: 18px;
     margin-bottom: 0;
@@ -148,16 +165,15 @@
   .input {
     width: 183px;
   }
-  
+
   .btnContainer {
     flex-direction: column;
   }
-  
+
   .button {
     width: 200px;
     margin-top: 9px;
   }
-
 }
 
 @media screen and (min-width: 1280px) {

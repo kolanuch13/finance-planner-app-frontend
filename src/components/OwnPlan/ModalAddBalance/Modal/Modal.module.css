@@ -82,6 +82,17 @@
   max-width: 300px;
   border: none;
 }
+.btnDisabled {
+  width: 150px;
+  margin-top: 12px;
+  background-color: #2350d9;
+  border-radius: 60px;
+  color: #bdbdbd;
+  padding: 12px 10px;
+  cursor: not-allowed;
+  max-width: 300px;
+  border: none;
+}
 .labelWrapper {
   position: relative;
   max-width: 300px;
@@ -138,4 +149,16 @@
 .info {
   color: #f3f3f3;
   margin-bottom: 10px;
+}
+
+.btnCloseModalDisabled {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background-color: transparent;
+  cursor: not-allowed;
+  color: #a19d9d;
 }
