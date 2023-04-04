@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Calendar } from '../Calendar/Calendar';
 import { dynamicSelectors, dynamicOperation } from 'redux/dynamics';
 import { useTranslation } from 'react-i18next';
-import '../../i18n';
 
 import css from './StatisticPerMonth.module.css';
 

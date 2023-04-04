@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import planAPI from "../../services/planAPI";
+import { planAPI } from "../../services/index";
 import axios from "axios";
 
 export const token = {
@@ -56,11 +56,6 @@ export const addPersonalPlanPreAPI = createAsyncThunk(
 export const currentPersonalPlanAPI = createAsyncThunk(
   "plan/currentPersonalPlan",
   async (planData, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const persistToken = state.auth.user.token;
-    if (persistToken === null) {
-      return thunkAPI.rejectWithValue();
-    }
     try {
       const { data } = await planAPI.currentPersonalPlanAPI(planData);
       return data;

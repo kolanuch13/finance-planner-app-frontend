@@ -1,13 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import css from './AuthNav.module.css';
 import { useTranslation } from 'react-i18next';
-import '../../../i18n';
+import { ROUTES } from 'utils/constants';
 
 function AuthMenu({ personalPlan }) {
   const { t } = useTranslation();
 
   const handleClick = e => {
-    console.log(personalPlan);
     if (personalPlan === null) {
       e.preventDefault();
     }
@@ -20,7 +19,7 @@ function AuthMenu({ personalPlan }) {
           className={({ isActive }) =>
             personalPlan !== null && isActive ? css.NavLinkActive : css.NavLink
           }
-          to="/personal-plan"
+          to={ROUTES.personalPlan}
         >
           {t('header.personalPlan')}
         </NavLink>
@@ -29,7 +28,7 @@ function AuthMenu({ personalPlan }) {
           className={({ isActive }) =>
             personalPlan !== null && isActive ? css.NavLinkActive : css.NavLink
           }
-          to="/cashflow"
+          to={ROUTES.cashflow}
         >
           {t('header.cashFlow')}
         </NavLink>
@@ -38,7 +37,7 @@ function AuthMenu({ personalPlan }) {
           className={({ isActive }) =>
             personalPlan !== null && isActive ? css.NavLinkActive : css.NavLink
           }
-          to="/dynamics"
+          to={ROUTES.dynamics}
         >
           {t('header.dynamics')}
         </NavLink>

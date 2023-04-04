@@ -1,7 +1,6 @@
 import css from './Info.module.css';
 import LinearProgress from '@mui/joy/LinearProgress';
 import { useTranslation } from 'react-i18next';
-import '../../i18n';
 import { useGetYearWord, useGetMonthWord } from 'helpers/getCaseWords';
 
 import { sprite } from '../../images/DynamicPage';

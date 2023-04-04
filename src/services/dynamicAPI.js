@@ -1,5 +1,4 @@
 import axios from 'axios';
-axios.defaults.baseURL = 'https://finance-planner-app-l78h.onrender.com/api';
 
 const yearInfo = async () => {
   return await axios.get('/dynamic/chart');
@@ -17,11 +16,9 @@ const getImage = async () => {
   return await axios.get('/dynamic/flatImage');
 };
 
-const dynamicAPI = {
+export const dynamicAPI = {
   yearInfo,
   statisticInfo,
   updateImage,
   getImage,
 };
-
-export default dynamicAPI;

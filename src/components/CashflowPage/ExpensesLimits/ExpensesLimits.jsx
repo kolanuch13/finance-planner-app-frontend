@@ -1,6 +1,5 @@
 import css from './ExpensesLimits.module.css';
 import { useTranslation } from 'react-i18next';
-import '../../../i18n';
 
 export const ExpensesLimits = ({ dailyLimit, monthlyLimit, openModalAddIncome}) => {
   const { t } = useTranslation();

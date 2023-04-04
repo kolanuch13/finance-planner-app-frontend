@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://finance-planner-app-l78h.onrender.com/api';
-
 const categoryTypeStatistic = async () => {
   return await axios.get('/statistic/by-category');
 };
@@ -27,11 +25,11 @@ const updateTransaction = async (idTransaction, data) => {
   return await axios.patch(`/transaction/${idTransaction}`, data);
 };
 
-const statisticsAPI = {
+export const statisticsAPI = {
   categoryTypeStatistic,
-  expenseStatistic,
-  categoriesStatistic,
-  removeExpense,
-  updateTransaction,
-};
-export default statisticsAPI;
+expenseStatistic,
+categoriesStatistic,
+removeExpense,
+updateTransaction
+}
+

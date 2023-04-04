@@ -10,7 +10,6 @@ const PeriodPlan = ({data}) => {
   const userBalance = useSelector(balance);
   const [isModalShown, setIsModalShown] = useState(false);
   const openModalAddBalance = () => {
-    console.log("click");
     userBalance === 0 && setIsModalShown(prevState => !prevState);
   };
 
@@ -26,7 +25,8 @@ const PeriodPlan = ({data}) => {
             className={css.input}
             type="text"
             placeholder={`0 ` + t('personalPlane.placeholderInformYear')}
-            value={data.years} 
+            value={data.years}
+            onChange={()=>{}} 
             readOnly
           />
         </label>
@@ -39,6 +39,8 @@ const PeriodPlan = ({data}) => {
             type="number"
             placeholder={`0 ` + t('personalPlane.placeholderInformMonth')}
             value={data.months}
+            onChange={()=>{}}
+            readOnly
           />
         </label>
         <div className={css.btnContainer}>

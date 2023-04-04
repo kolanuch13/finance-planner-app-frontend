@@ -8,7 +8,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { balance } from 'redux/auth/auth-selectors'
 
 const PlanInput = ({data, setData}) => {
-const {t} = useTranslation();
+  const {t} = useTranslation();
   const dataInput = [
     {
       name: 'salary',

@@ -4,33 +4,12 @@ import './date.css';
 import { AiOutlineCalendar } from 'react-icons/ai';
 import { IoIosArrowDown } from 'react-icons/io';
 import { useTranslation } from 'react-i18next';
-
+import {months, weekdays, weekdaysShort} from '../../utils/constants'
 const uk = {
   format: 'MMMM yyyy',
-  months: [
-    'Січень',
-    'Лютий',
-    'Березень',
-    'Квітень',
-    'Травень',
-    'Червень',
-    'Липень',
-    'Серпень',
-    'Вересень',
-    'Жовтень',
-    'Листопад',
-    'Грудень',
-  ],
-  weekdays: [
-    'Неділя',
-    'Понеділок',
-    'Вівторок',
-    'Середа',
-    'Четвер',
-    "П'ятниця",
-    'Субота',
-  ],
-  weekdaysShort: ['Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+  months,
+  weekdays,
+  weekdaysShort,
   localize: {
     month: n => uk.months[n],
     formatLongDate: () => 'd MMMM yyyy',

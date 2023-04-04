@@ -2,7 +2,6 @@ import css from '../HomePage/HomePage.module.css';
 
 import {FcGoogle} from 'react-icons/fc'
 import { useTranslation } from 'react-i18next';
-import '../../i18n';
 
 const HomePage = () => {
   const { t } = useTranslation();

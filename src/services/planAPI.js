@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://finance-planner-app-l78h.onrender.com/api';
-
 const getPersonalPlanAPI = async () => {
   return await axios.get('/personal');
 }
@@ -18,11 +16,11 @@ const currentPersonalPlanAPI = async event => {
   return await axios.put('/personal', event);
 }
 
-const planAPI = {
+export const planAPI = {
   getPersonalPlanAPI,
   addPersonalPlanAPI,
   addPersonalPlanPreAPI,
   currentPersonalPlanAPI,
 };
 
- export default planAPI;
+

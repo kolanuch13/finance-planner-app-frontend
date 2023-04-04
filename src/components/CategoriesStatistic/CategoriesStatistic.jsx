@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { selectCategories } from 'redux/statistics/statistics-selector';
 import statisticsOperations from '../../redux/statistics/statistics-operations';
 import modifyCategory from 'helpers/modifyCategory';
-import '../../i18n';
 import css from './CategoriesStatistic.module.css';
 
 const CategoriesStatistic = () => {

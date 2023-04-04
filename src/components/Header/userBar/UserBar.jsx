@@ -18,7 +18,7 @@ export const UserBar = ({ personalPlan }) => {
       <button type="button" className={css.statistic} onClick={statisticsClick}>
         <img src={barSvg} alt="statistic" />
       </button>
-      <p className={css.nickName}>{userNickName[0]}</p>
+      <p className={css.nickName}>{userNickName.name[0]}</p>
     </div>
   );
 };

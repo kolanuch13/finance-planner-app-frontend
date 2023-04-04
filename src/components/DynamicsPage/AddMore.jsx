@@ -10,7 +10,6 @@ import {
 import { useSelector } from 'react-redux';
 import { dynamicSelectors } from '../../redux/dynamics';
 import { useTranslation } from 'react-i18next';
-import '../../i18n';
 
 const AddMore = () => {
   const { t } = useTranslation();

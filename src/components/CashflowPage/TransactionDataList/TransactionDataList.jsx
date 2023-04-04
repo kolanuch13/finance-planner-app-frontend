@@ -14,7 +14,6 @@ import {
   MdMiscellaneousServices
 } from 'react-icons/md';
 import { useTranslation } from 'react-i18next';
-import '../../../i18n';
 
 export const TransactionDataList = ({ setFormData, formData }) => {
   const userBalance = useSelector(balance);

@@ -3,7 +3,6 @@ import { logout } from '../../../redux/auth/auth-operations';
 import { MdLogout } from 'react-icons/md'
 import css from './LogOut.module.css';
 import { useTranslation } from 'react-i18next';
-import '../../../i18n';
 
 function LogOut() {
   const { t } = useTranslation();

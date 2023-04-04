@@ -1,13 +1,13 @@
-import PlanInput from 'components/OwnPlan/PlanInput/PlanInput';
+import deepEqual from 'deep-equal'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectorPlanData } from 'redux/plan/plan-selectors';
 import { addPersonalPlanAPI, currentPersonalPlanAPI } from 'redux/plan/plan-operations';
 import { selectorAccumPeriod } from 'redux/plan/plan-selectors';
-import PeriodPlan from 'components/OwnPlan/PeriodPlan/PeriodPlan';
-import styles from './OwnPlanPage.module.css';
 import { Container } from 'components/Container/Container';
-const deepEqual = require('deep-equal')
+import PeriodPlan from 'components/OwnPlan/PeriodPlan/PeriodPlan';
+import PlanInput from 'components/OwnPlan/PlanInput/PlanInput';
+import styles from './OwnPlanPage.module.css';
 
 const OwnPlanPage = () => {
   const dispatch = useDispatch();
@@ -39,8 +39,7 @@ const OwnPlanPage = () => {
         ...periodPlan
       }))
     }
-  }
-    
+  } 
 
   return (
     <Container>

@@ -14,7 +14,6 @@ const initialState = {
     month: null,
   },
   categories: [],
-  isLoggedIn: false,
   isLoading: false,
   error: null,
 };
@@ -39,7 +38,6 @@ const cashflowSlice = createSlice({
           state.newTransaction.sum = action.payload.sum;
           state.newTransaction.category = action.payload.category;
           state.newTransaction.categoryType = action.payload.categoryType;
-          state.isLoggedIn = true;
           state.isLoading = false;
         }
       )
@@ -59,7 +57,6 @@ const cashflowSlice = createSlice({
         (state, action) => {
           state.limit.day = action.payload.limitDay;
           state.limit.month = action.payload.limitMonth;
-          state.isLoggedIn = true;
           state.isLoading = false;
         }
       )
@@ -71,24 +68,23 @@ const cashflowSlice = createSlice({
         }
       )
       // Transactions/getCategories=========================================
-      .addCase(cashflowOperations.getCategories.pending, state => {
-        state.isLoading = true;
-      })
-      .addCase(
-        cashflowOperations.getCategories.fulfilled,
-        (state, action) => {
-          state.categories = action.payload.categories;
-          state.isLoggedIn = true;
-          state.isLoading = false;
-        }
-      )
-      .addCase(
-        cashflowOperations.getCategories.rejected,
-        (state, action) => {
-          state.error = action.payload;
-          state.isLoading = false;
-        }
-      );
+      // .addCase(cashflowOperations.getCategories.pending, state => {
+      //   state.isLoading = true;
+      // })
+      // .addCase(
+      //   cashflowOperations.getCategories.fulfilled,
+      //   (state, action) => {
+      //     state.categories = action.payload.data.categories;
+      //     state.isLoading = false;
+      //   }
+      // )
+      // .addCase(
+      //   cashflowOperations.getCategories.rejected,
+      //   (state, action) => {
+      //     state.error = action.payload;
+      //     state.isLoading = false;
+      //   }
+      // );
   },
 });
 

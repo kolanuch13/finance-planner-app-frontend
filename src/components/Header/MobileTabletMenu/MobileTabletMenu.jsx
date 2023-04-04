@@ -1,11 +1,11 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import LogOut from '../logout/LogOut';
 import css from './MobileTabletMenu.module.css';
 import { useTranslation } from 'react-i18next';
-import '../../../i18n';
+import { ROUTES } from 'utils/constants';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -42,7 +42,7 @@ function MobileTabletMenu({ closeMenu, personalPlan }) {
                   ? css.NavLinkActive
                   : css.NavLink
               }
-              to="/personal-plan"
+              to={Routes.personalPlan}
             >
               {t('header.personalPlan')}
             </NavLink>
@@ -53,7 +53,7 @@ function MobileTabletMenu({ closeMenu, personalPlan }) {
                   ? css.NavLinkActive
                   : css.NavLink
               }
-              to="/cashflow"
+              to={Routes.cashflow}
             >
               {t('header.cashFlow')}
             </NavLink>
@@ -64,7 +64,7 @@ function MobileTabletMenu({ closeMenu, personalPlan }) {
                   ? css.NavLinkActive
                   : css.NavLink
               }
-              to="/dynamics"
+              to={Routes.dynamics}
               >
               {t('header.dynamics')}
             </NavLink>

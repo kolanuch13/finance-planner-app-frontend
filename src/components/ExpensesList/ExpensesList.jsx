@@ -11,7 +11,6 @@ import {
   MdHouse,
   MdMiscellaneousServices,
 } from 'react-icons/md';
-import '../../i18n';
 import ExpensesListItem from '../ExpensesListItem/ExpensesListItem';
 import Pagination from 'components/Pagination/Pagination';
 import statisticsOperations from '../../redux/statistics/statistics-operations';

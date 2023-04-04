@@ -1,7 +1,9 @@
 import { lazy, useEffect } from 'react';
 import { useSearchParams, Route, Routes, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { Notify } from 'notiflix';
 import { Layout } from './Layout/Layout';
+import '../i18n';
 
 import authOperations from 'redux/auth/auth-operations';
 import { getPersonalPlan } from 'redux/plan/plan-operations';
@@ -32,7 +34,6 @@ export const App = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const userBalance = useSelector(balance);
   const newPlanData = useSelector(selectorPlanData);
-
   useEffect(() => {
     const email = searchParams.get('email');
     const password = searchParams.get('password');
@@ -42,7 +43,7 @@ export const App = () => {
           setSearchParams('');
         })
         .catch(err => {
-          console.log(err);
+          Notify.err(err)
         });
     }
     dispatch(authOperations.current())

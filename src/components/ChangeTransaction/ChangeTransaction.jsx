@@ -11,8 +11,6 @@ const ChangeTransaction = ({ isOpen }) => {
     getAllCategory().then(setAllCategory);
   }, []);
 
-  console.log(isOpen);
-
   const handleChange = e => {
     const { name, value } = e.target;
 

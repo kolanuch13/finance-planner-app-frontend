@@ -1,4 +1,4 @@
-import css from './DynamicPage.module.css';
+import css from './DynamicsPage.module.css';
 import HorizontalBarChart from '../../components/DynamicsPage/HorizontalBarChart';
 import VerticalBarChart from '../../components/DynamicsPage/VerticalBarChart';
 import Info from '../../components/DynamicsPage/Info';
@@ -9,7 +9,6 @@ import { dynamicOperation } from '../../redux/dynamics';
 import { useEffect } from 'react';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTranslation } from 'react-i18next';
-import '../../i18n';
 
 const DynamicsPage = () => {
   const { t } = useTranslation();
