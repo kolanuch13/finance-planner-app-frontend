@@ -1,0 +1,81 @@
+.userNav {
+  display: flex;
+}
+
+.login {
+  width: 71px;
+  height: 30px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.17;
+  text-align: center;
+  padding: 8px 16px;
+  margin-right: 10px;
+  color: #242424;
+  border: none;
+  border-radius: 60px;
+  background-color: #f3f3f3;
+  cursor: pointer;
+}
+
+.login:hover {
+  background-color: #3a6af5;
+  color: #f3f3f3;
+}
+
+.register {
+  width: 100px;
+  height: 30px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.17;
+  text-align: center;
+  margin-right: 16px;
+  padding: 8px 18px;
+  color: #f3f3f3;
+  border: none;
+  border-radius: 60px;
+  background-color: #3a6af5;
+  cursor: pointer;
+}
+
+.register:hover {
+  background-color: #f3f3f3;
+  color: #242424;
+}
+
+@media screen and (min-width: 768px) {
+  .login {
+    width: 88px;
+    height: 40px;
+    font-size: 14px;
+    line-height: 1.43;
+    padding: 10px 23px;
+    margin-right: 12px;
+  }
+
+  .login:hover {
+    background-color: #3a6af5;
+    color: #f3f3f3;
+  }
+
+  .register {
+    width: 132px;
+    height: 40px;
+    font-size: 14px;
+    line-height: 1.43;
+    padding: 10px 26px;
+    margin-right: 32px;
+  }
+
+  .register:hover {
+    background-color: #f3f3f3;
+    color: #242424;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .register {
+    margin-right: 55px;
+  }
+}

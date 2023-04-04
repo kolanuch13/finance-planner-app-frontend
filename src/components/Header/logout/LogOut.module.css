@@ -1,0 +1,62 @@
+.logoutBtn {
+  position: absolute;
+  top: 670px;
+  left: 16px;
+}
+
+.logOut {
+  display: flex;
+  align-items: center;
+  width: 119px;
+  height: 40px;
+  padding: 0px;
+  border: none;
+  background-color: #f3f3f3;
+  border-radius: 60px;
+  cursor: pointer;
+  transition: all 100ms linear;
+}
+.logOut:hover {
+  background-color: #3a6af5;
+}
+.logOut:hover p {
+ color: #f3f3f3;
+}
+
+.text {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.43;
+  color: #242424;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 24px;
+  margin-right: 10px;
+}
+
+.logOutSvg {
+  padding-top: 13px;
+  padding-bottom: 13px;
+  margin-right: 24px;
+      width: 14px;
+}
+
+@media screen and (min-width: 768px) {
+  .logoutBtn {
+    top: 860px;
+    left: 32px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .logoutBtn {
+    position: static;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    margin-left: 24px;
+    margin-right: 55px;
+  }
+}

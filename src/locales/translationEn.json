@@ -1,0 +1,145 @@
+{
+  "home": {
+    "highlightedTitle": "Planner ",
+    "title": "for joint savings for an apartment",
+    "googleSignIn": "Sign in with Google",
+    "subtitlePayment": "Payments that work",
+    "highlightedSubtitlePayment": "for you",
+    "highlightedІubtitleApartments": "Apartments ",
+    "іubtitleApartments": "of your dreams"
+  },
+  "registration": {
+    "title": "Registration",
+    "name": "Name",
+    "placeholderName": "Enter your name",
+    "email": "Email",
+    "placeholderEmail": "Enter your email",
+    "password": "Password",
+    "placeholderPassword": "Enter your password",
+    "buttonSignUp": "Sign Up",
+    "errorEmail": "invalid email",
+    "passwordError": "invalid password!",
+    "requiredName": "name is required",
+    "requiredEmail": "email is required",
+    "requiredPassword": "password is required",
+    "nameStandartMin": "name is min 3 symbols",
+    "nameStandarMax": "name is max 30 symbols",
+    "emailStandart": "invalid email format",
+    "passwordStandart": "password in min 6 symbols",
+    "invalidPassword": "invalid password",
+    "emailInUse": "Email in use"
+  },
+  "login": {
+    "title": "Log in",
+    "email": "Email",
+    "placeholderEmail": "Enter your name",
+    "password": "Password",
+    "placeholderPassword": "Enter your password",
+    "buttonSignIn": "Log In",
+    "errorEmail": "invalid email",
+    "passwordError": "invalid password!",
+    "requiredEmail": "email is required",
+    "requiredPassword": "password is required",
+    "emailStandart": "invalid email format",
+    "passwordStandart": "password in min 6 symbols",
+    "invalidPassword": "invalid password"
+
+  },
+  "verificationSend": {
+    "verificationSendFirst": "Email with verification link was send to ",
+    "verificationSendSecond": "Chek it to continiue registration..."
+  },
+  "verifiedSuccess": {
+    "verifiedSuccessFirst": "Account was successfully verified",
+    "verifiedSuccessSecond": "You will be automatically sign in and regirect in "
+  },
+  "logOut": {
+    "logOutButton": "Log out"
+  },
+  "header": {
+    "personalPlan": "Personal plan",
+    "cashFlow": "Cashflow",
+    "dynamics": "Dynamics"
+  },
+  "personalPlane": {
+    "firstInput": " RFP of both spouses, $;",
+    "placeholderFirstInput": "Enter sum",
+    "secondInput": " Passive income, months, $;",
+    "placeholderSecondInput": "Enter text",
+    "thirdInput": " Savings, $;",
+    "placeholderThirdInput": "Enter text",
+    "fourthInput": " Specify the cost of your future apartment, $;",
+    "placeholderFourthInput": "Enter sum",
+    "fifthInput": " Specify the number of sq.m. of your future apartment",
+    "placeholderFifthInput": "Enter text",
+    "sixthInput": " Accumulation, %",
+    "placeholderSixthInput": "Enter text",
+    "additionalInfoSixthInput": "Specify the percentage that you would like to accumulate per month from the total amount of income and you will see when you reach the goal",
+    "informTitle": "You will have an apartment in:",
+    "informYear": "Number of years",
+    "placeholderInformYear": "years",
+    "informMonth": "Number of months",
+    "placeholderInformMonth": "months",
+    "addBalance": "Add Balance",
+    "buttonFits": "Fits",
+    "placeholderInputModal": "Enter balance",
+    "buttonAdd": "Add",
+    "buttonCancel": "Cancel"
+  },
+  "cashFlow": {
+    "from": "From account",
+    "accountBalance": "Account balance: UAH",
+    "category": "Per category",
+    "comment": "Expense comment",
+    "placeholderComment": "What did you buy?",
+    "sum": "Sum",
+    "dayLimit": "Daily limit",
+    "monthlyLimit": "Monthly limit",
+    "buttonReady": "Ready",
+    "addIncome": "Add income",
+    "placeholderInputModal": "Enter income",
+    "buttonAdd": "Add",
+    "buttonCancel": "Cancel"
+  },
+  "dynamics": {
+    "title": "Dynamics of expenses and savings",
+    "accumulated": "Accumulated",
+    "expenses": "Expenses",
+    "income": "Income",
+    "month": "Month",
+    "incomeItem": "Income, &#x20B4;",
+    "expensesItem": "Expenses, &#x20B4;",
+    "accumulatedItem": "Accumulated,",
+    "plan": "Plan,",
+    "after": "After",
+    "yearResultCountPrimary": "year",
+    "yearResultCountMany": "years",
+    "yearResultCountSecondary": "years",
+    "monthResultCountPrimary": "month",
+    "monthResultCountMany": "months",
+    "monthResultCountSecondary": "months",
+    "changeImage": "Change image",
+    "andThis": "And this:",
+    "outOf": "із",
+    "sqMetersAccumulated": "кв.м накопичено",
+    "missingInfoFirst": "To add more",
+    "1sqM": "1 sq.m",
+    "sqM": "sq.m",
+    "missingInfoSecond": "for planning, it remains to accumulate",
+    "finishTitle": "Hooray! Congratulations!",
+    "finishText": "You did it! We are so proud of you and wish you all the best as you embark on this exciting new chapter of your life."
+  },
+  "expenses": {
+    "expensesTitle": "Expenses",
+    "categoriesTitle": "Categories",
+    "perCategory": "Per category",
+    "expenseComment": "Expense comment",
+    "sum": "Sum",
+    "buttonEdit": "Edit",
+    "noTransaction": "You don't have any transactions this month 🤷‍♀️",
+    "noStatistic": "You don't have any data by categories in this month 🤷‍♀️"
+  },
+  "example": {
+    "test": "Everything is simple!"
+  }
+}

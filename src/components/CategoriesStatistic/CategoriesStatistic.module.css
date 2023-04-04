@@ -1,0 +1,130 @@
+.categoriesList {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(243, 243, 243, 0.06);
+  border-radius: 0px 0px 16px 16px;
+  background-color: rgb(37, 44, 65);
+  width: 343px;
+}
+
+@media screen and (min-width: 768px) {
+  .categoriesList {
+    width: 100%;
+  }
+}
+
+.categoriesItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgba(255, 255, 255, 1);
+  width: 100%;
+  border-bottom: 1px solid rgba(243, 243, 243, 0.06);
+}
+
+@media screen and (min-width: 375px) {
+  .categoriesItem {
+    flex-direction: column;
+    padding: 18px 16px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .categoriesItem {
+    flex-direction: row;
+    padding: 15px 32px;
+  }
+}
+
+.categoriesThumb {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (min-width: 375px) {
+  .categoriesThumb {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .categoriesThumb {
+    margin-right: 88px;
+    padding-right: 24px;
+    width: 384px;
+  }
+}
+
+.categoriesType {
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.categoriesSum {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+@media screen and (min-width: 375px) {
+  .categoriesSum {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .categoriesSum {
+    font-size: 20px;
+  }
+}
+
+.categoriesPercent {
+  margin-right: auto;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+@media screen and (min-width: 375px) {
+  .categoriesPercent {
+    margin-top: 8px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .categoriesPercent {
+    margin-top: 0;
+    font-size: 18px;
+  }
+}
+
+.noCategoriesWrapper {
+  padding: 12px;
+  color: white;
+}
+
+@media screen and (min-width: 375px) {
+  .noCategoriesWrapper {
+    width: 343px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .noCategoriesWrapper {
+    width: 769px;
+  }
+}
+
+.noCategoriesText {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.43;
+  text-align: center;
+}

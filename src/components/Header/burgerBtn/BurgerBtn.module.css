@@ -1,0 +1,34 @@
+.burgerMenuBtn {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  margin: 22px 10px;
+}
+.RxHamburgerMenu {
+  color: #f3f3f3;
+}
+
+.GrClose {
+  color: #f3f3f3;
+}
+
+@media screen and (min-width: 768px) {
+  .burgerMenuBtn {
+    margin-top: 19px;
+    margin-bottom: 19px;
+    margin-right: 26px;
+    margin-left: 18px;
+  }
+  .RxHamburgerMenu {
+    color: #f3f3f3;
+  }
+  .GrClose {
+    color: #f3f3f3;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .burgerMenuBtn {
+    display: none;
+  }
+}
