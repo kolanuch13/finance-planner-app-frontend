@@ -12,7 +12,6 @@ export const UserBar = ({ personalPlan }) => {
   const statisticsClick = () => {
     personalPlan && navigate('/statistics/transactions', { replace: true });
   };
-console.log(userNickName.userName);
   return (
     <div className={css.userMenu}>
       <button type="button" className={css.statistic} onClick={statisticsClick}>
