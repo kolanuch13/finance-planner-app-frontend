@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { balance } from 'redux/auth/auth-selectors'
 import Modal from '../ModalAddBalance/Modal/Modal';
@@ -13,6 +13,12 @@ const PeriodPlan = ({data}) => {
     userBalance === 0 && setIsModalShown(prevState => !prevState);
   };
 
+  useEffect(() => {
+    if(!userBalance) {
+      setIsModalShown(true)
+    }
+  },[userBalance])
+
   return (
     <div className={css.boxForm}>
       <p className={css.text}>{t('personalPlane.informTitle')}</p>
@@ -25,7 +31,7 @@ const PeriodPlan = ({data}) => {
             className={css.input}
             type="text"
             placeholder={`0 ` + t('personalPlane.placeholderInformYear')}
-            value={data.years}
+            value={data?.years || 0}
             onChange={()=>{}} 
             readOnly
           />
@@ -38,7 +44,7 @@ const PeriodPlan = ({data}) => {
             className={css.input}
             type="number"
             placeholder={`0 ` + t('personalPlane.placeholderInformMonth')}
-            value={data.months}
+            value={data?.months || 0}
             onChange={()=>{}}
             readOnly
           />
