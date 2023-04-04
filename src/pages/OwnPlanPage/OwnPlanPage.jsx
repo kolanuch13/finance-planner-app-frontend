@@ -1,16 +1,22 @@
-import deepEqual from 'deep-equal'
-import { useState } from 'react';
+import deepEqual from 'deep-equal';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectorPlanData } from 'redux/plan/plan-selectors';
-import { addPersonalPlanAPI, currentPersonalPlanAPI } from 'redux/plan/plan-operations';
+import {
+  addPersonalPlanAPI,
+  currentPersonalPlanAPI,
+  getPersonalPlan,
+} from 'redux/plan/plan-operations';
 import { selectorAccumPeriod } from 'redux/plan/plan-selectors';
 import { Container } from 'components/Container/Container';
 import PeriodPlan from 'components/OwnPlan/PeriodPlan/PeriodPlan';
 import PlanInput from 'components/OwnPlan/PlanInput/PlanInput';
 import styles from './OwnPlanPage.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const OwnPlanPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const newPlanData = useSelector(selectorPlanData);
   const accumPeriod = useSelector(selectorAccumPeriod);
   const [planData, setPlanData] = useState({
@@ -21,31 +27,39 @@ const OwnPlanPage = () => {
     footage: newPlanData?.footage || '',
     procent: newPlanData?.procent || '',
   });
-  const periodPlan = {
-    years: accumPeriod?.years || "",
-    months: accumPeriod?.months || "",
-  };
+
+  let periodPlan = { ...accumPeriod };
 
   const handleSubmit = e => {
     e.preventDefault();
+    periodPlan = {
+      years: accumPeriod?.years,
+      months: accumPeriod?.months,
+    };
+    console.log(periodPlan);
     if (newPlanData === null) {
-      dispatch(addPersonalPlanAPI({
-        ...planData,
-        ...periodPlan
-      }))
+      dispatch(
+        addPersonalPlanAPI({
+          ...planData,
+          ...periodPlan,
+        })
+      );
     } else if (!deepEqual(newPlanData, planData)) {
-      dispatch(currentPersonalPlanAPI({
-        ...planData,
-        ...periodPlan
-      }))
+      dispatch(
+        currentPersonalPlanAPI({
+          ...planData,
+          ...periodPlan,
+        })
+      );
     }
-  } 
+    navigate('/cashflow');
+  };
 
   return (
     <Container>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <PlanInput data={planData} setData={setPlanData}/>
-        <PeriodPlan data={periodPlan}/>
+        <PlanInput data={planData} setData={setPlanData} />
+        <PeriodPlan data={periodPlan} />
       </form>
     </Container>
   );
