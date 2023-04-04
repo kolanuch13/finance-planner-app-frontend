@@ -91,9 +91,7 @@ export const ModalLogin = () => {
                 message: t('login.passwordStandart'),
               },
             })}
-            className={`${css.input} ${invalidError && css.error} ${
-              invalidError && css.error_border
-            }`}
+            className={`${css.input} ${invalidError && css.error_border}`}
             placeholder={t('login.placeholderPassword')}
             type={typeInput ? 'password' : 'text'}
             name="password"
@@ -107,15 +105,17 @@ export const ModalLogin = () => {
           <div className={css.error}>
             {errors?.password && <p>{errors?.password?.message || 'Error'}</p>}
           </div>
-          <div className={css.error}>{invalidError}</div>
+          <div className={css.error}>
+            {!errors?.password?.message && invalidError}
+          </div>
         </label>
         <button type="submit" className={css.btn}>
           {isLoading ? (
             <RotatingLines
-              strokeColor="#f3f3f3"
+              strokeColor="gray"
               strokeWidth="5"
               animationDuration="0.75"
-              width="20"
+              width="12.5"
               visible={true}
             />
           ) : (
