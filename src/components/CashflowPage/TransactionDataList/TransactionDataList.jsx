@@ -98,7 +98,7 @@ export const TransactionDataList = ({ setFormData, formData }) => {
               id="category"
               className={css.textBox} 
               type="text" 
-              value={formData.category}
+              value={formData.category ? formData.category : category[category.length - 1]}
               name="category"
               onChange={handleChange}
               readOnly

@@ -154,7 +154,7 @@ const ExpensesList = () => {
           ))}
       </ul>
 
-      <Pagination actualPage={actualPage} totalPage={totalPage} page={page} />
+      {transaction.length > 6 && <Pagination actualPage={actualPage} totalPage={totalPage} page={page} />}
 
       {open && (
         <ModalNormal closeModal={closeModal}>
