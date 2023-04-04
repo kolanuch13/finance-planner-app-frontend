@@ -5,7 +5,6 @@ import { createPortal } from 'react-dom';
 import LogOut from '../logout/LogOut';
 import css from './MobileTabletMenu.module.css';
 import { useTranslation } from 'react-i18next';
-import { ROUTES } from 'utils/constants';
 
 const modalRoot = document.querySelector('#modal-root');
 
