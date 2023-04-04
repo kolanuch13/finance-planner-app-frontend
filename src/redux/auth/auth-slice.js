@@ -8,7 +8,7 @@ const initialState = {
     token: null,
     email: null,
     password: null,
-    userName: null,
+    userName: '',
     balance: null,
   },
   isLoggedIn: false,

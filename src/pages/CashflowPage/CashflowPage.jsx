@@ -11,11 +11,15 @@ import cashflowOperations from 'redux/cashflowPage/cashflowPage-operations';
 const CashflowPage = () => {
   const [dailyLimit, setDailyLimit] = useState('');
   const [monthlyLimit, setMonthlyLimit] = useState('');
-  const [formData, setFormData] = useState({
+  const [formDataExpense, setFormDataExpense] = useState({
     category: '',
     categoryType: 'expense',
     comment: '',
-    sum: 0,
+    sum: '',
+  });
+  const [formDataIncome, setFormDataIncome] = useState({
+    categoryType: 'income',
+    sum: '',
   });
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,50 +29,69 @@ const CashflowPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(cashflowOperations.getCashflowLimits())
-      .unwrap()
-      .then(response => {
-        setDailyLimit(response.data.limitDay);
-        setMonthlyLimit(response.data.limitMonth);
-      })
-      .catch(error => console.error(error));
-  }, [dispatch]);
+    if(dailyLimit==='' || monthlyLimit=== '') {
+      dispatch(cashflowOperations.getCashflowLimits())
+        .unwrap()
+        .then(response => {
+          setDailyLimit(response.data.limitDay);
+          setMonthlyLimit(response.data.limitMonth);
+        })
+        .catch(error => console.error(error));
+    }
+  }, [dailyLimit, dispatch, monthlyLimit]);
 
   const handleSubmitAdd = e => {
     e.preventDefault();
-    const newData = {
-      category: formData.category?.toLowerCase(),
-      sum: Number(+formData.sum),
-      categoryType: formData.categoryType,
-      comment: formData.comment,
+    // eslint-disable-next-line default-case
+    switch (e.target.id) {
+      case "expense": 
+        const expenseData = {
+          category: formDataExpense.category?.toLowerCase(),
+          sum: Number(+formDataExpense.sum),
+          categoryType: formDataExpense.categoryType,
+          comment: formDataExpense.comment,
+        }
+        dispatch(cashflowOperations.addTransaction(expenseData))
+          .unwrap()
+          .then(response => {
+            return response;
+          })
+          .catch(error => console.error(error));
+        if(isModalOpen) toggleModal();
+        setFormDataExpense({
+          category: '',
+          categoryType: 'expense',
+          comment: '',
+          sum: 0,
+        });
+        break;
+        case "income": 
+        const incomeData = {
+          category: formDataIncome.category?.toLowerCase(),
+          sum: Number(+formDataIncome.sum),
+          categoryType: formDataIncome.categoryType,
+          comment: formDataIncome.comment,
+        }
+        dispatch(cashflowOperations.addTransaction(incomeData))
+          .unwrap()
+          .then(response => {
+            return response;
+          })
+          .catch(error => console.error(error));
+        if(isModalOpen) toggleModal();
+        setFormDataIncome({
+          categoryType: 'income',
+          sum: 0,
+        });
+        break;
     }
-    dispatch(cashflowOperations.addTransaction(newData))
-      .unwrap()
-      .then(response => {
-        return response;
-      })
-      .catch(error => console.error(error));
-    if(isModalOpen) toggleModal();
-    setFormData({
-      category: '',
-      categoryType: 'expense',
-      comment: '',
-      sum: 0,
-    });
-    dispatch(cashflowOperations.getCashflowLimits())
-    .unwrap()
-    .then(response => {
-      setDailyLimit(response.data.limitDay);
-      setMonthlyLimit(response.data.limitMonth);
-    })
-    .catch(error => console.error(error));
   };
 
   return (
     <main className={css.main}>
       <Container>
-        <form onSubmit={handleSubmitAdd} className={css.form}>
-          <TransactionDataList setFormData={setFormData} formData={formData} />
+        <form onSubmit={handleSubmitAdd} className={css.form} id="expense">
+          <TransactionDataList setFormData={setFormDataExpense} formData={formDataExpense} />
           <ExpensesLimits
             handleSubmitAdd={handleSubmitAdd}
             dailyLimit={dailyLimit}
@@ -76,7 +99,7 @@ const CashflowPage = () => {
             openModalAddIncome={toggleModal}
           />
         </form>
-        {isModalOpen && <ModalAddIncome handleSubmitAdd={handleSubmitAdd} closeModal={toggleModal} setFormData={setFormData} formData={formData}/>}
+        {isModalOpen && <ModalAddIncome handleSubmitAdd={handleSubmitAdd} closeModal={toggleModal} setFormData={setFormDataExpense} formData={formDataExpense}/>}
       </Container>
     </main>
   );

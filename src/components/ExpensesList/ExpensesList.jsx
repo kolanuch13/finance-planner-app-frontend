@@ -50,7 +50,6 @@ const ExpensesList = () => {
     <MdHouse style={style} />,
     <MdMiscellaneousServices style={style} />,
   ];
-
   useEffect(() => {
     const period = JSON.parse(localStorage.getItem('selectedPeriod'));
 
@@ -154,7 +153,7 @@ const ExpensesList = () => {
           ))}
       </ul>
 
-      <Pagination actualPage={actualPage} totalPage={totalPage} page={page} />
+      {totalTransactions > 6 && <Pagination actualPage={actualPage} totalPage={totalPage} page={page} />}
 
       {open && (
         <ModalNormal closeModal={closeModal}>

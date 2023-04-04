@@ -7,7 +7,7 @@ import '../i18n';
 
 import authOperations from 'redux/auth/auth-operations';
 import { getPersonalPlan } from 'redux/plan/plan-operations';
-import { balance } from 'redux/auth/auth-selectors'
+import { balance, selectToken } from 'redux/auth/auth-selectors'
 import { selectorPlanData } from 'redux/plan/plan-selectors';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
@@ -33,7 +33,9 @@ export const App = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const userBalance = useSelector(balance);
+  const userToken = useSelector(selectToken);
   const newPlanData = useSelector(selectorPlanData);
+ 
   useEffect(() => {
     const email = searchParams.get('email');
     const password = searchParams.get('password');
@@ -46,11 +48,13 @@ export const App = () => {
           Notify.err(err)
         });
     }
-    dispatch(authOperations.current())
+    if(userToken && userBalance === 0) {
+      dispatch(authOperations.current())
+    }
     if(userBalance !== 0) {
       dispatch(getPersonalPlan());
     } 
-  }, [dispatch, navigate, searchParams, setSearchParams, userBalance]);
+  }, [dispatch, navigate, searchParams, setSearchParams, userBalance, userToken]);
 
   return (
     <>
@@ -62,14 +66,14 @@ export const App = () => {
           <Route path="/" element={<PrivateRoute />}>
             <Route path="personal-plan" element={<OwnPlanPage />} />
             {newPlanData && <>
-            <Route path="cashflow" element={<CashflowPage/>} />
+              <Route path="cashflow" element={<CashflowPage/>} />
 
-            <Route path="dynamics" element={<DynamicsPage />} />
+              <Route path="dynamics" element={<DynamicsPage />} />
 
-            <Route path="statistics" element={<StatisticPage />}>
-              <Route path="transactions" element={<ExpensesList />} />
-              <Route path="categories" element={<CategoriesStatistic />} />
-            </Route>
+              <Route path="statistics" element={<StatisticPage />}>
+                <Route path="transactions" element={<ExpensesList />} />
+                <Route path="categories" element={<CategoriesStatistic />} />
+              </Route>
             </>}
 
             <Route path="*" element={ <NotFoundPage/> } />
