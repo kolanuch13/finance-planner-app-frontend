@@ -5,6 +5,7 @@ import { selectorPlanData } from 'redux/plan/plan-selectors';
 import { addPersonalPlanAPI, currentPersonalPlanAPI } from 'redux/plan/plan-operations';
 import { selectorAccumPeriod } from 'redux/plan/plan-selectors';
 import { Container } from 'components/Container/Container';
+import ModalAddBalance from 'components/OwnPlan/ModalAddBalance/ModalAddBalance';
 import PeriodPlan from 'components/OwnPlan/PeriodPlan/PeriodPlan';
 import PlanInput from 'components/OwnPlan/PlanInput/PlanInput';
 import styles from './OwnPlanPage.module.css';
@@ -43,6 +44,7 @@ const OwnPlanPage = () => {
 
   return (
     <Container>
+      <ModalAddBalance/>
       <form className={styles.form} onSubmit={handleSubmit}>
         <PlanInput data={planData} setData={setPlanData}/>
         <PeriodPlan data={periodPlan}/>
