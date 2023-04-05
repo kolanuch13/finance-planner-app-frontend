@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { balance } from 'redux/auth/auth-selectors'
 import Modal from '../ModalAddBalance/Modal/Modal';
 import css from './PeriodPlan.module.css';
 import { useTranslation } from 'react-i18next';
+import { balance } from 'redux/auth/auth-selectors';
 
-const PeriodPlan = ({data}) => {
-  const {t} = useTranslation();
+const PeriodPlan = ({ data }) => {
+  const { t } = useTranslation();
   const userBalance = useSelector(balance);
   const [isModalShown, setIsModalShown] = useState(false);
   const openModalAddBalance = () => {
@@ -14,10 +14,10 @@ const PeriodPlan = ({data}) => {
   };
 
   useEffect(() => {
-    if(!userBalance) {
-      setIsModalShown(true)
+    if (!userBalance) {
+      setIsModalShown(true);
     }
-  },[userBalance])
+  }, [userBalance]);
 
   return (
     <div className={css.boxForm}>
@@ -32,7 +32,7 @@ const PeriodPlan = ({data}) => {
             type="text"
             placeholder={`0 ` + t('personalPlane.placeholderInformYear')}
             value={data?.years || 0}
-            onChange={()=>{}} 
+            onChange={() => {}}
             readOnly
           />
         </label>
@@ -45,26 +45,28 @@ const PeriodPlan = ({data}) => {
             type="number"
             placeholder={`0 ` + t('personalPlane.placeholderInformMonth')}
             value={data?.months || 0}
-            onChange={()=>{}}
+            onChange={() => {}}
             readOnly
           />
         </label>
         <div className={css.btnContainer}>
           <button
-            className={css.buttonAddBalance}
+            className={
+              css.buttonAddBalance + ' ' + userBalance &&
+              css.buttonAddBalanceDisabled
+            }
             type="button"
             onClick={openModalAddBalance}
           >
             {t('personalPlane.addBalance')}
           </button>
-
           {isModalShown && (
             <Modal
               onClick={openModalAddBalance}
               onClose={openModalAddBalance}
+              userBalance={userBalance}
             />
           )}
-
           <button className={css.button} type="submit">
             {t('personalPlane.buttonFits')}
           </button>

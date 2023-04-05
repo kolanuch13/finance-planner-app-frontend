@@ -24,7 +24,7 @@
   transition: all 100ms linear;
 }
 .NavLink:hover {
-  color: #3a6af5;;
+  color: #3a6af5;
 }
 
 .NavLinkActive {
@@ -35,4 +35,12 @@
   text-align: center;
   text-decoration: none;
   color: #3a6af5;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
 }
