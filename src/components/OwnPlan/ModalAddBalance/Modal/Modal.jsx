@@ -10,7 +10,6 @@ const modalRoot = document.querySelector('#modal-root');
 
 const Modal = ({ children, onClose, userBalance }) => {
   const { t } = useTranslation();
-  const [updateBalance, setUpdateBalance] = useState(0);
   const [balanceValue, setBalanceValue] = useState('');
   const dispatch = useDispatch();
   useEffect(() => {

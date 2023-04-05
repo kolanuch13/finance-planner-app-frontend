@@ -1,11 +1,10 @@
 import deepEqual from 'deep-equal';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectorPlanData } from 'redux/plan/plan-selectors';
 import {
   addPersonalPlanAPI,
-  currentPersonalPlanAPI,
-  getPersonalPlan,
+  currentPersonalPlanAPI
 } from 'redux/plan/plan-operations';
 import { selectorAccumPeriod } from 'redux/plan/plan-selectors';
 import { Container } from 'components/Container/Container';
@@ -45,25 +44,36 @@ const OwnPlanPage = () => {
       !planData.footage ||
       !planData.procent
     ) {
-      Notify.warning('All fields is required');
+      Notify.warning('All fields is required.');
     }
-    console.log(periodPlan);
+    // If user is new => add new data to DB and show the succes message
     if (newPlanData === null) {
       dispatch(
         addPersonalPlanAPI({
           ...planData,
           ...periodPlan,
         })
-      );
+      )
+      .then(()=> {
+        Notify.success('Your personal plan was saved!');
+      })
+      .catch(err => {
+        Notify.failure(err.message);
+      })
+    // If user is regular => refresh the data and send to DB and show the succes message
     } else if (!deepEqual(newPlanData, planData)) {
       dispatch(
         currentPersonalPlanAPI({
           ...planData,
           ...periodPlan,
         })
-      ).then(res => {
+      ).then(()=> {
+        Notify.success('Your personal plan was refreshed!');
+      }).then(res => {
         navigate('/cashflow');
-      });
+      }).catch(err => {
+        Notify.failure(err.message);
+      })
     }
   };
 

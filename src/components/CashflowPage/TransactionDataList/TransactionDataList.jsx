@@ -72,7 +72,7 @@ export const TransactionDataList = ({ setFormData, formData }) => {
 
   return (
     <div className={css.wrapper}>
-      <div className={css.inputWrapper + ' ' + css.inputWrapperBalance}>
+      <div id="1" className={css.inputWrapper + ' ' + css.inputWrapperBalance}>
         <label htmlFor="balance" className={css.labelBalance}>
           {t('cashFlow.from')}
         </label>
@@ -85,7 +85,7 @@ export const TransactionDataList = ({ setFormData, formData }) => {
           readOnly
         />
       </div>
-      <div className={css.inputWrapper}>
+      <div id="2" className={css.inputWrapper}>
         <label htmlFor="category" className={css.label}>
           {t('cashFlow.category')}
         </label>
@@ -94,12 +94,8 @@ export const TransactionDataList = ({ setFormData, formData }) => {
             <input
               id="category"
               className={css.textBox}
-              type="text"
-              value={
-                formData.category
-                  ? formData.category
-                  : category[category.length - 1]
-              }
+              type="select"
+              value={formData.category}
               name="category"
               onChange={handleChange}
               readOnly
@@ -115,7 +111,7 @@ export const TransactionDataList = ({ setFormData, formData }) => {
           </div>
         </div>
       </div>
-      <div className={css.inputWrapper}>
+      <div id="3" className={css.inputWrapper}>
         <label htmlFor="comment" className={css.label}>
           {t('cashFlow.comment')}
         </label>
@@ -129,7 +125,7 @@ export const TransactionDataList = ({ setFormData, formData }) => {
           placeholder={t('cashFlow.placeholderComment')}
         />
       </div>
-      <div className={css.inputWrapper}>
+      <div id="4" className={css.inputWrapper}>
         <label htmlFor="sum" className={css.label}>
           {t('cashFlow.sum')}
         </label>
@@ -141,7 +137,7 @@ export const TransactionDataList = ({ setFormData, formData }) => {
           value={formData.sum}
           name="sum"
           required
-          placeholder="Enter sum"
+          placeholder={t('cashflow.placeholderSum')}
         />
       </div>
     </div>

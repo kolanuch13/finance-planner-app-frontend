@@ -4,8 +4,16 @@
   padding: 40px 64px;
   border-radius: 16px;
 }
+
+.dailyLimitWrapper {
+  margin-bottom: 18px;
+}
+
+.monthlyLimitWrapper {
+  margin-bottom: 44px;
+}
+
 .label {
-  display: block;
   margin-top: 6px;
   margin-bottom: 18px;
   font-size: 14px;
@@ -14,11 +22,10 @@
 }
 
 .input {
-  display: block;
   border: none;
   background: none;
   padding: 0;
-  padding: 14px 24px;
+  padding: 14px 0 14px 24px;
   border: 1px solid rgba(243, 243, 243, 0.4);
   border-radius: 28px;
   font-size: 14px;
@@ -30,11 +37,15 @@
   outline: none;
 }
 
-.btnReady {
-  max-width: 215px;
+.btnsWrapper {
   display: flex;
-  padding: 14px 80px;
-  margin-bottom: 14px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btnReady {
+  width: 100%;
+  padding: 14px 24px;
   align-items: center;
   background: #f3f3f3;
   border: none;
@@ -47,10 +58,7 @@
 }
 
 .btnAdd {
-  display: block;
-  padding: none;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 6px;
   font-weight: 700;
   font-size: 12px;
   line-height: 1.43;
@@ -64,55 +72,50 @@
 @media screen and (min-width: 768px) {
   .expensesLimitsWrapper {
     display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
     margin-top: 0;
-    width: 672px;
-    height: 196px;
-    margin-left: auto;
-    margin-right: auto;
+    column-gap: 18px;
     padding: 44px 32px 82px 32px;
   }
 
   .dailyLimitWrapper {
-    margin-right: 18px;
+    display: flex;
+    flex: 1 1 0;
+    width: 100%;
+    margin-bottom: 0;
+    flex-direction: column;
+
   }
 
   .monthlyLimitWrapper {
-    margin-right: 24px;
+    display: flex;
+    flex: 1 1 0;
+    width: 100%;
+    margin-bottom: 0;
+    flex-direction: column;
+
+  }
+
+  .btnsWrapper {
+    flex: 1 1 0;
+    width: 100%;
   }
 
   .label {
     margin-top: 6px;
     margin-bottom: 0;
-  }
-
-  .input {
-    width: 183px;
-    height: 46px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .expensesLimitsWrapper {
-    width: 770px;
-    height: 164px;
     padding: 40px 66px 54px 66px;
-  }
-
-  .dailyLimitWrapper {
-    margin-right: 18px;
-  }
-
-  .monthlyLimitWrapper {
-    margin-right: 54px;
   }
 
   .label {
     margin-top: 6px;
     margin-bottom: 0;
-  }
-
-  .input {
-    width: 183px;
-    height: 46px;
   }
 }

@@ -1,6 +1,7 @@
 .inputWrapper {
+  width: 100%;
   margin-top: 18px;
-  padding: 12px 16px 16px 16px;
+  padding: 12px 0 16px 16px;
   background: rgba(37, 44, 65, 0.5);
   border-radius: 16px;
   border: 2px solid rgba(0, 0, 0, 0);
@@ -18,8 +19,7 @@
   color: rgba(243, 243, 243, 0.4);
   border: none;
 }
-.inputWrapperBalance {
-}
+
 .label {
   display: block;
   margin-bottom: 4px;
@@ -55,7 +55,6 @@
 
 .dropdown {
   position: relative;
-  width: 300px;
   height: 19px;
   display: flex;
   justify-content: center;
@@ -64,8 +63,8 @@
 .dropdown::before {
   content: '';
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -4px;
+  right: 16px;
   width: 12px;
   height: 12px;
   border: 2px solid rgba(0, 0, 0, 0);
@@ -154,30 +153,37 @@
 
 @media screen and (min-width: 768px) {
   .wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    row-gap: 32px;
-    column-gap: 32px;
+    display: grid;
+    gap: 32px;
     margin-bottom: 256px;
   }
 
+  [id="1"] {
+    grid-area: 1 / 1;
+  }
+
+  [id="2"] {
+    grid-area: 1 / 2;
+  }
+
+  [id="3"] {
+    grid-area: 2 / 1; 
+  }
+
+  [id="4"] {
+    grid-area: 2 / 2;  
+  }
+
   .inputWrapper {
-    width: 336px;
+    width: 100%;
     margin-top: 0;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .wrapper {
-    justify-content: center;
-    width: 770px;
-    margin-left: auto;
-    margin-right: auto;
-    column-gap: 30px;
+    gap: 30px;
     margin-bottom: 90px;
-  }
-  .inputWrapper {
-    width: 370px;
   }
 }
 

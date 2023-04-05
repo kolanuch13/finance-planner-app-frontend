@@ -29,7 +29,7 @@ const PeriodPlan = ({ data }) => {
           </span>
           <input
             className={css.input}
-            type="text"
+            type="number"
             placeholder={`0 ` + t('personalPlane.placeholderInformYear')}
             value={data?.years || 0}
             onChange={() => {}}

@@ -8,6 +8,7 @@ import css from './CashflowPage.module.css';
 
 import cashflowOperations from 'redux/cashflowPage/cashflowPage-operations';
 import { useNavigate } from 'react-router-dom';
+import { Notify } from 'notiflix';
 
 const CashflowPage = () => {
   const navigate = useNavigate();
@@ -49,25 +50,30 @@ const CashflowPage = () => {
     // eslint-disable-next-line default-case
     switch (e.target.id) {
       case 'expense':
-        const expenseData = {
-          category: formDataExpense.category?.toLowerCase(),
-          sum: Number(+formDataExpense.sum),
-          categoryType: formDataExpense.categoryType,
-          comment: formDataExpense.comment,
-        };
-        dispatch(cashflowOperations.addTransaction(expenseData))
-          .unwrap()
-          .then(response => {
-            return response;
-          })
-          .catch(error => console.error(error));
-        if (isModalOpen) toggleModal();
-        setFormDataExpense({
-          category: '',
-          categoryType: 'expense',
-          comment: '',
-          sum: 0,
-        });
+        if (formDataExpense.sum === "") {
+          Notify.warning('At first enter the sum of your expense.')
+        } else {
+          const expenseData = {
+            category: formDataExpense.category?.toLowerCase(),
+            sum: Number(+formDataExpense.sum),
+            categoryType: formDataExpense.categoryType,
+            comment: formDataExpense.comment,
+          };
+          dispatch(cashflowOperations.addTransaction(expenseData))
+            .unwrap()
+            .then(response => {
+              return response;
+            })
+            .then(()=> Notify.success('Your expense was added!'))
+            .catch(error => Notify.failure(error));
+          if (isModalOpen) toggleModal();
+          setFormDataExpense({
+            category: '',
+            categoryType: 'expense',
+            comment: '',
+            sum: 0,
+          });
+        }
         break;
       case 'income':
         const incomeData = {
@@ -81,7 +87,8 @@ const CashflowPage = () => {
           .then(response => {
             return response;
           })
-          .catch(error => console.error(error));
+          .then(()=> Notify.success('Your income was added!'))
+          .catch(error => Notify.failure(error));
         if (isModalOpen) toggleModal();
         setFormDataIncome({
           categoryType: 'income',

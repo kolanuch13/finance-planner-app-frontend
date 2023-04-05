@@ -51,7 +51,6 @@ const ModalAddIncome = ({
   };
 
   const onChangeIncome = e => {
-    console.log(e.target.value);
     setIncome(e.target.value);
   };
 
