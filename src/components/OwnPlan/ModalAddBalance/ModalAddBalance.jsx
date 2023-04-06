@@ -10,7 +10,7 @@ const ModalAddBalance = ({ closeModal }) => {
   const isLoading = useSelector(state => state.isLoading);
   const { t } = useTranslation();
 
-  const handleSubmitModal = (e) => {
+  const handleSubmitModal = e => {
     e.preventDefault();
     dispatch(balance(Number(updateBalance)));
     closeModal();
@@ -20,7 +20,7 @@ const ModalAddBalance = ({ closeModal }) => {
     !isLoading && (
       <Modal closeModal={closeModal}>
         <form onSubmit={handleSubmitModal}>
-          <p style={{ color: "#fff", fontSize: "30px" }}>
+          <p style={{ color: '#fff', fontSize: '30px' }}>
             {t('personalPlane.addBalance')}
           </p>
           <input

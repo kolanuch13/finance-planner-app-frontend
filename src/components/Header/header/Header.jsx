@@ -12,14 +12,17 @@ import { selectorPlanData } from 'redux/plan/plan-selectors';
 
 function Header() {
   const token = useSelector(state => state.auth?.user.token);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const newPlanData = useSelector(selectorPlanData);
+
   const location = useLocation();
-  
+
   const handleOpenMenu = () => {
     setIsMenuOpen(prev => !prev);
   };
-  
+
   useEffect(() => {
     if (!location?.pathname) return;
     setIsMenuOpen(false);
@@ -30,13 +33,13 @@ function Header() {
       <header className={css.header}>
         {token && (
           <div className={css.authMenu}>
-            <AuthMenu personalPlan={newPlanData}/>
+            <AuthMenu personalPlan={newPlanData} />
           </div>
         )}
         <Logo />
-      
+
         <div className={css.navigationBox}>
-          <Navigation personalPlan={newPlanData}/>
+          <Navigation personalPlan={newPlanData} />
         </div>
         {token && (
           <div className={css.userMenuDiv}>

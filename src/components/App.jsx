@@ -6,8 +6,7 @@ import { Layout } from './Layout/Layout';
 import '../i18n';
 
 import authOperations from 'redux/auth/auth-operations';
-import { getPersonalPlan } from 'redux/plan/plan-operations';
-import { balance, selectToken } from 'redux/auth/auth-selectors'
+import { balance, selectToken } from 'redux/auth/auth-selectors';
 import { selectorPlanData } from 'redux/plan/plan-selectors';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
@@ -23,10 +22,12 @@ import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const OwnPlanPage = lazy(() => import('pages/OwnPlanPage/OwnPlanPage'));
 const CashflowPage = lazy(() => import('pages/CashflowPage/CashflowPage'));
-const DynamicsPage = lazy(()=> import('pages/DynamicsPage/DynamicsPage'));
+const DynamicsPage = lazy(() => import('pages/DynamicsPage/DynamicsPage'));
 const StatisticPage = lazy(() => import('pages/StatisticPage/StatisticPage'));
 const ExpensesList = lazy(() => import('./ExpensesList/ExpensesList'));
-const CategoriesStatistic = lazy(() => import('./CategoriesStatistic/CategoriesStatistic'));
+const CategoriesStatistic = lazy(() =>
+  import('./CategoriesStatistic/CategoriesStatistic')
+);
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -35,7 +36,7 @@ export const App = () => {
   const userBalance = useSelector(balance);
   const userToken = useSelector(selectToken);
   const newPlanData = useSelector(selectorPlanData);
- 
+
   useEffect(() => {
     const email = searchParams.get('email');
     const password = searchParams.get('password');
@@ -45,16 +46,23 @@ export const App = () => {
           setSearchParams('');
         })
         .catch(err => {
-          Notify.err(err)
+          Notify.err(err);
         });
     }
-    if(userToken && userBalance === 0) {
-      dispatch(authOperations.current())
-    }
-    if(userBalance !== 0) {
-      dispatch(getPersonalPlan());
-    } 
-  }, [dispatch, navigate, searchParams, setSearchParams, userBalance, userToken]);
+    //  if(userToken && userBalance === 0) {
+    //    dispatch(authOperations.current())
+    //  }
+    //  if(userBalance !== 0) {
+    //    dispatch(getPersonalPlan());
+    //  }
+  }, [
+    dispatch,
+    navigate,
+    searchParams,
+    setSearchParams,
+    userBalance,
+    userToken,
+  ]);
 
   return (
     <>
@@ -65,18 +73,20 @@ export const App = () => {
           <Route path="verify/:verificationToken" element={<Verified />} />
           <Route path="/" element={<PrivateRoute />}>
             <Route path="personal-plan" element={<OwnPlanPage />} />
-            {newPlanData && <>
-              <Route path="cashflow" element={<CashflowPage/>} />
+            {newPlanData && (
+              <>
+                <Route path="cashflow" element={<CashflowPage />} />
 
-              <Route path="dynamics" element={<DynamicsPage />} />
+                <Route path="dynamics" element={<DynamicsPage />} />
 
-              <Route path="statistics" element={<StatisticPage />}>
-                <Route path="transactions" element={<ExpensesList />} />
-                <Route path="categories" element={<CategoriesStatistic />} />
-              </Route>
-            </>}
+                <Route path="statistics" element={<StatisticPage />}>
+                  <Route path="transactions" element={<ExpensesList />} />
+                  <Route path="categories" element={<CategoriesStatistic />} />
+                </Route>
+              </>
+            )}
 
-            <Route path="*" element={ <NotFoundPage/> } />
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Route>
 

@@ -26,7 +26,7 @@ export const Verified = props => {
         email: user.email,
         password: user.password,
       };
-      setSec(0);
+      setSec(prev => (prev = 0));
       dispatch(authOperations.verify({ verificationToken }))
         .then(_ => {
           dispatch(authOperations.login(credentials))

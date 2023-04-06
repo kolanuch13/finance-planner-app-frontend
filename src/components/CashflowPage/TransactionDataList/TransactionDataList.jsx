@@ -2,16 +2,16 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { balance } from 'redux/auth/auth-selectors';
 import css from './TransactionDataList.module.css';
-import getAllCategories from 'helpers/categories'
+import getAllCategories from 'helpers/categories';
 import {
   MdSetMeal,
-  MdCheckroom, 
-  MdRestaurant, 
+  MdCheckroom,
+  MdRestaurant,
   MdMedicalServices,
   MdSpa,
   MdCommute,
   MdHouse,
-  MdMiscellaneousServices
+  MdMiscellaneousServices,
 } from 'react-icons/md';
 import { useTranslation } from 'react-i18next';
 
@@ -22,15 +22,15 @@ export const TransactionDataList = ({ setFormData, formData }) => {
   const currentLanguage = localStorage.getItem('i18nextLng');
   const { t } = useTranslation();
   const icons = [
-    <MdSetMeal style={style}/>, 
-    <MdCheckroom style={style}/>, 
-    <MdRestaurant style={style}/>, 
-    <MdMedicalServices style={style}/>,
-    <MdSpa style={style}/>,
-    <MdCommute style={style}/>,
-    <MdHouse style={style}/>,
-    <MdMiscellaneousServices style={style}/>
-  ]
+    <MdSetMeal style={style} />,
+    <MdCheckroom style={style} />,
+    <MdRestaurant style={style} />,
+    <MdMedicalServices style={style} />,
+    <MdSpa style={style} />,
+    <MdCommute style={style} />,
+    <MdHouse style={style} />,
+    <MdMiscellaneousServices style={style} />,
+  ];
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -40,40 +40,40 @@ export const TransactionDataList = ({ setFormData, formData }) => {
     }));
   };
 
-  const handlerToggler = (e) => {
-    e.currentTarget.classList.toggle(css.dropdownActive)
-  }
+  const handlerToggler = e => {
+    e.currentTarget.classList.toggle(css.dropdownActive);
+  };
 
-  const handlerCategory = (e) => {
+  const handlerCategory = e => {
     formData.category = e.target.textContent;
-    handleChange(e)
-  }
-  
+    handleChange(e);
+  };
+
   useEffect(() => {
     currentLanguage === 'uk'
-    ? getAllCategories()
-        .then(res => res.availableCategoriesUa)
-        .then(list => {
-          setCategory(list)
-          formData.category = list[list.length-1]
-        })
-        .catch(error => console.error(error))
-    : getAllCategories()
-        .then(res => res.availableCategoriesEn)
-        .then(list => {
-          setCategory(list)
-          if(formData.category === "") {
-            formData.category = list[list.length-1]
-          }
-        })
-        .catch(error => console.error(error))
-// eslint-disable-next-line react-hooks/exhaustive-deps
-}, [currentLanguage])
+      ? getAllCategories()
+          .then(res => res.availableCategoriesUa)
+          .then(list => {
+            setCategory(list);
+            formData.category = list[list.length - 1];
+          })
+          .catch(error => console.error(error))
+      : getAllCategories()
+          .then(res => res.availableCategoriesEn)
+          .then(list => {
+            setCategory(list);
+            if (formData.category === '') {
+              formData.category = list[list.length - 1];
+            }
+          })
+          .catch(error => console.error(error));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentLanguage]);
 
   return (
     <div className={css.wrapper}>
-      <div className={css.inputWrapper}>
-        <label htmlFor="balance" className={css.label}>
+      <div id="1" className={css.inputWrapper + ' ' + css.inputWrapperBalance}>
+        <label htmlFor="balance" className={css.labelBalance}>
           {t('cashFlow.from')}
         </label>
         <input
@@ -85,25 +85,22 @@ export const TransactionDataList = ({ setFormData, formData }) => {
           readOnly
         />
       </div>
-      <div className={css.inputWrapper}>
+      <div id="2" className={css.inputWrapper}>
         <label htmlFor="category" className={css.label}>
-        {t('cashFlow.category')}
+          {t('cashFlow.category')}
         </label>
         <div className="container">
-          <div 
-            className={css.dropdown} 
-            onClick={handlerToggler}
-          >
-            <input 
+          <div className={css.dropdown} onClick={handlerToggler}>
+            <input
               id="category"
-              className={css.textBox} 
-              type="text" 
-              value={formData.category ? formData.category : category[category.length - 1]}
+              className={css.textBox}
+              type="select"
+              value={formData.category}
               name="category"
               onChange={handleChange}
               readOnly
             />
-            <div className={css.options} >
+            <div className={css.options}>
               {category.map((el, i) => (
                 <div key={i} onClick={handlerCategory}>
                   {icons[i]}
@@ -114,9 +111,9 @@ export const TransactionDataList = ({ setFormData, formData }) => {
           </div>
         </div>
       </div>
-      <div className={css.inputWrapper}>
+      <div id="3" className={css.inputWrapper}>
         <label htmlFor="comment" className={css.label}>
-        {t('cashFlow.comment')}
+          {t('cashFlow.comment')}
         </label>
         <input
           id="comment"
@@ -128,7 +125,7 @@ export const TransactionDataList = ({ setFormData, formData }) => {
           placeholder={t('cashFlow.placeholderComment')}
         />
       </div>
-      <div className={css.inputWrapper}>
+      <div id="4" className={css.inputWrapper}>
         <label htmlFor="sum" className={css.label}>
           {t('cashFlow.sum')}
         </label>
@@ -140,7 +137,7 @@ export const TransactionDataList = ({ setFormData, formData }) => {
           value={formData.sum}
           name="sum"
           required
-          placeholder="Enter sum"
+          placeholder={t('cashflow.placeholderSum')}
         />
       </div>
     </div>
