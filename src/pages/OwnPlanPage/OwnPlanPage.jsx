@@ -1,13 +1,13 @@
 import deepEqual from 'deep-equal';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectorPlanData } from 'redux/plan/plan-selectors';
 import {
   addPersonalPlanAPI,
   currentPersonalPlanAPI
 } from 'redux/plan/plan-operations';
-import { selectorAccumPeriod } from 'redux/plan/plan-selectors';
+import { selectorAccumPeriod, selectorPlanData, isLoading } from 'redux/plan/plan-selectors';
 import { Container } from 'components/Container/Container';
+import Loader from 'components/Loader/Loader';
 import PeriodPlan from 'components/OwnPlan/PeriodPlan/PeriodPlan';
 import PlanInput from 'components/OwnPlan/PlanInput/PlanInput';
 import styles from './OwnPlanPage.module.css';
@@ -19,6 +19,7 @@ const OwnPlanPage = () => {
   const navigate = useNavigate();
   const newPlanData = useSelector(selectorPlanData);
   const accumPeriod = useSelector(selectorAccumPeriod);
+  const loaded = useSelector(isLoading)
   const [planData, setPlanData] = useState({
     salary: newPlanData?.salary || '',
     passiveIncome: newPlanData?.passiveIncome || '',
@@ -76,8 +77,9 @@ const OwnPlanPage = () => {
       })
     }
   };
-
+  
   return (
+    loaded ? <Loader/> :
     <Container>
       <form className={styles.form} onSubmit={handleSubmit}>
         <PlanInput data={planData} setData={setPlanData} />
