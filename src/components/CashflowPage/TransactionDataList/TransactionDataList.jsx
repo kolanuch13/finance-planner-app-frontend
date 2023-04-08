@@ -137,7 +137,7 @@ export const TransactionDataList = ({ setFormData, formData }) => {
           value={formData.sum}
           name="sum"
           required
-          placeholder={t('cashflow.placeholderSum')}
+          placeholder={t('cashFlow.placeholderSum')}
         />
       </div>
     </div>
